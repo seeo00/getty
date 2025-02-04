@@ -4,16 +4,26 @@ import { Link } from 'react-router-dom';
 import { respondTo } from '../../styled/GlobalStyle';
 
 export const NavContainer = styled.nav`
-    width: ${(props) => (props.isCollapsed ? '80px' : '273px')};
+    width: 218px; /* 조금 더 유동적인 너비 */
     height: 100vh;
     background-color: #1e1e1e;
     color: #aaa;
     display: flex;
     flex-direction: column;
     padding: 20px;
-    margin-top: 60px;
-    /* transition: width 0.3s ease-in-out; */
+    &.on {
+        left: 0;
+    }
+
     ${respondTo('mobile')} {
+        position: absolute;
+        margin-top: 60px;
+        display: block;
+    }
+    ${respondTo('tablet')} {
+        display: none;
+    }
+    ${respondTo('desktop')} {
         display: none;
     }
 
@@ -23,8 +33,8 @@ export const NavContainer = styled.nav`
         padding: 10px 0;
         color: white;
         text-decoration: none;
-        gap: ${(props) => (props.isCollapsed ? '0' : '10px')};
-        justify-content: ${(props) => (props.isCollapsed ? 'center' : 'flex-start')};
+        gap: 10px;
+        justify-content: flex-start;
     }
 
     a:hover {
@@ -56,7 +66,6 @@ export const IconWrapper = styled.span`
     margin-left: 10px;
 `;
 
-// Divider 컴포넌트 수정: 아이콘 위치에 맞춰 좌측 여백 설정
 export const Divider = styled.div`
     background-color: #aaa;
     height: 1px;
