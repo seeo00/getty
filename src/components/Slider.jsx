@@ -1,31 +1,53 @@
+// Slider.jsx
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { SliderSectionContainer, SlideContent } from './styles';
+import { SliderContainer } from './styles';
 
-const SliderSection = () => {
+const Slider = () => {
     return (
-        <SliderSectionContainer>
+        <SliderContainer>
             <Swiper
-                slidesPerView={1.5}
-                spaceBetween={-20}
-                centeredSlides
-                loop
+                slidesPerView={4.5}
+                spaceBetween={30}
+                centeredSlides={true}
+                loop={true}
+                initialSlide={1}
                 speed={400}
                 breakpoints={{
+                    390: {
+                        slidesPerView: 2.5,
+                        spaceBetween: 10,
+                    },
                     768: {
-                        slidesPerView: 1.8,
-                        spaceBetween: -40,
+                        slidesPerView: 3.5,
+                        spaceBetween: 20,
+                    },
+                    1024: {
+                        slidesPerView: 4.5,
+                        spaceBetween: 30,
                     },
                 }}
             >
-                {[...Array(3)].map((_, i) => (
+                {[...Array(6)].map((_, i) => (
                     <SwiperSlide key={i}>
-                        <SlideContent>슬라이드 {i + 1}</SlideContent>
+                        <div
+                            style={{
+                                width: '100%',
+                                height: '100%',
+                                background: '#333',
+                                display: 'flex',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                color: 'white',
+                            }}
+                        >
+                            슬라이드 {i + 1}
+                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </SliderSectionContainer>
+        </SliderContainer>
     );
 };
 
-export default SliderSection;
+export default Slider;

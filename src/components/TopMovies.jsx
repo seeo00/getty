@@ -1,29 +1,36 @@
+// TopMovies.jsx
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { TopSection, ContentHeader, TopItem, TopNumber } from './styles';
 
 const TopMovies = () => {
-    const topMovieItems = Array.from({ length: 20 }, (_, index) => index + 1);
-
     return (
         <TopSection>
             <ContentHeader>오늘의 영화 TOP 20</ContentHeader>
             <Swiper
-                slidesPerView={2.2}
-                spaceBetween={10}
-                loop
+                slidesPerView={5}
+                spaceBetween={30}
+                loop={true}
                 speed={400}
                 breakpoints={{
+                    390: {
+                        slidesPerView: 2.2,
+                        spaceBetween: 10,
+                    },
                     768: {
                         slidesPerView: 4,
                         spaceBetween: 20,
                     },
+                    1024: {
+                        slidesPerView: 5,
+                        spaceBetween: 30,
+                    },
                 }}
             >
-                {topMovieItems.map((number) => (
-                    <SwiperSlide key={number}>
+                {[...Array(20)].map((_, index) => (
+                    <SwiperSlide key={index}>
                         <TopItem>
-                            <TopNumber>{number}</TopNumber>
+                            <TopNumber>{index + 1}</TopNumber>
                         </TopItem>
                     </SwiperSlide>
                 ))}

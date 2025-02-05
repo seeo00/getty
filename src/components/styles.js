@@ -1,43 +1,195 @@
+// styles.js
 import styled from 'styled-components';
 
 const COLORS = {
     background: '#222',
+    black: '#111',
     text: '#e5e5e5',
     white: 'white',
 };
 
-const SIZES = {
-    mobile: {
-        width: 175,
-        height: 251,
-        padding: 8,
-    },
-    desktop: {
-        width: 200,
-        height: 280,
-        padding: 12,
-    },
-};
+export const Container = styled.div`
+    background: ${COLORS.black};
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 2rem 0;
 
-const responsiveItemStyle = `
-    background: ${COLORS.background};
-    border-radius: 16px;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: 8px;
-    outline: none;
-    border: none;
-    
-    @media screen and (min-width: 768px) {
-        width: ${SIZES.desktop.width}px;
-        height: ${SIZES.desktop.height}px;
-        padding: ${SIZES.desktop.padding}px;
+    @media screen and (max-width: 390px) {
+        width: 390px;
+        height: 2480px;
+        overflow-y: auto;
+        padding: 60px 0;
+        margin: 0 auto;
+        position: relative;
+        box-sizing: border-box;
     }
 `;
 
-export const SliderSectionContainer = styled.div`
+export const ContentSection = styled.div`
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media screen and (max-width: 390px) {
+        padding: 0 1rem;
+    }
+`;
+
+export const ContentBlock = styled.div`
+    margin-bottom: 1.25rem;
+`;
+
+export const SliderContainer = styled.div`
+    width: 100%;
+    margin: 1rem 0;
+
+    .swiper {
+        width: 100%;
+        padding: 0;
+    }
+
+    .swiper-wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    .swiper-slide {
+        border-radius: 16px;
+        overflow: hidden;
+        opacity: 0.6;
+        transform: scale(0.9);
+        transition: all 0.3s ease;
+
+        &.swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 1;
+        }
+    }
+
+    @media screen and (max-width: 390px) {
+        padding: 1rem 0;
+        position: relative;
+
+        .swiper {
+            overflow: visible;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .swiper-slide {
+            width: 320px !important;
+            height: 456px !important;
+            margin: 0 10px;
+        }
+    }
+`;
+
+export const GridContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+`;
+
+export const GridItem = styled.div`
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background: ${COLORS.background};
+    border-radius: 16px;
+    cursor: pointer;
+
+    @media screen and (max-width: 390px) {
+        width: 114px;
+        height: 168px;
+    }
+`;
+
+export const MediaCardContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1.5rem;
+
+    @media (max-width: 1024px) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    @media screen and (max-width: 390px) {
+        display: flex;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+`;
+
+export const MediaCard = styled.div`
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: ${COLORS.background};
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 390px) {
+        width: 175px;
+        height: 104px;
+        flex-shrink: 0;
+    }
+`;
+
+export const ContentHeader = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    color: ${COLORS.text};
+    font-size: 1.5rem;
+
+    @media (max-width: 1024px) {
+        font-size: 1.25rem;
+    }
+
+    @media screen and (max-width: 390px) {
+        padding: 0.5rem 0;
+        font-size: 18px;
+
+        span {
+            font-size: 18px;
+        }
+    }
+`;
+
+export const PlayIconWrapper = styled.div`
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 390px) {
+        width: 48px;
+        height: 48px;
+    }
 `;
 
 export const TopSection = styled.div`
@@ -52,11 +204,9 @@ export const TopSection = styled.div`
     .swiper-slide {
         border-radius: 16px;
         overflow: hidden;
-        opacity: 0.4;
+        opacity: 0.6;
         transform: scale(0.95);
         transition: all 0.3s ease;
-        outline: none;
-        border: none;
 
         &.swiper-slide-active {
             opacity: 1;
@@ -65,111 +215,49 @@ export const TopSection = styled.div`
     }
 `;
 
-export const ContentHeader = styled.div`
+export const TopItem = styled.div`
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    background: ${COLORS.background};
+    border-radius: 16px;
+    position: relative;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0;
-    color: ${COLORS.text};
-    font-size: 18px;
+    align-items: flex-end;
+    padding: 8px;
 
-    span {
-        font-size: 18px;
-
-        &:first-child {
-            flex-grow: 1;
-        }
-
-        &:last-child {
-            cursor: pointer;
-            text-align: right;
-        }
+    @media screen and (max-width: 390px) {
+        width: 175px;
+        height: 251px;
     }
 `;
 
-export const TopItem = styled.div`
-    width: ${SIZES.mobile.width}px;
-    height: ${SIZES.mobile.height}px;
-    ${responsiveItemStyle}
-`;
-
-export const SlideContent = styled.div`
-    width: ${SIZES.mobile.width}px;
-    height: ${SIZES.mobile.height}px;
-    ${responsiveItemStyle}
-    color: ${COLORS.white};
-`;
-
 export const TopNumber = styled.span`
-    color: ${COLORS.white};
+    color: white;
     font-size: 18px;
     font-weight: bold;
 `;
 
-export const GridContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+export const AdBanner = styled.div`
     width: 100%;
-`;
-
-export const GridItem = styled.div`
-    width: 100%;
-    height: 200px;
+    aspect-ratio: 16 / 9;
     background: ${COLORS.background};
     border-radius: 16px;
 
-    @media screen and (min-width: 768px) {
-        height: 250px;
+    @media screen and (max-width: 390px) {
+        width: 358px;
+        height: 204px;
     }
 `;
 
-export const MediaCardContainer = styled.div`
-    display: flex;
-    gap: 10px;
-    width: 100%;
-`;
+export const AdText = styled.div`
+    color: ${COLORS.white};
+    font-size: 1rem;
+    margin-top: 1rem;
+    text-align: center;
 
-export const MediaCard = styled.div`
-    width: 100%;
-    height: 200px;
-    background: ${COLORS.background};
-    border-radius: 16px;
-    position: relative;
-
-    @media screen and (min-width: 768px) {
-        height: 250px;
+    @media screen and (max-width: 390px) {
+        font-size: 12px;
+        margin-top: -8px;
+        font-weight: 400;
     }
-`;
-
-export const PlayIconWrapper = styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-// styles.js에 추가
-export const ContentBlock = styled.div`
-    margin-bottom: 20px; // 필요에 따라 스타일 조정
-    width: 100%;
-`;
-export const Container = styled.div`
-    width: 100%;
-    max-width: 1200px; // 필요에 따라 조정
-    margin: 0 auto;
-    padding: 0 16px; // 좌우 패딩 추가
-`;
-
-export const ContentSection = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 20px; // 섹션 사이 간격
-    width: 100%;
 `;
