@@ -43,7 +43,7 @@ export const SearchBar = styled.div`
   width: ${({ active }) => (active ? '300px' : '44px')};
   height: 44px;
   padding: 5px 10px;
-  background-color: ${({ active }) => (active ? color.gray[400] : 'transparent')};
+  background-color: ${({ active }) => (active ? color.gray[900] : 'transparent')};
   margin-right: 30px;
   transition: width 0.3s ease, background-color 0.3s ease;
 
