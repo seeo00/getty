@@ -1,14 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-const exampleReducer = (state = { value: 0 }, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+import mainR from './modules/mainSlice';
 
 export const store = configureStore({
-  reducer: {
-    example: exampleReducer,
-  },
+  reducer: { mainR },
 });

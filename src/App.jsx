@@ -1,16 +1,42 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+// App.js
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './styled/GlobalStyle';
-import Main from './pages/main';  // Main 컴포넌트 import 추가
+import './reset.scss';  // reset.scss 유지
+import SideNav from './common/nav/SideNav';
+import { Main } from './pages/main';
+import styled from 'styled-components';
+import { Header } from './common/header/Header';
+import Footer from './common/footer/Footer';
+import { BottomNav } from './common/header/BottomNav';
+import { SideNavMobile } from './common/nav/SideNavMobile';
+
+const AppContainer = styled.div`
+  display: flex;
+`;
+
+const Content = styled.div`
+  flex: 1;
+  padding: 20px;
+  background-color: #584b00;
+  color: #fff;
+`;
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <GlobalStyle />
-        <Routes>
-          {/* 연결 확인 div를 Main 컴포넌트로 교체 */}
-          <Route path="/" element={<Main />} />
-        </Routes>
+        <AppContainer>
+          <Header />
+          <BottomNav />
+          <SideNavMobile />
+          <Content>
+            <Routes>
+              <Route path="/" element={<Main />} />
+            </Routes>
+          </Content>
+        </AppContainer>
+        <Footer />
       </BrowserRouter>
     </>
   );
