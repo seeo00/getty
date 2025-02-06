@@ -1,7 +1,7 @@
 // App.js
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './styled/GlobalStyle';
-import './reset.scss';
+import './reset.scss';  // reset.scss 유지
 import SideNav from './common/nav/SideNav';
 import { Main } from './pages/main';
 import styled from 'styled-components';
@@ -32,10 +32,7 @@ function App() {
           <SideNavMobile />
           <Content>
             <Routes>
-              <Route
-                path='/'
-                element={<Main />}
-              />
+              <Route path="/" element={<Main />} />
             </Routes>
           </Content>
         </AppContainer>
