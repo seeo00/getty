@@ -30,22 +30,22 @@ input,
 select,
 button,
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-size: 14px;
-    line-height: 1.6;
-    font-family: 'Noto Sans', sans-serif;
-    color: #fff;
-    -webkit-text-size-adjust: none;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: 'Noto Sans', sans-serif;
+  color: #fff;
+  -webkit-text-size-adjust: none;
 }
 
 img,
 video {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 dl,
@@ -53,78 +53,78 @@ ul,
 ol,
 menu,
 li {
-    list-style: none;
+  list-style: none;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote::before,
 blockquote::after,
 q::before,
 q::after {
-    content: '';
-    content: none;
+  content: '';
+  content: none;
 }
 
 input,
 select,
 textarea {
-    font-size: 100%;
-    vertical-align: middle;
+  font-size: 100%;
+  vertical-align: middle;
 }
 
 button {
-    font-size: 100%;
-    vertical-align: middle;
-    border: 0 none;
-    background-color: transparent;
-    cursor: pointer;
-    color: #fff;
+  font-size: 100%;
+  vertical-align: middle;
+  border: 0 none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 input {
-    &[type='text'],
-    &[type='password'],
-    &[type='submit'],
-    &[type='search'] {
-        appearance: none;
-        border-radius: 0;
-    }
+  &[type='text'],
+  &[type='password'],
+  &[type='submit'],
+  &[type='search'] {
+    appearance: none;
+    border-radius: 0;
+  }
 
-    &:checked[type='checkbox'] {
-        background-color: #e4e4e4;
-        appearance: checkbox;
-    }
+  &:checked[type='checkbox'] {
+    background-color: #e4e4e4;
+    appearance: checkbox;
+  }
 
-    &[type='button'],
-    &[type='submit'],
-    &[type='reset'],
-    &[type='file'] {
-        appearance: button;
-        border-radius: 0;
-    }
+  &[type='button'],
+  &[type='submit'],
+  &[type='reset'],
+  &[type='file'] {
+    appearance: button;
+    border-radius: 0;
+  }
 
-    &[type='search']::-webkit-search-cancel-button {
-        appearance: none;
-    }
+  &[type='search']::-webkit-search-cancel-button {
+    appearance: none;
+  }
 }
 
 button {
-    appearance: button;
-    border-radius: 0;
+  appearance: button;
+  border-radius: 0;
 }
 
 fieldset,
 img {
-    border: 0 none;
+  border: 0 none;
 }
 
 address,
@@ -134,30 +134,25 @@ code,
 dfn,
 em,
 var {
-    font-style: normal;
-    font-weight: normal;
+  font-style: normal;
+  font-weight: normal;
 }
 
 hr {
-    display: none;
+  display: none;
 }
 
 input[type='password'] {
-    font-family: 'Malgun Gothic', sans-serif;
+  font-family: 'Malgun Gothic', sans-serif;
 }
 
 .blind,
 caption,
 legend {
-    position: absolute;
-    clip: rect(0 0 0 0);
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
 }
-
-$color-primary: #0040ff;
-$color-secondary: #000;
-$breakpoint-mobile: 768px;
-$breakpoint-tablet: 1024px;

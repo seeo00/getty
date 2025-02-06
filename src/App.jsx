@@ -7,7 +7,7 @@ import { Main } from './pages/main';
 import styled from 'styled-components';
 import { Header } from './common/header/Header';
 import Footer from './common/footer/Footer';
-import { HeaderMobile } from './common/header/HeaderMobile';
+import { BottomNav } from './common/header/BottomNav';
 import { SideNavMobile } from './common/nav/SideNavMobile';
 
 const AppContainer = styled.div`
@@ -15,10 +15,10 @@ const AppContainer = styled.div`
 `;
 
 const Content = styled.div`
-    flex: 1;
-    padding: 20px;
-    background-color: #000; /
-    color: #fff; 
+  flex: 1;
+  padding: 20px;
+  background-color: #584b00;
+  color: #fff;
 `;
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
         <GlobalStyle />
         <AppContainer>
           <Header />
-          <HeaderMobile />
+          <BottomNav />
           <SideNavMobile />
           <Content>
             <Routes>
@@ -39,7 +39,6 @@ function App() {
             </Routes>
           </Content>
         </AppContainer>
-
         <Footer />
       </BrowserRouter>
     </>

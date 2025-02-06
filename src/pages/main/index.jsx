@@ -10,7 +10,15 @@ export const Main = () => {
   ];
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div
+      style={{
+        position: 'relative', // Footer의 absolute 기준이 됨
+        minHeight: '100vh', // 화면 전체 높이 확보
+        // padding: '20px',
+        paddingBottom: '120px', // Footer 높이만큼 여백 추가 (필요에 따라 조정)
+        boxSizing: 'border-box',
+      }}
+    >
       <h2>포스터 4개</h2>
       <div
         style={{
