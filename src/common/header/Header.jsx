@@ -53,8 +53,8 @@ export const Header = () => {
       <HeaderContainer>
         <LeftContainer>
           <img
-            src='https://raw.githubusercontent.com/seeo00/project-image-storage/refs/heads/main/images/icon/menu.svg'
-            alt='menu'
+            src="https://raw.githubusercontent.com/seeo00/project-image-storage/refs/heads/main/images/icon/menu.svg"
+            alt="menu"
             style={{ marginLeft: '10px', cursor: 'pointer' }}
             onClick={handleToggleSideNav}
           />
@@ -64,8 +64,8 @@ export const Header = () => {
           <SearchBar active={isSearchActive}>
             {isSearchActive && (
               <SearchInput
-                type='text'
-                placeholder='제목, 사람, 장르 검색...'
+                type="text"
+                placeholder="제목, 사람, 장르 검색..."
                 autoFocus
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
@@ -76,8 +76,8 @@ export const Header = () => {
                 'X'
               ) : (
                 <img
-                  src='https://raw.githubusercontent.com/seeo00/project-image-storage/refs/heads/main/images/icon/search.svg'
-                  alt='search'
+                  src="https://raw.githubusercontent.com/seeo00/project-image-storage/refs/heads/main/images/icon/search.svg"
+                  alt="search"
                   style={{ width: '24px', height: '24px' }}
                 />
               )}

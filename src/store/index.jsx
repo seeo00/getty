@@ -8,6 +8,7 @@ import movieR from './modules/slices/movieSlice';
 import trendingR from './modules/slices/trendingSlice';
 import seriesR from './modules/slices/seriesSlice';
 import originalR from './modules/slices/originalSlice';
+import mainR from './modules/slices/mainSlice';
 
 export const store = configureStore({
   reducer: {
@@ -19,5 +20,6 @@ export const store = configureStore({
     trendingR,
     seriesR,
     originalR,
+    mainR,
   },
 });
