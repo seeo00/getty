@@ -17,8 +17,8 @@ const AppContainer = styled.div`
 
 const Content = styled.div`
   flex: 1;
-  padding: 20px;
-  background-color: #584b00;
+  padding: 0px;
+
   color: #fff;
 `;
 
