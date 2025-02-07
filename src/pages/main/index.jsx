@@ -1,4 +1,3 @@
-
 import { MainContent } from '../../components';
 
 const Main = () => {

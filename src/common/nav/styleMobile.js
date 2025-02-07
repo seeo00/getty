@@ -1,22 +1,36 @@
-// style.js
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
 
-//데스크톱
+//모바일
 export const NavContainer = styled.nav`
-  width: ${(props) => (props.isCollapsed ? '80px' : '273px')};
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 218px;
   height: 100vh;
   background-color: ${color.gray[800]};
   color: ${color.gray[70]};
-  display: flex; /* display: none 제거 */
+  display: flex;
   flex-direction: column;
   padding: 20px;
-  margin-top: 60px;
-  z-index: 1000;
+  /* transition: left 0.3s ease-in-out; */
+  z-index: 200;
+
+  &.on {
+    left: 0;
+  }
 
   ${respondTo('mobile')} {
+    position: absolute;
+    margin-top: 59px;
+    display: block;
+  }
+  ${respondTo('tablet')} {
+    display: none;
+  }
+  ${respondTo('desktop')} {
     display: none;
   }
 
@@ -24,10 +38,10 @@ export const NavContainer = styled.nav`
     display: flex;
     align-items: center;
     padding: 10px 0;
-    color: white;
+    color: ${color.white};
     text-decoration: none;
-    gap: ${(props) => (props.isCollapsed ? '0' : '10px')};
-    justify-content: ${(props) => (props.isCollapsed ? 'center' : 'flex-start')};
+    gap: 10px;
+    justify-content: flex-start;
   }
 
   a:hover {
@@ -59,14 +73,20 @@ export const IconWrapper = styled.span`
   margin-left: 10px;
 `;
 
-// Divider 컴포넌트 수정: 아이콘 위치에 맞춰 좌측 여백 설정
 export const Divider = styled.div`
   background-color: ${color.gray[70]};
   height: 1px;
-  width: ${(props) => (props.isCollapsed ? '50px' : '216px')};
+  width: 216px;
   margin: 50px auto;
 
   ${respondTo('mobile')} {
     margin: 50px -20px;
   }
+`;
+
+export const DimOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 199;
 `;
