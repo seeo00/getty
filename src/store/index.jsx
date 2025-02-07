@@ -1,14 +1,22 @@
 import { configureStore } from '@reduxjs/toolkit';
-
-const exampleReducer = (state = { value: 0 }, action) => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
+import dramaR from './modules/slices/dramaSlice';
+import documentaryR from './modules/slices/documentarySlice';
+import animaionR from './modules/slices/animationSlice';
+import realityR from './modules/slices/realitySlice';
+import movieR from './modules/slices/movieSlice';
+import trendingR from './modules/slices/trendingSlice';
+import seriesR from './modules/slices/seriesSlice';
+import originalR from './modules/slices/originalSlice';
 
 export const store = configureStore({
   reducer: {
-    example: exampleReducer,
+    dramaR,
+    documentaryR,
+    animaionR,
+    realityR,
+    movieR,
+    trendingR,
+    seriesR,
+    originalR,
   },
 });
