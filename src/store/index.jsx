@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import dramaR from './modules/slices/dramaSlice';
 import documentaryR from './modules/slices/documentarySlice';
 import animaionR from './modules/slices/animationSlice';
