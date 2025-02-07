@@ -119,6 +119,7 @@ export const GridItem = styled.div`
     background: ${COLORS.background};
     border-radius: 16px;
     cursor: pointer;
+    position: relative;
 
     @media screen and (max-width: 390px) {
         width: 114px;
@@ -323,7 +324,6 @@ export const AdText = styled.div`
     }
 `;
 
-// 추가된 하단 콘텐츠 스타일
 export const ContentFooter = styled.div`
     display: none;
 
@@ -356,6 +356,7 @@ export const ContentLinks = styled.div`
         }
     }
 `;
+
 export const CircleSlider = styled.div`
     width: 100%;
     margin: 1rem 0;
@@ -383,11 +384,11 @@ export const CircleSlider = styled.div`
         }
 
         @media screen and (min-width: 769px) {
-            width: 160px !important;
-            height: 160px !important;
+            display: none; // 데스크탑에서 완전히 숨김
         }
     }
 `;
+
 export const NumberLabel = styled.div`
     position: absolute;
     top: 8px;
@@ -403,5 +404,23 @@ export const NumberLabel = styled.div`
 
     @media screen and (min-width: 391px) and (max-width: 768px) {
         font-size: 20px;
+    }
+`;
+
+export const BottomTab = styled.div`
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    background-color: ${COLORS.black};
+    color: ${COLORS.text};
+    justify-content: space-around;
+    align-items: center;
+    z-index: 10;
+
+    @media screen and (min-width: 769px) {
+        display: none;
     }
 `;

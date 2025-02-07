@@ -6,7 +6,7 @@ import MediaSection from './MediaSection';
 import TopMovies from './TopMovies';
 import BottomTabBar from './BottomTabBar';
 
-export const MainContent = () => {
+const MainContent = () => {
     return (
         <Container>
             <Slider />
@@ -20,3 +20,5 @@ export const MainContent = () => {
         </Container>
     );
 };
+
+export default MainContent;
