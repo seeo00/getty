@@ -1,38 +1,3 @@
-<<<<<<< HEAD
-export const color = {
-    white: '#fff',
-    black: '#000',
-    primary: {
-        50: '#e6ecff',
-        75: '#96b1ff',
-        100: '#6b90ff',
-        200: '#2b60ff',
-        300: '#0040ff',
-        400: '#002db3',
-        500: '#00279c',
-    },
-    gray: {
-        10: '#fafafa',
-        20: '#f6f6f6',
-        30: '#ececec',
-        40: '#e0e0e0',
-        50: '#c4c4c4',
-        60: '#b6b6b6',
-        70: '#aaaaaa',
-        80: '#9b9b9b',
-        90: '#8d8d8d',
-        100: '#7F7F7F',
-        200: '#717171',
-        300: '#636363',
-        400: '#575757',
-        500: '#494949',
-        600: '#3D3D3D',
-        700: '#2C2C2C',
-        800: '#1E1E1E',
-        900: '#121212',
-    },
-};
-=======
 /* 
 color, font 변수
 파일이름 common.js
@@ -91,7 +56,6 @@ line-height: ${fonts.NotoSans.bold44_auto.lineHeight};
 직접입력 font-size: 16px 훨씬 편하고 디자인이 이미 돼있어서 바꿀일 많지 않음. 변수 사용 비효율적
 
 `; */
->>>>>>> dev
 // export const fonts = {
 //   NotoSans: {
 //     // Regular
