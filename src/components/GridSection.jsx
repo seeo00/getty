@@ -1,20 +1,17 @@
-// GridSection.jsx
-import { ContentBlock, ContentHeader, GridContainer, GridItem } from './styles';
+import { ContentBlock, ContentHeader, GridContainer, GridItem, NumberLabel } from './styles';
 
 const GridSection = () => {
-    const gridItems = Array(3).fill(null);
-
     return (
         <>
-            {[...Array(2)].map((_, idx) => (
+            {[...Array(4)].map((_, idx) => (
                 <ContentBlock key={idx}>
                     <ContentHeader>
                         <span>믿고 보는 웨이브 에디터 추천작</span>
                         <span>{'>'}</span>
                     </ContentHeader>
                     <GridContainer>
-                        {gridItems.map((_, i) => (
-                            <GridItem key={i} />
+                        {[...Array(5)].map((_, i) => (
+                            <GridItem key={i}>{idx === 1 && <NumberLabel>{i + 1}</NumberLabel>}</GridItem>
                         ))}
                     </GridContainer>
                 </ContentBlock>

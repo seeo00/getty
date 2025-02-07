@@ -1,4 +1,3 @@
-// Slider.jsx
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { SliderContainer } from './styles';
@@ -7,7 +6,7 @@ const Slider = () => {
     return (
         <SliderContainer>
             <Swiper
-                slidesPerView={4.5}
+                slidesPerView="auto"
                 spaceBetween={30}
                 centeredSlides={true}
                 loop={true}
@@ -15,15 +14,12 @@ const Slider = () => {
                 speed={400}
                 breakpoints={{
                     390: {
-                        slidesPerView: 2.5,
                         spaceBetween: 10,
                     },
                     768: {
-                        slidesPerView: 3.5,
                         spaceBetween: 20,
                     },
                     1024: {
-                        slidesPerView: 4.5,
                         spaceBetween: 30,
                     },
                 }}
@@ -35,14 +31,9 @@ const Slider = () => {
                                 width: '100%',
                                 height: '100%',
                                 background: '#333',
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                                color: 'white',
+                                borderRadius: '16px',
                             }}
-                        >
-                            슬라이드 {i + 1}
-                        </div>
+                        />
                     </SwiperSlide>
                 ))}
             </Swiper>

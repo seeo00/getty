@@ -1,9 +1,8 @@
-// MediaSection.jsx
 import { MdPlayArrow } from 'react-icons/md';
 import { ContentBlock, ContentHeader, MediaCardContainer, MediaCard, PlayIconWrapper } from './styles';
 
 const MediaSection = () => {
-    const mediaItems = Array(2).fill(null);
+    const mediaItems = Array(3).fill(null);
 
     return (
         <ContentBlock>
