@@ -1,32 +1,14 @@
-import styled from 'styled-components';
-import { color } from '../../../styled/common';
-import { respondTo } from '../../../styled/GlobalStyle';
+// components/main/MainContent/style.js
+import {styled} from 'styled-components';
 
-export const MainContainer = styled.div`
-  width: 100%;
-  max-width: 168rem;
-  margin: 0 auto;
-  padding: 0 1rem;
-  background-color: ${color.gray[900]};
-
-  ${respondTo('desktop')} {
-    max-width: 100%;
-    padding: 0 2rem;
-  }
-
-  ${respondTo('tablet')} {
-    padding: 0 1.5rem;
-  }
-
-  ${respondTo('mobile')} {
-    padding: 0 1rem;
-  }
-`;
-
-export const MainContentSection = styled.div`
-  margin-top: 2rem;
-
-  ${respondTo('mobile')} {
-    margin-top: 1rem;
-  }
+export const MainContainer = styled.main`
+    width: 100%;
+    min-height: 100vh;
+    background: #000;
+    padding-top: 60px; // 헤더 높이만큼
+    padding-left: 240px; // 사이드바 너비만큼
+    
+    @media (max-width: 1024px) {
+        padding-left: 0;
+    }
 `;

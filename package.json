@@ -19,7 +19,7 @@
     "react-router-dom": "^7.1.4",
     "sass": "^1.83.4",
     "scss": "^0.2.4",
-    "styled-components": "^6.1.14",
+    "styled-components": "^6.1.15",
     "styled-reset": "^4.5.2",
     "swiper": "^11.2.1"
   },
