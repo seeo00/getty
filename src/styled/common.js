@@ -8,6 +8,7 @@ color, font 변수
 export const color = {
   white: '#fff',
   black: '#000',
+  red: '#E22020',
   footertext: '#989899',
   primary: {
     50: '#e6ecff',
@@ -39,6 +40,7 @@ export const color = {
     900: '#121212',
   },
 };
+
 /* 
 스타일드 컴포넌트 칼라 사용법 
 예시
