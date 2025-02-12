@@ -1,10 +1,19 @@
-
-
-export { default as MainVisual } from './main/MainVisual/MainVisual.jsx';
-export { default as CircleMenu } from './main/Circle/CircleMenu .jsx';
-export { default as ContentSection } from './main/ContentSection/ContentSection.jsx';
-export { default as FAQSection } from './main/FAQSection/FAQSection.jsx';
-export { default as HashtagSection } from './main/HashtagSection/HashtagSection.jsx';
-export { default as Top20Section } from './main/Top20Section/Top20Section.jsx';
-export { default as MainContent} from './main/MainContent/MainContent.jsx';
-
+export { default as Pagination } from './Pagination/Pagination';
+export { default as Contentsli1 } from './main/content1';
+export { default as Contents1Item } from './main/content1/Contents1Item';
+export { default as Contents1List } from './main/content1/Contents1List';
+export { default as Contents2 } from './main/content2/Contents2';
+export { default as Contents2Item } from './main/content2/Contents2Item';
+export { default as Contents2List } from './main/content2/Contents2List';
+export { default as Contents3 } from './main/content3/Contents3';
+export { default as Contents3Item } from './main/content3/Contents3Item';
+export { default as Contents3List } from './main/content3/Contents3List';
+export { default as Contents4 } from './main/content4/Contents4';
+export { default as Contents4Item } from './main/content4/Contents4Item';
+export { default as Contents4List } from './main/content4/Contents4List';
+export { default as Contents5 } from './main/content5/Contents5';
+export { default as Contents5Item } from './main/content5/Contents5Item';
+export { default as Contents5List } from './main/content5/Contents5List';
+export { default as Contents6 } from './main/content6/Contents6';
+export { default as Contents6Item } from './main/content6/Contents6Item';
+export { default as Contents6List } from './main/content6/Contents6List';

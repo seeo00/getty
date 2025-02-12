@@ -1,36 +1,27 @@
-// AnimationCard.jsx
 import { useEffect } from 'react';
 import { CardWrap } from './style';
 import { useDispatch, useSelector } from 'react-redux';
-import { animationActions } from '../../store/modules/slices/animationSlice';
 import { getDrama } from '../../store/modules/thunks/getDrama';
 
-const AnimationCard = ({ children }) => {
+const Card = ({ children }) => {
   const { loading, page } = useSelector((state) => state.dramaR);
   const dispatch = useDispatch();
 
+  // 컴포넌트 마운트 시 초기 드라마 데이터 로드
   useEffect(() => {
     dispatch(getDrama());
-  }, []);
+  }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(animationActions.setLoading(true));
-    const timer = setTimeout(() => {
-      dispatch(animationActions.loadData());
-    }, 500);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [page]);
-
+  // 스크롤 이벤트 핸들러 (스크롤이 페이지 하단에 도달하면 다음 페이지 데이터를 요청)
   const addScroll = () => {
-    if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
+    if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 1) {
       if (!loading) {
-        dispatch(animationActions.setPage(page + 1));
+        dispatch(getDrama(page + 1));
       }
     }
   };
 
+  // 스크롤 이벤트 리스너 등록 및 해제
   useEffect(() => {
     window.addEventListener('scroll', addScroll);
     return () => {
@@ -50,4 +41,4 @@ const AnimationCard = ({ children }) => {
   );
 };
 
-export default AnimationCard;
+export default Card;
