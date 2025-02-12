@@ -44,5 +44,4 @@ const EmailStep = ({ goToStep, isEmailValid, setIsEmailValid }) => {
     </S.AuthCard>
   );
 };
-
 export default EmailStep;
