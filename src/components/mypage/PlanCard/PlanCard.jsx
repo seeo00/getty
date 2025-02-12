@@ -9,10 +9,10 @@ const PlanCard = ({ title, selectedPlan, onSelectPlan }) => {
   };
 
   return (
-    <CardContainer>
+    <CardContainer onClick={handleClick}>
       {/* 데스크탑 버전 */}
       <div className="desktop-only">
-        <PlanTitle>{title}</PlanTitle>
+        <PlanTitle isSelected={isSelected}>{title}</PlanTitle>
         <div style={{ marginTop: '50px' }}>
           <SubscriptionRow label="월 요금" price="5,500" />
           <SubscriptionRow label="월 요금" price="5,500" />
@@ -26,10 +26,7 @@ const PlanCard = ({ title, selectedPlan, onSelectPlan }) => {
 
       {/* 모바일/태블릿 버전 */}
       <div className="mobile-only">
-        <PlanButton 
-          isSelected={isSelected}
-          onClick={handleClick}
-        >
+        <PlanButton isSelected={isSelected} onClick={handleClick}>
           {title}
         </PlanButton>
       </div>

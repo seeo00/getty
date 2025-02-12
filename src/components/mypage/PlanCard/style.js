@@ -9,7 +9,10 @@ export const PlanTitle = styled.h2`
   font-weight: 500;
   text-align: center;
   color: white;
-  background-color: #494949;
+  background: ${(props) =>
+    props.isSelected
+      ? 'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)'
+      : '#494949'};
   border-radius: 16px;
   transition: background-color 0.3s ease;
   display: flex;
@@ -43,7 +46,7 @@ export const CardContainer = styled.div`
     width: 32%;
     background: none;
     padding: 0;
-    
+
     .desktop-only {
       display: none;
     }
@@ -57,9 +60,10 @@ export const PlanButton = styled.button`
   font-weight: 500;
   text-align: center;
   color: white;
-  background: ${props => props.isSelected ? 
-    'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)' : 
-    '#494949'};
+  background: ${(props) =>
+    props.isSelected
+      ? 'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)'
+      : '#494949'};
   border: none;
   border-radius: 16px;
   cursor: pointer;
