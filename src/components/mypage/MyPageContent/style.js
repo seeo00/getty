@@ -56,18 +56,35 @@ export const PlansGrid = styled.div`
     justify-content: space-between;
     gap: 10px;
     padding: 0 20px;
+    width: 100%;
+    overflow-x: visible;
+  }
+`;
+export const ButtonContainer = styled.div`
+  @media (min-width: 900px) {
+    display: contents; // 데스크탑에서는 이 div가 레이아웃에 영향을 주지 않음
+  }
+
+  @media (max-width: 899px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 0 20px;
+    width: 100%;
   }
 `;
 
 export const MobileContentWrapper = styled.div`
-  display: none;  // 데스크탑에서는 숨김
+  display: none; // 데스크탑에서는 숨김
 
   @media (max-width: 899px) {
     display: block;
     width: 100%;
     margin-top: 20px;
     padding: 20px;
-  
+    order: 4; // flex order를 사용해서 버튼들 아래에 위치하도록
+    flex-basis: 100%; // 전체 너비 사용
   }
 `;
 

@@ -43,7 +43,7 @@ export const CardContainer = styled.div`
   }
 
   @media (max-width: 899px) {
-    width: 32%;
+    width: 29.2vw;
     background: none;
     padding: 0;
 
@@ -55,8 +55,9 @@ export const CardContainer = styled.div`
 
 export const PlanButton = styled.button`
   width: 100%;
+  height: 6rem;
   padding: 20px 10px;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 500;
   text-align: center;
   color: white;
