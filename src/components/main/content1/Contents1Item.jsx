@@ -12,7 +12,7 @@ const Img = styled.img`
   }
 `;
 
-const Contents1Item = ({ id, imgurl, desc }) => {
+const Contents1Item = ({ imgurl, desc }) => {
   return (
     <div className="contents1-item">
       <Img src={imgurl} alt="" /* {desc || ''} */ />

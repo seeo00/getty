@@ -22,8 +22,8 @@ const Content = styled.main`
 const Layout = () => {
   return (
     <AppContainer className="wrap">
-      <Header />
-      <BottomNav />
+      <Header className="Header" />
+      <BottomNav className="BottomNav" />
       <SideNavMobile />
       <Content className="main">
         {/* 라우터 페이지들어오기  */}

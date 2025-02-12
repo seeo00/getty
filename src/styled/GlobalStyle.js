@@ -64,8 +64,7 @@ input, textarea, button {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-	background-color: ${color.gray[50]}
-  /* Center slide text vertically */
+	background-color: ${color.gray[50]};
   display: flex;
   justify-content: center;
   align-items: center;
