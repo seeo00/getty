@@ -53,7 +53,7 @@ const Overlay = styled.div`
 const OverlayImg = styled.img`
   width: 50px;
   height: auto;
-  border-radius: 0 !important;
+  border-radius: 0 !important; //해제시 전역 스와이퍼 설정값 16px들어감
 `;
 
 const Contents1List = () => {
