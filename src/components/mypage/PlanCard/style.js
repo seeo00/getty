@@ -21,7 +21,7 @@ export const PlanTitle = styled.h2`
 `;
 
 export const CardContainer = styled.div`
-  @media (min-width: 900px) {
+  @media (min-width: 1280px) {  // 데스크탑
     width: 400px;
     height: 748px;
     padding: 10px;
@@ -37,16 +37,15 @@ export const CardContainer = styled.div`
     }
 
     &:hover ${PlanTitle} {
-      background: radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%),
-        linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2));
+      background: radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%);
     }
   }
 
-  @media (max-width: 899px) {
+  @media (max-width: 1279px) {  // 태블릿 & 모바일
     width: 114px;
     background: none;
     padding: 0;
-
+    
     .desktop-only {
       display: none;
     }
@@ -55,16 +54,15 @@ export const CardContainer = styled.div`
 
 export const PlanButton = styled.button`
   width: 100%;
-  height: 6rem;
-  padding: 20px 10px;
-  font-size: 1.25rem;
+  height: 96px;
+  padding: 0;
+  font-size: 20px;
   font-weight: 500;
   text-align: center;
   color: white;
-  background: ${(props) =>
-    props.isSelected
-      ? 'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)'
-      : '#494949'};
+  background: ${props => props.isSelected ? 
+    'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)' : 
+    '#494949'};
   border: none;
   border-radius: 16px;
   cursor: pointer;
