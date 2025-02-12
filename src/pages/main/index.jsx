@@ -1,9 +1,11 @@
-import { MainContent } from '../../components';
+import { MainContent } from '../../components/index';
+
 
 const Main = () => {
   return (
     <div>
       <MainContent />
+   
     </div>
   );
 };
