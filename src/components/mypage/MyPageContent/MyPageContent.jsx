@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PlanCard from '../PlanCard/PlanCard';
 import InfoNotes from '../InfoNotes/InfoNotes';
 import SubscriptionRow from '../SubscriptionRow/SubscriptionRow';
+import SubscriptionModal from '../SubscriptionModal/SubscriptionModal';
 import {
   PageWrapper,
   ContentWrapper,
@@ -17,10 +18,20 @@ import { InnerContainer } from '../../../common/layout/InnerContainer';
 
 const MyPageContent = () => {
   const [selectedPlan, setSelectedPlan] = useState('Basic');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan); // 단순히 새로운 플랜으로 설정, 해제 기능 없음
   };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <InnerContainer maxWidth="1920px">
       <PageWrapper>
@@ -50,9 +61,11 @@ const MyPageContent = () => {
           </PlansGrid>
 
           <InfoNotes />
-          <ActionButton>다음</ActionButton>
+          <ActionButton onClick={openModal}>다음</ActionButton>
         </ContentWrapper>
       </PageWrapper>
+      {/* 모달 조건부 렌더링 */}
+      {isModalOpen && <SubscriptionModal onClose={closeModal} />}
     </InnerContainer>
   );
 };

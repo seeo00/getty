@@ -3,12 +3,29 @@ import styled from 'styled-components';
 export const PageWrapper = styled.div`
   background-color: #121212;
   min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden; // 가로 스크롤 방지
 `;
 
 export const ContentWrapper = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 74px 0 55px 0;
+  @media (max-width: 744px) {
+    // 태블릿
+    max-width: 744px;
+    width: 100%;
+    padding: 74px 20px 55px 20px;
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 390px) {
+    // 모바일
+    max-width: 390px;
+    width: 100%;
+    padding: 74px 20px 55px 20px;
+    box-sizing: border-box;
+  }
 `;
 
 export const TitleSection = styled.div`
@@ -55,9 +72,8 @@ export const PlansGrid = styled.div`
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
-    padding: 0 20px;
+    padding: 0; // 20px을 rem으로 변환
     width: 100%;
-    overflow-x: visible;
   }
 `;
 export const ButtonContainer = styled.div`
@@ -70,8 +86,9 @@ export const ButtonContainer = styled.div`
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
-    padding: 0 20px;
+    padding: 0;
     width: 100%;
+    padding: 0 20px;
   }
 `;
 
