@@ -5,7 +5,6 @@ import './reset.scss';
 // import Main from './pages/main/index.jsx';
 // import Auth from './pages/auth';
 // import MyPage from './pages/mypage';
-import './reset.scss';
 import { Main } from './pages';
 import Auth from './pages/auth';
 import AuthLayout from './common/layout/AuthLayout';

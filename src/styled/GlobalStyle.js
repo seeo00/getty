@@ -17,13 +17,17 @@ const GlobalStyle = createGlobalStyle`
   html, body, #root {
     height: 100%;
   }
+
+  html {
+    font-family: "Noto Sans KR", "Noto Sans", sans-serif;
+}
   
   body {
       background-color: ${color.gray[800]}; 
       font-size: 16px;
-      line-height: 1.6;
+      line-height: 1.5;
       font-family: "Noto Sans", "Noto Sans KR", sans-serif;
-      color: ${color.white}; 
+      color: ${color.gray[10]}; 
       overflow-x: hidden;
   }
 
@@ -35,13 +39,19 @@ const GlobalStyle = createGlobalStyle`
   li { list-style:none }
   img { vertical-align: top; }
 
-button {
+  button {
   font-size: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   vertical-align: middle;
   border: 0 none;
-  background-color: transparent;
+  background: none;
+  outline: none;
   cursor: pointer;
-  color: #fff;
+  color: inherit;
 }
 
 input, textarea, button {

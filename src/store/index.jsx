@@ -9,7 +9,7 @@ import trendingR from './modules/slices/trendingSlice';
 import seriesR from './modules/slices/seriesSlice';
 import originalR from './modules/slices/originalSlice';
 import mainR from './modules/slices/mainSlice';
-// import testR from './modules/slices/testSlice';
+import authR from './modules/slices/authSlice';
 
 export const store = configureStore({
   reducer: {
@@ -22,6 +22,6 @@ export const store = configureStore({
     seriesR,
     originalR,
     mainR,
-    // testR,
+    authR,
   },
 });
