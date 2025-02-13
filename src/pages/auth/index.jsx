@@ -1,4 +1,5 @@
 import * as S from './style';
+
 import ResetPasswordStep from '../../components/auth/steps/ResetPasswordStep';
 import SignupCompleteStep from '../../components/auth/steps/SignupCompleteStep';
 import SignupStep from '../../components/auth/steps/SignupStep';

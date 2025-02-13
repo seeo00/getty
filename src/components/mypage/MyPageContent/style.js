@@ -8,23 +8,23 @@ export const PageWrapper = styled.div`
 `;
 
 export const ContentWrapper = styled.div`
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 74px 0 55px 0;
-  @media (max-width: 744px) {
-    // 태블릿
-    max-width: 744px;
-    width: 100%;
-    padding: 74px 20px 55px 20px;
-    box-sizing: border-box;
+  box-sizing: border-box;
+
+  @media (min-width: 1280px) {  // 데스크탑
+    max-width: 1280px;
   }
 
-  @media (max-width: 390px) {
-    // 모바일
-    max-width: 390px;
-    width: 100%;
+  @media (min-width: 744px) and (max-width: 1279px) {  // 태블릿
+    max-width: 744px;
     padding: 74px 20px 55px 20px;
-    box-sizing: border-box;
+  }
+
+  @media (max-width: 743px) {  // 모바일
+    max-width: 390px;
+    padding: 74px 20px 55px 20px;
   }
 `;
 
@@ -58,50 +58,45 @@ export const SubTitle = styled.div`
 `;
 
 export const PlansGrid = styled.div`
-  // 데스크탑 스타일 - 원본 유지
-  @media (min-width: 900px) {
+  @media (min-width: 1280px) {  // 데스크탑
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
   }
 
-  // 모바일/태블릿 스타일
-  @media (max-width: 899px) {
+  @media (max-width: 1279px) {  // 태블릿 & 모바일
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;  // center로 변경
+    align-items: center;  // center 추가
     gap: 10px;
-    padding: 0; // 20px을 rem으로 변환
+    padding: 0;
     width: 100%;
   }
 `;
 export const ButtonContainer = styled.div`
-  @media (min-width: 900px) {
-    display: contents; // 데스크탑에서는 이 div가 레이아웃에 영향을 주지 않음
+  @media (min-width: 1280px) {  // 데스크탑
+    display: contents;
   }
 
-  @media (max-width: 899px) {
+  @media (max-width: 1279px) {  // 태블릿 & 모바일
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     gap: 10px;
-    padding: 0;
     width: 100%;
     padding: 0 20px;
   }
 `;
 
 export const MobileContentWrapper = styled.div`
-  display: none; // 데스크탑에서는 숨김
+  display: none;
 
-  @media (max-width: 899px) {
+  @media (max-width: 1279px) {  
     display: block;
-    width: 100%;
-    margin-top: 20px;
-    padding: 20px;
-    order: 4; // flex order를 사용해서 버튼들 아래에 위치하도록
-    flex-basis: 100%; // 전체 너비 사용
+    width: calc(100% - 40px);
+    margin: 20px auto 0;
   }
 `;
 

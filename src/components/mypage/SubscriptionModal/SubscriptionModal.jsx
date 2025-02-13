@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // next/router 대신 react-router-dom 사용
-import {
-  ModalOverlay,
-  ModalContainer,
-  ModalTitle,
+import { useNavigate } from 'react-router-dom';
+import { 
+  ModalOverlay, 
+  ModalContainer, 
+  ModalTitle, 
   SubscriptionCard,
-  SubscriptionCardTitle,
-  SubscriptionRow,
-  PaymentButton,
-  AutoMoveText,
-  SubscriptionCardLeft,
+  SubscriptionCardLeft, 
   SubscriptionCardRight,
+  SubscriptionCardTitle, 
+  SubscriptionRow, 
+  PaymentButton, 
+  AutoMoveText 
 } from './style';
 
 const SubscriptionModal = ({ onClose }) => {
   const [countdown, setCountdown] = useState(5);
-  const navigate = useNavigate(); // useRouter 대신 useNavigate 사용
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -33,14 +33,14 @@ const SubscriptionModal = ({ onClose }) => {
   }, [onClose]);
 
   const handlePaymentClick = () => {
-    navigate('/'); // router.push 대신 navigate 사용
+    navigate('/');
   };
 
   return (
     <ModalOverlay>
       <ModalContainer>
         <ModalTitle>이용권 구독을 시작합니다!</ModalTitle>
-
+        
         <SubscriptionCard>
           <SubscriptionCardLeft>
             <SubscriptionCardTitle>Basic</SubscriptionCardTitle>
@@ -48,6 +48,8 @@ const SubscriptionModal = ({ onClose }) => {
               <span>구독기간</span>
               <span>2024.01.01 ~ 2024.02.01</span>
             </SubscriptionRow>
+          </SubscriptionCardLeft>
+          <SubscriptionCardRight>
             <SubscriptionRow>
               <span>결제금액</span>
               <span>5,500원</span>
@@ -56,14 +58,16 @@ const SubscriptionModal = ({ onClose }) => {
               <span>다음결제일</span>
               <span>2024.02.02</span>
             </SubscriptionRow>
-          </SubscriptionCardLeft>
-
-          <SubscriptionCardRight></SubscriptionCardRight>
+          </SubscriptionCardRight>
         </SubscriptionCard>
-
-        <PaymentButton onClick={handlePaymentClick}>감상하러 가기</PaymentButton>
-
-        <AutoMoveText>{countdown}초 후에 자동으로 닫혀요</AutoMoveText>
+        
+        <PaymentButton onClick={handlePaymentClick}>
+          결제하러 가기
+        </PaymentButton>
+        
+        <AutoMoveText>
+          {countdown}초 후에 자동으로 이동합니다
+        </AutoMoveText>
       </ModalContainer>
     </ModalOverlay>
   );

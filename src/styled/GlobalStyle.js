@@ -59,6 +59,87 @@ input, textarea, button {
   font-size: inherit; /* 부모 요소의 폰트 크기를 상속 */
 }
 
+//전역 스와이퍼 스타일
+.swiper {
+  width: 100%;
+  overflow: hidden;
+  margin: 72px 0 90px 0 ;
+  position: relative;
+  min-width: 1240px;
+  max-width: 3840px;
+  min-width: 390px;
+  min-height: 226px;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+	background-color: ${color.gray[50]};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	overflow: hidden;
+	border-radius: 16px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+	border-radius: 16px;
+}
+.swiper-pagination {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .swiper-pagination-bullet {
+display: none;
+  }
+  .swiper-pagination-bullet-active {
+    background: #000;
+    opacity: 1;
+    color: ${color.gray[70]};
+  }
+
+	//현재 버튼 안나타나서 수정 필요
+	.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: ${color.gray[70]};
+  font-size: 20px; /* 세로 높이(폰트 크기) 20px */
+  line-height: 20px;
+  padding: 0;
+}
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  /* 버튼 위치를 좌우로 조정(예시) */
+	.swiper-button-prev {
+  left: 30px;
+}
+.swiper-button-next {
+  right: 30px;
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-family: 'Noto Sans KR', sans-serif; /* 기본 폰트 사용 */
+  font-weight: bold;
+}
+.swiper-button-prev::after {
+  content: '<';
+}
+.swiper-button-next::after {
+  content: '>';
+}
 `;
 
 export const respondTo = (breakpoint) => {
