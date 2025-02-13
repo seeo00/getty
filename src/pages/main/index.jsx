@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { BannerWrap, MainWrap } from './style';
 import { Swiper, SwiperSlide } from 'swiper/react';

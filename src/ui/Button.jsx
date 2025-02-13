@@ -21,12 +21,12 @@ const activeStyles = css`
 
 export const Button = styled.button`
   width: 100%;
-  height: 60px;
+  height: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
   font-weight: 500;
 
-  ${(props) => (props.disabled ? disabledStyles : activeStyles)}
+  ${(props) => (props.disabled === true ? disabledStyles : activeStyles)}
 `;
