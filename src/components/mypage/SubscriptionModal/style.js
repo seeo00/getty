@@ -62,7 +62,7 @@ export const SubscriptionCardLeft = styled.div`
   height: 13.375rem;
   border-radius: 1rem;
   margin-left: 5.3125rem;
-  padding: 1rem;
+  padding: 40px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1;
@@ -107,7 +107,8 @@ export const SubscriptionCardRight = styled.div`
 
 export const SubscriptionCardTitle = styled.div`
   margin-bottom: 0.5rem;
-  font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: 500;
 
   @media (min-width: 745px) and (max-width: 1279px) {
     font-size: 0.9rem;
@@ -120,18 +121,37 @@ export const SubscriptionCardTitle = styled.div`
 
 export const SubscriptionRow = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; // 왼쪽 정렬
+  align-items: center;
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   color: #9ca3af;
 
+  span:first-child {
+    margin-right: 4.875rem; // 78px를 rem으로 변환 (1rem = 16px)
+    min-width: 6rem; // 첫 번째 span의 최소 너비 지정
+  }
+
+  span:last-child {
+    white-space: nowrap; // 텍스트 줄바꿈 방지
+    overflow: hidden; // 넘치는 텍스트 숨김
+  }
+
   @media (min-width: 745px) and (max-width: 1279px) {
     font-size: 0.47rem;
     margin-bottom: 0.3rem;
+
+    span:first-child {
+      margin-right: 3rem;
+    }
   }
 
   @media (max-width: 744px) {
     font-size: 0.35rem;
+
+    span:first-child {
+      margin-right: 2rem;
+    }
   }
 `;
 
