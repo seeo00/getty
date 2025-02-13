@@ -18,10 +18,14 @@ export const PlanTitle = styled.h2`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 1279px) {
+    // 태블릿 & 모바일 스타일이 필요하다면 여기에 추가
+  }
 `;
 
 export const CardContainer = styled.div`
-  @media (min-width: 1280px) {  // 데스크탑
+  @media (min-width: 1280px) {
+    // 데스크탑
     width: 400px;
     height: 748px;
     padding: 10px;
@@ -41,11 +45,12 @@ export const CardContainer = styled.div`
     }
   }
 
-  @media (max-width: 1279px) {  // 태블릿 & 모바일
+  @media (max-width: 1279px) {
+    // 태블릿 & 모바일
     width: 114px;
     background: none;
     padding: 0;
-    
+
     .desktop-only {
       display: none;
     }
@@ -60,9 +65,10 @@ export const PlanButton = styled.button`
   font-weight: 500;
   text-align: center;
   color: white;
-  background: ${props => props.isSelected ? 
-    'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)' : 
-    '#494949'};
+  background: ${(props) =>
+    props.isSelected
+      ? 'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)'
+      : '#494949'};
   border: none;
   border-radius: 16px;
   cursor: pointer;
@@ -70,5 +76,8 @@ export const PlanButton = styled.button`
 
   &:hover {
     background: radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%);
+  }
+  @media (max-width: 1279px) {
+    // 태블릿 & 모바일 스타일이 필요하다면 여기에 추가
   }
 `;
