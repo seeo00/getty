@@ -3,9 +3,6 @@ import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
 
 export const FooterContainer = styled.footer`
-  position: absolute;
-  /* bottom: 0; */
-  /* left: 0; */
   width: 100%;
   background-color: ${color.gray[800]};
   padding: 20px 20px 20px 273px;
