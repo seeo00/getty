@@ -3,7 +3,7 @@ import PlanCard from '../PlanCard/PlanCard';
 import InfoNotes from '../InfoNotes/InfoNotes';
 import SubscriptionRow from '../SubscriptionRow/SubscriptionRow';
 import SubscriptionModal from '../SubscriptionModal/SubscriptionModal';
-import {   
+import {
   PageWrapper,
   ContentWrapper,
   TitleSection,
@@ -12,7 +12,7 @@ import {
   PlansGrid,
   ActionButton,
   MobileContentWrapper,
-  ButtonContainer, 
+  ButtonContainer,
 } from './style';
 import { InnerContainer } from '../../../common/layout/InnerContainer';
 
@@ -38,9 +38,19 @@ const MyPageContent = () => {
         <ContentWrapper>
           <TitleSection>
             <MainTitle>콘텐츠를 즐길 준비가 되셨나요?</MainTitle>
-            <SubTitle>원하는 이용권을 선택해 주세요. 이용권은 언제든지 원하실 때 해지할 수 있습니다.</SubTitle>
+            <SubTitle>
+              {window.innerWidth >= 1280 ? (
+                '원하는 이용권을 선택해 주세요. 이용권은 언제든지 원하실 때 해지할 수 있습니다.'
+              ) : (
+                <>
+                  원하는 이용권을 선택해 주세요.
+                  <br />
+                  이용권은 언제든지 원하실 때 해지할 수 있습니다.
+                </>
+              )}
+            </SubTitle>
           </TitleSection>
-           
+
           <PlansGrid>
             <ButtonContainer>
               <PlanCard title="Basic" selectedPlan={selectedPlan} onSelectPlan={handlePlanSelect} />
@@ -59,12 +69,12 @@ const MyPageContent = () => {
               </MobileContentWrapper>
             )}
           </PlansGrid>
-           
+
           <InfoNotes />
           <ActionButton onClick={openModal}>다음</ActionButton>
         </ContentWrapper>
       </PageWrapper>
-      {isModalOpen && <SubscriptionModal onClose={closeModal} />}
+      {isModalOpen && <SubscriptionModal onClose={closeModal} selectedPlan={selectedPlan} />}
     </InnerContainer>
   );
 };

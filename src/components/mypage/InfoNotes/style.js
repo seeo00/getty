@@ -6,10 +6,18 @@ export const NotesContainer = styled.div`
 
 export const NoteText = styled.div`
   color: rgba(255, 255, 255, 0.5);
-  font-size: 13.3px;
+  font-size: 0.8313rem;
   line-height: 1.5;
 
   & + & {
-    margin-top: 10px;
+    margin-top: 0.625rem;
+  }
+
+  @media (max-width: 1279px) {
+    // 태블릿 & 모바일
+    font-size: 0.75rem;
+    & + & {
+      margin-top: 0.75rem;
+    }
   }
 `;

@@ -13,7 +13,7 @@ export const RowContainer = styled.div`
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 16px 0;
+    padding: 0.875rem 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 `;
@@ -44,6 +44,7 @@ export const Text = styled.span`
     &:last-child {
       text-align: right;
     }
+    font-size: 0.875rem;
   }
 `;
 

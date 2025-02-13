@@ -47,9 +47,11 @@ export const CardContainer = styled.div`
 
   @media (max-width: 1279px) {
     // 태블릿 & 모바일
-    width: 114px;
+    width: 100%;
+    height: 6rem;
     background: none;
     padding: 0;
+    box-sizing: border-box;
 
     .desktop-only {
       display: none;
@@ -58,10 +60,11 @@ export const CardContainer = styled.div`
 `;
 
 export const PlanButton = styled.button`
+  flex: 1;
   width: 100%;
-  height: 96px;
+  height: 6rem;
   padding: 0;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 500;
   text-align: center;
   color: white;
@@ -76,8 +79,5 @@ export const PlanButton = styled.button`
 
   &:hover {
     background: radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%);
-  }
-  @media (max-width: 1279px) {
-    // 태블릿 & 모바일 스타일이 필요하다면 여기에 추가
   }
 `;

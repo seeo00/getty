@@ -17,16 +17,36 @@ export const ModalContainer = styled.div`
   width: 43.5rem;
   height: 46.4375rem;
   background-color: #494949;
-  border-radius: 16px;
-  /* padding: 24px; */
+  border-radius: 1rem;
   color: white;
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    width: 25rem;
+    height: 28rem;
+  }
+
+  @media (max-width: 744px) {
+    width: 18rem;
+    height: 22rem;
+    min-height: 22rem;
+  }
 `;
 
 export const ModalTitle = styled.h2`
   text-align: center;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 400;
-  margin: 120px auto 60px;
+  margin: 7.5rem auto 3.75rem;
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    margin: 4.3rem auto 2rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 744px) {
+    margin: 3.3rem auto 1.5rem;
+    font-size: 0.5rem;
+  }
 `;
 
 export const SubscriptionCard = styled.div`
@@ -38,57 +58,112 @@ export const SubscriptionCard = styled.div`
 export const SubscriptionCardLeft = styled.div`
   flex: 3;
   background-color: rgba(44, 44, 44, 0.5);
-  width: 422px;
-  height: 214px;
-  border-radius: 16px;
-  margin-left: 85px;
-  padding: 16px;
+  width: 26.375rem;
+  height: 13.375rem;
+  border-radius: 1rem;
+  margin-left: 5.3125rem;
+  padding: 1rem;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   z-index: 1;
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    width: 17rem;
+    height: 8rem;
+    margin-left: 3.5rem;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 744px) {
+    width: 14rem;
+    height: 7rem;
+    margin-left: 1.5rem;
+  }
 `;
 
 export const SubscriptionCardRight = styled.div`
   flex: 1;
   background-color: rgba(44, 44, 44, 0.5);
-  width: 103px;
-  border-radius: 16px;
-  margin-right: 86px;
-  padding: 16px;
+  width: 6.4375rem;
+  border-radius: 1rem;
+  margin-right: 5.375rem;
+  padding: 1rem;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   left: -1px;
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    width: 4rem;
+    margin-right: 3.5rem;
+    padding: 0.5rem;
+  }
+
+  @media (max-width: 744px) {
+    width: 3rem;
+    margin-right: 1.5rem;
+  }
 `;
 
 export const SubscriptionCardTitle = styled.div`
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
   font-weight: bold;
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 744px) {
+    font-size: 0.8rem;
+  }
 `;
 
 export const SubscriptionRow = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 14px;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
   color: #9ca3af;
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    font-size: 0.47rem;
+    margin-bottom: 0.3rem;
+  }
+
+  @media (max-width: 744px) {
+    font-size: 0.35rem;
+  }
 `;
 
 export const PaymentButton = styled.button`
-  width: 525px;
-  height: 60px;
+  width: 32.8125rem;
+  height: 3.75rem;
   background-color: #0040ff;
   color: white;
-  padding: 16px 0;
-  margin-top: 80px;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: medium;
+  padding: 1rem 0;
+  margin-top: 5rem;
+  border-radius: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
   transition: background-color 0.3s;
   border: none;
   cursor: pointer;
-  margin-left: 50%; // 이 부분 추가
-  transform: translateX(-50%); // 이 부분 추가
+  margin-left: 50%;
+  transform: translateX(-50%);
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    width: 18rem;
+    height: 2.6rem;
+    margin-top: 3rem;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 744px) {
+    width: 15rem;
+    height: 1.6rem;
+    margin-top: 2.1rem;
+    font-size: 0.6rem;
+  }
 
   &:hover {
     background-color: #2563eb;
@@ -97,8 +172,18 @@ export const PaymentButton = styled.button`
 
 export const AutoMoveText = styled.p`
   text-align: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 400;
   color: #6b7280;
-  margin-top: 40px;
+  margin-top: 2.5rem;
+
+  @media (min-width: 745px) and (max-width: 1279px) {
+    margin-top: 1.5rem;
+    font-size: 0.48rem;
+  }
+
+  @media (max-width: 744px) {
+    margin-top: 1rem;
+    font-size: 0.35rem;
+  }
 `;

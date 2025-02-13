@@ -4,8 +4,8 @@ import GlobalStyle from './styled/GlobalStyle';
 import './reset.scss';
 // import Main from './pages/main/index.jsx';
 // import Auth from './pages/auth';
-// import MyPage from './pages/mypage';
-import { Main } from './pages';
+import MyPage from './pages/mypage';
+// import { Main } from './pages';
 import Auth from './pages/auth';
 import AuthLayout from './common/layout/AuthLayout';
 import Layout from './common/layout/Layout';
@@ -18,7 +18,8 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Main />} />
+            {/* <Route index element={<Main />} /> */}
+            <Route path="mypage" element={<MyPage />} />
           </Route>
           <Route path="/auth" element={<AuthLayout />}>
             <Route index element={<Auth />} />
