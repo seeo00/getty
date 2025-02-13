@@ -34,7 +34,7 @@ export const LeftBox = styled.div`
     z-index: -1;
     background: rgba(0, 0, 0, 0.5);
 
-    background: url(/images/slide-sec.png) no-repeat 0 0 / cover;
+    background: url(/images/samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg) no-repeat 0 0 / cover;
     background-position: center;
 
     &::before {
