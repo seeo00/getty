@@ -18,9 +18,6 @@ export const PlanTitle = styled.h2`
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 1279px) {
-    // 태블릿 & 모바일 스타일이 필요하다면 여기에 추가
-  }
 `;
 
 export const CardContainer = styled.div`

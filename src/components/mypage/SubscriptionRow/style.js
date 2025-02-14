@@ -5,7 +5,19 @@ export const RowContainer = styled.div`
   // 데스크탑 스타일 유지
   @media (min-width: 1280px) {
     padding: 10px 0 7px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; /* 가상 요소 배치를 위해 필요 */
+
+    &::after {
+      content: '';
+      display: block;
+      width: 330px;
+      height: 2px;
+      background-color: rgba(255, 255, 255, 0.1);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
   // 모바일/태블릿 스타일
@@ -14,7 +26,7 @@ export const RowContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 0.875rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
   }
 `;
 
@@ -22,6 +34,7 @@ export const RowContent = styled.div`
   // 데스크탑 스타일 유지
   @media (min-width: 1280px) {
     display: flex;
+    margin-left: 2.4375rem;
     flex-direction: column;
     gap: 4px;
   }
@@ -54,6 +67,7 @@ export const ExtraInfo = styled.div`
     font-size: 16px;
     color: rgba(255, 255, 255, 0.6);
     margin-top: 4px;
+    margin-left: 2.4375rem;
     line-height: 1.4;
   }
 

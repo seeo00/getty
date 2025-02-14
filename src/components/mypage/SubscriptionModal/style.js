@@ -9,7 +9,8 @@ export const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #1e1e1e;
+  backdrop-filter: blur(10px);
   z-index: 50;
 `;
 
@@ -68,54 +69,59 @@ export const SubscriptionCardLeft = styled.div`
   z-index: 1;
 
   @media (min-width: 745px) and (max-width: 1279px) {
-    width: 17rem;
-    height: 8rem;
-    margin-left: 3.5rem;
-    padding: 0.5rem;
+    width: 272px;
+    height: 128px;
+    margin-left: 56px;
+    padding: 8px;
   }
 
   @media (max-width: 744px) {
-    width: 14rem;
-    height: 7rem;
-    margin-left: 1.5rem;
+    width: 224px;
+    height: 112px;
+    margin-left: 24px;
+    padding: 40px 6px 40px 40px;
   }
 `;
 
 export const SubscriptionCardRight = styled.div`
   flex: 1;
   background-color: rgba(44, 44, 44, 0.5);
-  width: 6.4375rem;
-  border-radius: 1rem;
-  margin-right: 5.375rem;
-  padding: 1rem;
+  width: 103px;
+  border-radius: 16px;
+  margin-right: 86px;
+  padding: 16px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   left: -1px;
 
   @media (min-width: 745px) and (max-width: 1279px) {
-    width: 4rem;
-    margin-right: 3.5rem;
-    padding: 0.5rem;
+    width: 64px;
+    margin-right: 56px;
+    padding: 8px;
   }
 
   @media (max-width: 744px) {
-    width: 3rem;
-    margin-right: 1.5rem;
+    width: 48px;
+    margin-right: 24px;
   }
 `;
 
 export const SubscriptionCardTitle = styled.div`
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 500;
+  margin-bottom: 8px;
+  font-size: 24px;
+  font-weight: 400;
 
   @media (min-width: 745px) and (max-width: 1279px) {
-    font-size: 0.9rem;
+    font-size: 20px;
+    margin-top: 8px;
+    margin-left: 10px;
   }
 
   @media (max-width: 744px) {
-    font-size: 0.8rem;
+    font-size: 16px;
+    margin-top: -25px;
+    margin-left: -23px;
   }
 `;
 
@@ -123,13 +129,13 @@ export const SubscriptionRow = styled.div`
   display: flex;
   justify-content: flex-start; // 왼쪽 정렬
   align-items: center;
-  margin-bottom: 0.5rem;
-  font-size: 0.875rem;
+  margin-bottom: 8px;
+  font-size: 14px;
   color: #9ca3af;
 
   span:first-child {
-    margin-right: 4.875rem; // 78px를 rem으로 변환 (1rem = 16px)
-    min-width: 6rem; // 첫 번째 span의 최소 너비 지정
+    margin-right: 78px;
+    min-width: 96px;
   }
 
   span:last-child {
@@ -138,19 +144,22 @@ export const SubscriptionRow = styled.div`
   }
 
   @media (min-width: 745px) and (max-width: 1279px) {
-    font-size: 0.47rem;
-    margin-bottom: 0.3rem;
+    font-size: 10px;
+    margin-bottom: 4.8px;
+    margin-left: 10px;
 
     span:first-child {
-      margin-right: 3rem;
+      margin-right: -16px;
     }
   }
 
   @media (max-width: 744px) {
-    font-size: 0.35rem;
+    font-size: 9px;
+    margin-left: -23px;
+    margin-top: -4px;
 
     span:first-child {
-      margin-right: 2rem;
+      margin-right: -40px;
     }
   }
 `;

@@ -11,24 +11,22 @@ export const ContentWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
+  padding: 74px 0 55px 0;
   // 상하 padding만 유지하고 좌우는 20px로 통일
 
   @media (min-width: 1280px) {
     // 데스크탑
     max-width: 1280px;
-    padding: 74px 20px 55px 20px;
   }
 
   @media (min-width: 744px) and (max-width: 1279px) {
     // 태블릿
     max-width: 744px;
-    padding: 74px 0 55px 0;
   }
 
   @media (max-width: 743px) {
     // 모바일
     max-width: 390px;
-    padding: 74px 0 55px 0;
   }
 `;
 
