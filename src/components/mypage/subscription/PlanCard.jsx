@@ -1,5 +1,5 @@
-import { CardContainer, PlanTitle, PlanButton } from './style';
-import SubscriptionRow from '../SubscriptionRow/SubscriptionRow';
+import { CardContainer, PlanTitle, PlanButton } from '../style';
+import SubscriptionRow from './SubscriptionRow';
 
 const PlanCard = ({ title, selectedPlan, onSelectPlan }) => {
   const isSelected = selectedPlan === title;

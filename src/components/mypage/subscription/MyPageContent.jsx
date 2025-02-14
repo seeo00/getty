@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import PlanCard from '../PlanCard/PlanCard';
-import InfoNotes from '../InfoNotes/InfoNotes';
-import SubscriptionRow from '../SubscriptionRow/SubscriptionRow';
-import SubscriptionModal from '../SubscriptionModal/SubscriptionModal';
+import PlanCard from './PlanCard';
+import InfoNotes from './InfoNotes';
+import SubscriptionRow from './SubscriptionRow';
+import SubscriptionModal from './SubscriptionModal';
 import {
   PageWrapper,
   ContentWrapper,
@@ -10,11 +10,11 @@ import {
   MainTitle,
   SubTitle,
   PlansGrid,
-  ActionButton,
   MobileContentWrapper,
   ButtonContainer,
-} from './style';
+} from '../style';
 import { InnerContainer } from '../../../common/layout/InnerContainer';
+import Button from '../../../ui/Button';
 
 const MyPageContent = () => {
   const [selectedPlan, setSelectedPlan] = useState('Basic');
@@ -71,7 +71,11 @@ const MyPageContent = () => {
           </PlansGrid>
 
           <InfoNotes />
-          <ActionButton onClick={openModal}>다음</ActionButton>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
+            <Button onClick={openModal} width="510px" $isResponsive>
+              다음
+            </Button>
+          </div>
         </ContentWrapper>
       </PageWrapper>
       {isModalOpen && <SubscriptionModal onClose={closeModal} selectedPlan={selectedPlan} />}

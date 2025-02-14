@@ -9,6 +9,7 @@ import MyPage from './pages/mypage';
 import Auth from './pages/auth';
 import AuthLayout from './common/layout/AuthLayout';
 import Layout from './common/layout/Layout';
+import Subscription from './pages/mypage/Subscription';
 // import styled from 'styled-components';
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             {/* <Route index element={<Main />} /> */}
             <Route path="mypage" element={<MyPage />} />
+            <Route path="/mypage/subscription" element={<Subscription />} />
           </Route>
           <Route path="/auth" element={<AuthLayout />}>
             <Route index element={<Auth />} />

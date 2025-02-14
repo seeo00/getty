@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { planDetails } from '../planData.js';
+import { planDetails } from '../../../assets/api/planData.js';
 import {
   ModalOverlay,
   ModalContainer,
@@ -12,7 +12,7 @@ import {
   SubscriptionRow,
   PaymentButton,
   AutoMoveText,
-} from './style';
+} from '../style.js';
 
 const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
   const [countdown, setCountdown] = useState(5);
