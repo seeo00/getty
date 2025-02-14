@@ -1,7 +1,10 @@
+import { useDispatch } from 'react-redux';
 import { Button } from '../../../ui/Button';
 import * as S from '../style';
+import { authActions } from '../../../store/modules/slices/authSlice';
 
 const ResetCompleteStep = ({ goToStep }) => {
+  const dispatch = useDispatch();
   return (
     <S.AuthCard>
       <S.Title>
@@ -13,6 +16,7 @@ const ResetCompleteStep = ({ goToStep }) => {
       <S.BottomBox>
         <Button
           onClick={() => {
+            dispatch(authActions.resetAuthState());
             goToStep('email');
           }}
         >

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const PreviewPauseIcon = ({ width = 22, height = 22, color = '#aaa', ...props }) => {
+const PreviewPauseIcon = ({ width = 24, height = 24, color = '#7f7f7f', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

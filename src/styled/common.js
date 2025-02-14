@@ -9,6 +9,7 @@ export const color = {
   white: '#fff',
   black: '#000',
   red: '#E22020',
+  yellow: '#f8e432',
   footertext: '#989899',
   primary: {
     50: '#e6ecff',

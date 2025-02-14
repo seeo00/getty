@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const VideoPrevIcon = ({ width = 28, height = 28, color = '#aaa', ...props }) => {
+const VideoPrevIcon = ({ width = 24, height = 24, color = '#e0e0e0', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

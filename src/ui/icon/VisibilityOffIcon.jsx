@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const VisibilityOffIcon = ({ width = 24, height = 24, color = '#aaa', ...props }) => {
+const VisibilityOffIcon = ({ width = 24, height = 24, color = '#E0E0E0', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

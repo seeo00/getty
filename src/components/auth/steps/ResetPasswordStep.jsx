@@ -35,6 +35,7 @@ const ResetPasswordStep = ({ goToStep, isEmailValid, setIsEmailValid }) => {
       <S.TextBtnBox>
         <button
           onClick={() => {
+            dispatch(authActions.resetAuthState());
             goToStep('email');
           }}
           style={{ textDecoration: 'underline' }}

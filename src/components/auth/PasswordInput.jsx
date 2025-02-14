@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import InputField from '../../ui/InputField';
 import { IconButton, InputAdornment } from '@mui/material';
-import { MdOutlineVisibility, MdOutlineVisibilityOff } from 'react-icons/md';
-import { color } from '../../styled/common';
+import VisibilityOffIcon from '../../ui/icon/VisibilityOffIcon';
+import VisibilityOnIcon from '../../ui/icon/VisibilityOnIcon';
 
 export const PasswordInput = ({ mode = 'login', name, setIsPasswordValid, ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -30,11 +30,7 @@ export const PasswordInput = ({ mode = 'login', name, setIsPasswordValid, ...pro
         endAdornment: (
           <InputAdornment position="end">
             <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-              {showPassword ? (
-                <MdOutlineVisibility color={`${color.gray[40]}`} />
-              ) : (
-                <MdOutlineVisibilityOff color={`${color.gray[40]}`} />
-              )}
+              {showPassword ? <VisibilityOnIcon /> : <VisibilityOffIcon />}
             </IconButton>
           </InputAdornment>
         ),

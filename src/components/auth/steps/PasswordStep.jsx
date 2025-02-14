@@ -49,7 +49,7 @@ const PasswordStep = ({ goToStep, isPasswordValid, setIsPasswordValid }) => {
       <S.TextBtnBox>
         <button
           onClick={() => {
-            dispatch(authActions.initializeEmailCheck());
+            dispatch(authActions.resetAuthState());
             goToStep('resetPassword');
           }}
         >
@@ -58,6 +58,7 @@ const PasswordStep = ({ goToStep, isPasswordValid, setIsPasswordValid }) => {
         <span>|</span>
         <button
           onClick={() => {
+            dispatch(authActions.resetAuthState());
             goToStep('email');
           }}
         >

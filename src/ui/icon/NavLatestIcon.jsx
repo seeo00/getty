@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const NavLatestIcon = ({ width = 16, height = 22, color = '#AAAAAA', ...props }) => {
+const NavLatestIcon = ({ width = 24, height = 24, color = '#AAAAAA', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 16 22" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
