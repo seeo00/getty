@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const GuestUserIcon = ({ width = 20, height = 20, color = '#AAAAAA', ...props }) => {
+const GuestUserIcon = ({ width = 24, height = 24, color = '#AAAAAA', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

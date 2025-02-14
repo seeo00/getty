@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const AlertIcon = ({ width = 20, height = 20, color = '#aaa', ...props }) => {
+const AlertIcon = ({ width = 24, height = 24, color = '#aaa', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_684_50)">

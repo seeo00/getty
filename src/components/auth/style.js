@@ -20,14 +20,13 @@ export const AuthCard = styled.div`
     //gap: 40px;
   }
   ${respondTo('laptop')} {
-    background-color: rgba(73, 73, 73, 0.3);
+    background-color: rgba(71, 71, 71, 0.3);
   }
 `;
 
 export const Title = styled.div`
   font-size: 1.125rem;
   padding-bottom: 40px;
-  /* color: ${color.gray[10]}; */
   word-break: keep-all;
   p:nth-child(2),
   p:nth-child(4) {
@@ -49,9 +48,6 @@ export const Form = styled.form`
   gap: 20px;
   > button {
     margin-top: auto;
-  }
-  ${respondTo('tabletMore')} {
-    gap: 20px;
   }
 `;
 

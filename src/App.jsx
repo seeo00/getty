@@ -9,6 +9,8 @@ import { Main } from './pages';
 import Auth from './pages/auth';
 import AuthLayout from './common/layout/AuthLayout';
 import Layout from './common/layout/Layout';
+import Detail from './pages/detail';
+import Drama from './pages/category/genre';
 // import styled from 'styled-components';
 
 function App() {
@@ -22,6 +24,11 @@ function App() {
           </Route>
           <Route path="/auth" element={<AuthLayout />}>
             <Route index element={<Auth />} />
+          </Route>
+          {/* <Route path="/category/genre" element={<Drama />} />
+          <Route path="/category/genre/:detailID" element={<Detail />} /> */}
+          <Route path="/category/genre" element={<Drama />}>
+            <Route path=":detailType/:detailID" element={<Detail />} />
           </Route>
         </Routes>
       </BrowserRouter>

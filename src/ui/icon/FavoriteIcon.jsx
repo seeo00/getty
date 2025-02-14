@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const FavoriteIcon = ({ width = 33, height = 30, color = '#AAA', ...props }) => {
+const FavoriteIcon = ({ width = 24, height = 24, color = '#e0e0e0', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 33 30" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

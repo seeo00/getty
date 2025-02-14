@@ -1,4 +1,4 @@
-const VideoPauseIcon = ({ width = 100, height = 100, fill = '#E0E0E0', ...props }) => {
+const VideoPauseIcon = ({ width = 24, height = 24, fill = '#E0E0E0', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <g clipPath="url(#clip0_940_2649)">

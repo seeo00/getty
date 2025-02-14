@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const TenSecondsLaterIcon = ({ width = 60, height = 60, color = '#aaa', ...props }) => {
+const TenSecondsLaterIcon = ({ width = 24, height = 24, color = '#aaa', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

@@ -73,8 +73,13 @@ export const authSlice = createSlice({
         state.errorMessage = '이메일 전송에 실패했습니다. 다시 시도해주세요.';
       }
     },
-    initializeEmailCheck: (state) => {
+    // initializeEmailCheck: (state) => {
+    //   state.isExistingEmail = null;
+    //   state.errorMessage = '';
+    // },
+    resetAuthState: (state) => {
       state.isExistingEmail = null;
+      state.enteredEmail = '';
       state.errorMessage = '';
     },
   },
