@@ -82,9 +82,20 @@ export const ProfileCircle = styled.div`
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease-in-out;
-
+   position: relative;
+ svg {
+   opacity: 0; 
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   transition: opacity 0.2s ease-in-out; 
+ }
   ${ProfileItem}:hover & {
     box-shadow: 0 0 0 4px ${color.primary[300]};
+      svg {
+      opacity: 1;
+    }
   }
   ${respondTo('tablet')} {
     width: 160px;  

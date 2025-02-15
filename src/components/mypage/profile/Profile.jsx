@@ -10,6 +10,7 @@ import {
   ProfileButtonWrapper,
 } from './style';
 import Button from '../../../ui/Button';
+import PencilIcon from '../../../ui/icon/PencilIcon';
 
 export const Profile = ({ maxProfiles = 4 }) => {
   const profiles = [
@@ -26,7 +27,9 @@ export const Profile = ({ maxProfiles = 4 }) => {
       <ProfileGrid>
         {profiles.map((profile) => (
           <ProfileItem key={profile.id}>
-            <ProfileCircle />
+            <ProfileCircle >
+           <PencilIcon/>
+            </ProfileCircle >
             <ProfileName>{profile.name}</ProfileName>
           </ProfileItem>
         ))}
