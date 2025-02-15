@@ -1,67 +1,70 @@
 import styled from 'styled-components';
-
-export const color = {
-  white: '#fff',
-  black: '#000',
-  red: '#E22020',
-  footertext: '#989899',
-  primary: {
-    50: '#e6ecff',
-    75: '#96b1ff',
-    100: '#6b90ff',
-    200: '#2b60ff',
-    300: '#0040ff',
-    400: '#002db3',
-    500: '#00279c',
-  },
-  gray: {
-    10: '#fafafa',
-    20: '#f6f6f6',
-    30: '#ececec',
-    40: '#e0e0e0',
-    50: '#c4c4c4',
-    60: '#b6b6b6',
-    70: '#aaaaaa',
-    80: '#9b9b9b',
-    90: '#8d8d8d',
-    100: '#7F7F7F',
-    200: '#717171',
-    300: '#636363',
-    400: '#575757',
-    500: '#494949',
-    600: '#3D3D3D',
-    700: '#2C2C2C',
-    800: '#1E1E1E',
-    900: '#121212',
-  },
-};
+import { color } from '../../../styled/common';
+import { respondTo } from '../../../styled/GlobalStyle';
 
 export const Wrapper = styled.div`
-  max-width: 1080px;
-  margin: 0 auto;
-  padding: 296px 0 0 0;
+  margin-top: 114px;
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
+  ${respondTo('tablet')} {
+    margin-top: 176.5px;  
+  }
+   ${respondTo('desktop')} {
+    margin-top: 296px;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 1.875rem;
+  font-size: 20px;
   font-weight: bold;
-  margin-bottom: 16px;
+  color: ${color.white};
+  margin-bottom: 8px;
   text-align: center;
+  
+  ${respondTo('tablet')} {
+    font-size: 24px;  
+     margin-bottom: 16px;
+  }
+  ${respondTo('desktop')} {
+    font-size: 28px;
+    margin-bottom: 16px;
+  }
 `;
 
 export const Subtitle = styled.p`
-  color: ${color.gray[400]};
-  margin-bottom: 80px;
+  color: ${color.gray[20]};
+  margin-bottom: 40px;
   text-align: center;
+  font-size: 14px ;
+   
+  ${respondTo('tablet')} {
+    font-size: 20px; 
+     margin-bottom: 80px;
+  }
+  ${respondTo('desktop')} {
+   font-size: 20px;   
+   margin-bottom: 80px;
+  }
 `;
 
 export const ProfileGrid = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  place-items: center; 
+
+  ${respondTo('tablet')} {
+    gap: 80px;  
+  }
+  ${respondTo('desktop')} {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+     & > div:nth-child(3) { 
+      display: none;
+  }
 `;
 
 export const ProfileItem = styled.div`
@@ -70,11 +73,11 @@ export const ProfileItem = styled.div`
 `;
 
 export const ProfileCircle = styled.div`
-  width: 8rem;
-  height: 8rem;
-  border-radius: 9999px;
+  width: 120px;
+  height: 120px;
+  border-radius: 100%;
   background-color: ${color.gray[600]};
-  margin-bottom: 1rem;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,11 +86,21 @@ export const ProfileCircle = styled.div`
   ${ProfileItem}:hover & {
     box-shadow: 0 0 0 4px ${color.primary[300]};
   }
+  ${respondTo('tablet')} {
+    width: 160px;  
+    height: 160px;
+    margin-bottom: 16px;
+  }
+  ${respondTo('desktop')} {
+    width: 160px;
+    height: 160px;
+    margin-bottom: 16px;
+  }
 `;
 
 export const AddProfileCircle = styled(ProfileCircle)`
   background-color: transparent;
-  border: 2px dashed ${color.gray[600]};
+  border: 1px solid ${color.gray[600]};
 
   &:hover {
     border-color: ${color.primary[300]};
@@ -95,6 +108,27 @@ export const AddProfileCircle = styled(ProfileCircle)`
 `;
 
 export const ProfileName = styled.span`
-  font-size: 1.125rem;
+  font-size: 14px;
   color: ${color.white};
+  display: block;
+
+  ${respondTo('tablet')} {
+    font-size: 20px;  
+  }
+  ${respondTo('desktop')} {
+    font-size: 20px;
+  }
+`;
+
+export const ProfileButtonWrapper = styled.div`
+  height: 36px;
+  margin: 40px auto 226px;
+  ${respondTo('tablet')} {
+   height:54px;
+   margin: 80px auto 291.5px;
+  }
+     ${respondTo('desktop')} {
+    height: 54px;
+    margin: 96px auto 296px;
+  }
 `;

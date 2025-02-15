@@ -7,13 +7,15 @@ import {
   ProfileCircle,
   AddProfileCircle,
   ProfileName,
+  ProfileButtonWrapper,
 } from './style';
 import Button from '../../../ui/Button';
-import CircleButton from '../../../ui/CircleButton';
-export const Profile = ({ maxProfiles = 3 }) => {
+
+export const Profile = ({ maxProfiles = 4 }) => {
   const profiles = [
     { id: 1, name: 'Name' },
     { id: 2, name: 'Name' },
+    { id: 3, name: 'Name' },
   ];
 
   return (
@@ -28,18 +30,17 @@ export const Profile = ({ maxProfiles = 3 }) => {
             <ProfileName>{profile.name}</ProfileName>
           </ProfileItem>
         ))}
-
+        
         {profiles.length < maxProfiles && (
           <ProfileItem>
             <AddProfileCircle>
-              <span style={{ fontSize: '32px', color: '#989899' }}>+</span>
+              <span style={{ fontSize: '24px', color: '#989899' }}>+</span>
             </AddProfileCircle>
-            <ProfileName>Name</ProfileName>
+            <ProfileName>프로필 추가</ProfileName>
           </ProfileItem>
         )}
       </ProfileGrid>
-      <Button>Button</Button>
-      <CircleButton>ss</CircleButton>
+      <ProfileButtonWrapper><Button width="150px" >프로필 편집</Button></ProfileButtonWrapper>
     </Wrapper>
   );
 };
