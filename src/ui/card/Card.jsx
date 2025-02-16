@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+/* import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CardWrap } from './style';
 import { useDispatch, useSelector } from 'react-redux';
@@ -43,3 +43,4 @@ const Card = ({ children }) => {
 };
 
 export default Card;
+ */
