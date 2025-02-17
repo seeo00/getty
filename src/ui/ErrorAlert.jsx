@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import { color } from '../styled/common';
+import AlertErrorIcon from './icon/AlertErrorIcon';
 
 const StyledWrap = styled.div`
   width: fit-content;
   height: 60px;
   display: flex;
   align-items: center;
-  padding: 16px 24px;
+  gap: 8px;
+  padding: 16px;
   border-radius: 8px;
   color: ${color.red};
   font-weight: 500;
@@ -16,7 +18,12 @@ const StyledWrap = styled.div`
 `;
 
 const ErrorAlert = ({ children }) => {
-  return <StyledWrap>{children}</StyledWrap>;
+  return (
+    <StyledWrap>
+      <AlertErrorIcon />
+      {children}
+    </StyledWrap>
+  );
 };
 
 export default ErrorAlert;

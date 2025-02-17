@@ -1,72 +1,68 @@
-// style.js
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
 
-//데스크톱
+//데스크탑
 export const NavContainer = styled.nav`
-  width: ${(props) => (props.isCollapsed ? '80px' : '273px')};
-  height: 100vh;
-  background-color: ${color.gray[800]};
-  color: ${color.gray[70]};
-  display: flex; /* display: none 제거 */
-  flex-direction: column;
-  padding: 20px;
-  margin-top: 60px;
-  z-index: 1000;
+  display: none;
+  ${respondTo('desktop')} {
+    overflow-y: auto;
+    display: block;
+    width: ${(props) => (props.isCollapsed ? '104px' : '256px')};
+    height: 100%;
+    height: calc(100vh - 70px);
+    background-color: ${color.gray[800]};
+    color: ${color.gray[70]};
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    z-index: 1000;
+  }
 
-  ${respondTo('mobile')} {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
     display: none;
   }
 
+  span {
+    font-size: ${(props) => (props.isCollapsed ? '12px' : '16px')};
+  }
   a {
+    color: ${color.gray[70]};
+    //padding: ${(props) => (props.isCollapsed ? '12px 0' : '16px 0')};
+    padding: 16px 0px;
     display: flex;
+    flex-direction: ${(props) => (props.isCollapsed ? 'column' : 'row')};
     align-items: center;
-    padding: 10px 0;
-    color: white;
-    text-decoration: none;
-    gap: ${(props) => (props.isCollapsed ? '0' : '10px')};
-    justify-content: ${(props) => (props.isCollapsed ? 'center' : 'flex-start')};
-  }
-
-  a:hover {
-    background-color: ${color.white};
-    color: ${color.primary[300]};
-    border-radius: 8px;
+    justify-content: flex-start;
+    gap: ${(props) => (props.isCollapsed ? '4px' : '12px')};
+    transition: color 0.3s;
+    &:hover {
+      color: ${color.white};
+    }
   }
 `;
 
-export const NavLink = styled(Link)`
-  color: ${color.gray[70]};
-  text-decoration: none;
-  margin: 10px 0 0 0;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  font-weight: 500;
-
-  &:hover {
-    color: ${color.primary[300]};
-  }
+export const HighlightWrap = styled.ul`
+  padding: ${(props) => (props.isCollapsed ? '0px 20px 32px 20px' : '0px 40px 32px 40px')};
 `;
 
-export const IconWrapper = styled.span`
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  margin-left: 10px;
-`;
-
-// Divider 컴포넌트 수정: 아이콘 위치에 맞춰 좌측 여백 설정
-export const Divider = styled.div`
-  background-color: ${color.gray[70]};
-  height: 1px;
-  width: ${(props) => (props.isCollapsed ? '50px' : '216px')};
-  margin: 50px auto;
-
-  ${respondTo('mobile')} {
-    margin: 50px -20px;
+export const GenreWrap = styled.ul`
+  position: relative;
+  padding-top: 36px;
+  padding: ${(props) => (props.isCollapsed ? '32px 20px 0px 20px' : '32px 40px 0px 40px')};
+  ::before {
+    background-color: ${color.gray[500]};
+    content: '';
+    height: 1px;
+    left: ${(props) => (props.isCollapsed ? '20px' : '40px')};
+    position: absolute;
+    right: ${(props) => (props.isCollapsed ? '20px' : '40px')};
+    top: 0;
   }
 `;

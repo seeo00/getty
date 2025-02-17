@@ -1,11 +1,25 @@
 import PropTypes from 'prop-types';
 
-const HealingIcon = ({ width = 24, height = 24, color = '#AAAAAA', ...props }) => {
+// const HealingIcon = ({ width = 24, height = 24, color = '#AAAAAA', ...props }) => {
+//   return (
+//     <svg width={width} height={height} viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+//       <path
+//         d="M11 21.8364C16.5228 21.8364 21 17.3593 21 11.8364C21 6.31358 16.5228 1.83643 11 1.83643C5.47715 1.83643 1 6.31358 1 11.8364C1 17.3593 5.47715 21.8364 11 21.8364Z"
+//         stroke={color}
+
+const HealingIcon = ({ width = 24, height = 24, color = 'currentColor', ...props }) => {
   return (
-    <svg width={width} height={height} viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 22 23"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      stroke={color}
+      {...props}
+    >
       <path
         d="M11 21.8364C16.5228 21.8364 21 17.3593 21 11.8364C21 6.31358 16.5228 1.83643 11 1.83643C5.47715 1.83643 1 6.31358 1 11.8364C1 17.3593 5.47715 21.8364 11 21.8364Z"
-        stroke={color}
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"

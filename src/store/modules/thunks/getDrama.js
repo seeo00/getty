@@ -46,10 +46,15 @@ export const getDrama = createAsyncThunk('drama/getDrama', async ({ category, cu
       const response = await axios.get(apiUrl, options);
       const apiResults = response.data.results;
 
-      const newFilteredResults = apiResults.filter(
-        (item) =>
-          hasKorean(item.name) || hasKorean(item.title) || hasKorean(item.overview) || item.original_language === 'ko'
-      );
+      const newFilteredResults = apiResults
+        .filter(
+          (item) =>
+            hasKorean(item.name) || hasKorean(item.title) || hasKorean(item.overview) || item.original_language === 'ko'
+        )
+        .map((item) => ({
+          ...item,
+          media_type: 'tv', // 모든 아이템에 media_type 추가
+        }));
 
       const uniqueResults = [...filteredResults, ...newFilteredResults].filter(
         (item, index, self) => index === self.findIndex((t) => t.id === item.id)

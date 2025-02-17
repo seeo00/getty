@@ -15,6 +15,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.945,
     vote_count: 1376,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -32,6 +33,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.2,
     vote_count: 12,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -49,6 +51,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 8,
     vote_count: 8,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -66,6 +69,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.2,
     vote_count: 4,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -83,6 +87,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 8.4,
     vote_count: 13,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -100,6 +105,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.9,
     vote_count: 22,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -117,6 +123,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7,
     vote_count: 33,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -134,6 +141,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 4.9,
     vote_count: 9,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -151,6 +159,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7,
     vote_count: 11,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -168,6 +177,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.6,
     vote_count: 7911,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -185,6 +195,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.7,
     vote_count: 15,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -202,6 +213,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.3,
     vote_count: 12,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -218,6 +230,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7,
     vote_count: 1,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -235,6 +248,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.9,
     vote_count: 12,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -252,6 +266,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.5,
     vote_count: 11,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -269,6 +284,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.3,
     vote_count: 3,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -286,6 +302,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 5.8,
     vote_count: 21,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -303,6 +320,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.537,
     vote_count: 41,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -320,6 +338,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.289,
     vote_count: 19,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -337,6 +356,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.846,
     vote_count: 26,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -354,6 +374,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 5.6,
     vote_count: 8,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -371,6 +392,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.3,
     vote_count: 3,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -388,6 +410,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.6,
     vote_count: 7,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -405,6 +428,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 0,
     vote_count: 0,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -422,6 +446,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.5,
     vote_count: 22,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -439,6 +464,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7,
     vote_count: 29,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -456,6 +482,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.133,
     vote_count: 15,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -473,6 +500,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.3,
     vote_count: 3,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -490,6 +518,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.952,
     vote_count: 62,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -507,6 +536,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.8,
     vote_count: 191,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -524,6 +554,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.3,
     vote_count: 10,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -541,6 +572,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.4,
     vote_count: 7,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -558,6 +590,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 5.5,
     vote_count: 2,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -575,6 +608,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7,
     vote_count: 7,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -592,6 +626,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.9,
     vote_count: 10,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -609,6 +644,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.5,
     vote_count: 4,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -626,6 +662,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.1,
     vote_count: 15,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -643,6 +680,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.6,
     vote_count: 6,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -660,6 +698,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.7,
     vote_count: 87,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -677,6 +716,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.4,
     vote_count: 79,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -694,6 +734,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.6,
     vote_count: 83,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -711,6 +752,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6.2,
     vote_count: 19,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -728,6 +770,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.969,
     vote_count: 616,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -745,6 +788,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 5.9,
     vote_count: 15,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -761,6 +805,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 5.6,
     vote_count: 5,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -778,6 +823,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7,
     vote_count: 444,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -795,23 +841,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 6,
     vote_count: 6,
-  },
-  {
-    adult: false,
-    backdrop_path: '/mIpuPIgdH0r5m9CCtPCAFRQspps.jpg',
-    genre_ids: [18, 14, 10749],
-    id: 961257,
-    original_language: 'ja',
-    original_title: '月の満ち欠け',
-    overview:
-      '행복한 삶을 살고 있던 츠요시는 갑작스러운 교통 사고로 사랑하는 아내와 딸 루리를 잃는다. 오랜 시간 깊은 슬픔을 가슴에 묻고 살아가던 그에게 어느 날, 한 남자가 찾아온다. 그는 어쩌면 츠요시의 딸 루리가 자신의 옛 연인이었던 루리의 환생일지도 모른다는 기묘한 이야기를 하는데...',
-    popularity: 2.241,
-    poster_path: '/8BqGj02V9OGbiEPAoLWp7ZhKFa1.jpg',
-    release_date: '2022-12-02',
-    title: '달의 차고 기움',
-    video: false,
-    vote_average: 7.5,
-    vote_count: 11,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -829,6 +859,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 7,
     vote_count: 1,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -846,6 +877,7 @@ export const originalMovieData = [
     video: false,
     vote_average: 8,
     vote_count: 9,
+    media_type: 'movie',
   },
   {
     adult: false,
@@ -863,5 +895,120 @@ export const originalMovieData = [
     video: false,
     vote_average: 7.1,
     vote_count: 279,
+    media_type: 'movie',
+  },
+  {
+    adult: false,
+    backdrop_path: '/1dCYMhgRi3Xb3twuPQs0KXC5tNg.jpg',
+    genre_ids: [10749, 35],
+    id: 717088,
+    original_language: 'ko',
+    original_title: '싱글 인 서울',
+    overview:
+      '혼자여서 좋은 파워 인플루언서 영호와 혼자인 게 괜찮지 않은 유능한 출판사 편집장 현진. 싱글 라이프를 담은 에세이 시리즈의 작가와 편집자로 만난 영호와 현진. 생활 방식도 가치관도 서로 다른 두 사람은 책을 두고 사사건건 대립하면서도, 함께 보내는 시간이 나쁘지만은 않은데…',
+    popularity: 2.862,
+    poster_path: '/26naUaD3na4jhGkFoT5nl734Yev.jpg',
+    release_date: '2023-11-29',
+    title: '싱글 인 서울',
+    video: false,
+    vote_average: 6,
+    vote_count: 13,
+    media_type: 'movie',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/717088.png',
+  },
+  {
+    adult: false,
+    backdrop_path: '/gOgBpD5NivnWIqZYTBFSmAtziuJ.jpg',
+    genre_ids: [18, 80, 53, 35],
+    id: 455714,
+    original_language: 'th',
+    original_title: '배드 지니어스',
+    overview:
+      '긴급 뉴스! “올해 시험을 주관하는 STIC 협회가 부정행위를 발각해 큰 논란이 있었습니다. 몇몇 아시아 국가에서 시험지가 유출됐다는…” 천재소녀 ‘린’이 설계한 완벽한 답안지 모두가 원하는 그녀의 답안지로 전세계를 속여라! 시차를 이용한 완벽한 계획 거금이 걸린 천재의 위험한 신종(?) 학업 비즈니스가 시작된다!',
+    popularity: 17.262,
+    poster_path: '/njzAkSzjgR2deAWqm4Q6t5k3N6u.jpg',
+    release_date: '2017-05-03',
+    title: '배드 지니어스',
+    video: false,
+    vote_average: 7.9,
+    vote_count: 787,
+    media_type: 'movie',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/455714.png',
+  },
+  {
+    adult: false,
+    backdrop_path: '/qo9tN87uTsbXnaAob6aa7U33ayb.jpg',
+    genre_ids: [27, 53, 9648],
+    id: 585216,
+    original_language: 'en',
+    original_title: 'Escape Room: Tournament of Champions',
+    overview:
+      '출구 없는 탈출 게임에서 가까스로 살아남은 ‘조이’와 ‘벤’. 게임을 설계한 의문의 조직 ‘미노스’의 실체를 밝히기 위해 뉴욕에 도착한 두 사람은 정체불명의 남자에게 휘말려 지하철에 갇히고 만다. 순간 다른 칸과 분리된 열차 안에는 초고압 전류가 흐르기 시작하고, 그곳에 있는 6명 모두 게임의 생존자라는 것이 밝혀진다. 목숨을 건 탈출 게임이 다시 시작됐음을 직감한 그들은 뉴욕을 배경으로 벌어지는 극한의 상황에서 살아남기 위한 사투를 벌이는데….',
+    popularity: 33.887,
+    poster_path: '/ApWEAjflrgDBicdJEinFfIZcYH1.jpg',
+    release_date: '2021-07-01',
+    title: '이스케이프 룸 2: 노 웨이 아웃',
+    video: false,
+    vote_average: 6.5,
+    vote_count: 2056,
+    media_type: 'movie',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/585216.png',
+  },
+  {
+    adult: false,
+    backdrop_path: '/qgBPQgf4LpnpBP8uL2MDikG4pJw.jpg',
+    genre_ids: [10402, 99],
+    id: 408881,
+    original_language: 'ko',
+    original_title: '김광석',
+    overview:
+      '대한민국을 대표하는 가수 김광석. 그의 노래에 담긴 뜨거운 삶과 사랑, 그리고 외면해서는 안 될 마지막 진실! 1996년 1월 6일 김광석 사망 이후, 20여년이 지나도록 베일에 쌓여 있는 마지막 날의 치열한 흔적을 그의 음악 인생을 통해 본격적으로 들여다본다.',
+    popularity: 0.17,
+    poster_path: '/9sbBMki7jRoXK6Eb0WqniObssYt.jpg',
+    release_date: '2017-08-30',
+    title: '김광석',
+    video: false,
+    vote_average: 7,
+    vote_count: 1,
+    media_type: 'movie',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/408881.png',
+  },
+  {
+    adult: false,
+    backdrop_path: '/xnL7lbQKOh0F6tgX9HLEb9XDVlt.jpg',
+    genre_ids: [35, 18, 27, 10749],
+    id: 552504,
+    original_language: 'en',
+    original_title: 'Zoo',
+    overview:
+      '이혼 직전의 카렌과 존 부부는 전세계에 좀비 바이러스가 퍼지게 되면서 어쩔 수 없이 집 안에 갇히게 된다. 이웃에서 훔쳐온 식량과 숨겨둔 마약으로 하루하루 버텨가던 부부는 서로에 대한 사랑을 다시 깨닫게 되는데…',
+    popularity: 6.824,
+    poster_path: '/eks3vX9uabUtuBLT5W634ET5M7c.jpg',
+    release_date: '2018-10-05',
+    title: '쥬',
+    video: false,
+    vote_average: 6.155,
+    vote_count: 110,
+    media_type: 'movie',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/552504.png',
+  },
+  {
+    adult: false,
+    backdrop_path: null,
+    genre_ids: [18, 99],
+    id: 1079073,
+    original_language: 'ja',
+    original_title: '모찌',
+    overview:
+      "일본 이치노세키 지역에 전해져 내려오는 전통 식문화인 모찌를 둘러싸고 그 의미와 제조 방법 등을 여중생 '유나'의 가족과 친구, 지역 사회를 중심으로 풀어간다.",
+    popularity: 0.161,
+    poster_path: '/qykWCKpDzH8qYa9RvDrGAN2R284.jpg',
+    release_date: '2020-07-04',
+    title: '모찌',
+    video: false,
+    vote_average: 7,
+    vote_count: 1,
+    media_type: 'movie',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/1079073.png',
   },
 ];

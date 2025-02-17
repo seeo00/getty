@@ -1,6 +1,4 @@
 import { Button } from '../../../ui/Button';
-import { EmailInput } from '../EmailInput';
-import { PasswordInput } from '../PasswordInput';
 import * as S from '../style';
 import CheckBox from '../../../ui/Checkbox';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../../../store/modules/slices/authSlice';
 import ErrorAlert from '../../../ui/ErrorAlert';
 import { useEffect, useState } from 'react';
+import { EmailInput } from '../EmailInput';
+import { PasswordInput } from '../PasswordInput';
 
 const PasswordStep = ({ goToStep, isPasswordValid, setIsPasswordValid }) => {
   const { authed, enteredEmail, errorMessage } = useSelector((state) => state.authR);
@@ -49,7 +49,7 @@ const PasswordStep = ({ goToStep, isPasswordValid, setIsPasswordValid }) => {
       <S.TextBtnBox>
         <button
           onClick={() => {
-            dispatch(authActions.initializeEmailCheck());
+            dispatch(authActions.resetAuthState());
             goToStep('resetPassword');
           }}
         >
@@ -58,6 +58,7 @@ const PasswordStep = ({ goToStep, isPasswordValid, setIsPasswordValid }) => {
         <span>|</span>
         <button
           onClick={() => {
+            dispatch(authActions.resetAuthState());
             goToStep('email');
           }}
         >

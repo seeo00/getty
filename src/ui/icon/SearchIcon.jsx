@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 
-const SearchIcon = ({ width = 24, height = 24, color = '#AAAAAA', ...props }) => {
+// const SearchIcon = ({ width = 24, height = 24, color = '#AAAAAA', ...props }) => {
+
+const SearchIcon = ({ width = 24, height = 24, color = 'currentColor', ...props }) => {
   return (
     <svg width={width} height={height} viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path

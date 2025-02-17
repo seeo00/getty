@@ -2,43 +2,47 @@ import styled from 'styled-components';
 import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
 
-export const FooterContainer = styled.footer`
-  width: 100%;
-  background-color: ${color.gray[800]};
-  padding: 20px 20px 20px 273px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  ${respondTo('mobile')} {
-    display: block;
-    padding: 15px 15px 90px 15px;
-    width: 100%;
+export const FooterContainer = styled.footer``;
+
+export const FooterInner = styled.div`
+  border-top: 1px solid ${color.gray[500]};
+  padding: 20px 0;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.875rem;
+    a {
+      color: ${color.gray[70]};
+      &:hover {
+        color: ${color.primary[300]};
+
+        strong {
+          color: ${color.gray[70]};
+        }
+      }
+    }
+
+    strong {
+      font-weight: 700;
+    }
   }
-`;
 
-export const TapContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  margin-bottom: 15px;
-  background-color: ${color.gray[800]};
-`;
-
-export const Tab = styled.a`
-  color: ${color.footertext};
-  text-decoration: none;
-  padding-right: 24px;
-  font-size: 16px;
-
-  &:hover {
-    color: ${color.white};
+  .footer-content {
+    padding-top: 20px;
+    color: ${color.footertext};
+    font-size: 0.75rem;
+    font-weight: 300;
   }
-`;
 
-export const FooterText = styled.div`
-  font-size: 12px;
-  text-align: left;
-  line-height: 1.5;
-  color: ${color.footertext};
+  ${respondTo('desktop')} {
+    ul {
+      font-size: 1rem;
+      gap: 20px;
+    }
+    .footer-content {
+      font-size: 0.875rem;
+    }
+  }
 `;
