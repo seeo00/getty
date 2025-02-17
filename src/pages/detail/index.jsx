@@ -5,12 +5,13 @@ import IconButton, { Button } from '../../ui/Button';
 import CircleButton from '../../ui/CircleButton';
 import CloseIcon from '../../ui/icon/CloseIcon';
 import FavoriteIcon from '../../ui/icon/FavoriteIcon';
-import NavPopluarIcon from '../../ui/icon/NavPopluarIcon';
+
 import VideoPlayIcon from '../../ui/icon/VideoPlayIcon';
 import * as S from './style';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getDetails } from '../../store/modules/thunks/getDetails';
+import { NavPopularIcon } from '../../ui/icon';
 
 const Detail = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const Detail = () => {
                 <span className="icon-txt">관심</span>
               </CircleButton>
               <CircleButton border>
-                <NavPopluarIcon fill={color.yellow} color={color.yellow} />
+                <NavPopularIcon fill={color.yellow} color={color.yellow} />
                 <span className="icon-txt">평점</span>
               </CircleButton>
             </S.ButtonControl>

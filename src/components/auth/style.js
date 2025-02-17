@@ -19,7 +19,7 @@ export const AuthCard = styled.div`
     flex-direction: column;
     //gap: 40px;
   }
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
     background-color: rgba(71, 71, 71, 0.3);
   }
 `;

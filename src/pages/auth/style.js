@@ -14,7 +14,7 @@ export const GridContainer = styled.div`
     align-items: center;
   }
 
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
     display: grid;
     grid-template-columns: 1fr 660px;
     /* gap: 40px; */
@@ -34,7 +34,8 @@ export const LeftBox = styled.div`
     z-index: -1;
     background: rgba(0, 0, 0, 0.5);
 
-    background: url(/images/samuel-regan-asante-wMkaMXTJjlQ-unsplash.jpg) no-repeat 0 0 / cover;
+    background: url(https://github.com/seeo00/project-image-storage/blob/main/images/main/auth/auth.jpg?raw=true)
+      no-repeat 0 0 / cover;
     background-position: center;
 
     &::before {
@@ -48,7 +49,7 @@ export const LeftBox = styled.div`
     }
   }
 
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
     position: relative;
     z-index: auto;
   }
@@ -60,7 +61,7 @@ export const RightBox = styled.div`
   ${respondTo('tabletMore')} {
     width: 500px;
   }
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
     width: 660px;
     padding: 0 80px;
   }

@@ -21,10 +21,4 @@ const PlayCircleIcon = ({ width = 24, height = 24, color = '#e0e0e0', ...props }
   );
 };
 
-PlayCircleIcon.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  color: PropTypes.string,
-};
-
 export default PlayCircleIcon;
