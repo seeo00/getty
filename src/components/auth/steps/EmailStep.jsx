@@ -1,5 +1,4 @@
 import { Button } from '../../../ui/Button';
-import { EmailInput } from '../EmailInput';
 import * as S from '../style';
 import CircleButton from '../../../ui/CircleButton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +6,7 @@ import { authActions } from '../../../store/modules/slices/authSlice';
 import { useEffect } from 'react';
 import { FaFacebookF, FaGoogle, FaXTwitter } from 'react-icons/fa6';
 import { color } from '../../../styled/common';
+import { EmailInput } from '../EmailInput';
 
 const EmailStep = ({ goToStep, isEmailValid, setIsEmailValid }) => {
   const { isExistingEmail } = useSelector((state) => state.authR);

@@ -33,7 +33,9 @@ const GlobalStyle = createGlobalStyle`
 
   a {
       text-decoration: none;
-      color:${color.gray[80]}; 
+      color: inherit;
+     // color:${color.gray[80]}; 
+
   }
 
   li { list-style:none }
@@ -55,38 +57,27 @@ const GlobalStyle = createGlobalStyle`
 }
 
 input, textarea, button {
-  font-family: inherit; /* 부모 요소의 폰트 패밀리를 상속 */
-  font-size: inherit; /* 부모 요소의 폰트 크기를 상속 */
+  font-family: inherit; 
+  font-size: inherit; 
 }
 
 //전역 스와이퍼 스타일
-.swiper {
+.swiper-wrapper {
   width: 100%;
-  overflow: hidden;
-  margin: 72px 0 90px 0 ;
-  position: relative;
-  min-width: 1240px;
-  max-width: 3840px;
-  min-width: 390px;
-  min-height: 226px;
+  margin: 0 auto;
 }
 
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-	background-color: ${color.gray[50]};
-  display: flex;
-  justify-content: center;
-  align-items: center;
 	overflow: hidden;
-	border-radius: 16px;
+	border-radius: 12px;
+
 }
 
 .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
-	border-radius: 16px;
+	/* border-radius: 16px; */
 }
 .swiper-pagination {
     position: absolute;
@@ -102,51 +93,47 @@ display: none;
     color: ${color.gray[70]};
   }
 
-	//현재 버튼 안나타나서 수정 필요
-	.swiper-button-prev,
-.swiper-button-next {
+
+
+.blind,
+caption,
+legend {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  color: ${color.gray[70]};
-  font-size: 20px; /* 세로 높이(폰트 크기) 20px */
-  line-height: 20px;
-  padding: 0;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
 }
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    background: rgba(0, 0, 0, 0.6);
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.two-line-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 원하는 줄 수 설정 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+body.nav-open {
+  overflow: hidden;
+  
+  .swiper-container {
+    overflow: visible !important;
   }
-  /* 버튼 위치를 좌우로 조정(예시) */
-	.swiper-button-prev {
-  left: 30px;
-}
-.swiper-button-next {
-  right: 30px;
-}
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  font-family: 'Noto Sans KR', sans-serif; /* 기본 폰트 사용 */
-  font-weight: bold;
-}
-.swiper-button-prev::after {
-  content: '<';
-}
-.swiper-button-next::after {
-  content: '>';
 }
 `;
 
 export const respondTo = (breakpoint) => {
   const sizes = {
     mobile: 600,
-    tablet: 1024,
-    laptop: 1279,
+    tablet: 1279, // 기존 1024px → 1279px로 수정
+    desktop: 1280, // 기존 laptop을 desktop으로 변경
   };
 
   switch (breakpoint) {
@@ -156,10 +143,8 @@ export const respondTo = (breakpoint) => {
       return `@media (min-width: ${sizes.mobile + 1}px) and (max-width: ${sizes.tablet}px)`;
     case 'tabletMore':
       return `@media (min-width: ${sizes.mobile + 1}px)`;
-    case 'laptop':
-      return `@media (min-width: ${sizes.laptop + 1}px)`;
     case 'desktop':
-      return `@media (min-width: ${sizes.tablet + 1}px)`;
+      return `@media (min-width: ${sizes.desktop}px)`; // 기존 laptop을 desktop으로 변경
     default:
       return '';
   }

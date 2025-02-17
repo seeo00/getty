@@ -1,22 +1,6 @@
 export const originalSeriesData = [
   {
     adult: false,
-    backdrop_path: '/jaSZ1aHZLg32EEC4hNrWDAD9k9A.jpg',
-    genre_ids: [10764],
-    id: 78358,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '레벨업 프로젝트',
-    overview: '레드벨벳이 매일 다른 방식의 여행을 체험해 여행을 레벨업 시키는 과정을 담은 리얼리티 프로그램',
-    popularity: 329.871,
-    poster_path: '/bjChv4zJmTFA0DMumOwIGZSr1oV.jpg',
-    first_air_date: '2017-07-27',
-    name: '레벨업 프로젝트',
-    vote_average: 8,
-    vote_count: 2,
-  },
-  {
-    adult: false,
     backdrop_path: '/qpDzeZ41Sr7P59RSh9U4SVnMRUs.jpg',
     genre_ids: [10759, 18],
     id: 200709,
@@ -31,6 +15,7 @@ export const originalSeriesData = [
     name: '약한영웅',
     vote_average: 8.4,
     vote_count: 105,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -48,6 +33,7 @@ export const originalSeriesData = [
     name: '조선로코-녹두전',
     vote_average: 7.1,
     vote_count: 75,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -65,6 +51,7 @@ export const originalSeriesData = [
     name: '꼰대인턴',
     vote_average: 6.6,
     vote_count: 11,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -81,6 +68,7 @@ export const originalSeriesData = [
     name: '연애남매',
     vote_average: 9,
     vote_count: 1,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -98,6 +86,7 @@ export const originalSeriesData = [
     name: '에덴, 본능의 후예들',
     vote_average: 2,
     vote_count: 1,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -115,6 +104,7 @@ export const originalSeriesData = [
     name: '조폭인 내가 고등학생이 되었습니다',
     vote_average: 8.7,
     vote_count: 44,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -132,6 +122,7 @@ export const originalSeriesData = [
     name: '피의 게임',
     vote_average: 6,
     vote_count: 3,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -149,6 +140,7 @@ export const originalSeriesData = [
     name: '연애 지상주의 구역',
     vote_average: 8.6,
     vote_count: 16,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -165,6 +157,7 @@ export const originalSeriesData = [
     name: '쇼윈도: 여왕의 집',
     vote_average: 6.8,
     vote_count: 8,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -182,6 +175,7 @@ export const originalSeriesData = [
     name: '앨리스',
     vote_average: 7.1,
     vote_count: 28,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -199,6 +193,7 @@ export const originalSeriesData = [
     name: '오월의 청춘',
     vote_average: 8.1,
     vote_count: 42,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -216,6 +211,7 @@ export const originalSeriesData = [
     name: '남의연애',
     vote_average: 8.2,
     vote_count: 8,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -233,6 +229,7 @@ export const originalSeriesData = [
     name: '좋아하면 울리는 짝!짝!짝!',
     vote_average: 6.8,
     vote_count: 4,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -250,6 +247,7 @@ export const originalSeriesData = [
     name: '청담국제고등학교',
     vote_average: 8.3,
     vote_count: 16,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -267,6 +265,7 @@ export const originalSeriesData = [
     name: '거래',
     vote_average: 7.5,
     vote_count: 10,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -284,6 +283,7 @@ export const originalSeriesData = [
     name: '잠만 자는 사이',
     vote_average: 10,
     vote_count: 1,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -301,6 +301,7 @@ export const originalSeriesData = [
     name: '청춘 블라썸',
     vote_average: 4.4,
     vote_count: 23,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -317,6 +318,7 @@ export const originalSeriesData = [
     name: '보쌈 - 운명을 훔치다',
     vote_average: 6.9,
     vote_count: 14,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -334,6 +336,7 @@ export const originalSeriesData = [
     name: '경찰수업',
     vote_average: 7.574,
     vote_count: 34,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -351,6 +354,7 @@ export const originalSeriesData = [
     name: '준과 준',
     vote_average: 8,
     vote_count: 7,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -367,6 +371,7 @@ export const originalSeriesData = [
     name: '재즈처럼',
     vote_average: 8.1,
     vote_count: 12,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -384,6 +389,7 @@ export const originalSeriesData = [
     name: '풍덕빌라 304호의 사정',
     vote_average: 6.7,
     vote_count: 19,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -400,24 +406,9 @@ export const originalSeriesData = [
     name: '좀비탐정',
     vote_average: 8.6,
     vote_count: 34,
+    media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: '/iAaqK3sjdrqUgOxY6nMNjEv7V9Y.jpg',
-    genre_ids: [],
-    id: 86908,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: 'EXO의 사다리 타고 세계여행',
-    overview:
-      '운명의 사다리와 함께 떠난 EXO의 예측불허 세계 여행! 성격도 취향도 다른 멤버들은 과연 어떤 여행을 하게 될까? 엑소의 리얼 여행 프로그램',
-    popularity: 10.524,
-    poster_path: '/rT0HMyZNRiXLuuQOnNgwkjSc7WE.jpg',
-    first_air_date: '2018-05-21',
-    name: 'EXO의 사다리 타고 세계여행',
-    vote_average: 9.7,
-    vote_count: 3,
-  },
+
   {
     adult: false,
     backdrop_path: '/zxZUVFK2rYnmeSrqoutQRMySdbQ.jpg',
@@ -433,6 +424,7 @@ export const originalSeriesData = [
     name: '복수해라',
     vote_average: 6.7,
     vote_count: 9,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -450,6 +442,7 @@ export const originalSeriesData = [
     name: '도포자락 휘날리며',
     vote_average: 2,
     vote_count: 1,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -467,6 +460,7 @@ export const originalSeriesData = [
     name: '트레이서',
     vote_average: 5.4,
     vote_count: 20,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -484,6 +478,7 @@ export const originalSeriesData = [
     name: '금의야행',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -501,6 +496,7 @@ export const originalSeriesData = [
     name: '바람피면 죽는다',
     vote_average: 7,
     vote_count: 13,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -517,6 +513,7 @@ export const originalSeriesData = [
     name: '이사장님은 9등급',
     vote_average: 5,
     vote_count: 2,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -534,6 +531,7 @@ export const originalSeriesData = [
     name: '에스파의 싱크로드',
     vote_average: 6,
     vote_count: 2,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -551,6 +549,7 @@ export const originalSeriesData = [
     name: '유 레이즈 미 업',
     vote_average: 6.5,
     vote_count: 12,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -568,24 +567,9 @@ export const originalSeriesData = [
     name: '박하경 여행기',
     vote_average: 7.6,
     vote_count: 13,
+    media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: null,
-    genre_ids: [],
-    id: 238219,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '골든걸스',
-    overview:
-      '국내 최정상 보컬리스트 4인이 K팝 최정상 프로듀서 박진영의 프로듀싱과 함께 그룹으로 컴백하는 여정을 그리는 프로그램',
-    popularity: 5.885,
-    poster_path: '/12j7nDOFf4uuuSo2hIaEdQMazTS.jpg',
-    first_air_date: '2023-10-27',
-    name: '골든걸스',
-    vote_average: 0,
-    vote_count: 0,
-  },
+
   {
     adult: false,
     backdrop_path: '/m3pCTbPBW8WwfaZpgGYAp2Iv7CF.jpg',
@@ -602,6 +586,7 @@ export const originalSeriesData = [
     name: '이렇게 된 이상 청와대로 간다',
     vote_average: 7.8,
     vote_count: 4,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -619,6 +604,7 @@ export const originalSeriesData = [
     name: '소년을 위로해줘',
     vote_average: 7,
     vote_count: 11,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -636,6 +622,7 @@ export const originalSeriesData = [
     name: '썸핑',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -652,24 +639,9 @@ export const originalSeriesData = [
     name: '러브씬넘버#',
     vote_average: 4.4,
     vote_count: 11,
+    media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: '/q2HdL4CE0yZ44NkcUkSIakyrkd0.jpg',
-    genre_ids: [18, 10759, 10765],
-    id: 113624,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '조선구마사',
-    overview:
-      '건국이라는 실제 사실에 악령과 엑소시즘이라는 장르적 상상력을 덧대어 만든 판타지 액션 사극 드라마로서, 조선의 3대 임금 태종과 두 아들 충녕, 양녕부터 민초들까지 조선의 뒷이야기를 담는다.',
-    popularity: 10.296,
-    poster_path: '/5cec4QRVol0SxGmqxpuAYAL1Hlm.jpg',
-    first_air_date: '2021-03-22',
-    name: '조선구마사',
-    vote_average: 3.2,
-    vote_count: 8,
-  },
+
   {
     adult: false,
     backdrop_path: '/aDH7AvQOLv3F56fz5yY7ZKIvJUH.jpg',
@@ -685,6 +657,7 @@ export const originalSeriesData = [
     name: '날아라 개천용',
     vote_average: 6.5,
     vote_count: 11,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -701,23 +674,9 @@ export const originalSeriesData = [
     name: '메리퀴어',
     vote_average: 6.7,
     vote_count: 3,
+    media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: null,
-    genre_ids: [],
-    id: 135070,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '더보이즈의 타임아웃',
-    overview: '',
-    popularity: 4.169,
-    poster_path: '/c6Mizv7WDVcHXKEPLYJrJKruiLO.jpg',
-    first_air_date: '2021-10-14',
-    name: '더보이즈의 타임아웃',
-    vote_average: 5,
-    vote_count: 1,
-  },
+
   {
     adult: false,
     backdrop_path: '/zmOIrXvS12bXX6tJmyw6xm4TtnS.jpg',
@@ -733,6 +692,7 @@ export const originalSeriesData = [
     name: '국가수사본부',
     vote_average: 6,
     vote_count: 2,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -750,6 +710,7 @@ export const originalSeriesData = [
     name: '에스에프에잇-SF8',
     vote_average: 7.1,
     vote_count: 8,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -767,41 +728,9 @@ export const originalSeriesData = [
     name: '위기의 X',
     vote_average: 6.3,
     vote_count: 6,
+    media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: '/4wtcVsY9XVggHgKEJ4v1bibouGy.jpg',
-    genre_ids: [99],
-    id: 195936,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: 'MMM: Where Are We Now',
-    overview:
-      "1인 회사에서 시작된 '언더독'의 성공 스토리. 마의 7년이라고 불리는 시기를 맞이한 아이돌 그룹 '마마무', 불확실했던 시작과 또 불확실한 미래를 살아가는 지금 세대의 이야기",
-    popularity: 5.956,
-    poster_path: '/8NS8QGSrzvgT4tPfwolutKjvxt1.jpg',
-    first_air_date: '2022-03-25',
-    name: 'MMM: Where Are We Now',
-    vote_average: 0,
-    vote_count: 0,
-  },
-  {
-    adult: false,
-    backdrop_path: null,
-    genre_ids: [10764],
-    id: 250459,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '나만 없어, KARA',
-    overview:
-      '그때 그 시절 우리가 사랑했던 아이돌 대한민국 대표 걸그룹 카라의 데뷔 15주년을 기념한 첫 여행 리얼리티 예능. 박규리, 한승연, 니콜, 강지영, 허영지 다섯 멤버가 푸른 바다가 아름다운 코타키나발루를 배경으로 즐기는 달콤한 휴식과 함께, 그간 말하지 못했던 진솔한 이야기로 감동을 전한다.',
-    popularity: 5.484,
-    poster_path: '/xOwms8KmWjmdhaI4GSkkLyRH1dQ.jpg',
-    first_air_date: '2024-03-27',
-    name: '나만 없어, KARA',
-    vote_average: 0,
-    vote_count: 0,
-  },
+
   {
     adult: false,
     backdrop_path: null,
@@ -818,6 +747,7 @@ export const originalSeriesData = [
     name: '탱키박스',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -834,6 +764,7 @@ export const originalSeriesData = [
     name: '홀인러브',
     vote_average: 10,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -851,6 +782,7 @@ export const originalSeriesData = [
     name: '사상검증구역: 더 커뮤니티',
     vote_average: 7.3,
     vote_count: 3,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -867,6 +799,7 @@ export const originalSeriesData = [
     name: '여왕벌 게임',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -884,24 +817,9 @@ export const originalSeriesData = [
     name: '나의 X같은 스무살',
     vote_average: 4.7,
     vote_count: 3,
+    media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: '/irXb7HTte4ppBuNtgT1UwWZ7kxk.jpg',
-    genre_ids: [],
-    id: 252525,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '푹 쉬면 다행이야',
-    overview:
-      '‘푹다행’은 ‘안싸우면 다행이야’(안다행)를 이끌었던 ‘안촌장’ 안정환이 무인도 폐가를 고쳐 시청자를 초대하는 ‘0.5성급 무인도 체크인 리얼리티’다.\n\n복잡한 도시를 벗어나 자연에서의 삶을 꿈꾸는 시청자라면 누구나 0.5성급 무인도에 체크인을 할 수 있다. 물도, 전기도 없는 무인도 폐가에 시청자를 초대한 ‘안CEO’ 안정환이 0.5성급 환경에서 5성급의 서비스를 제공하는 걸 목표로 고군분투를 펼친다.',
-    popularity: 2.521,
-    poster_path: '/tfnL8GQbHzt3ui9Kv1HBhoOyEtX.jpg',
-    first_air_date: '2024-04-29',
-    name: '푹 쉬면 다행이야',
-    vote_average: 0,
-    vote_count: 0,
-  },
+
   {
     adult: false,
     backdrop_path: '/2Dxy0Vmqc6aF244qvX9zmgu0kMt.jpg',
@@ -918,6 +836,7 @@ export const originalSeriesData = [
     name: '마이클: 한덕상사의 비밀',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -934,6 +853,7 @@ export const originalSeriesData = [
     name: 'MTopia',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -951,6 +871,7 @@ export const originalSeriesData = [
     name: '미션 투 파서블',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -968,6 +889,7 @@ export const originalSeriesData = [
     name: '버튼게임',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -985,6 +907,7 @@ export const originalSeriesData = [
     name: '악인취재기',
     vote_average: 10,
     vote_count: 1,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1002,40 +925,9 @@ export const originalSeriesData = [
     name: '단죄',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: null,
-    genre_ids: [],
-    id: 260771,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '모든패밀리',
-    overview:
-      "'내 여자'를 위해 임신까지 한 로맨틱 레즈비언과 와이프, 모태신앙 게이 교회오빠와 11년차 애인이 꾸리는 새로운 가족을 관찰하며 목사, 의사 등 20명이 과몰입 코멘터리를 펼친다",
-    popularity: 0.289,
-    poster_path: '/usHssoUcTMoYfuKHtkJLxyr3Ut4.jpg',
-    first_air_date: '2024-06-28',
-    name: '모든패밀리',
-    vote_average: 0,
-    vote_count: 0,
-  },
-  {
-    adult: false,
-    backdrop_path: null,
-    genre_ids: [10762],
-    id: 130750,
-    origin_country: [],
-    original_language: 'ko',
-    original_name: '개구쟁이 토마스',
-    overview: '바른인성과 예절교육을 위한 유아 애니메이션',
-    popularity: 0.505,
-    poster_path: null,
-    first_air_date: '2020-05-22',
-    name: '개구쟁이 토마스',
-    vote_average: 0,
-    vote_count: 0,
-  },
+
   {
     adult: false,
     backdrop_path: null,
@@ -1052,6 +944,7 @@ export const originalSeriesData = [
     name: '문명: 최후의 섬',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1069,6 +962,7 @@ export const originalSeriesData = [
     name: '종합광고대행사 찌찌 : 창업편',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1085,6 +979,7 @@ export const originalSeriesData = [
     name: '휴먼 크로니클',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1101,6 +996,7 @@ export const originalSeriesData = [
     name: '국가수사본부',
     vote_average: 6,
     vote_count: 2,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1117,6 +1013,7 @@ export const originalSeriesData = [
     name: '키스 더 유니버스',
     vote_average: 0,
     vote_count: 0,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1133,6 +1030,7 @@ export const originalSeriesData = [
     name: '메리퀴어',
     vote_average: 6.7,
     vote_count: 3,
+    media_type: 'tv',
   },
   // 해외시리즈
   {
@@ -1151,6 +1049,7 @@ export const originalSeriesData = [
     name: '미드위치 쿠쿠',
     vote_average: 6.7,
     vote_count: 64,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1168,6 +1067,7 @@ export const originalSeriesData = [
     name: '라자루스 프로젝트',
     vote_average: 7.181,
     vote_count: 180,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1185,6 +1085,7 @@ export const originalSeriesData = [
     name: '더 콜링',
     vote_average: 6,
     vote_count: 33,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1202,6 +1103,7 @@ export const originalSeriesData = [
     name: '스위트피',
     vote_average: 7.5,
     vote_count: 97,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1219,6 +1121,7 @@ export const originalSeriesData = [
     name: '원룸 엔젤',
     vote_average: 9,
     vote_count: 5,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1235,6 +1138,7 @@ export const originalSeriesData = [
     name: '숨 막히는 연애',
     vote_average: 5,
     vote_count: 3,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1252,6 +1156,7 @@ export const originalSeriesData = [
     name: '테드',
     vote_average: 7.962,
     vote_count: 449,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1269,6 +1174,7 @@ export const originalSeriesData = [
     name: '트랜스플랜트',
     vote_average: 7.7,
     vote_count: 123,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1286,6 +1192,7 @@ export const originalSeriesData = [
     name: '더 이래셔널',
     vote_average: 7.1,
     vote_count: 50,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1302,6 +1209,8 @@ export const originalSeriesData = [
     name: '퍼니 우먼',
     vote_average: 6.9,
     vote_count: 31,
+    media_type: 'tv',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/156644.png',
   },
   {
     adult: false,
@@ -1318,6 +1227,7 @@ export const originalSeriesData = [
     name: '로 앤 오더 토론토: 크리미널 인텐트',
     vote_average: 7.2,
     vote_count: 12,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1335,6 +1245,7 @@ export const originalSeriesData = [
     name: '사과는 떨어지지 않는다',
     vote_average: 6.3,
     vote_count: 36,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1352,6 +1263,7 @@ export const originalSeriesData = [
     name: '뱀파이어 아카데미',
     vote_average: 7.6,
     vote_count: 173,
+    media_type: 'tv',
   },
   {
     adult: false,
@@ -1369,6 +1281,7 @@ export const originalSeriesData = [
     name: '더 이퀄라이저',
     vote_average: 7.5,
     vote_count: 273,
+    media_type: 'tv',
   },
   {
     id: 134967,
@@ -1377,7 +1290,7 @@ export const originalSeriesData = [
     first_air_date: '2022-06-09',
     last_air_date: '2022-06-09',
     status: 'Canceled',
-    genres: ['드라마'],
+    genres: [18],
     origin_country: ['US', 'GB'],
     original_language: 'en',
     overview: '게이 클럽에서의 비극적인 총격 사건 이후, 생존자들은 서로와의 관계를 통해 회복을 시도한다.',
@@ -1385,6 +1298,7 @@ export const originalSeriesData = [
     poster_path: '/ofLgNhfsLstalbEEdqGN2sWdOJG.jpg',
     vote_average: 6.7,
     vote_count: 38,
+    media_type: 'tv',
   },
   {
     id: 95515,
@@ -1393,7 +1307,7 @@ export const originalSeriesData = [
     first_air_date: '2020-01-07',
     last_air_date: '2020-03-10',
     status: 'Ended',
-    genres: ['드라마'],
+    genres: [18],
     origin_country: ['CA'],
     original_language: 'fr',
     overview:
@@ -1402,6 +1316,7 @@ export const originalSeriesData = [
     poster_path: '/qtEoXjKWxSpmptpyNom7LhiWQVJ.jpg',
     vote_average: 7.2,
     vote_count: 129,
+    media_type: 'tv',
   },
   {
     id: 156989,
@@ -1410,7 +1325,7 @@ export const originalSeriesData = [
     first_air_date: '2022-12-04',
     last_air_date: '2022-12-04',
     status: 'Canceled',
-    genres: ['드라마'],
+    genres: [18],
     origin_country: ['AU', 'GB'],
     original_language: 'en',
     overview:
@@ -1419,6 +1334,7 @@ export const originalSeriesData = [
     poster_path: '/kczUA9Sbcjx2bIJoZqMFQLXl705.jpg',
     vote_average: 6.8,
     vote_count: 17,
+    media_type: 'tv',
   },
   {
     id: 218086,
@@ -1427,7 +1343,7 @@ export const originalSeriesData = [
     first_air_date: '2023-01-23',
     last_air_date: '2024-11-14',
     status: 'Returning Series',
-    genres: ['코미디'],
+    genres: [35],
     origin_country: ['GB'],
     original_language: 'en',
     overview:
@@ -1436,6 +1352,7 @@ export const originalSeriesData = [
     poster_path: '/m2HhbbskGM4ty4u13o7gV1JVQQu.jpg',
     vote_average: 7.4,
     vote_count: 12,
+    media_type: 'tv',
   },
   {
     id: 211180,
@@ -1444,7 +1361,7 @@ export const originalSeriesData = [
     first_air_date: '2024-01-14',
     last_air_date: '2024-03-10',
     status: 'Returning Series',
-    genres: ['드라마'],
+    genres: [18],
     origin_country: ['US', 'GB'],
     original_language: 'en',
     overview:
@@ -1453,6 +1370,7 @@ export const originalSeriesData = [
     poster_path: '/aWXqzX8ZJ7KDLn2FjYAiem8DRy9.jpg',
     vote_average: 7.5,
     vote_count: 29,
+    media_type: 'tv',
   },
   {
     id: 222766,
@@ -1461,7 +1379,7 @@ export const originalSeriesData = [
     first_air_date: '2024-11-07',
     last_air_date: '2024-12-12',
     status: 'Returning Series',
-    genres: ['드라마', 'Action & Adventure', '미스터리'],
+    genres: [18, 10759, 9648],
     origin_country: ['GB'],
     original_language: 'en',
     overview:
@@ -1470,6 +1388,7 @@ export const originalSeriesData = [
     poster_path: '/9cF0z0kd01sDO86Q4r2jdn97XVg.jpg',
     vote_average: 8.3,
     vote_count: 434,
+    media_type: 'tv',
   },
   {
     id: 96580,
@@ -1478,7 +1397,7 @@ export const originalSeriesData = [
     first_air_date: '2021-01-27',
     last_air_date: '2024-04-03',
     status: 'Returning Series',
-    genres: ['Sci-Fi & Fantasy'],
+    genres: [10765],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1487,6 +1406,7 @@ export const originalSeriesData = [
     poster_path: '/6sNfBnagv9CIyRs4zp4Nvo9LrWr.jpg',
     vote_average: 7.8,
     vote_count: 759,
+    media_type: 'tv',
   },
   {
     id: 135187,
@@ -1495,7 +1415,7 @@ export const originalSeriesData = [
     first_air_date: '2021-10-21',
     last_air_date: '2021-10-21',
     status: 'Ended',
-    genres: ['미스터리', 'Sci-Fi & Fantasy'],
+    genres: [9648, 10765],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1504,6 +1424,7 @@ export const originalSeriesData = [
     poster_path: '/lpRadqXA15FuVWayjCUeAgB77iu.jpg',
     vote_average: 6.3,
     vote_count: 24,
+    media_type: 'tv',
   },
   {
     id: 107365,
@@ -1512,7 +1433,7 @@ export const originalSeriesData = [
     first_air_date: '2022-02-13',
     last_air_date: '2024-09-05',
     status: 'Returning Series',
-    genres: ['드라마'],
+    genres: [18],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1521,6 +1442,7 @@ export const originalSeriesData = [
     poster_path: '/mYxOyby7cqzEAR1XQ22yXkcdKbx.jpg',
     vote_average: 7.89,
     vote_count: 227,
+    media_type: 'tv',
   },
   {
     id: 85021,
@@ -1529,7 +1451,7 @@ export const originalSeriesData = [
     first_air_date: '2020-04-23',
     last_air_date: '2022-12-01',
     status: 'Returning Series',
-    genres: ['범죄', '드라마'],
+    genres: [80, 18],
     origin_country: ['GB'],
     original_language: 'en',
     overview:
@@ -1538,24 +1460,9 @@ export const originalSeriesData = [
     poster_path: '/fVgwa6wGw9ddGM5O7mqrrwB6gHK.jpg',
     vote_average: 7.9,
     vote_count: 558,
+    media_type: 'tv',
   },
-  {
-    id: 202985,
-    name: '미나토 상사 코인 세탁소',
-    original_name: 'みなと商事コインランドリー',
-    first_air_date: '2022-07-07',
-    last_air_date: '2023-09-21',
-    status: 'Ended',
-    genres: ['드라마', '코미디'],
-    origin_country: ['JP'],
-    original_language: 'ja',
-    overview:
-      "오래된 코인 세탁소 '미나토 상사'를 할아버지로부터 물려받은 주인공이 그곳에 자주 오면서 친해지게 된 고등학생에게 게이라는 사실을 들키게 되면서 벌어지는 청춘 러브 스토리를 그린 드라마",
-    popularity: 30.365,
-    poster_path: '/rPvUyG3JkGo604kfTfNAgIAX4Zw.jpg',
-    vote_average: 8.2,
-    vote_count: 13,
-  },
+
   {
     id: 94372,
     name: 'FBI: 모스트 원티드',
@@ -1563,7 +1470,7 @@ export const originalSeriesData = [
     first_air_date: '2020-01-07',
     last_air_date: '2025-01-28',
     status: 'Returning Series',
-    genres: ['범죄', '드라마'],
+    genres: [80, 18],
     origin_country: ['US'],
     original_language: 'en',
     overview: 'FBI의 스핀오프 드라마로, 지명 수배된 범인을 쫓는 FBI의 이야기',
@@ -1571,6 +1478,7 @@ export const originalSeriesData = [
     poster_path: '/fvNyYndy0QCFlAtNzeFgc5XKXnu.jpg',
     vote_average: 7.7,
     vote_count: 387,
+    media_type: 'tv',
   },
   {
     id: 93166,
@@ -1579,7 +1487,7 @@ export const originalSeriesData = [
     first_air_date: '2019-09-03',
     last_air_date: '2022-09-12',
     status: 'Returning Series',
-    genres: ['범죄', '드라마', '미스터리'],
+    genres: [80, 18, 9648],
     origin_country: ['GB'],
     original_language: 'en',
     overview:
@@ -1588,24 +1496,9 @@ export const originalSeriesData = [
     poster_path: '/bCuTIRmnd6eBNZ9oBBQ2KAtErid.jpg',
     vote_average: 7.8,
     vote_count: 238,
+    media_type: 'tv',
   },
-  {
-    id: 96567,
-    name: '코브라',
-    original_name: 'COBRA',
-    first_air_date: '2020-01-17',
-    last_air_date: '2023-11-16',
-    status: 'Returning Series',
-    genres: ['드라마', '범죄'],
-    origin_country: ['GB'],
-    original_language: 'en',
-    overview:
-      '태양 폭풍으로 영국이 피해를 볼 가능성이 커지자 영국 총리 로버트 서덜랜드는 비상 대책 위원회인 코브라를 소집한다. 그러던 중 연료가 떨어진 비행기가 다급하게 항공 교통 관제소에 연락하지만, 태양 폭풍의 영향으로 통신이 자꾸 끊긴다.',
-    popularity: 12.031,
-    poster_path: '/w8cA00YjHFUgAakG5VLKGTw3h7o.jpg',
-    vote_average: 5.7,
-    vote_count: 51,
-  },
+
   {
     id: 113987,
     name: '랜드스케이퍼스',
@@ -1613,7 +1506,7 @@ export const originalSeriesData = [
     first_air_date: '2021-12-06',
     last_air_date: '2021-12-27',
     status: 'Ended',
-    genres: ['코미디', '범죄', '드라마'],
+    genres: [35, 80, 18],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1622,6 +1515,7 @@ export const originalSeriesData = [
     poster_path: '/n58RtlvIJ5qAojR95j2aAWCW7S4.jpg',
     vote_average: 6.7,
     vote_count: 171,
+    media_type: 'tv',
   },
   {
     id: 197373,
@@ -1630,7 +1524,7 @@ export const originalSeriesData = [
     first_air_date: '2023-06-08',
     last_air_date: '2024-11-21',
     status: 'Returning Series',
-    genres: ['코미디', '드라마'],
+    genres: [35, 18],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1639,6 +1533,7 @@ export const originalSeriesData = [
     poster_path: '/5xPLk78TFStBi1dQAlG2mnoSK60.jpg',
     vote_average: 7.3,
     vote_count: 95,
+    media_type: 'tv',
   },
   {
     id: 93177,
@@ -1647,7 +1542,7 @@ export const originalSeriesData = [
     first_air_date: '2019-09-13',
     last_air_date: '2021-12-09',
     status: 'Ended',
-    genres: ['드라마', '미스터리', '범죄', 'Action & Adventure'],
+    genres: [18, 9648, 80],
     origin_country: ['GB'],
     original_language: 'en',
     overview: '평범하지 않은 이들을 위한 비밀 병동, 1급 기밀 메디컬 드라마',
@@ -1655,6 +1550,7 @@ export const originalSeriesData = [
     poster_path: '/cIN6VX8Zga4NcUWZbJ4L6tW76i0.jpg',
     vote_average: 6.5,
     vote_count: 65,
+    media_type: 'tv',
   },
   {
     id: 80748,
@@ -1663,7 +1559,7 @@ export const originalSeriesData = [
     first_air_date: '2018-09-25',
     last_air_date: '2025-01-28',
     status: 'Returning Series',
-    genres: ['범죄', 'Action & Adventure', '드라마'],
+    genres: [80, 10759, 18],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1672,6 +1568,7 @@ export const originalSeriesData = [
     poster_path: '/bircXcCsvP2DUximyQUOn5p2s4.jpg',
     vote_average: 7.9,
     vote_count: 810,
+    media_type: 'tv',
   },
   {
     id: 212462,
@@ -1680,7 +1577,7 @@ export const originalSeriesData = [
     first_air_date: '2024-03-05',
     last_air_date: '2024-04-16',
     status: 'Ended',
-    genres: ['드라마'],
+    genres: [18],
     origin_country: ['GB'],
     original_language: 'en',
     overview:
@@ -1689,6 +1586,7 @@ export const originalSeriesData = [
     poster_path: '/lUv2QrcWMMjWtmtOMVhLBgbKL2a.jpg',
     vote_average: 7.4,
     vote_count: 75,
+    media_type: 'tv',
   },
   {
     id: 93749,
@@ -1697,7 +1595,7 @@ export const originalSeriesData = [
     first_air_date: '2021-07-15',
     last_air_date: '2023-12-21',
     status: 'Returning Series',
-    genres: ['드라마', '범죄'],
+    genres: [18, 80],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1706,24 +1604,9 @@ export const originalSeriesData = [
     poster_path: '/mSBUcX8wKZr0RGcfkL4377vTIl0.jpg',
     vote_average: 7.3,
     vote_count: 172,
+    media_type: 'tv',
   },
-  {
-    id: 240936,
-    name: '엘리전스',
-    original_name: 'Allegiance',
-    first_air_date: '2024-02-07',
-    last_air_date: '2025-01-29',
-    status: 'Returning Series',
-    genres: ['드라마', '미스터리', '범죄'],
-    origin_country: ['CA'],
-    original_language: 'en',
-    overview:
-      '사브리나 소할은 신입 경찰로서 캐나다 사회의 변화를 꿈꾼다. 실제 현장을 배우고 경험을 쌓기에도 바쁜 시기에 공공안전부 장관인 아버지가 반역죄로 체포되면서 그의 누명을 벗기려 고군분투한다.',
-    popularity: 45.62,
-    poster_path: '/1lNNxOTDoGkwhDU7UsPWrc2RNyg.jpg',
-    vote_average: 5,
-    vote_count: 6,
-  },
+
   {
     id: 86848,
     name: '이블',
@@ -1731,7 +1614,7 @@ export const originalSeriesData = [
     first_air_date: '2019-09-26',
     last_air_date: '2024-08-22',
     status: 'Ended',
-    genres: ['범죄', '드라마', '미스터리'],
+    genres: [80, 18, 9648],
     origin_country: ['US'],
     original_language: 'en',
     overview:
@@ -1740,6 +1623,7 @@ export const originalSeriesData = [
     poster_path: '/iovLt31lmmIJITxjkaOCTvNviHJ.jpg',
     vote_average: 7.777,
     vote_count: 760,
+    media_type: 'tv',
   },
   {
     id: 83936,
@@ -1748,7 +1632,7 @@ export const originalSeriesData = [
     first_air_date: '2018-11-23',
     last_air_date: '2023-10-07',
     status: 'Canceled',
-    genres: ['War & Politics', '드라마'],
+    genres: [10768, 18],
     origin_country: ['DE'],
     original_language: 'de',
     overview:
@@ -1757,5 +1641,62 @@ export const originalSeriesData = [
     poster_path: '/y3uB0YHvXHF2C8iZHvgwKIjGpeC.jpg',
     vote_average: 6.902,
     vote_count: 132,
+    media_type: 'tv',
+  },
+  {
+    id: 97220,
+    name: '아무도 모른다',
+    original_name: '아무도 모른다',
+    first_air_date: '2020-03-02',
+    last_air_date: '2020-04-21',
+    status: 'Ended',
+    genres: [18, 80, 9648],
+    origin_country: ['KR'],
+    original_language: 'ko',
+    overview:
+      '한 소년이 호텔 옥상에서 추락해 혼수상태가 된다. 모두가 자살이라 결론 내린 소년의 추락에 두 사람이 의문을 가진다. 추락한 소년 고은호의 윗집에 사는 광역수사대 형사 차영진. 그리고 은호의 담임 선생 이선우. 사회 통념상 은호와 ‘아무 것도 아닌’ 두 사람이 소년의 추락 사건을 자신들만의 방식으로 집요하게 쫓는다. 소년에 대한 각자의 죄책감과 책임감을 동력 삼아 아무런 대가도 없는 위험한 게임에 뛰어든다. 영진과 선우는 ‘좋은 어른’은 못 되어도, 적어도 ‘나쁜 어른’은 되지 않으려 필사적으로 노력하며 ‘나쁜 어른들’과 맞선다.',
+    popularity: 34.44,
+    poster_path: '/hdfHuzyUHTlyvlK2KBhmhQCUap6.jpg',
+    vote_average: 7.9,
+    vote_count: 19,
+    media_type: 'tv',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/97220.png',
+  },
+  {
+    id: 229850,
+    name: '어른 김장하',
+    original_name: '어른 김장하',
+    first_air_date: '2022-12-31',
+    last_air_date: '2023-01-01',
+    status: 'Ended',
+    genres: [99],
+    origin_country: ['KR'],
+    original_language: 'ko',
+    overview: '진주에서 한약방을 운영하며 지역사회에 헌신해온 김장하 선생을 조명한 휴먼 다큐멘터리다.',
+    popularity: 0.442,
+    poster_path: '/eL06q0ZPksBSS7vljTP0y9A1grk.jpg',
+    vote_average: 0,
+    vote_count: 0,
+    media_type: 'tv',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/229850.png',
+  },
+  {
+    id: 73575,
+    name: '사랑의 온도',
+    original_name: '사랑의 온도',
+    first_air_date: '2017-09-18',
+    last_air_date: '2017-11-21',
+    status: 'Ended',
+    genres: [35],
+    origin_country: ['KR'],
+    original_language: 'ko',
+    overview:
+      '온라인 채팅으로 시작해 현실에서 만나게 된 드라마 작가 지망생 ‘제인’과 프렌치 쉐프를 꿈꾸는 ‘착한 스프’ 그리고 다양한 주변 인물들을 통해 피상적인 관계에 길들여져 있는 청춘들의 사랑과 관계를 그린 드라마',
+    popularity: 106.819,
+    poster_path: '/iAU2gQZpjP4zaWyq7I7ewIPjcVA.jpg',
+    vote_average: 7.1,
+    vote_count: 91,
+    media_type: 'tv',
+    logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/73575.png',
   },
 ];

@@ -3,53 +3,73 @@ import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
 
 export const HeaderContainer = styled.header`
-  display: flex;
-  position: absolute;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: ${color.gray[800]};
-  color: white;
   width: 100%;
-  height: 72px;
-  z-index: 1000;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  background-color: ${color.gray[800]};
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const LeftContainer = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
+  gap: 24px;
+  > button {
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: -8px;
+      right: -8px;
+      bottom: -8px;
+      background: transparent;
+    }
+  }
 `;
 
 export const RightContainer = styled.div`
-  display: flex;
-  align-items: center;
+  display: none;
+  ${respondTo('tabletMore')} {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
 `;
 
-export const LogoButton = styled.button`
-  font-size: 14px;
-  font-weight: 400;
-  margin-left: 30px;
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  width: ${({ $active }) => ($active ? 'clamp(200px, 40vw, 400px)' : '40px')};
+  height: 40px;
+  padding: 0 8px;
+  background-color: ${({ $active }) => ($active ? '#000' : 'transparent')};
+  border-radius: 4px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+`;
+
+export const SearchButton = styled.button`
   background: none;
   border: none;
-  color: ${color.white};
   cursor: pointer;
-  padding: 0;
-`;
-
-// active prop에 따라 배경색과 너비가 변경되도록 설정
-export const SearchBar = styled.div`
   display: flex;
   align-items: center;
-  width: ${({ active }) => (active ? '300px' : '44px')};
-  height: 44px;
-  padding: 5px 10px;
-  background-color: ${({ active }) => (active ? color.gray[900] : 'transparent')};
-  margin-right: 30px;
-  transition: width 0.3s ease, background-color 0.3s ease;
-
-  ${respondTo('mobile')} {
-    display: none;
-  }
+  justify-content: center;
+  position: absolute;
+  left: ${({ $active }) => ($active ? '12px' : '50%')};
+  transform: ${({ $active }) => ($active ? 'translateX(0)' : 'translateX(-50%)')};
+  transition: left 0.3s ease, transform 0.3s ease;
 `;
 
 export const SearchInput = styled.input`
@@ -57,36 +77,48 @@ export const SearchInput = styled.input`
   border: none;
   outline: none;
   color: white;
-  padding: 13px;
-  width: 100%;
+  padding-left: ${({ $active }) => ($active ? '40px' : '0')};
+  width: ${({ $active }) => ($active ? '100%' : '0')};
+  visibility: ${({ $active }) => ($active ? 'visible' : 'hidden')};
+  transition: width 0.3s ease, padding-left 0.3s ease, visibility 0.3s ease;
   &::placeholder {
-    color: ${color.footertext};
+    color: #aaa;
   }
 `;
 
-// 버튼으로 검색 아이콘과 X 표시를 전환
-export const SearchToggleButton = styled.button`
+export const ClearButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 18px;
+  position: absolute;
+  right: 10px;
 `;
 
 export const UserButton = styled.button`
   background-color: #007bff;
   border: none;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   ${respondTo('mobile')} {
     display: none;
+  }
+`;
+
+export const AuthHeaderContainer = styled.div`
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  .inner {
+    display: flex;
+    align-items: center;
   }
 `;
