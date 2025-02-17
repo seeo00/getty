@@ -4,14 +4,16 @@ import { getTrendingDay, getTrendingWeek } from '../thunks/getTrending';
 const initialState = {
   trendingDayData: [],
   trendingWeekData: [],
-  loading: {
-    day: false,
-    week: false,
-  },
-  error: {
-    day: null,
-    week: null,
-  },
+  loading: false,
+  error: null,
+  // loading: {
+  //   day: false,
+  //   week: false,
+  // },
+  // error: {
+  //   day: null,
+  //   week: null,
+  // },
 };
 
 const trendingSlice = createSlice({

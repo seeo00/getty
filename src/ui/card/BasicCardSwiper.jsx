@@ -13,13 +13,15 @@ const BasicCardSwiper = ({ title, items, rank }) => {
 
   return (
     <S.CardSection>
-      <S.SectionHeader>
-        {title && <h2>{title}</h2>}
-        <button>
-          <span>더보기</span>
-          <ArrowRightIcon size={20} />
-        </button>
-      </S.SectionHeader>
+      {title && (
+        <S.SectionHeader>
+          <h2>{title}</h2>
+          <button>
+            <span>더보기</span>
+            <ArrowRightIcon size={20} />
+          </button>
+        </S.SectionHeader>
+      )}
       <S.CardList>
         <Swiper
           modules={[Navigation]}

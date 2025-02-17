@@ -8,11 +8,14 @@ import { respondTo } from '../../styled/GlobalStyle';
 
 const ContentWrap = styled.div`
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   padding-top: 70px;
-  padding-bottom: 64px;
 
-  ${respondTo('tabletMore')} {
-    padding-bottom: 0px;
+  .main {
+    width: 100%;
+    flex: 1;
   }
 
   ${respondTo('desktop')} {
@@ -30,8 +33,9 @@ const Layout = () => {
         <main className="main">
           <Outlet />
         </main>
-        <Footer />
+        <Footer className="footer" />
       </ContentWrap>
+
       <BottomNav />
     </>
   );

@@ -5,14 +5,16 @@ import { getUpcomingSeries } from '../thunks/getUpcomingSeries';
 const initialState = {
   upcomingSeriesData: [],
   newSeriesData: [],
-  loading: {
-    upcoming: false,
-    new: false,
-  },
-  error: {
-    upcoming: null,
-    new: null,
-  },
+  loading: false,
+  error: null,
+  // loading: {
+  //   upcoming: false,
+  //   new: false,
+  // },
+  // error: {
+  //   upcoming: null,
+  //   new: null,
+  // },
 };
 
 const seriesSlice = createSlice({
