@@ -7,6 +7,7 @@ const StyledInnerContainer = styled.div`
   height: 100%;
   padding: 0 16px;
   margin: 0 auto;
+  overflow-y: auto;
 
   ${respondTo('desktop')} {
     padding: 0 40px;

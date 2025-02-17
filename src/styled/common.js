@@ -46,7 +46,7 @@ export const color = {
 스타일드 컴포넌트 칼라 사용법 
 예시
 export const NavContainer = styled.nav`
-  background-color: ${color.gray[800]} 1e1e1e ;
+  background: ${color.gray[800]} 1e1e1e ;
 	` 
 */
 
