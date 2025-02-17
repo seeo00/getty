@@ -1,4 +1,4 @@
-import { NotesContainer, NoteText } from '../InfoNotes/style';
+import { NotesContainer, NoteText } from '../style';
 
 const InfoNotes = () => {
   return (

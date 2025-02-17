@@ -23,6 +23,15 @@ const activeStyles = css`
 export const Button = styled.button`
   width: ${(props) => props.width || '100%'};
   /* height: ${(props) => props.height || '56px'}; */
+
+  ${(props) =>
+    props.isResponsive &&
+    css`
+      @media (max-width: 1279px) {
+        width: 100%;
+      }
+    `}
+
   display: flex;
   gap: 12px;
   justify-content: center;

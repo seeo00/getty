@@ -2,38 +2,35 @@ import { Outlet } from 'react-router-dom';
 import Footer from '../footer/Footer';
 import styled from 'styled-components';
 import { BottomNav } from '../bottomnav/BottomNav';
+import SideNavMobile from '../nav/SideNavMobile';
 import { Header } from '../header/Header';
-import { useSelector } from 'react-redux';
-import { respondTo } from '../../styled/GlobalStyle';
+import { color } from '../../styled/common';
 
-const ContentWrap = styled.div`
+const AppContainer = styled.div`
+  display: flex;
   width: 100%;
-  padding-top: 70px;
-  padding-bottom: 64px;
+  flex-direction: column;
+  min-height: 100vh;
+`;
 
-  ${respondTo('tabletMore')} {
-    padding-bottom: 0px;
-  }
-
-  ${respondTo('desktop')} {
-    padding-left: ${({ $isCollapsed }) => ($isCollapsed ? '104px' : '256px')};
-  }
+const Content = styled.main`
+  flex: 1;
+  background: ${color.gray[800]};
+  color: #fff;
 `;
 
 const Layout = () => {
-  const { isCollapsed } = useSelector((state) => state.mainR);
-
   return (
-    <>
-      <Header />
-      <ContentWrap $isCollapsed={isCollapsed}>
-        <main className="main">
-          <Outlet />
-        </main>
-        <Footer />
-      </ContentWrap>
-      <BottomNav />
-    </>
+    <AppContainer className="wrap">
+      <Header className="Header" />
+      <BottomNav className="BottomNav" />
+      <SideNavMobile />
+      <Content className="main">
+        {/* 라우터 페이지들어오기  */}
+        <Outlet />
+      </Content>
+      <Footer />
+    </AppContainer>
   );
 };
 
