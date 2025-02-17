@@ -195,9 +195,11 @@ export const NameInputWrapper = styled.div`
   width: 100%;
   max-width: 358px;
   margin-bottom: 64px;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
+
   ${respondTo('tablet')} {
     max-width: 536px;
     margin-bottom: 148px;
@@ -208,23 +210,14 @@ export const NameInputWrapper = styled.div`
   }
 `;
 
-export const NameInput = styled.input`
-  width: 100%;
-  height: 53px;
-  background-color: ${color.gray[600]};
-  border: 1px solid ${color.gray[500]};
-  border-radius: 8px;
-  color: ${color.white};
-  padding: 0 15px;
-  font-size: 16px;
+export const ErrorAlertWrapper = styled.div`
+  background: transparent;
+  position: absolute;
+  top: 42px;
+  left: -14px;
 
-  &::placeholder {
-    color: ${color.gray[400]};
-  }
-
-  &:focus {
-    outline: none;
-    border-color: ${color.primary[300]};
+  * {
+    background: transparent !important;
   }
 `;
 
@@ -248,14 +241,79 @@ export const EditIconOverlay = styled.label`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  justify-content: center; // 중앙 정렬
+  align-items: center;
   gap: 16px;
+  height: 36px;
   margin-bottom: 373px;
 
   ${respondTo('tablet')} {
+    min-width: 106px;
+    height: 54px;
     margin-bottom: 453px;
   }
 
   ${respondTo('desktop')} {
+    min-width: 106px;
+    height: 54px;
     margin-bottom: 255px;
   }
+`;
+// MODAL
+export const ModalOverlay = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+export const ModalContainer = styled.div`
+  background-color: ${color.gray[500]};
+  border-radius: 16px;
+  padding: 24px;
+  width: 376px;
+  height: 238px;
+  ${respondTo('tablet')} {
+  }
+  ${respondTo('desktop')} {
+    width: 500px;
+    height: 334px;
+  }
+`;
+
+export const ModalTitle = styled.h2`
+  color: ${color.white};
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 8px;
+  text-align: center;
+  ${respondTo('tablet')} {
+  }
+  ${respondTo('desktop')} {
+    font-size: 20px;
+  }
+`;
+
+export const ModalDescription = styled.p`
+  color: ${color.gray[20]};
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 24px;
+  ${respondTo('tablet')} {
+  }
+  ${respondTo('desktop')} {
+    font-size: 14px;
+  }
+`;
+
+export const ModalButtonWrapper = styled.div`
+  display: flex;
+  gap: 16px;
+  justify-content: center;
 `;
