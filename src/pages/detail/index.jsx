@@ -5,25 +5,13 @@ import { Button } from '../../ui/Button';
 import CircleButton from '../../ui/CircleButton';
 import CloseIcon from '../../ui/icon/CloseIcon';
 import FavoriteIcon from '../../ui/icon/FavoriteIcon';
-import NavPopluarIcon from '../../ui/icon/NavPopluarIcon';
+
 import VideoPlayIcon from '../../ui/icon/VideoPlayIcon';
 import * as S from './style';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getDetails } from '../../store/modules/thunks/getDetails';
-import DetailTabButtons from '../../ui/button/TapButton';
-import DetailCard from '../../components/detail/DetailCard';
-import styled from 'styled-components';
-// 수정한 Thumbnail 컴포넌트를 불러옵니다.
-import Thumbnail from '../../ui/card/Thumbnail';
-import SeasonDropdown from '../../ui/button/DropdownSelectButton';
-
-export const VisualWrap = styled.div`
-  position: relative;
-  height: 60%;
-  background-color: #555;
-  overflow-y: hidden;
-`;
+import { NavPopularIcon } from '../../ui/icon';
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -59,7 +47,7 @@ const Detail = () => {
                 <span className="icon-txt">관심</span>
               </CircleButton>
               <CircleButton border>
-                <NavPopluarIcon fill={color.yellow} color={color.yellow} />
+                <NavPopularIcon fill={color.yellow} color={color.yellow} />
                 <span className="icon-txt">평점</span>
               </CircleButton>
             </S.ButtonControl>

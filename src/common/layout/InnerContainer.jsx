@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { respondTo } from '../../styled/GlobalStyle';
 
-export const StyledInnerContainer = styled.div`
+const StyledInnerContainer = styled.div`
   max-width: ${({ $maxWidth }) => $maxWidth || '1480px'};
   width: 100%;
   height: 100%;
@@ -14,6 +14,10 @@ export const StyledInnerContainer = styled.div`
   }
 `;
 
-export const InnerContainer = ({ children, maxWidth }) => {
-  return <StyledInnerContainer $maxWidth={maxWidth}>{children}</StyledInnerContainer>;
+export const InnerContainer = ({ children, className, maxWidth }) => {
+  return (
+    <StyledInnerContainer className={className} $maxWidth={maxWidth}>
+      {children}
+    </StyledInnerContainer>
+  );
 };

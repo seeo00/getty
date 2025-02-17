@@ -1,41 +1,74 @@
 import styled from 'styled-components';
+import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
 
-export const CardWrap = styled.div`
-  background: ${color.gray[800]};
-  max-width: 100%;
-  min-height: 100%;
+export const CardSection = styled.section`
+  width: 100%;
+  position: relative;
+  /* .circle {
+    top: calc(50% - 8%);
+  } */
+  /* .wide {
+    top: calc(50% - 12px);
+  } */
+  .play {
+    top: calc(50% - 22.5px);
+  }
+`;
 
-  .inner {
-    max-width: 100%;
-    /* 높이를 고정하지 않고 콘텐츠에 따라 늘어나게 수정 */
-    min-height: 400px;
-    margin: 0 auto;
-    padding: 40px;
-    background: ${color.gray[80]};
-    border-radius: 8px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+export const SectionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 1.125rem;
+
+  button {
+    font-size: 0.875rem;
+    color: ${color.gray[70]};
+    span {
+      display: none;
+    }
   }
 
-  /* 헤더 영역 (h2와 버튼 감싸는 컨테이너) */
-  .header {
-    margin-bottom: 40px;
-    /* background: ${color.primary[100]};  */
+  ${respondTo('desktop')} {
+    margin-bottom: 20px;
+    h2 {
+      font-size: 1.5rem;
+      letter-spacing: -0.28px;
+    }
+    button {
+      span {
+        display: block;
+      }
+    }
   }
+`;
 
-  /* 제목 스타일 */
-  .header h2 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin: 0 0 20px 0;
-    text-align: left;
-    color: ${color.white};
+export const CardList = styled.div`
+  position: relative;
+  .swiper {
+    overflow: visible;
+    ${respondTo('desktop')} {
+      overflow: hidden;
+    }
   }
+`;
 
-  /* 본문 스타일 */
-  p {
-    text-align: center;
-    font-size: 18px;
-    color: ${color.footertext};
+export const NavButton = styled.button`
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 10;
+  ${(props) => (props.$position === 'left' ? 'left: -42px;' : 'right: -42px;')};
+  transition: all 0.3s ease;
+  ${respondTo('desktop')} {
+    display: block;
+  }
+  &.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: default;
   }
 `;
