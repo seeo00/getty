@@ -16,6 +16,7 @@ import DetailCard from '../../components/detail/DetailCard';
 import styled from 'styled-components';
 // 수정한 Thumbnail 컴포넌트를 불러옵니다.
 import Thumbnail from '../../ui/card/Thumbnail';
+import SeasonDropdown from '../../ui/button/DropdownSelectButton';
 
 export const VisualWrap = styled.div`
   position: relative;
@@ -37,6 +38,9 @@ const Detail = () => {
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>에러가 발생했습니다</div>;
   if (!detailsData) return null;
+
+  //시즌 데이터 필요
+  const seasonList = ['시즌 1', '시즌 2', '시즌 3'];
 
   return (
     <S.Overlay>
@@ -61,8 +65,7 @@ const Detail = () => {
             </S.ButtonControl>
           </S.VisualContent>
         </VisualWrap>
-        <S.ButtonWrap onClick={() => navigate(-1)}>
-          {/* navigate로 이전페이지로 보냈더니 추천콘텐츠에서 추천콘텐츠로 이동시 이전 추천콘텐츠로 돌아가는 현상 해결해야함   */}
+        <S.ButtonWrap onClick={() => navigate('/category/genre')}>
           <CircleButton size="56px" bgColor={color.primary[300]}>
             <CloseIcon width={36} height={36} />
           </CircleButton>
@@ -70,6 +73,11 @@ const Detail = () => {
         <S.ContentWrap>
           <InnerContainer>
             <DetailCard />
+            <SeasonDropdown
+              seasons={seasonList}
+              defaultSeason={seasonList[0]}
+              onSelect={(season) => console.log(season)}
+            />
             <DetailTabButtons />
           </InnerContainer>
         </S.ContentWrap>

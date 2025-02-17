@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CustomIcon = ({ width = 16, height = 16, ...props }) => {
+const AdultsIcon = ({ width = 16, height = 16, ...props }) => {
   return (
     <svg
       width={width}
@@ -27,4 +27,4 @@ const CustomIcon = ({ width = 16, height = 16, ...props }) => {
   );
 };
 
-export default CustomIcon;
+export default AdultsIcon;

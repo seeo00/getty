@@ -102,13 +102,26 @@ export const VisualContent = styled.div`
 `;
 
 export const TitleImg = styled.div`
-  font-size: 50px;
-  font-weight: 700;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-  /* 이미지 없을때 텍스트 */
+  display: none;
 
-  margin-bottom: 40px;
-  /* background-color: blue; */
+  ${respondTo('tabletMore')} {
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    /* 이미지 없을때 텍스트 */
+    margin-bottom: 40px;
+    /* background-color: blue; */
+  }
+  ${respondTo('laptop')} {
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+    /* 이미지 없을때 텍스트 */
+    margin-bottom: 40px;
+    /* background-color: blue; */
+  }
 `;
 
 export const ButtonControl = styled.div`

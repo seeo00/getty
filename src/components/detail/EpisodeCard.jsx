@@ -2,7 +2,16 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getDetails } from '../../store/modules/thunks/getDetails';
-import { EpiContainer, FlexContainer, Image, Title, Overview, IconWrapper, ImageWrapper } from './style';
+import {
+  EpiContainer,
+  FlexContainer,
+  PaddingContainer,
+  Image,
+  Title,
+  Overview,
+  IconWrapper,
+  ImageWrapper,
+} from './style';
 import PreviewPlayIcon from '../../ui/icon/PreviewPlayIcon';
 import { color } from '../../styled/common';
 
@@ -32,13 +41,13 @@ const EpisodeCard = () => {
             <PreviewPlayIcon width={48} height={48} stroke={color.white} />
           </IconWrapper>
         </ImageWrapper>
-        <div>
+        <PaddingContainer>
           <Title>
             <span>{detail.title || detail.name}</span>
             <span>{detail.runtime}</span>
           </Title>
           <Overview>{detail.overview}</Overview>
-        </div>
+        </PaddingContainer>
       </FlexContainer>
     </EpiContainer>
   );
