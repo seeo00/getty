@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
 import * as S from '../style';
 import { useCallback, useEffect, useState } from 'react';
-import { getDrama } from '../../../../store/modules/thunks/getDrama';
-import { dramaActions } from '../../../../store/modules/slices/dramaSlice';
-import useInfiniteScroll from '../../../../hooks/useInfiniteScroll.js';
-import { CategoryButtons, MediaContents } from '../../../../components/index.jsx';
+import { getDrama } from '../../../store/modules/thunks/getDrama';
+import { dramaActions } from '../../../store/modules/slices/dramaSlice';
+import useInfiniteScroll from '../../../hooks/useInfiniteScroll.js';
+import { CategoryButtons, ContentList } from '../../../components/index.jsx';
 
 const Drama = () => {
   const { dramaData, currentCategory, loading, error, currentPage, hasMore } = useSelector((state) => state.dramaR);
@@ -66,7 +66,7 @@ const Drama = () => {
         currentCategory={currentCategory}
         onCategoryClick={handleCategoryClick}
       />
-      <MediaContents data={dramaData} loading={loading} lastElementRef={lastElementRef} />
+      <ContentList data={dramaData} loading={loading} lastElementRef={lastElementRef} />
     </S.GenreWrap>
   );
 };

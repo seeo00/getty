@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from 'react-redux';
-import * as S from '../style';
+import * as S from '../style.js';
 import { useCallback, useEffect, useState } from 'react';
-import useInfiniteScroll from '../../../../hooks/useInfiniteScroll.js';
-import { getAnimation } from '../../../../store/modules/thunks/getAnimation';
-import { animationActions } from '../../../../store/modules/slices/animationSlice';
-import { CategoryButtons, MediaContents } from '../../../../components/index.jsx';
+import useInfiniteScroll from '../../../hooks/useInfiniteScroll.js.js';
+import { getAnimation } from '../../../store/modules/thunks/getAnimation.js';
+import { animationActions } from '../../../store/modules/slices/animationSlice.js';
+import { CategoryButtons, ContentList } from '../../../components/index.jsx';
 
 const Animation = () => {
   const { animationData, currentCategory, loading, error, currentPage, hasMore } = useSelector(
@@ -66,7 +66,7 @@ const Animation = () => {
         currentCategory={currentCategory}
         onCategoryClick={handleCategoryClick}
       />
-      <MediaContents data={animationData} loading={loading} lastElementRef={lastElementRef} />
+      <ContentList data={animationData} loading={loading} lastElementRef={lastElementRef} />
     </S.GenreWrap>
   );
 };

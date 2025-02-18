@@ -44,10 +44,13 @@ export const Header = () => {
               <MenuIcon />
             </button>
             <h1>
-              <Link to={'/'}>
-                로고이미지자리
-                <span className="blind">로고</span>
-              </Link>
+              <S.Logo to={'/'}>
+                <img
+                  src="https://raw.githubusercontent.com/seeo00/project-image-storage/fbc71b631d8e6979cde5486414b5c1b2781dc621/images/logo/2.line.svg"
+                  alt="getty"
+                />
+                <span className="blind">게티</span>
+              </S.Logo>
             </h1>
           </S.LeftContainer>
           <S.RightContainer>

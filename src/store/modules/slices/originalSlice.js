@@ -2,9 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { originalData } from '../../../assets/api/originalData';
 
 const initialState = {
-  // originalMovieData,
-  // originalSeriesData,
-  originalData,
+  originalData: originalData,
 };
 
 const originalSlice = createSlice({

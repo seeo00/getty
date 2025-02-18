@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  padding-top: 150%;
+  padding-top: ${({ $aspectRatio }) => ($aspectRatio === 1 ? '100%' : '150%')};
 `;
 
 const StyledSkeleton = styled(Skeleton)`
@@ -15,9 +15,9 @@ const StyledSkeleton = styled(Skeleton)`
   height: 100% !important;
 `;
 
-export const CardSkeleton = () => {
+export const CardBasicSkeleton = ({ aspectRatio }) => {
   return (
-    <ImageWrapper>
+    <ImageWrapper $aspectRatio={aspectRatio}>
       <StyledSkeleton variant="rectangular" animation="wave" />
     </ImageWrapper>
   );

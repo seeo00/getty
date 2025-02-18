@@ -1,5 +1,15 @@
 import styled from 'styled-components';
-import { respondTo } from '../../../styled/GlobalStyle';
+import { respondTo } from '../../styled/GlobalStyle';
+
+export const GenreWrap = styled.div`
+  margin-bottom: 28px;
+  .inner {
+    padding: 0;
+    ${respondTo('desktop')} {
+      padding: inherit;
+    }
+  }
+`;
 
 export const SectionArea = styled.div`
   padding: 40px 0;

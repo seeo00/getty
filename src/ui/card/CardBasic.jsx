@@ -2,27 +2,16 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { respondTo } from '../../styled/GlobalStyle';
 import { useState } from 'react';
-import { CardSkeleton } from '../LoadingSkeleton';
+import { CardBasicSkeleton } from '../LoadingSkeleton';
 
 const CardWrap = styled(Link)`
   display: block;
   position: relative;
-  /* &.flexcard {
-    flex-basis: calc(33.3333% - (16px / 3));
-
-    ${respondTo('tabletMore')} {
-      flex-basis: calc(20% - (32px / 5));
-    }
-
-    ${respondTo('desktop')} {
-      flex-basis: calc(20% - (48px / 5));
-    }
-  } */
 `;
 
 const CardItem = styled.div`
   display: block;
-  aspect-ratio: ${({ aspectRatio }) => (aspectRatio === 1 ? '1 / 1' : '2 / 3')};
+  aspect-ratio: ${({ $aspectRatio }) => ($aspectRatio === 1 ? '1 / 1' : '2 / 3')};
   overflow: hidden;
   border-radius: 8px;
   img {
@@ -54,8 +43,8 @@ const CardBasic = ({ item, rank, aspectRatio, className }) => {
 
   return (
     <CardWrap to={'/'} className={className}>
-      <CardItem aspectRatio={aspectRatio}>
-        {!imageLoaded && <CardSkeleton />}
+      <CardItem $aspectRatio={aspectRatio}>
+        {!imageLoaded && <CardBasicSkeleton aspectRatio={aspectRatio} />}
         <img
           src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
           alt={item.title || item.name}

@@ -1,10 +1,10 @@
 import { InnerContainer } from '../../common/layout/InnerContainer';
 import CardBasic from '../../ui/card/CardBasic';
-import { CardSkeleton } from '../../ui/LoadingSkeleton';
+import { CardBasicSkeleton } from '../../ui/LoadingSkeleton';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import * as S from './style';
 
-const MediaContents = ({ data = [], loading, lastElementRef }) => {
+const ContentList = ({ data = [], loading, lastElementRef }) => {
   return (
     <InnerContainer>
       {loading && data.length === 0 ? (
@@ -18,11 +18,11 @@ const MediaContents = ({ data = [], loading, lastElementRef }) => {
           ))}
           {loading && data.length > 0 && (
             <>
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
-              <CardSkeleton />
+              <CardBasicSkeleton />
+              <CardBasicSkeleton />
+              <CardBasicSkeleton />
+              <CardBasicSkeleton />
+              <CardBasicSkeleton />
             </>
           )}
         </S.ContentArea>
@@ -31,4 +31,4 @@ const MediaContents = ({ data = [], loading, lastElementRef }) => {
   );
 };
 
-export default MediaContents;
+export default ContentList;
