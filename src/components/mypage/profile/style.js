@@ -268,7 +268,7 @@ export const ButtonWrapper = styled.div`
       height: 54px;
     }
   }
-  & > button:first-of-type:not(:last-child) {
+  & > button:first-of-type:nth-last-of-type(3) {
     margin-right: auto;
   }
 `;
