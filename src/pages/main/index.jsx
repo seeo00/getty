@@ -1,12 +1,11 @@
 import * as S from './style';
 import { InnerContainer } from '../../common/layout/InnerContainer';
 import { originalData } from '../../assets/api/originalData';
-import BasicCardSwiper from '../../ui/card/BasicCardSwiper';
+import { BannerSwiper, TextContent } from '../../components';
 import CircleCardSwiper from '../../ui/card/CircleCardSwiper';
 import WideCardSwiper from '../../ui/card/WideCardSwiper';
 import PlayCardSwiper from '../../ui/card/PlayCardSwiper';
-import TextContent from '../../components/main/TextContent';
-import { BannerSwiper } from '../../components/main/BannerSwiper';
+import BasicCardSwiper from '../../ui/card/BasicCardSwiper';
 
 const Main = () => {
   const filteredData = originalData.filter((item) => item.logo);

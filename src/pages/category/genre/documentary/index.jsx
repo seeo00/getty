@@ -2,10 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as S from '../style';
 import { useCallback, useEffect, useState } from 'react';
 import useInfiniteScroll from '../../../../hooks/useInfiniteScroll.js';
-import CategoryButtons from '../../../../components/category/CategoryButtons.jsx';
-import MediaContents from '../../../../components/category/MediaContents.jsx';
 import { getDocumentary } from '../../../../store/modules/thunks/getDocumentary.js';
 import { documentaryActions } from '../../../../store/modules/slices/documentarySlice.js';
+import { CategoryButtons, MediaContents } from '../../../../components/index.jsx';
 
 const Documentary = () => {
   const { documentaryData, currentCategory, loading, error, currentPage, hasMore } = useSelector(

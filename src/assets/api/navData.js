@@ -15,7 +15,7 @@ export const navData = [
     id: 1,
     text: '홈',
     icon: NavHomeIcon,
-    link: '/home',
+    link: '/',
   },
   {
     id: 2,

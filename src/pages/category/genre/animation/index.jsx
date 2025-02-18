@@ -2,10 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as S from '../style';
 import { useCallback, useEffect, useState } from 'react';
 import useInfiniteScroll from '../../../../hooks/useInfiniteScroll.js';
-import CategoryButtons from '../../../../components/category/CategoryButtons.jsx';
-import MediaContents from '../../../../components/category/MediaContents.jsx';
-import { getAnimation } from '../../../../store/modules/thunks/getAnimation.js';
-import { animationActions } from '../../../../store/modules/slices/animationSlice.js';
+import { getAnimation } from '../../../../store/modules/thunks/getAnimation';
+import { animationActions } from '../../../../store/modules/slices/animationSlice';
+import { CategoryButtons, MediaContents } from '../../../../components/index.jsx';
 
 const Animation = () => {
   const { animationData, currentCategory, loading, error, currentPage, hasMore } = useSelector(

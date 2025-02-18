@@ -2,10 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as S from '../style';
 import { useCallback, useEffect, useState } from 'react';
 import useInfiniteScroll from '../../../../hooks/useInfiniteScroll.js';
-import CategoryButtons from '../../../../components/category/CategoryButtons.jsx';
-import MediaContents from '../../../../components/category/MediaContents.jsx';
 import { getReality } from '../../../../store/modules/thunks/getReality';
 import { realityActions } from '../../../../store/modules/slices/realitySlice';
+import { CategoryButtons, MediaContents } from '../../../../components/index.jsx';
 
 const Reality = () => {
   const { realityData, currentCategory, loading, error, currentPage, hasMore } = useSelector((state) => state.realityR);

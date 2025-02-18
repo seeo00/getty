@@ -4,8 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getDrama } from '../../../../store/modules/thunks/getDrama';
 import { dramaActions } from '../../../../store/modules/slices/dramaSlice';
 import useInfiniteScroll from '../../../../hooks/useInfiniteScroll.js';
-import CategoryButtons from '../../../../components/category/CategoryButtons.jsx';
-import MediaContents from '../../../../components/category/MediaContents.jsx';
+import { CategoryButtons, MediaContents } from '../../../../components/index.jsx';
 
 const Drama = () => {
   const { dramaData, currentCategory, loading, error, currentPage, hasMore } = useSelector((state) => state.dramaR);
