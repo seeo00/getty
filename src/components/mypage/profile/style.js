@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
 
 export const Title = styled.h1`
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 400;
   color: ${color.white};
   margin-bottom: 8px;
   text-align: center;
@@ -79,7 +79,7 @@ export const ProfileCircle = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 100%;
-  background-color: ${color.gray[600]};
+  background-color: ${color.gray[300]};
   margin-bottom: ${(props) => (props.$editPage ? '20px' : '8px')};
   display: flex;
   align-items: center;
@@ -152,21 +152,32 @@ export const ProfileName = styled.span`
 `;
 
 export const ProfileButtonWrapper = styled.div`
-  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 40px auto 226px;
-
   ${respondTo('tablet')} {
-    height: 54px;
-    margin: 80px auto 291.5px;
+    margin: 40px auto 371.5px;
+  }
+  ${respondTo('desktop')} {
+    margin: 80px auto 296px;
   }
 
-  ${respondTo('desktop')} {
-    height: 54px;
-    margin: 96px auto 296px;
+  & > button {
+    width: 69px;
+    height: 36px;
+
+    ${respondTo('tablet')} {
+      width: 106px;
+      height: 54px;
+    }
+
+    ${respondTo('desktop')} {
+      width: 106px;
+      height: 54px;
+    }
   }
 `;
-
-// 프로필 편집화면
 
 export const ContentWrapper = styled.div`
   display: flex;
@@ -194,7 +205,7 @@ export const PageTitle = styled.h1`
 export const NameInputWrapper = styled.div`
   width: 100%;
   max-width: 358px;
-  margin-bottom: 64px;
+  margin-bottom: 40px;
   position: relative;
   display: flex;
   justify-content: center;
@@ -202,22 +213,11 @@ export const NameInputWrapper = styled.div`
 
   ${respondTo('tablet')} {
     max-width: 536px;
-    margin-bottom: 148px;
+    margin-bottom: 120px;
   }
   ${respondTo('desktop')} {
     max-width: 536px;
-    margin-bottom: 148px;
-  }
-`;
-
-export const ErrorAlertWrapper = styled.div`
-  background: transparent;
-  position: absolute;
-  top: 42px;
-  left: -14px;
-
-  * {
-    background: transparent !important;
+    margin-bottom: 120px;
   }
 `;
 
@@ -225,38 +225,51 @@ export const ProfileImageUpload = styled.div`
   position: relative;
 `;
 
-export const EditIconOverlay = styled.label`
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  background: ${color.primary[300]};
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-`;
+// export const EditIconOverlay = styled.label`
+//   position: absolute;
+//   bottom: 0;
+//   right: 0;
+//   width: 40px;
+//   height: 40px;
+//   background: ${color.primary[300]};
+//   border-radius: 50%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+// `;
 
 export const ButtonWrapper = styled.div`
+  width: 100%;
   display: flex;
-  justify-content: center; // 중앙 정렬
+  justify-content: flex-end;
   align-items: center;
-  gap: 16px;
   height: 36px;
   margin-bottom: 373px;
+  gap: 8px;
 
   ${respondTo('tablet')} {
-    min-width: 106px;
-    height: 54px;
     margin-bottom: 453px;
   }
 
   ${respondTo('desktop')} {
-    min-width: 106px;
-    height: 54px;
     margin-bottom: 255px;
+  }
+  & > button {
+    width: 69px;
+    height: 36px;
+
+    ${respondTo('tablet')} {
+      width: 106px;
+      height: 54px;
+    }
+    ${respondTo('desktop')} {
+      width: 106px;
+      height: 54px;
+    }
+  }
+  & > button:first-of-type:not(:last-child) {
+    margin-right: auto;
   }
 `;
 // MODAL
@@ -276,11 +289,9 @@ export const ModalOverlay = styled.div`
 export const ModalContainer = styled.div`
   background-color: ${color.gray[500]};
   border-radius: 16px;
-  padding: 24px;
   width: 376px;
   height: 238px;
-  ${respondTo('tablet')} {
-  }
+
   ${respondTo('desktop')} {
     width: 500px;
     height: 334px;
@@ -291,24 +302,25 @@ export const ModalTitle = styled.h2`
   color: ${color.white};
   font-size: 18px;
   font-weight: 400;
-  margin-bottom: 8px;
+  margin: 40px 0 8px 0;
   text-align: center;
-  ${respondTo('tablet')} {
-  }
+
   ${respondTo('desktop')} {
     font-size: 20px;
+    margin: 80px 0 16px 0;
   }
 `;
 
 export const ModalDescription = styled.p`
-  color: ${color.gray[20]};
+  color: ${color.white};
   font-size: 12px;
-  text-align: center;
-  margin-bottom: 24px;
-  ${respondTo('tablet')} {
-  }
+  text-align: left;
+  margin-bottom: 40px;
+  padding: 0 54px 0;
+
   ${respondTo('desktop')} {
     font-size: 14px;
+    padding: 0 94px 0;
   }
 `;
 
@@ -316,4 +328,16 @@ export const ModalButtonWrapper = styled.div`
   display: flex;
   gap: 16px;
   justify-content: center;
+  align-items: center;
+  & > button {
+    width: 140px;
+    height: 50px;
+    margin-bottom: 40px;
+    ${respondTo('desktop')} {
+      width: 154px;
+      height: 50px;
+      gap: 32px;
+      margin-bottom: 80px;
+    }
+  }
 `;

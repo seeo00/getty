@@ -14,11 +14,9 @@ import {
   NameInputWrapper,
   ProfileImageUpload,
   ButtonWrapper,
-  // ErrorAlertWrapper,
 } from './style';
 import Button from '../../../ui/Button';
 import InputField from '../../../ui/InputField';
-// import ErrorAlert from '../../../ui/ErrorAlert';
 import PencilIcon from '../../../ui/icon/PencilIcon';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
@@ -69,10 +67,10 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
       name: inputValue,
     }));
 
-    // 강제로 onBlur 이벤트 트리거
     const inputElement = e.target;
     if (inputElement) {
-      const blurEvent = new Event('blur', { bubbles: true });
+      // 강제로 에러 메시지 트리거
+      const blurEvent = new FocusEvent('blur', { bubbles: true });
       inputElement.dispatchEvent(blurEvent);
     }
   };
@@ -153,7 +151,7 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
           {profiles.length < maxProfiles && (
             <ProfileItem onClick={handleAddNewProfile}>
               <AddProfileCircle>
-                <span style={{ fontSize: '24px', color: '#989899' }}>+</span>
+                <span style={{ fontSize: '14px', color: '${color.gray[70]}' }}>+</span>
               </AddProfileCircle>
               <ProfileName>프로필 추가</ProfileName>
             </ProfileItem>
@@ -162,7 +160,7 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
 
         {/* 프로필 편집 모드 토글 버튼 */}
         <ProfileButtonWrapper>
-          <Button width="150px" onClick={() => setCurrentMode(currentMode === 'view' ? 'edit' : 'view')}>
+          <Button onClick={() => setCurrentMode(currentMode === 'view' ? 'edit' : 'view')}>
             {currentMode === 'view' ? '프로필 편집' : '완료'}
           </Button>
         </ProfileButtonWrapper>
