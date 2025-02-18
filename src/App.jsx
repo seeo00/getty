@@ -2,6 +2,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import GlobalStyle from './styled/GlobalStyle';
 import { Animation, Auth, Documentary, Drama, Latest, Main, Movie, Original, Popular, Reality } from './pages';
+
 import AuthLayout from './common/layout/AuthLayout';
 import Layout from './common/layout/Layout';
 import MyPage from './pages/mypage';
@@ -18,6 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
+
             {/* <Route path="/category/highlight" element={<Highlight />} /> */}
             <Route path="/category/popular" element={<Popular />} />
             <Route path="/category/latest" element={<Latest />} />
@@ -29,6 +31,7 @@ function App() {
             <Route path="/category/documentary" element={<Documentary />} />
 
             {/* <Route index element={<Main />} /> */}
+
             <Route path="mypage" element={<MyPage />} />
             <Route path="/mypage/subscription" element={<Subscription />} />
             <Route path="/mypage/profile" element={<Profile />} />
