@@ -12,6 +12,12 @@ const StyledInnerContainer = styled.div`
   ${respondTo('desktop')} {
     padding: 0 40px;
   }
+
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 `;
 
 export const InnerContainer = ({ children, className, maxWidth }) => {

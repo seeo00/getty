@@ -31,10 +31,7 @@ const NavDramaIcon = ({ width = 24, height = 24, color = 'currentColor', ...prop
 NavDramaIcon.propTypes = {
   width: PropTypes.number,
   height: PropTypes.number,
-
   color: PropTypes.string,
-
-  color: PropTypes.string, // ✅ 색상 props 추가
 };
 
 export default NavDramaIcon;
