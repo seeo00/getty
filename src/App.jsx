@@ -4,7 +4,7 @@ import GlobalStyle from './styled/GlobalStyle';
 // import Main from './pages/main/index.jsx';
 // import Auth from './pages/auth';
 import MyPage from './pages/mypage';
-// import { Main } from './pages';
+import { Main } from './pages';
 import Auth from './pages/auth';
 import AuthLayout from './common/layout/AuthLayout';
 import Layout from './common/layout/Layout';
@@ -24,7 +24,7 @@ function App() {
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Layout />}>
-            {/* <Route index element={<Main />} /> */}
+            <Route index element={<Main />} />
             <Route path="mypage" element={<MyPage />} />
             <Route path="/mypage/subscription" element={<Subscription />} />
             <Route path="/mypage/profile" element={<Profile />} />
