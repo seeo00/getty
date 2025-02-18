@@ -1,9 +1,9 @@
 import { Outlet } from 'react-router-dom';
-// import Footer from '../footer/Footer';
+import Footer from '../footer/Footer';
 import styled from 'styled-components';
-// import { BottomNav } from '../bottomnav/BottomNav';
-// import SideNavMobile from '../nav/SideNavMobile';
-// import { Header } from '../header/Header';
+import { BottomNav } from '../bottomnav/BottomNav';
+import SideNavMobile from '../nav/SideNavMobile';
+import { Header } from '../header/Header';
 import { color } from '../../styled/common';
 
 const AppContainer = styled.div`
@@ -22,14 +22,14 @@ const Content = styled.main`
 const Layout = () => {
   return (
     <AppContainer className="wrap">
-      {/* <Header className="Header" /> */}
-      {/* <BottomNav className="BottomNav" /> */}
-      {/* <SideNavMobile /> */}
+      <Header className="Header" />
+      <BottomNav className="BottomNav" />
+      <SideNavMobile />
       <Content className="main">
         {/* 라우터 페이지들어오기  */}
         <Outlet />
       </Content>
-      {/* <Footer /> */}
+      <Footer />
     </AppContainer>
   );
 };
