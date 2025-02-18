@@ -131,7 +131,7 @@ export const ProfileCircle = styled.div`
 
 export const AddProfileCircle = styled(ProfileCircle)`
   background-color: transparent;
-  border: 1px solid ${color.gray[600]};
+  border: 1px solid ${color.gray[300]};
 
   &:hover {
     border-color: ${color.primary[300]};
