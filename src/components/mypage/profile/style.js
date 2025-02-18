@@ -7,13 +7,18 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 114px;
+  height: 100vh;
+  overflow-y: hidden;
+  position: fixed;
+  width: 100%;
+  left: 0;
 
   ${respondTo('tablet')} {
-    margin-top: 176.5px;
+    margin-top: 65px;
   }
 
   ${respondTo('desktop')} {
-    margin-top: 296px;
+    margin-top: 200px;
   }
 `;
 
@@ -72,7 +77,7 @@ export const ProfileGrid = styled.div`
 
 export const ProfileItem = styled.div`
   text-align: center;
-  cursor: pointer;
+  cursor: ${(props) => (props.$isAddProfile ? 'pointer' : 'default')};
 `;
 
 export const ProfileCircle = styled.div`
@@ -164,16 +169,16 @@ export const ProfileButtonWrapper = styled.div`
   }
 
   & > button {
-    width: 69px;
+    width: fit-content;
     height: 36px;
 
     ${respondTo('tablet')} {
-      width: 106px;
+      width: fit-content;
       height: 54px;
     }
 
     ${respondTo('desktop')} {
-      width: 106px;
+      width: fit-content;
       height: 54px;
     }
   }
@@ -225,22 +230,9 @@ export const ProfileImageUpload = styled.div`
   position: relative;
 `;
 
-// export const EditIconOverlay = styled.label`
-//   position: absolute;
-//   bottom: 0;
-//   right: 0;
-//   width: 40px;
-//   height: 40px;
-//   background: ${color.primary[300]};
-//   border-radius: 50%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   cursor: pointer;
-// `;
-
 export const ButtonWrapper = styled.div`
   width: 100%;
+  max-width: 358px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -250,21 +242,21 @@ export const ButtonWrapper = styled.div`
 
   ${respondTo('tablet')} {
     margin-bottom: 453px;
+    max-width: 536px;
   }
 
   ${respondTo('desktop')} {
     margin-bottom: 255px;
+    max-width: 536px;
   }
   & > button {
-    width: 69px;
+    width: fit-content;
     height: 36px;
 
     ${respondTo('tablet')} {
-      width: 106px;
       height: 54px;
     }
     ${respondTo('desktop')} {
-      width: 106px;
       height: 54px;
     }
   }
@@ -330,11 +322,10 @@ export const ModalButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   & > button {
-    width: 140px;
+    width: fit-content;
     height: 50px;
     margin-bottom: 40px;
     ${respondTo('desktop')} {
-      width: 154px;
       height: 50px;
       gap: 32px;
       margin-bottom: 80px;

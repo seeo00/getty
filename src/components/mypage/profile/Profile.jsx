@@ -141,7 +141,11 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
         <ProfileGrid>
           {/* 기존 프로필 렌더링 */}
           {profiles.map((profile) => (
-            <ProfileItem key={profile.id} onClick={() => handleProfileSelect(profile)}>
+            <ProfileItem
+              key={profile.id}
+              onClick={() => handleProfileSelect(profile)}
+              style={{ cursor: currentMode === 'edit' ? 'pointer' : 'default' }}
+            >
               <ProfileCircle isEdit={currentMode === 'edit'}>{currentMode === 'edit' && <PencilIcon />}</ProfileCircle>
               <ProfileName>{profile.name}</ProfileName>
             </ProfileItem>
@@ -149,7 +153,7 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
 
           {/* 새 프로필 추가 버튼 */}
           {profiles.length < maxProfiles && (
-            <ProfileItem onClick={handleAddNewProfile}>
+            <ProfileItem onClick={handleAddNewProfile} $isAddProfile={true}>
               <AddProfileCircle>
                 <span style={{ fontSize: '14px', color: '${color.gray[70]}' }}>+</span>
               </AddProfileCircle>
