@@ -417,7 +417,7 @@ export const ModalContainer = styled.div`
 
   ${respondTo('mobile')} {
     width: 320px;
-    height: 430px;
+    height: 380px;
   }
 `;
 
@@ -429,12 +429,12 @@ export const ModalTitle = styled.h2`
   color: ${color.gray[10]};
 
   ${respondTo('tablet')} {
-    margin: 100px auto 50px;
+    margin: 100px auto 40px;
     font-size: 20px;
   }
 
   ${respondTo('mobile')} {
-    margin: 50px auto 30px;
+    margin: 40px auto 30px;
     font-size: 16px;
   }
 `;
@@ -460,14 +460,14 @@ export const SubscriptionCardLeft = styled.div`
   ${respondTo('tablet')} {
     width: 270px;
     height: 190px;
-    margin-left: 110px;
+    margin-left: 60px;
     padding: 20px;
   }
 
   ${respondTo('mobile')} {
     width: 180px;
     height: 130px;
-    margin-left: 40px;
+    margin-left: 15px;
     padding: 10px;
   }
 `;
@@ -486,13 +486,13 @@ export const SubscriptionCardRight = styled.div`
 
   ${respondTo('tablet')} {
     width: 150px;
-    margin-right: 110px;
+    margin-right: 60px;
     padding: 5px;
   }
 
   ${respondTo('mobile')} {
     width: 170px;
-    margin-right: 40px;
+    margin-right: 15px;
     padding: 3px;
   }
 `;
@@ -504,13 +504,13 @@ export const SubscriptionCardTitle = styled.div`
   font-weight: 400;
 
   ${respondTo('tablet')} {
-    font-size: 20px;
-    margin-bottom: 6px;
+    font-size: 22px;
+    margin: 15px 0 6px 15px;
   }
 
   ${respondTo('mobile')} {
-    font-size: 16px;
-    margin-bottom: 4px;
+    font-size: 18px;
+    margin: 5px auto 4px;
   }
 `;
 
@@ -524,7 +524,7 @@ export const SubscriptionRow = styled.div`
   color: ${color.gray[20]};
   width: 100%;
   span:first-child {
-    margin-right: 20px; // 간격 줄임
+    margin-right: 78px; // 간격 줄임
     min-width: 70px;
     flex-shrink: 0; // 축소 방지
   }
@@ -541,7 +541,7 @@ export const SubscriptionRow = styled.div`
     margin-bottom: 6px;
 
     span:first-child {
-      margin-right: 50px;
+      margin: 0 50px 0 15px;
       min-width: 80px;
     }
   }

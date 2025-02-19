@@ -61,7 +61,7 @@ const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
               <span>{plan.nextPaymentDate}</span>
             </SubscriptionRow>
           </SubscriptionCardLeft>
-          <SubscriptionCardRight></SubscriptionCardRight>
+          <SubscriptionCardRight/>
         </SubscriptionCard>
 
         <ButtonWrapper>
