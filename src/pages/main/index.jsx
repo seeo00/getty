@@ -28,11 +28,11 @@ const Main = () => {
       <BannerSwiper />
       <S.SectionArea>
         <InnerContainer maxWidth="1460px" className="inner">
-          <CircleCardSwiper title="오리지널 대표 콘텐츠" items={featuredData} />
-          <BasicCardSwiper title="지금 주목할 신규 콘텐츠" items={trendingWeekData} />
+          <CircleCardSwiper title="오리지널 대표 콘텐츠" items={featuredData} link={'/category/orginal'} />
+          <BasicCardSwiper title="지금 주목할 신규 콘텐츠" items={trendingWeekData} section="trendingWeekData" />
           <BasicCardSwiper title="믿고 보는 에디터 추천작" />
           <BasicCardSwiper title="두근두근 로맨스" items={romanceContent.slice(0, 20)} />
-          <BasicCardSwiper title="오늘의 TOP 20" items={trendingDayData} rank />
+          <BasicCardSwiper title="오늘의 TOP 20" items={trendingDayData} link={'/category/popular'} rank />
           <BasicCardSwiper title="긴장감 넘치는 미스터리" items={mysteryContent.slice(0, 20)} />
 
           <TextContent title="아직 고민 중이신가요?" />

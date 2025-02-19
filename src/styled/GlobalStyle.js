@@ -120,12 +120,22 @@ legend {
   overflow: hidden;
 }
 
-body.nav-open {
+/* body.nav-open {
   overflow: hidden;
   
   .swiper-container {
     overflow: visible !important;
   }
+} */
+
+  body {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+body.nav-open {
+  overflow: hidden;
+  padding-right: var(--scrollbar-width);
 }
 `;
 

@@ -6,8 +6,9 @@ import { useRef } from 'react';
 
 import { ArrowLeftIcon, ArrowRightIcon } from '../icon';
 import CardBasic from './CardBasic';
+import { Link } from 'react-router-dom';
 
-const BasicCardSwiper = ({ title, items, rank }) => {
+const BasicCardSwiper = ({ title, items, rank, section, link }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -16,10 +17,14 @@ const BasicCardSwiper = ({ title, items, rank }) => {
       {title && (
         <S.SectionHeader>
           <h2>{title}</h2>
-          <button>
+          {/* <Link to={`/more?section=${section}&title=${encodeURIComponent(title)}`}>
             <span>더보기</span>
             <ArrowRightIcon size={20} />
-          </button>
+          </Link> */}
+          <Link to={section ? `/more?section=${section}&title=${encodeURIComponent(title)}` : link}>
+            <span>더보기</span>
+            <ArrowRightIcon size={20} />
+          </Link>
         </S.SectionHeader>
       )}
       <S.CardList>
@@ -41,7 +46,7 @@ const BasicCardSwiper = ({ title, items, rank }) => {
           }}
         >
           {items?.map((item, index) => (
-            <SwiperSlide key={item.id || index}>
+            <SwiperSlide key={`${item.id}-${index}`}>
               <CardBasic item={item} rank={rank ? index + 1 : null} />
             </SwiperSlide>
           ))}

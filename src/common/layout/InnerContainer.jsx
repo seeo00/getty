@@ -7,17 +7,17 @@ const StyledInnerContainer = styled.div`
   height: 100%;
   padding: 0 16px;
   margin: 0 auto;
-  overflow-y: auto;
+  //overflow-y: auto;
 
   ${respondTo('desktop')} {
     padding: 0 40px;
   }
 
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE 10+ */
+  /* scrollbar-width: none;
+  -ms-overflow-style: none;
   &::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
+    display: none;
+  } */
 `;
 
 export const InnerContainer = ({ children, className, maxWidth }) => {

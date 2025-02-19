@@ -6,7 +6,7 @@ const AuthHeader = () => {
     <S.AuthHeaderContainer>
       <InnerContainer maxWidth="100%" className="inner">
         <h1>
-          <S.Logo to={'/'} auth>
+          <S.Logo to={'/'} $auth>
             <img
               src="https://raw.githubusercontent.com/seeo00/project-image-storage/fbc71b631d8e6979cde5486414b5c1b2781dc621/images/logo/2.line.svg"
               alt="getty"
