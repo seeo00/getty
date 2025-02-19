@@ -13,6 +13,7 @@ const InfoCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
+	margin-top: 26px;//탭버튼 마진제외
 
   @media (min-width: 768px) {
     flex-wrap: nowrap;
@@ -29,6 +30,11 @@ const PosterContainer = styled.div`
   ${respondTo('laptop')} {
     width: 264px;
     height: 365px;
+    flex-shrink: 0;
+  }
+  ${respondTo('tablet')} {
+    width: 172px;
+    height: 248px;
     flex-shrink: 0;
   }
   ${respondTo('mobile')} {

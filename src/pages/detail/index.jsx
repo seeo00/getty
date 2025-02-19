@@ -59,7 +59,7 @@ const Detail = () => {
               </CircleButton>
             </S.ButtonControl>
           </S.VisualContent>
-          <S.ButtonWrap onClick={() => navigate('/category/genre')}>
+          <S.ButtonWrap onClick={() => navigate('/category/genre/')}>
             <CircleButton size="56px" bgColor={color.primary[300]}>
               <CloseIcon width={36} height={36} />
             </CircleButton>
@@ -68,7 +68,6 @@ const Detail = () => {
         <S.ContentWrap>
           <InnerContainer>
             <DetailCard />
-            {/* EpisodeSection의 이름을 변경하지 않고 그대로 사용 */}
             <DetailTabButtons tvId={detailID} />
           </InnerContainer>
         </S.ContentWrap>

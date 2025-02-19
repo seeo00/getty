@@ -43,35 +43,35 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
   return (
     <>
       <SeasonDropdown
-        seasons={['시즌 1', '시즌 2', '시즌 3']} // 실제 데이터에 맞게 수정
         defaultSeason={`시즌 ${seasonNumber}`}
         onSelect={(selectedSeason) => {
-          // 예: '시즌 2' => '2'
           const newSeason = selectedSeason.replace('시즌 ', '');
           setSeasonNumber(newSeason);
           dispatch(getEpisode({ tvId, seasonNumber: newSeason }));
         }}
       />
       {episodeData.map((episode) => (
-        <EpiContainer key={episode.id}>
-          <FlexContainer>
-            <ImageWrapper>
-              <Image src={`${imageBaseUrl}${episode.still_path}`} alt={episode.name || '에피소드 이미지'} />
-              <IconWrapper>
-                <PreviewPlayIcon width={48} height={48} stroke={color.white} />
-              </IconWrapper>
-            </ImageWrapper>
-            <PaddingContainer>
-              <Title>
-                <span>
-                  {episode.episode_number}화&nbsp;&nbsp;{episode.title || episode.name}
-                </span>
-                {episode.runtime && <span>{episode.runtime}분</span>}
-              </Title>
-              <Overview>{episode.overview}</Overview>
-            </PaddingContainer>
-          </FlexContainer>
-        </EpiContainer>
+     <>
+     	   <EpiContainer key={episode.id}>
+	          <FlexContainer>
+	            <ImageWrapper>
+	              <Image src={`${imageBaseUrl}${episode.still_path}`} alt={episode.name || '에피소드 이미지'} />
+	              <IconWrapper>
+	                <PreviewPlayIcon width={48} height={48} stroke={color.white} />
+	              </IconWrapper>
+	            </ImageWrapper>
+	            <PaddingContainer>
+	              <Title>
+	                <span>
+	                  {episode.episode_number}화&nbsp;&nbsp;{episode.title || episode.name}
+	                </span>
+	                {episode.runtime && <span>{episode.runtime}분</span>}
+	              </Title>
+	              <Overview>{episode.overview}</Overview>
+	            </PaddingContainer>
+	          </FlexContainer>
+	        </EpiContainer>
+     </>
       ))}
     </>
   );
