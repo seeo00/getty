@@ -5,14 +5,16 @@ import { getUpcomingSeries } from '../thunks/getUpcomingSeries';
 const initialState = {
   upcomingSeriesData: [],
   newSeriesData: [],
-  loading: {
-    upcoming: false,
-    new: false,
-  },
-  error: {
-    upcoming: null,
-    new: null,
-  },
+  loading: false,
+  error: null,
+  // loading: {
+  //   upcoming: false,
+  //   new: false,
+  // },
+  // error: {
+  //   upcoming: null,
+  //   new: null,
+  // },
 };
 
 const seriesSlice = createSlice({
@@ -24,30 +26,30 @@ const seriesSlice = createSlice({
 
       // getNewSeries
       .addCase(getNewSeries.pending, (state) => {
-        state.loading.new = true;
-        state.error.new = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getNewSeries.fulfilled, (state, action) => {
-        state.loading.new = false;
+        state.loading = false;
         state.newSeriesData = action.payload;
       })
       .addCase(getNewSeries.rejected, (state, action) => {
-        state.loading.new = false;
-        state.error.new = action.error.message;
+        state.loading = false;
+        state.error = action.error.message;
       })
 
       // getUpcomingSeries
       .addCase(getUpcomingSeries.pending, (state) => {
-        state.loading.upcoming = true;
-        state.error.upcoming = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getUpcomingSeries.fulfilled, (state, action) => {
-        state.loading.upcoming = false;
+        state.loading = false;
         state.upcomingSeriesData = action.payload;
       })
       .addCase(getUpcomingSeries.rejected, (state, action) => {
-        state.loading.upcoming = false;
-        state.error.upcoming = action.error.message;
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

@@ -4,14 +4,16 @@ import { getTrendingDay, getTrendingWeek } from '../thunks/getTrending';
 const initialState = {
   trendingDayData: [],
   trendingWeekData: [],
-  loading: {
-    day: false,
-    week: false,
-  },
-  error: {
-    day: null,
-    week: null,
-  },
+  loading: false,
+  error: null,
+  // loading: {
+  //   day: false,
+  //   week: false,
+  // },
+  // error: {
+  //   day: null,
+  //   week: null,
+  // },
 };
 
 const trendingSlice = createSlice({
@@ -22,30 +24,30 @@ const trendingSlice = createSlice({
     builder
       // 일간 트렌딩
       .addCase(getTrendingDay.pending, (state) => {
-        state.loading.day = true;
-        state.error.day = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getTrendingDay.fulfilled, (state, action) => {
-        state.loading.day = false;
+        state.loading = false;
         state.trendingDayData = action.payload;
       })
       .addCase(getTrendingDay.rejected, (state, action) => {
-        state.loading.day = false;
-        state.error.day = action.error.message;
+        state.loading = false;
+        state.error = action.error.message;
       })
 
       // 주간 트렌딩
       .addCase(getTrendingWeek.pending, (state) => {
-        state.loading.week = true;
-        state.error.week = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getTrendingWeek.fulfilled, (state, action) => {
-        state.loading.week = false;
+        state.loading = false;
         state.trendingWeekData = action.payload;
       })
       .addCase(getTrendingWeek.rejected, (state, action) => {
-        state.loading.week = false;
-        state.error.week = action.error.message;
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });
