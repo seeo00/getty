@@ -6,7 +6,11 @@ export const FooterContainer = styled.footer``;
 
 export const FooterInner = styled.div`
   border-top: 1px solid ${color.gray[500]};
-  padding: 20px 0;
+  padding: 20px 0 84px 0;
+
+  ${respondTo('tabletMore')} {
+    padding: 20px 0;
+  }
 
   ul {
     display: flex;

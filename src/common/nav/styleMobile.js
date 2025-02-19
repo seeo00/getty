@@ -25,7 +25,7 @@ export const NavContainer = styled.nav`
     padding: 16px 0;
     gap: 10px;
     justify-content: flex-start;
-    transition: color 0.3s;
+    //transition: color 0.3s;
     &:hover {
       color: ${color.white};
     }

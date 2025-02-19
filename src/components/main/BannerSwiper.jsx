@@ -91,6 +91,7 @@ export const BannerSwiper = () => {
           centeredSlides={true}
           observer={true}
           observeParents={true}
+          resizeObserver={true}
           navigation={{
             prevEl: prevRef.current,
             nextEl: nextRef.current,
@@ -134,3 +135,5 @@ export const BannerSwiper = () => {
     </S.BannerWrap>
   );
 };
+
+export default BannerSwiper;

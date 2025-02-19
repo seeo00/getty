@@ -41,7 +41,7 @@ export const NavContainer = styled.nav`
     align-items: center;
     justify-content: flex-start;
     gap: ${(props) => (props.isCollapsed ? '4px' : '12px')};
-    transition: color 0.3s;
+    //transition: color 0.3s;
     &:hover {
       color: ${color.white};
     }
