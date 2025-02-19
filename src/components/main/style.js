@@ -86,7 +86,7 @@ export const TextList = styled.ul`
     gap: 12px;
     height: 52px;
     border-bottom: 1px solid ${color.gray[70]};
-    transition: color 0.3s;
+    //transition: color 0.3s;
     &:hover {
       color: ${color.white};
     }

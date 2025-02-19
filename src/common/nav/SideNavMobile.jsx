@@ -11,11 +11,30 @@ export const SideNavMobile = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // 스크롤바 너비 계산
+    const getScrollbarWidth = () => {
+      const outer = document.createElement('div');
+      outer.style.visibility = 'hidden';
+      outer.style.overflow = 'scroll';
+      document.body.appendChild(outer);
+
+      const inner = document.createElement('div');
+      outer.appendChild(inner);
+
+      const scrollbarWidth = outer.offsetWidth - inner.offsetWidth;
+      outer.parentNode.removeChild(outer);
+
+      return scrollbarWidth;
+    };
+
     if (isOpen) {
+      // CSS 변수로 스크롤바 너비 설정
+      document.documentElement.style.setProperty('--scrollbar-width', `${getScrollbarWidth()}px`);
       document.body.classList.add('nav-open');
     } else {
       document.body.classList.remove('nav-open');
     }
+
     return () => {
       document.body.classList.remove('nav-open');
     };

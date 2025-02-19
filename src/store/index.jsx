@@ -1,8 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-
 import dramaR from './modules/slices/dramaSlice';
 import documentaryR from './modules/slices/documentarySlice';
-import animaionR from './modules/slices/animationSlice';
+import animationR from './modules/slices/animationSlice';
 import realityR from './modules/slices/realitySlice';
 import movieR from './modules/slices/movieSlice';
 import trendingR from './modules/slices/trendingSlice';
@@ -11,13 +10,14 @@ import originalR from './modules/slices/originalSlice';
 import mainR from './modules/slices/mainSlice';
 import authR from './modules/slices/authSlice';
 import detailsR from './modules/slices/detailsSlice';
+import combinedR from './modules/slices/combinedSlice';
 import episodeR from './modules/slices/episodeSlice';
 
 export const store = configureStore({
   reducer: {
     dramaR,
     documentaryR,
-    animaionR,
+    animationR,
     realityR,
     movieR,
     trendingR,
@@ -26,6 +26,7 @@ export const store = configureStore({
     mainR,
     authR,
     detailsR,
+    combinedR,
     episodeR,
   },
 });

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { respondTo } from '../../styled/GlobalStyle';
+import { useState } from 'react';
+import { CardBasicSkeleton } from '../LoadingSkeleton';
 
 const CardWrap = styled(Link)`
   display: block;
@@ -9,7 +11,7 @@ const CardWrap = styled(Link)`
 
 const CardItem = styled.div`
   display: block;
-  aspect-ratio: 2 / 3;
+  aspect-ratio: ${({ $aspectRatio }) => ($aspectRatio === 1 ? '1 / 1' : '2 / 3')};
   overflow: hidden;
   border-radius: 8px;
   img {
@@ -36,11 +38,19 @@ const RankBadge = styled.div`
   }
 `;
 
-const CardBasic = ({ item, rank }) => {
+const CardBasic = ({ item, rank, aspectRatio, className }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
-    <CardWrap to={'/'}>
-      <CardItem>
-        <img src={`https://image.tmdb.org/t/p//original${item.poster_path}`} alt={item.title || item.name} />
+    <CardWrap to={'/'} className={className}>
+      <CardItem $aspectRatio={aspectRatio}>
+        {!imageLoaded && <CardBasicSkeleton aspectRatio={aspectRatio} />}
+        <img
+          src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+          alt={item.title || item.name}
+          onLoad={() => setImageLoaded(true)}
+          style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}
+        />
       </CardItem>
       {rank && rank <= 20 ? (
         <RankBadge>

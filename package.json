@@ -21,6 +21,7 @@
     "react-icons": "^5.4.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.4",
+    "react-spinners": "^0.15.0",
     "sass": "^1.83.4",
     "scss": "^0.2.4",
     "styled-components": "^6.1.15",

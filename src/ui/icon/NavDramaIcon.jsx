@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 const NavDramaIcon = ({ width = 24, height = 24, color = 'currentColor', ...props }) => {
   return (
     <svg
@@ -19,12 +17,6 @@ const NavDramaIcon = ({ width = 24, height = 24, color = 'currentColor', ...prop
       />
     </svg>
   );
-};
-
-NavDramaIcon.propTypes = {
-  width: PropTypes.number,
-  height: PropTypes.number,
-  color: PropTypes.string, // ✅ 색상 props 추가
 };
 
 export default NavDramaIcon;

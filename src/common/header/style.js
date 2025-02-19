@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
+import { Link } from 'react-router-dom';
+
+export const Logo = styled(Link)`
+  display: block;
+  width: ${(props) => (props.$auth ? '100px' : '78px')};
+`;
 
 export const HeaderContainer = styled.header`
   width: 100%;

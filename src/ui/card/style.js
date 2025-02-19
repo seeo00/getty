@@ -23,12 +23,16 @@ export const SectionHeader = styled.div`
   margin-bottom: 12px;
   font-size: 1.125rem;
 
-  button {
+  a {
+    display: flex;
+    align-items: center;
+  }
+
+  span {
     font-size: 0.875rem;
     color: ${color.gray[70]};
-    span {
-      display: none;
-    }
+
+    display: none;
   }
 
   ${respondTo('desktop')} {
@@ -37,10 +41,9 @@ export const SectionHeader = styled.div`
       font-size: 1.5rem;
       letter-spacing: -0.28px;
     }
-    button {
-      span {
-        display: block;
-      }
+
+    span {
+      display: block;
     }
   }
 `;
@@ -70,5 +73,25 @@ export const NavButton = styled.button`
   &.swiper-button-disabled {
     opacity: 0.3;
     cursor: default;
+  }
+`;
+
+export const ContentArea = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  ${respondTo('desktop')} {
+    gap: 12px;
+  }
+  > div {
+    flex-basis: calc(33.3333% - (16px / 3));
+
+    ${respondTo('tabletMore')} {
+      flex-basis: calc(20% - (32px / 5));
+    }
+
+    ${respondTo('desktop')} {
+      flex-basis: calc(20% - (48px / 5));
+    }
   }
 `;

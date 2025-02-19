@@ -10,16 +10,18 @@ const initialState = {
   currentCategory: 'base',
   currentPage: 1,
   hasMore: true,
-  loading: {
-    movie: false,
-    upcoming: false,
-    new: false,
-  },
-  error: {
-    movie: null,
-    upcoming: null,
-    new: null,
-  },
+  loading: false,
+  error: null,
+  // loading: {
+  //   movie: false,
+  //   upcoming: false,
+  //   new: false,
+  // },
+  // error: {
+  //   movie: null,
+  //   upcoming: null,
+  //   new: null,
+  // },
 };
 
 const movieSlice = createSlice({
@@ -38,46 +40,46 @@ const movieSlice = createSlice({
 
       // getMoive
       .addCase(getMovie.pending, (state) => {
-        state.loading.movie = true;
-        state.error.movie = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getMovie.fulfilled, (state, action) => {
-        state.loading.movie = false;
+        state.loading = false;
         state.movieData = action.payload.movies;
         state.hasMore = action.payload.hasMore;
         state.currentPage = action.payload.currentPage;
       })
       .addCase(getMovie.rejected, (state, action) => {
-        state.loading.movie = false;
-        state.error.movie = action.error.message;
+        state.loading = false;
+        state.error = action.error.message;
       })
 
       // getNewMovie
       .addCase(getNewMovie.pending, (state) => {
-        state.loading.new = true;
-        state.error.new = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getNewMovie.fulfilled, (state, action) => {
-        state.loading.new = false;
+        state.loading = false;
         state.newMovieData = action.payload;
       })
       .addCase(getNewMovie.rejected, (state, action) => {
-        state.loading.new = false;
-        state.error.new = action.error.message;
+        state.loading = false;
+        state.error = action.error.message;
       })
 
       // getUpcomingMovie
       .addCase(getUpcomingMovie.pending, (state) => {
-        state.loading.upcoming = true;
-        state.error.upcoming = null;
+        state.loading = true;
+        state.error = null;
       })
       .addCase(getUpcomingMovie.fulfilled, (state, action) => {
-        state.loading.upcoming = false;
+        state.loading = false;
         state.upcomingMovieData = action.payload;
       })
       .addCase(getUpcomingMovie.rejected, (state, action) => {
-        state.loading.upcoming = false;
-        state.error.upcoming = action.error.message;
+        state.loading = false;
+        state.error = action.error.message;
       });
   },
 });

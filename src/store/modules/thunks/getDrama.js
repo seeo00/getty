@@ -53,7 +53,7 @@ export const getDrama = createAsyncThunk('drama/getDrama', async ({ category, cu
         )
         .map((item) => ({
           ...item,
-          media_type: 'tv', // 모든 아이템에 media_type 추가
+          media_type: 'tv',
         }));
 
       const uniqueResults = [...filteredResults, ...newFilteredResults].filter(

@@ -1,12 +1,14 @@
 import * as S from './style';
-import ResetPasswordStep from '../../components/auth/steps/ResetPasswordStep';
-import SignupCompleteStep from '../../components/auth/steps/SignupCompleteStep';
-import SignupStep from '../../components/auth/steps/SignupStep';
-import EmailStep from '../../components/auth/steps/EmailStep';
-import PasswordStep from '../../components/auth/steps/PasswordStep';
-import ResetCompleteStep from '../../components/auth/steps/ResetCompleteStep';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import {
+  EmailStep,
+  PasswordStep,
+  ResetCompleteStep,
+  ResetPasswordStep,
+  SignupCompleteStep,
+  SignupStep,
+} from '../../components';
 
 const Auth = () => {
   const [currentStep, setCurrentStep] = useState('email');
