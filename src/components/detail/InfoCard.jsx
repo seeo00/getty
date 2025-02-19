@@ -2,12 +2,11 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDrama } from '../../store/modules/thunks/getDrama';
+import { getDetails } from '../../store/modules/thunks/getDetails';
 import { color } from '../../styled/common';
 import PosterCard from '../../ui/card/DetailPoster';
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
-import { FlexContainer, Title, Overview, StyledText } from './style';
 import { respondTo } from '../../styled/GlobalStyle';
+import AdultsIcon from '../../ui/icon/AdultsIcon';
 
 // 전체 InfoCard 컨테이너
 const InfoCardContainer = styled.div`
@@ -18,21 +17,24 @@ const InfoCardContainer = styled.div`
   @media (min-width: 768px) {
     flex-wrap: nowrap;
     align-items: flex-start;
+    flex-direction: row; /* 데스크탑: 원래 순서 */
   }
 `;
-
 // 포스터 컨테이너 (고정 사이즈 114x168px)
 const PosterContainer = styled.div`
   width: 114px;
   height: 168px;
   flex-shrink: 0;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('laptop')} {
     width: 264px;
     height: 365px;
     flex-shrink: 0;
   }
-  ${respondTo('laptop')} {
+  ${respondTo('mobile')} {
+    width: 114px;
+    height: 168px;
+    flex-shrink: 0;
   }
 `;
 
@@ -61,15 +63,6 @@ const TextContainer = styled.div`
     line-height: 24px;
   }
   ${respondTo('laptop')} {
-  }
-`;
-
-// DetailCard와 추가 정보를 감싸는 컨테이너
-const DetailContainer = styled.div`
-  width: 100%;
-
-  @media (min-width: 768px) {
-    width: auto;
   }
 `;
 
@@ -118,61 +111,97 @@ const TextAndDetailWrapper = styled.div`
   }
 `;
 const InfoCard = () => {
-  const { detailType, detailID } = useParams();
   const dispatch = useDispatch();
-  const { dramaData, loading, error } = useSelector((state) => state.dramaR);
+  const { detailType, detailID } = useParams();
+  const { detailsData, loading, error } = useSelector((state) => state.detailsR);
 
   useEffect(() => {
-    if (dramaData.length === 0) {
-      dispatch(getDrama({ category: 'base' }));
+    if (!detailsData) {
+      dispatch(getDetails({ id: detailID, contentType: detailType }));
     }
-  }, [dispatch, dramaData.length]);
+  }, [dispatch, detailsData, detailID, detailType]);
 
-  if (loading && dramaData.length === 0) return <div>로딩중...</div>;
-  if (error && dramaData.length === 0) return <p>데이터를 찾을 수 없습니다.</p>;
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>데이터를 찾을 수 없습니다.</p>;
+  if (!detailsData) return null;
 
-  const drama = dramaData.find((item) => String(item.id) === detailID && item.media_type === detailType);
-  if (!drama) return <p>해당 드라마를 찾을 수 없습니다.</p>;
+  const detail = detailsData;
+  const countryMap = {
+    US: '미국',
+    KR: '한국',
+    JA: '일본',
+    FR: '프랑스',
+    CN: '중국',
+    CA: '캐나다',
+    IN: '인도',
+    NO: '노르웨이',
+    ES: '스페인',
+    DE: '독일',
+    MX: '멕시코',
+    GB: '영국',
+  };
 
-  //데이터 없을시 폴백으로 '정보 없음'표시
+  const originCountry = countryMap[detail.origin_country[0]] || '정보 없음';
+
   return (
-    <InfoCardContainer>
+    <InfoCardContainer key={detail.id}>
       <PosterContainer>
-        <PosterCard posterPath={drama.poster_path} />
+        <PosterCard posterPath={detail.poster_path} />
       </PosterContainer>
       <TextAndDetailWrapper>
         <TextContainer>
-          <h2>{drama.name}</h2>
-          <p>{drama.overview}</p>
+          <h2>{detail.name}</h2>
+          <p>{detail.overview}</p>
         </TextContainer>
         <DetailList>
           <li>
-            <strong>개요:</strong>{' '}
-            {drama.original_language === 'en'
-              ? '미국'
-              : drama.original_language === 'ko'
-              ? '한국'
-              : drama.original_language || '정보 없음'}
-            , <span>{drama.first_air_date ? drama.first_air_date.split('-')[0] : ''}</span>
+            <strong>개요:</strong> {originCountry},{' '}
+            <span>{detail.first_air_date ? detail.first_air_date.split('-')[0] : ''}</span>
           </li>
           <li>
-            <strong>감독:</strong> {drama.director || '정보 없음'}
+            <strong>감독:</strong>{' '}
+            {detail.created_by.map((director, index) => (
+              <span key={director.id}>
+                {director.name}
+                {index < detail.created_by.length - 1 && ', '}
+              </span>
+            ))}
           </li>
           <li>
-            <strong>출연:</strong> {drama.cast || '정보 없음'}
+            <strong>출연:</strong>{' '}
+            {detail.credits.cast.map((actor, index) => (
+              <span key={actor.id}>
+                {actor.name}
+                {index < detail.credits.cast.length - 1 && ', '}
+              </span>
+            ))}
           </li>
           <li>
-            <strong>각본:</strong> {drama.writer || '정보 없음'}
+            <strong>각본:</strong>{' '}
+            {detail.created_by.map((writer, index) => (
+              <span key={writer.id}>
+                {writer.name}
+                {index < detail.created_by.length - 1 && ', '}
+              </span>
+            ))}
           </li>
           <li>
-            <strong>장르:</strong> {drama.genre || '정보 없음'}
+            <strong>장르:</strong>{' '}
+            {detail.genres && detail.genres.length > 0
+              ? detail.genres.map((genre, index) => (
+                  <span key={genre.id}>
+                    {genre.name}
+                    {index < detail.genres.length - 1 && ', '}
+                  </span>
+                ))
+              : '장르 정보 없음'}
           </li>
-          <li>
+          <li style={{ alignItems: 'center' }}>
             <strong>연령 등급:</strong>
-            {drama.adult ? (
-              <FaCheckCircle color="green" style={{ marginLeft: '10px' }} />
+            {detail.adult ? (
+              <AdultsIcon style={{ marginLeft: '10px' }} />
             ) : (
-              <FaTimesCircle color="red" style={{ verticalAlign: 'middle', marginLeft: '10px' }} />
+              <AdultsIcon style={{ marginLeft: '10px' }} />
             )}
           </li>
         </DetailList>

@@ -11,6 +11,7 @@ import originalR from './modules/slices/originalSlice';
 import mainR from './modules/slices/mainSlice';
 import authR from './modules/slices/authSlice';
 import detailsR from './modules/slices/detailsSlice';
+import episodeR from './modules/slices/episodeSlice';
 
 export const store = configureStore({
   reducer: {
@@ -25,5 +26,6 @@ export const store = configureStore({
     mainR,
     authR,
     detailsR,
+    episodeR,
   },
 });

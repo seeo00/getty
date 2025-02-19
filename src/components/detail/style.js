@@ -8,26 +8,37 @@ export const DetailContainer = styled.div`
 
 export const EpiContainer = styled.div`
   padding: 16px;
-  margin: 10px 0 0 0;
+  margin: 10px -16px 0 -16px;
   border-radius: 8px;
   background: ${color.gray[800]};
 
   &:hover {
     background: ${color.gray[300]};
   }
-  ${respondTo('tabletmore')} {
+  ${respondTo('desktop')} {
     padding: 40px;
-    margin: 10px 0 0 0;
+    margin: 10px -40px 0 -40px;
+    border-radius: 8px;
+    background: ${color.gray[800]};
+  }
+  ${respondTo('tablet')} {
+    padding: 40px;
+    margin: 10px -40px 0 -40px;
     border-radius: 8px;
     background: ${color.gray[800]};
   }
 `;
 
 export const PaddingContainer = styled.div`
+  width: 100%;
   padding: 0 0 0 16px;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('desktop')} {
+  }
+
+  ${respondTo('tablet')} {
     padding: 0 0 0 40px;
+    width: 100%;
   }
 `;
 
@@ -43,7 +54,7 @@ export const Image = styled.img`
   height: 95px;
   object-fit: cover;
   border-radius: 16px;
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     width: 269px;
     height: 164px;
     object-fit: cover;
@@ -60,13 +71,13 @@ export const StyledText = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('laptop')} {
+  }
+  ${respondTo('tablet')} {
     display: block;
     -webkit-line-clamp: unset;
     -webkit-box-orient: unset;
     overflow: visible;
-  }
-  ${respondTo('laptop')} {
   }
 `;
 
@@ -84,10 +95,13 @@ export const TitleName = styled.h3`
   font-weight: 500;
   color: ${color.white};
   margin: 0 0 16px 0;
-  ${respondTo('tabletMore')} {
+  ${respondTo('desktop')} {
     display: none;
   }
-  ${respondTo('laptop')} {
+  ${respondTo('tabletmore')} {
+    display: none;
+  }
+  ${respondTo('tablet')} {
     display: none;
   }
 `;
@@ -110,13 +124,13 @@ export const Overview = styled.p`
   -webkit-box-orient: vertical;
   overflow: hidden;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('laptop')} {
+  }
+  ${respondTo('tablet')} {
     display: block;
     -webkit-line-clamp: unset;
     -webkit-box-orient: unset;
     overflow: visible;
-  }
-  ${respondTo('laptop')} {
   }
 `;
 
@@ -158,3 +172,68 @@ export const IconWrapper = styled.div`
 //     margin-left: 4px;
 //   }
 // `;
+
+/* 
+----------------ReviewCard------------------------------- */
+export const ReviewCardContainer = styled.div`
+  padding: 16px 0;
+  border-bottom: 1px solid ${color.gray[500]};
+`;
+
+export const ReviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+`;
+
+export const ReviewLeftSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const StarRatingWrapper = styled.div`
+  /* 별점 버튼 자리 */
+`;
+
+export const AuthorName = styled.span`
+  font-size: 14px;
+  line-height: 20px;
+  color: ${color.gray[70]};
+`;
+
+export const ReviewDate = styled.span`
+  font-size: 12px;
+  line-height: 11px;
+  color: ${color.gray[70]};
+`;
+
+export const ReviewContentWrapper = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
+export const ReviewText = styled.p`
+  font-size: 14px;
+  line-height: 20px;
+  color: ${color.white};
+  margin: 0;
+  ${(props) =>
+    !props.expanded &&
+    `
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  `}
+`;
+
+export const MoreButton = styled.span`
+  font-size: 14px;
+  line-height: 20px;
+  color: ${color.white};
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 4px;
+`;
