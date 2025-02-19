@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { color } from '../../styled/common';
+import { respondTo } from '../../styled/GlobalStyle';
 
 export const PageWrapper = styled.div`
-  background-color: ${color.gray[900]};
   min-height: 100vh;
   max-width: 100vw;
-  overflow-x: hidden; // 가로 스크롤 방지
+  overflow-x: hidden;
 `;
 
 export const ContentWrapper = styled.div`
@@ -14,18 +14,15 @@ export const ContentWrapper = styled.div`
   box-sizing: border-box;
   padding: 74px 0 55px 0;
 
-  @media (min-width: 1280px) {
-    // 데스크탑
+  ${respondTo('desktop')} {
     max-width: 1280px;
   }
 
-  @media (min-width: 744px) and (max-width: 1279px) {
-    // 태블릿
+  ${respondTo('tablet')} {
     max-width: 744px;
   }
 
-  @media (max-width: 743px) {
-    // 모바일
+  ${respondTo('mobile')} {
     max-width: 390px;
   }
 `;
@@ -36,77 +33,116 @@ export const TitleSection = styled.div`
 
 export const MainTitle = styled.h1`
   color: white;
-  font-size: 2rem;
+  font-size: 32px;
   font-weight: 500;
-  margin: 0 0 1.25rem 0;
+  margin: 0 0 20px 0;
 
-  @media (max-width: 1279px) {
-    font-size: 1.25rem;
+  ${respondTo('tablet')} {
+    font-size: 20px;
     font-weight: 300;
     text-align: left;
-    margin: 1.25rem 0 0.75rem 0;
-    padding: 0; // 개별 padding 제거하고 ContentWrapper의 padding 사용
+    margin: 20px 0 12px 0;
+    padding: 0;
+  }
+
+  ${respondTo('mobile')} {
+    font-size: 20px;
+    font-weight: 300;
+    text-align: left;
+    margin: 20px 0 12px 0;
+    padding: 0;
   }
 `;
 
 export const SubTitle = styled.div`
-  color: ${color.white}B3;
-  margin-bottom: 2.5rem;
-  font-size: 1.5rem;
+  color: ${color.white};
+  margin-bottom: 40px;
+  font-size: 24px;
 
-  @media (max-width: 1279px) {
-    font-size: 1rem;
+  ${respondTo('tablet')} {
+    font-size: 16px;
     text-align: left;
-    margin-bottom: 3.75rem;
-    padding: 0; // 개별 padding 제거하고 ContentWrapper의 padding 사용
+    margin-bottom: 60px;
+    padding: 0;
+    display: block;
+  }
+
+  ${respondTo('mobile')} {
+    font-size: 16px;
+    text-align: left;
+    margin-bottom: 60px;
+    padding: 0;
+    display: block;
   }
 `;
 
 export const PlansGrid = styled.div`
-  @media (min-width: 1280px) {
-    // 데스크탑
+  ${respondTo('desktop')} {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    gap: 40px;
   }
 
-  @media (max-width: 1279px) {
-    // 태블릿 & 모바일
+  ${respondTo('tablet')} {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 0; // padding 제거
+    padding: 0;
+    width: 100%;
+  }
+
+  ${respondTo('mobile')} {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
     width: 100%;
   }
 `;
 
 export const ButtonContainer = styled.div`
-  @media (min-width: 1280px) {
-    // 데스크탑
+  ${respondTo('desktop')} {
     display: contents;
   }
 
-  @media (max-width: 1279px) {
-    // 태블릿 & 모바일
+  ${respondTo('tablet')} {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 0.5rem;
+    gap: 10px;
     width: 100%;
-    padding: 0; // 개별 padding 제거하고 ContentWrapper의 padding 사용
-    margin-bottom: 2.375rem;
+    padding: 0;
+    margin-bottom: 38px;
+  }
+
+  ${respondTo('mobile')} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 38px;
   }
 `;
 
 export const MobileContentWrapper = styled.div`
   display: none;
 
-  @media (max-width: 1279px) {
+  ${respondTo('tablet')} {
     display: block;
-    width: 100%; // calc 제거하고 100%로 변경
-    margin: 20px 0 0; // 좌우 마진 제거하고 상단 마진만 유지
+    width: 100%;
+    margin: 20px 0 0;
+  }
+
+  ${respondTo('mobile')} {
+    display: block;
+    width: 100%;
+    margin: 20px 0 0;
   }
 `;
 
@@ -115,19 +151,25 @@ export const NotesContainer = styled.div`
 `;
 
 export const NoteText = styled.div`
-  color: ${color.white}80;
-  font-size: 0.8313rem;
+  color: ${color.gray[200]};
+  font-size: 13.3px;
   line-height: 1.5;
 
   & + & {
-    margin-top: 0.625rem;
+    margin-top: 10px;
   }
 
-  @media (max-width: 1279px) {
-    // 태블릿 & 모바일
-    font-size: 0.75rem;
+  ${respondTo('tablet')} {
+    font-size: 12px;
     & + & {
-      margin-top: 0.75rem;
+      margin-top: 12px;
+    }
+  }
+
+  ${respondTo('mobile')} {
+    font-size: 12px;
+    & + & {
+      margin-top: 12px;
     }
   }
 `;
@@ -142,8 +184,8 @@ export const PlanTitle = styled.h2`
   color: white;
   background: ${(props) =>
     props.isSelected
-      ? 'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)'
-      : color.gray[500]};
+      ? 'radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040FF 0%, #00279C 72%, #00238A 100%) '
+      : color.gray[600]};
   border-radius: 16px;
   transition: background-color 0.3s ease;
   display: flex;
@@ -152,13 +194,12 @@ export const PlanTitle = styled.h2`
 `;
 
 export const CardContainer = styled.div`
-  @media (min-width: 1280px) {
-    // 데스크탑
+  ${respondTo('desktop')} {
     width: 400px;
     height: 748px;
     padding: 10px;
     margin: 0;
-    background-color: #3d3d3d;
+    background-color: ${color.gray[500]};
     border-radius: 16px;
     position: relative;
     overflow: hidden;
@@ -169,14 +210,26 @@ export const CardContainer = styled.div`
     }
 
     &:hover ${PlanTitle} {
-      background: radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%);
+      background: radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040FF 0%, #00279C 72%, #00238A 100%) 
+      );
     }
   }
 
-  @media (max-width: 1279px) {
-    // 태블릿 & 모바일
+  ${respondTo('tablet')} {
     width: 100%;
-    height: 6rem;
+    height: 96px;
+    background: none;
+    padding: 0;
+    box-sizing: border-box;
+
+    .desktop-only {
+      display: none;
+    }
+  }
+
+  ${respondTo('mobile')} {
+    width: 100%;
+    height: 96px;
     background: none;
     padding: 0;
     box-sizing: border-box;
@@ -190,26 +243,153 @@ export const CardContainer = styled.div`
 export const PlanButton = styled.button`
   flex: 1;
   width: 100%;
-  height: 6rem;
+  height: 96px;
   padding: 0;
-  font-size: 1.25rem;
+  font-size: 20px;
   font-weight: 500;
   text-align: center;
   color: white;
   background: ${(props) =>
     props.isSelected
-      ? 'radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%)'
-      : '#494949'};
-  border: none;
+      ? 'radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040FF 0%, #00279C 72%, #00238A 100%) '
+      : '${color.gray[600]}'};
+  border: ${(props) => (props.isSelected ? 'none' : `1px solid ${color.gray[90]}`)};
   border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background: radial-gradient(83.44% 54.97% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%);
+    background: radial-gradient(radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%));
   }
 `;
 
+export const RowContainer = styled.div`
+  ${respondTo('desktop')} {
+    padding: 10px 0 7px 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 330px;
+      height: 2px;
+      background-color: ${color.gray[90]};
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  ${respondTo('tablet')} {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: ${color.gray[90]};
+    }
+  }
+
+  ${respondTo('mobile')} {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: ${color.gray[90]};
+    }
+  }
+`;
+
+export const RowContent = styled.div`
+  ${respondTo('desktop')} {
+    display: flex;
+    margin-left: 39px;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  ${respondTo('tablet')} {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ${respondTo('mobile')} {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+`;
+
+export const Text = styled.span`
+  font-size: 16px;
+  color: ${color.gray[70]};
+  line-height: 1.4;
+
+  ${respondTo('tablet')} {
+    &:last-child {
+      text-align: right;
+    }
+    font-size: 14px;
+  }
+
+  ${respondTo('mobile')} {
+    &:last-child {
+      text-align: right;
+    }
+    font-size: 14px;
+  }
+`;
+
+export const ExtraInfo = styled.div`
+  ${respondTo('desktop')} {
+    font-size: 16px;
+    color: ${color.gray[70]};
+    margin-top: 4px;
+    margin-left: 39px;
+    line-height: 1.4;
+  }
+
+  ${respondTo('tablet')} {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 16px;
+    color: ${color.gray[70]};
+    line-height: 1.4;
+    text-align: right;
+  }
+
+  ${respondTo('mobile')} {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 16px;
+    color: ${color.gray[70]};
+    line-height: 1.4;
+    text-align: right;
+  }
+`;
+
+// MODAL
 export const ModalOverlay = styled.div`
   position: fixed;
   top: 0;
@@ -219,44 +399,43 @@ export const ModalOverlay = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1e1e1e;
+  background-color: ${color.gray[800]};
   backdrop-filter: blur(10px);
   z-index: 50;
 `;
 
 export const ModalContainer = styled.div`
-  width: 43.5rem;
-  height: 46.4375rem;
-  background-color: #494949;
-  border-radius: 1rem;
-  color: white;
+  width: 696px;
+  height: 743px;
+  background-color: ${color.gray[500]};
+  border-radius: 16px;
 
-  @media (min-width: 745px) and (max-width: 1279px) {
-    width: 25rem;
-    height: 28rem;
+  ${respondTo('tablet')} {
+    width: 600px;
+    height: 650px;
   }
 
-  @media (max-width: 744px) {
-    width: 18rem;
-    height: 22rem;
-    min-height: 22rem;
+  ${respondTo('mobile')} {
+    width: 320px;
+    height: 430px;
   }
 `;
 
 export const ModalTitle = styled.h2`
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 400;
-  margin: 7.5rem auto 3.75rem;
+  margin: 120px auto 60px;
+  color: ${color.gray[10]};
 
-  @media (min-width: 745px) and (max-width: 1279px) {
-    margin: 4.3rem auto 2rem;
-    font-size: 0.8rem;
+  ${respondTo('tablet')} {
+    margin: 100px auto 50px;
+    font-size: 20px;
   }
 
-  @media (max-width: 744px) {
-    margin: 3.3rem auto 1.5rem;
-    font-size: 0.5rem;
+  ${respondTo('mobile')} {
+    margin: 50px auto 30px;
+    font-size: 16px;
   }
 `;
 
@@ -268,243 +447,159 @@ export const SubscriptionCard = styled.div`
 
 export const SubscriptionCardLeft = styled.div`
   flex: 3;
-  background-color: rgba(44, 44, 44, 0.5);
-  width: 26.375rem;
-  height: 13.375rem;
-  border-radius: 1rem;
-  margin-left: 5.3125rem;
+  background-color: ${color.gray[100]};
+  width: 422px;
+  height: 214px;
+  border-radius: 16px;
+  margin-left: 85px;
   padding: 40px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px ${color.gray[500]};
   z-index: 1;
 
-  @media (min-width: 745px) and (max-width: 1279px) {
-    width: 272px;
-    height: 128px;
-    margin-left: 56px;
-    padding: 8px;
+  ${respondTo('tablet')} {
+    width: 270px;
+    height: 190px;
+    margin-left: 110px;
+    padding: 20px;
   }
 
-  @media (max-width: 744px) {
-    width: 224px;
-    height: 112px;
-    margin-left: 24px;
-    padding: 40px 6px 40px 40px;
+  ${respondTo('mobile')} {
+    width: 180px;
+    height: 130px;
+    margin-left: 40px;
+    padding: 10px;
   }
 `;
 
 export const SubscriptionCardRight = styled.div`
   flex: 1;
-  background-color: rgba(44, 44, 44, 0.5);
+  background-color: ${color.gray[100]};
   width: 103px;
   border-radius: 16px;
   margin-right: 86px;
   padding: 16px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 4px ${color.gray[500]};
   position: relative;
   left: -1px;
 
-  @media (min-width: 745px) and (max-width: 1279px) {
-    width: 64px;
-    margin-right: 56px;
-    padding: 8px;
+  ${respondTo('tablet')} {
+    width: 150px;
+    margin-right: 110px;
+    padding: 5px;
   }
 
-  @media (max-width: 744px) {
-    width: 48px;
-    margin-right: 24px;
+  ${respondTo('mobile')} {
+    width: 170px;
+    margin-right: 40px;
+    padding: 3px;
   }
 `;
 
 export const SubscriptionCardTitle = styled.div`
   margin-bottom: 8px;
+  color: ${color.gray[10]};
   font-size: 24px;
   font-weight: 400;
 
-  @media (min-width: 745px) and (max-width: 1279px) {
+  ${respondTo('tablet')} {
     font-size: 20px;
-    margin-top: 8px;
-    margin-left: 10px;
+    margin-bottom: 6px;
   }
 
-  @media (max-width: 744px) {
+  ${respondTo('mobile')} {
     font-size: 16px;
-    margin-top: -25px;
-    margin-left: -23px;
+    margin-bottom: 4px;
   }
 `;
 
 export const SubscriptionRow = styled.div`
   display: flex;
-  justify-content: flex-start; // 왼쪽 정렬
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 8px;
   font-size: 14px;
-  color: #9ca3af;
-
+  font-weight: 400;
+  color: ${color.gray[20]};
+  width: 100%;
   span:first-child {
-    margin-right: 78px;
-    min-width: 96px;
+    margin-right: 20px; // 간격 줄임
+    min-width: 70px;
+    flex-shrink: 0; // 축소 방지
   }
 
   span:last-child {
-    white-space: nowrap; // 텍스트 줄바꿈 방지
-    overflow: hidden; // 넘치는 텍스트 숨김
+    white-space: nowrap; // 줄바꿈 방지
+    overflow: hidden;
+    text-overflow: clip; // 말줄임표 대신 그냥 자름
+    flex-grow: 1;
   }
 
-  @media (min-width: 745px) and (max-width: 1279px) {
-    font-size: 10px;
-    margin-bottom: 4.8px;
-    margin-left: 10px;
+  ${respondTo('tablet')} {
+    font-size: 14px;
+    margin-bottom: 6px;
 
     span:first-child {
-      margin-right: -16px;
+      margin-right: 50px;
+      min-width: 80px;
     }
   }
 
-  @media (max-width: 744px) {
-    font-size: 9px;
-    margin-left: -23px;
-    margin-top: -4px;
+  ${respondTo('mobile')} {
+    font-size: 12px;
+    margin-bottom: 4px;
 
     span:first-child {
-      margin-right: -40px;
+      margin-right: 10px;
+      min-width: 50px;
     }
   }
 `;
 
-export const PaymentButton = styled.button`
-  width: 32.8125rem;
-  height: 3.75rem;
-  background-color: ${color.primary[300]};
-  color: white;
-  padding: 1rem 0;
-  margin-top: 5rem;
-  border-radius: 0.5rem;
-  font-size: 1.25rem;
-  font-weight: 500;
-  transition: background-color 0.3s;
-  border: none;
-  cursor: pointer;
+export const ButtonWrapper = styled.div`
+  width: 525px;
+  margin-top: 80px;
   margin-left: 50%;
   transform: translateX(-50%);
 
-  @media (min-width: 745px) and (max-width: 1279px) {
-    width: 18rem;
-    height: 2.6rem;
-    margin-top: 3rem;
-    font-size: 0.8rem;
+  ${respondTo('tablet')} {
+    width: 450px;
+    margin-top: 60px;
   }
 
-  @media (max-width: 744px) {
-    width: 15rem;
-    height: 1.6rem;
-    margin-top: 2.1rem;
-    font-size: 0.6rem;
+  ${respondTo('mobile')} {
+    width: 300px;
+    margin-top: 40px;
   }
 
-  &:hover {
-    background-color: #2563eb;
+  & > button {
+    height: 60px;
+
+    ${respondTo('tablet')} {
+      height: 50px;
+    }
+
+    ${respondTo('mobile')} {
+      height: 40px;
+    }
   }
 `;
 
 export const AutoMoveText = styled.p`
   text-align: center;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #6b7280;
-  margin-top: 2.5rem;
+  font-size: 14px;
+  font-weight: 200;
+  color: ${color.gray[40]};
+  margin-top: 40px;
 
-  @media (min-width: 745px) and (max-width: 1279px) {
-    margin-top: 1.5rem;
-    font-size: 0.48rem;
+  ${respondTo('tablet')} {
+    font-size: 12px;
+    margin-top: 30px;
   }
 
-  @media (max-width: 744px) {
-    margin-top: 1rem;
-    font-size: 0.35rem;
-  }
-`;
-
-export const RowContainer = styled.div`
-  // 데스크탑 스타일 유지
-  @media (min-width: 1280px) {
-    padding: 10px 0 7px 0;
-    position: relative; /* 가상 요소 배치를 위해 필요 */
-
-    &::after {
-      content: '';
-      display: block;
-      width: 330px;
-      height: 2px;
-      background-color: rgba(255, 255, 255, 0.1);
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  // 모바일/태블릿 스타일
-  @media (max-width: 1279px) {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 0.875rem 0;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-  }
-`;
-
-export const RowContent = styled.div`
-  // 데스크탑 스타일 유지
-  @media (min-width: 1280px) {
-    display: flex;
-    margin-left: 2.4375rem;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  // 모바일/태블릿 스타일
-  @media (max-width: 1279px) {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-`;
-
-export const Text = styled.span`
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.4;
-
-  @media (max-width: 1279px) {
-    &:last-child {
-      text-align: right;
-    }
-    font-size: 0.875rem;
-  }
-`;
-
-export const ExtraInfo = styled.div`
-  // 데스크탑 스타일 유지
-  @media (min-width: 1280px) {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 4px;
-    margin-left: 2.4375rem;
-    line-height: 1.4;
-  }
-
-  // 모바일/태블릿 스타일
-  @media (max-width: 1279px) {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.6);
-    line-height: 1.4;
-    text-align: right;
+  ${respondTo('mobile')} {
+    font-size: 10px;
+    margin-top: 20px;
   }
 `;

@@ -10,9 +10,10 @@ import {
   SubscriptionCardRight,
   SubscriptionCardTitle,
   SubscriptionRow,
-  PaymentButton,
   AutoMoveText,
+  ButtonWrapper,
 } from '../style.js';
+import Button from '../../../ui/Button.jsx';
 
 const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
   const [countdown, setCountdown] = useState(5);
@@ -20,20 +21,20 @@ const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
 
   const plan = planDetails[selectedPlan];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prevCount) => {
-        if (prevCount <= 1) {
-          clearInterval(timer);
-          onClose();
-          return 0;
-        }
-        return prevCount - 1;
-      });
-    }, 1000);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCountdown((prevCount) => {
+  //       if (prevCount <= 1) {
+  //         clearInterval(timer);
+  //         onClose();
+  //         return 0;
+  //       }
+  //       return prevCount - 1;
+  //     });
+  //   }, 1000);
 
-    return () => clearInterval(timer);
-  }, [onClose]);
+  //   return () => clearInterval(timer);
+  // }, [onClose]);
 
   const handlePaymentClick = () => {
     navigate('/');
@@ -63,9 +64,11 @@ const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
           <SubscriptionCardRight></SubscriptionCardRight>
         </SubscriptionCard>
 
-        <PaymentButton onClick={handlePaymentClick}>결제하러 가기</PaymentButton>
+        <ButtonWrapper>
+          <Button onClick={handlePaymentClick}>감상하러 가기</Button>
+        </ButtonWrapper>
 
-        <AutoMoveText>{countdown}초 후에 자동으로 이동합니다</AutoMoveText>
+        <AutoMoveText>{countdown}초 후에 자동으로 닫혀요</AutoMoveText>
       </ModalContainer>
     </ModalOverlay>
   );
