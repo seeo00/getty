@@ -4,9 +4,12 @@ import { InnerContainer } from '../../common/layout/InnerContainer';
 import { CardContentContainer } from '../../components/category/style';
 import CardBasic from '../../ui/card/CardBasic';
 import { useMoreData } from '../../hooks/useMoreData';
+import { useSelector } from 'react-redux';
+import LoadingSpinner from '../../ui/LoadingSpinner';
 
 const More = () => {
   const location = useLocation();
+  const { loading } = useSelector((state) => state.combinedR);
   const params = new URLSearchParams(location.search);
   const section = params.get('section');
   const title = params.get('title');
@@ -19,13 +22,17 @@ const More = () => {
         <S.MorePageHeader>
           <h2>{title}</h2>
         </S.MorePageHeader>
-        <CardContentContainer>
-          {sectionData.map((item) => (
-            <div key={item.id}>
-              <CardBasic item={item} />
-            </div>
-          ))}
-        </CardContentContainer>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <CardContentContainer>
+            {sectionData.map((item) => (
+              <div key={item.id}>
+                <CardBasic item={item} />
+              </div>
+            ))}
+          </CardContentContainer>
+        )}
       </InnerContainer>
     </S.MoreContainer>
   );

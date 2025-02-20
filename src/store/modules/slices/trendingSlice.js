@@ -6,14 +6,6 @@ const initialState = {
   trendingWeekData: [],
   loading: false,
   error: null,
-  // loading: {
-  //   day: false,
-  //   week: false,
-  // },
-  // error: {
-  //   day: null,
-  //   week: null,
-  // },
 };
 
 const trendingSlice = createSlice({

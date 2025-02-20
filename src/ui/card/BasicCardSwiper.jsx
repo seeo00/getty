@@ -3,24 +3,28 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import { useRef } from 'react';
-
 import { ArrowLeftIcon, ArrowRightIcon } from '../icon';
 import CardBasic from './CardBasic';
 import { Link } from 'react-router-dom';
+import CardConnected from './CardConnected';
 
 const BasicCardSwiper = ({ title, items, rank, section, moreLink }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
+
+  const shouldShowNavigation = items?.length > 5;
 
   return (
     <S.CardSection>
       {title && (
         <S.SectionHeader>
           <h2>{title}</h2>
-          <Link to={section ? `/more?section=${section}&title=${encodeURIComponent(title)}` : moreLink}>
-            <span>더보기</span>
-            <ArrowRightIcon size={20} />
-          </Link>
+          {shouldShowNavigation && (
+            <Link to={section ? `/more?section=${section}&title=${encodeURIComponent(title)}` : moreLink}>
+              <span>더보기</span>
+              <ArrowRightIcon size={20} />
+            </Link>
+          )}
         </S.SectionHeader>
       )}
       <S.CardList>
@@ -41,18 +45,30 @@ const BasicCardSwiper = ({ title, items, rank, section, moreLink }) => {
             swiper.params.navigation.nextEl = nextRef.current;
           }}
         >
-          {items?.map((item, index) => (
-            <SwiperSlide key={`${item.id}-${index}`}>
-              <CardBasic item={item} rank={rank ? index + 1 : null} />
-            </SwiperSlide>
-          ))}
+          {items?.map((item, index) =>
+            item.type === 'connected' ? (
+              item.cards.map((card, cardIndex) => (
+                <SwiperSlide key={`${item.id}-${cardIndex}`}>
+                  <CardConnected item={item} card={card} />
+                </SwiperSlide>
+              ))
+            ) : (
+              <SwiperSlide key={`${item.id}-${index}`}>
+                <CardBasic item={item} rank={rank ? index + 1 : null} />
+              </SwiperSlide>
+            )
+          )}
         </Swiper>
-        <S.NavButton ref={prevRef} $position="left">
-          <ArrowLeftIcon size={40} />
-        </S.NavButton>
-        <S.NavButton ref={nextRef} $position="right">
-          <ArrowRightIcon size={40} />
-        </S.NavButton>
+        {shouldShowNavigation && (
+          <>
+            <S.NavButton ref={prevRef} $position="left">
+              <ArrowLeftIcon size={40} />
+            </S.NavButton>
+            <S.NavButton ref={nextRef} $position="right">
+              <ArrowRightIcon size={40} />
+            </S.NavButton>
+          </>
+        )}
       </S.CardList>
     </S.CardSection>
   );

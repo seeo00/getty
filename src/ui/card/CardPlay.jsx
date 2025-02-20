@@ -101,7 +101,7 @@ const CardPlay = ({ item }) => {
       </CardItem>
       <CardInfo>
         <div>
-          <strong className="ellipsis">에피스드제목타이ddddddddddddddddddd틀</strong>
+          <strong className="ellipsis">에피스드제목타이틀</strong>
           <p>남은시간</p>
           <button>
             <InfoIcon color="#aaa" />

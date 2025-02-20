@@ -1,6 +1,13 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCombinedMystery, getCombinedRomance } from '../store/modules/thunks/geThunk';
+import {
+  getCombinedAnimation,
+  getCombinedComedy,
+  getCombinedFamily,
+  getCombinedMystery,
+  getCombinedRealistic,
+  getCombinedRomance,
+} from '../store/modules/thunks/geThunk';
 import { originalActions } from '../store/modules/slices/originalSlice';
 import { getNewMovie } from '../store/modules/thunks/getNewMovie';
 import { getUpcomingMovie } from '../store/modules/thunks/getUpcomingMovie';
@@ -9,10 +16,11 @@ import { getUpcomingSeries } from '../store/modules/thunks/getUpcomingSeries';
 
 export const useMoreData = (section) => {
   const dispatch = useDispatch();
-  const { romanceContent, mysteryContent } = useSelector((state) => state.combinedR);
+  const { romanceContent, mysteryContent, comedyContent, realisticContent, animationContent, familyContent } =
+    useSelector((state) => state.combinedR);
   const { newMovieData, upcomingMovieData } = useSelector((state) => state.movieR);
   const { newSeriesData, upcomingSeriesData } = useSelector((state) => state.seriesR);
-  const { originalTopRated, originalKoreanSeries, originalGlobalSeries, originalMovies } = useSelector(
+  const { originalTopRated, originalKoreanSeries, originalGlobalSeries, originalMovies, editorRecommend } = useSelector(
     (state) => state.originalR
   );
 
@@ -22,6 +30,14 @@ export const useMoreData = (section) => {
         return romanceContent;
       case 'mysteryContent':
         return mysteryContent;
+      case 'comedyContent':
+        return comedyContent;
+      case 'realisticContent':
+        return realisticContent;
+      case 'animationContent':
+        return animationContent;
+      case 'familyContent':
+        return familyContent;
       case 'originalTopRated':
         return originalTopRated;
       case 'originalKoreanSeries':
@@ -30,6 +46,8 @@ export const useMoreData = (section) => {
         return originalGlobalSeries;
       case 'originalMovies':
         return originalMovies;
+      case 'editorRecommend':
+        return editorRecommend;
       case 'newMovieData':
         return newMovieData;
       case 'upcomingMovieData':
@@ -45,6 +63,10 @@ export const useMoreData = (section) => {
     section,
     romanceContent,
     mysteryContent,
+    comedyContent,
+    realisticContent,
+    animationContent,
+    familyContent,
     originalTopRated,
     originalKoreanSeries,
     originalGlobalSeries,
@@ -53,6 +75,7 @@ export const useMoreData = (section) => {
     upcomingMovieData,
     newSeriesData,
     upcomingSeriesData,
+    editorRecommend,
   ]);
 
   useEffect(() => {
@@ -63,6 +86,18 @@ export const useMoreData = (section) => {
           break;
         case 'mysteryContent':
           dispatch(getCombinedMystery());
+          break;
+        case 'comedyContent':
+          dispatch(getCombinedComedy());
+          break;
+        case 'realisticContent':
+          dispatch(getCombinedRealistic());
+          break;
+        case 'animationContent':
+          dispatch(getCombinedAnimation());
+          break;
+        case 'familyContent':
+          dispatch(getCombinedFamily());
           break;
         case 'originalTopRated':
           dispatch(originalActions.sortedTopRated());
@@ -75,6 +110,9 @@ export const useMoreData = (section) => {
           break;
         case 'originalMovies':
           dispatch(originalActions.filteredMovies());
+          break;
+        case 'editorRecommend':
+          dispatch(originalActions.filteredRecommend());
           break;
         case 'newMovieData':
           dispatch(getNewMovie());

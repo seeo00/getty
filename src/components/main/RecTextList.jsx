@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import { HealingIcon, PencilIcon, SnowCloudIcon, SoloContentIcon, TwoStarsIcon } from '../../ui/icon';
 
 const textItems = [
-  { id: 1, text: '평점이 높은 화제작', icon: TwoStarsIcon },
-  { id: 2, text: '혼자 즐기기 좋은 콘텐츠', icon: SoloContentIcon },
-  { id: 3, text: '겨울에 어울리는 추천 콘텐츠', icon: SnowCloudIcon },
-  { id: 4, text: '힐링이 필요한 날 추천 콘텐츠', icon: HealingIcon },
+  { id: 1, text: '현실보다 더 현실 같은 이야기', icon: TwoStarsIcon, section: 'realisticContent' },
+  { id: 2, text: '픽셀 너머의 이야기', icon: SoloContentIcon, section: 'animationContent' },
+  { id: 3, text: '우울한 날 추천 콘텐츠', icon: SnowCloudIcon, section: 'comedyContent' },
+  { id: 4, text: '온 가족이 함께 즐기는 콘텐츠', icon: HealingIcon, section: 'familyContent' },
   { id: 5, text: '시청을 완료했다면?', icon: PencilIcon },
 ];
 
@@ -17,9 +17,9 @@ const RecTextList = ({ title }) => {
         <h2>{title}</h2>
       </S.SectionHeader>
       <S.ContentList>
-        {textItems.map(({ id, text, icon: Icon }) => (
+        {textItems.map(({ id, text, icon: Icon, section }) => (
           <li key={id}>
-            <Link to={'#'}>
+            <Link to={`/more?section=${section}&title=${encodeURIComponent(text)}`}>
               <Icon />
               <span>{text}</span>
             </Link>
