@@ -21,11 +21,25 @@ export const SlideContainer = styled(Link)`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: right;
+    //object-position: right;
   }
   ${respondTo('tabletMore')} {
     aspect-ratio: auto;
     //max-height: 689px;
+  }
+`;
+
+export const ResponsiveBannerImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  ${respondTo('tabletMore')} {
+    content: url(${(props) => props.src});
+  }
+
+  @media (max-width: 600px) {
+    content: url(${(props) => props.$mobileSrc || props.src});
   }
 `;
 
