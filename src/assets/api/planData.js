@@ -42,6 +42,7 @@ export const planDetails = {
       { label: '월 요금', extra: 'TV, 컴퓨터, 스마트폰, 태블릿' },
       { label: '월 요금', value: '5,500' },
       { label: '월 요금', value: '5,500' },
+      { label: '월 요금', value: '5,500' },
     ],
   },
 };
