@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getRecommendations } from '../../store/modules/thunks/getRecommendations';
 import { respondTo } from '../../styled/GlobalStyle';
-import ContentList from '../category/ContentList';
+import ContentList from '../category/CardContentList';
 
 const GalleryWrap = styled.div`
   display: block;
@@ -16,7 +16,6 @@ const GalleryWrap = styled.div`
 `;
 
 const DramaPosterGallery = () => {
- 
   const { loading, error, recommendations = [] } = useSelector((state) => state.recommendationsR);
   const dispatch = useDispatch();
 
