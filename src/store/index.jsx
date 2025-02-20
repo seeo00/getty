@@ -12,8 +12,8 @@ import authR from './modules/slices/authSlice';
 import detailsR from './modules/slices/detailsSlice';
 import combinedR from './modules/slices/combinedSlice';
 import episodeR from './modules/slices/episodeSlice';
-import recommendationsR from './modules/slices/recommendationSlice'
-import certificationR from './modules/slices/certificationSlice';
+import recommendationsR from './modules/slices/recommendationSlice';
+// import certificationR from './modules/slices/certificationSlice';
 
 export const store = configureStore({
   reducer: {
@@ -30,7 +30,7 @@ export const store = configureStore({
     detailsR,
     combinedR,
     episodeR,
-		recommendationsR,
-		certificationR
-	  },
+    recommendationsR,
+    // certificationR
+  },
 });
