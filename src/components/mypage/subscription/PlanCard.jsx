@@ -1,8 +1,10 @@
 import { CardContainer, PlanTitle, PlanButton } from '../style';
 import SubscriptionRow from './SubscriptionRow';
+import { planDetails } from '../../../assets/api/planData'; // planDetails import 추가
 
 const PlanCard = ({ title, selectedPlan, onSelectPlan }) => {
   const isSelected = selectedPlan === title;
+  const planData = planDetails[title]; // planDetails 데이터 가져오기
 
   const handleClick = () => {
     onSelectPlan(title);
@@ -14,13 +16,9 @@ const PlanCard = ({ title, selectedPlan, onSelectPlan }) => {
       <div className="desktop-only">
         <PlanTitle isSelected={isSelected}>{title}</PlanTitle>
         <div style={{ marginTop: '50px' }}>
-          <SubscriptionRow label="월 요금" price="5,500" />
-          <SubscriptionRow label="월 요금" price="5,500" />
-          <SubscriptionRow label="월 요금" price="5,500" />
-          <SubscriptionRow label="월 요금" price="5,500" />
-          <SubscriptionRow label="월 요금" extra="TV, 컴퓨터, 스마트폰, 태블릿" />
-          <SubscriptionRow label="월 요금" price="5,500" />
-          <SubscriptionRow label="월 요금" price="5,500" />
+          {planData.details.map((detail, index) => (
+            <SubscriptionRow key={index} label={detail.label} price={detail.value} extra={detail.extra} />
+          ))}
         </div>
       </div>
 

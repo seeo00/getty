@@ -1,51 +1,71 @@
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDrama } from '../../store/modules/thunks/getDrama';
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
+import { getDetails } from '../../store/modules/thunks/getDetails';
 import { DetailContainer, FlexContainer, Title, Overview, StyledText, TitleName } from './style';
+import MediaControlButtons from '../../ui/button/MediaControlButton';
+import AdultsIcon from '../../ui/icon/AdultsIcon';
 
 const DetailCard = () => {
-  const { detailType, detailID } = useParams();
-  const { dramaData, loading, error } = useSelector((state) => state.dramaR);
   const dispatch = useDispatch();
+  const { detailType, detailID } = useParams();
+  const { detailsData, loading, error } = useSelector((state) => state.detailsR);
 
   useEffect(() => {
-    if (dramaData.length === 0) {
-      dispatch(getDrama({ category: 'base' }));
+    if (!detailsData) {
+      dispatch(getDetails({ id: detailID, contentType: detailType }));
     }
-  }, [dispatch, dramaData.length]);
+  }, [dispatch, detailsData, detailID, detailType]);
 
-  if (loading && dramaData.length === 0) return null; // 로딩중 메시지 없이 빈 화면 처리
-  if (error && dramaData.length === 0) return <p>데이터를 찾을 수 없습니다.</p>;
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>데이터를 찾을 수 없습니다.</p>;
+  if (!detailsData) return null;
 
-  const drama = dramaData.find((item) => String(item.id) === detailID && item.media_type === detailType);
-  if (!drama) return <p>해당 드라마를 찾을 수 없습니다.</p>;
+  const detail = detailsData;
 
   return (
     <DetailContainer>
-      <div key={drama.id} style={{ marginBottom: '10px' }}>
-        {/* detailtop 영역 */}
+      <div key={detail.id} style={{ marginBottom: '10px' }}>
+        {/* detail top 영역 */}
         <TitleName>
-          <div>{drama.name}</div>
+          <div>{detail.name}</div>
         </TitleName>
-        <FlexContainer>
+        <FlexContainer style={{ alignItems: 'center' }}>
           <Title>
-            <span>{drama.genre_ids && drama.genre_ids}</span>
-            <span style={{ marginLeft: '10px' }}>{drama.first_air_date.split('-')[0]}</span>
-            {drama.adult ? (
-              <FaCheckCircle color="green" style={{ marginLeft: '10px' }} />
-            ) : (
-              <FaTimesCircle color="red" style={{ verticalAlign: 'middle', marginLeft: '10px' }} />
-            )}
+            <div className='undertitle'>
+              {detail.genres && detail.genres.length > 0
+                ? detail.genres.map((genre, index) => (
+                    <span key={genre.id}>
+                      {genre.name}
+                      {index < detail.genres.length - 1 && ', '}
+                    </span>
+                  ))
+                : '장르 정보 없음'}
+            </div>
+            ㆍ
+            <div className='undertitle2'>
+              {detail.first_air_date ? detail.first_air_date.split('-')[0] : '연도 정보 없음'}년
+            </div>
+            {/* detail.adult 조건은 두 경우 모두 동일하므로 조건문 제거 */}
+            <AdultsIcon style={{ marginLeft: '10px' }} />
           </Title>
         </FlexContainer>
 
-        {/* detailmiddel 영역 */}
-        <Overview>{drama.overview}</Overview>
-
-        {/* detailbottom 영역 */}
-        <StyledText style={{ marginTop: '10px' }}>출연: {drama.person || ''}</StyledText>
+        {/* detail middle 영역 */}
+        <MediaControlButtons />
+        <Overview>{detail.overview}</Overview>
+        {/* detail bottom 영역 */}
+        <StyledText style={{ marginTop: '10px' }}>
+          출연:{' '}
+          {detail.credits && detail.credits.cast && detail.credits.cast.length > 0
+            ? detail.credits.cast.map((actor, index) => (
+                <span key={actor.id}>
+                  {actor.name}
+                  {index < detail.credits.cast.length - 1 ? ', ' : ''}
+                </span>
+              ))
+            : '출연 정보 없음'}
+        </StyledText>
       </div>
     </DetailContainer>
   );

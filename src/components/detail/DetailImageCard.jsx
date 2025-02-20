@@ -20,12 +20,12 @@ const DetailImageCard = () => {
   if (!detailsData) return null;
 
   const detail = detailsData;
-  const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
+  const imageBaseUrl = 'https://image.tmdb.org/t/p/original';
 
   return (
     <Container>
       <FlexContainer>
-        <Image src={`${imageBaseUrl}${detail.poster_path}`} alt={detail.title || detail.name || '에피소드 이미지'} />
+        <Image src={`${imageBaseUrl}${detail.backdrop_path}`} alt={detail.title || detail.name || '에피소드 이미지'} />
       </FlexContainer>
     </Container>
   );

@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { color } from '../../styled/common';
-import PosterCard from '../../ui/card/DetailPoster';
 import { respondTo } from '../../styled/GlobalStyle';
 
 /* ${respondTo('tabletMore')} {
@@ -28,7 +27,7 @@ export const Wrap = styled.div`
   z-index: 50;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  background-color: ${color.gray[500]};
+  background-color: ${color.gray[800]};
   overflow: hidden;
   overflow-y: auto;
   scrollbar-width: none; /* Firefox */
@@ -37,7 +36,7 @@ export const Wrap = styled.div`
     display: none; /* Chrome, Safari, Opera */
   }
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     position: fixed;
     width: 100%;
     max-width: 1240px;
@@ -48,11 +47,11 @@ export const Wrap = styled.div`
     z-index: 50;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color: ${color.gray[50]};
+    background-color: ${color.gray[800]};
     overflow: hidden;
     overflow-y: auto;
   }
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
     position: fixed;
     width: 100%;
     max-width: 1240px;
@@ -63,7 +62,7 @@ export const Wrap = styled.div`
     z-index: 50;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color: ${color.gray[50]};
+    background-color: ${color.gray[800]};
     overflow: hidden;
     overflow-y: auto;
   }
@@ -73,38 +72,49 @@ export const ButtonWrap = styled.div`
   position: absolute;
   top: 40px;
   right: 40px;
+  z-index: 11;
 `;
 
 export const VisualWrap = styled.div`
-  /*  position: relative;
-  height: 80%;
+  position: relative;
+  width: 100%;
+  height: 100%;
   background-color: #555;
-  overflow-y: hidden; */
-  position: fixed;
+  overflow-y: hidden;
+  position: sticky;
   top: 0;
   left: 0;
-  width: 30%;
-  height: 30%;
+  z-index: 10;
+  */ ${respondTo('desktop')} {
+    min-width: 1240px;
+    height: 793px;
+  }
   ${respondTo('tabletMore')} {
-    width: 100%;
-    height: 100%;
+    min-width: 768px;
+    height: 468px;
   }
-  ${respondTo('laptop')} {
+
+  ${respondTo('mobile')} {
+    min-width: 390px;
+    height: 244px;
   }
 `;
-
 export const VisualContent = styled.div`
-  /* width: 40%; 반응형 떄매 주석처리 */
-  position: absolute;
-  bottom: 40px;
-  left: 40px;
-  /* background-color: red; */
+  display: none;
+
+  @media (min-width: 601px) {
+    display: block;
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+  }
 `;
 
+//썸네일위 제목
 export const TitleImg = styled.div`
   display: none;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('desktop')} {
     display: block;
     font-size: 50px;
     font-weight: 700;
@@ -113,7 +123,7 @@ export const TitleImg = styled.div`
     margin-bottom: 40px;
     /* background-color: blue; */
   }
-  ${respondTo('laptop')} {
+  ${respondTo('tablet')} {
     display: block;
     font-size: 50px;
     font-weight: 700;
@@ -125,30 +135,30 @@ export const TitleImg = styled.div`
 `;
 
 export const ButtonControl = styled.div`
-  display: flex;
-  gap: 16px;
-  button:nth-child(1) {
-    margin-right: 16px;
+  display: none;
+  ${respondTo('desktop')} {
+    display: flex;
+    gap: 16px;
+    button:nth-child(1) {
+      margin-right: 16px;
+    }
+  }
+  ${respondTo('tablet')} {
+    display: flex;
+    gap: 16px;
+    button:nth-child(1) {
+      margin-right: 16px;
+    }
   }
 `;
 
 export const ContentWrap = styled.div`
   padding-top: 40px;
   background: ${color.gray[800]};
+  z-index: 1;
 `;
 
 //desc
 export const InnerContainer = styled.div`
   gap: 15px;
 `;
-/* 
-export const FullPoster = styled(PosterCard)`
-  position: absolute;
-  top: 0;
-  left: 0;
-
-  img {
-    object-fit: cover;
-  }
-`;
- */

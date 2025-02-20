@@ -9,6 +9,9 @@ const StyledInnerContainer = styled.div`
   margin: 0 auto;
   //overflow-y: auto;
 
+  ${respondTo('tablet')} {
+    padding: 0 40px;
+  }
   ${respondTo('desktop')} {
     padding: 0 40px;
   }

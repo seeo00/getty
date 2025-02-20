@@ -3,6 +3,9 @@ import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { FaChevronDown } from 'react-icons/fa';
 import { color } from '../../styled/common';
+import { getDetails } from '../../store/modules/thunks/getDetails';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 const DropdownWrapper = styled.div`
   display: block;
@@ -36,7 +39,7 @@ const IconWrapper = styled.span`
 
 const DropdownList = styled.ul`
   position: absolute;
-  top: calc(100% + 3px); /* 버튼 바로 밑에 3px 간격 */
+  top: calc(100% + 3px);
   left: 0;
   width: 100%;
   background: ${color.gray[800]};
@@ -51,7 +54,7 @@ const DropdownList = styled.ul`
 `;
 
 const DropdownListItem = styled.li`
-  padding: 7px 0 7px 14px; /* 상하 7px, 좌측 14px, 우측 0 */
+  padding: 7px 0 7px 14px;
   font-size: 14px;
   font-weight: 400;
   color: ${color.gray[70]};
@@ -67,8 +70,24 @@ const DropdownListItem = styled.li`
 `;
 
 const SeasonDropdown = ({ seasons, onSelect, defaultSeason, icon: CustomIcon, ...props }) => {
+  const dispatch = useDispatch();
+  const { detailType, detailID } = useParams();
+  const { detailsData, loading, error } = useSelector((state) => state.detailsR);
+
+  useEffect(() => {
+    if (!detailsData) {
+      dispatch(getDetails({ id: detailID, contentType: detailType }));
+    }
+  }, [dispatch, detailsData, detailID, detailType]);
+
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>데이터를 찾을 수 없습니다.</p>;
+  if (!detailsData) return null;
+
+  const seasonsData = detailsData.seasons;
+
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSeason, setSelectedSeason] = useState(defaultSeason || (seasons && seasons[0]));
+  const [selectedSeason, setSelectedSeason] = useState(defaultSeason || (seasonsData && seasonsData[0]));
   const dropdownRef = useRef();
 
   useEffect(() => {
@@ -91,7 +110,9 @@ const SeasonDropdown = ({ seasons, onSelect, defaultSeason, icon: CustomIcon, ..
   return (
     <DropdownWrapper ref={dropdownRef}>
       <DropdownSelectButton onClick={() => setIsOpen((prev) => !prev)} {...props}>
-        <ButtonText>{selectedSeason}</ButtonText>
+        <ButtonText>
+				{typeof selectedSeason === 'object' ? selectedSeason.name : selectedSeason}
+				</ButtonText>
         <IconWrapper>
           {CustomIcon ? (
             <CustomIcon size={16} color={color.gray[70]} />
@@ -102,9 +123,9 @@ const SeasonDropdown = ({ seasons, onSelect, defaultSeason, icon: CustomIcon, ..
       </DropdownSelectButton>
       {isOpen && (
         <DropdownList>
-          {seasons.map((season, index) => (
+          {seasonsData.map((season, index) => (
             <DropdownListItem key={index} onClick={() => handleSelect(season)}>
-              {season}
+              {season.name}
             </DropdownListItem>
           ))}
         </DropdownList>
