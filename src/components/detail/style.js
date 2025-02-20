@@ -76,11 +76,13 @@ export const Image = styled.img`
 export const StyledText = styled.div`
   margin: 10px 0;
   font-size: 14px;
-  color: ${color.gray[90]};
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  color: ${color.gray[70]};
   overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* expanded가 true면 -webkit-line-clamp 제거, false면 clamp 적용 */
+  -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
+  transition: all 0.3s ease;
 
   ${respondTo('laptop')} {
   }
@@ -132,7 +134,6 @@ export const Title = styled.h2`
   }
 `;
 
-
 export const Overview = styled.p`
   margin: 10px 0;
   font-size: 14px;
@@ -142,22 +143,34 @@ export const Overview = styled.p`
   overflow: hidden;
 
   ${respondTo('laptop')} {
-		display: -webkit-box;
-		-webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${props =>
+      !props.expanded &&
+      css`
+        -webkit-line-clamp: 3;
+      `}
   }
   ${respondTo('tablet')} {
     display: -webkit-box;
-		-webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${props =>
+      !props.expanded &&
+      css`
+        -webkit-line-clamp: 2;
+      `}
   }
   ${respondTo('mobile')} {
     display: -webkit-box;
-		-webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${props =>
+      !props.expanded &&
+      css`
+        -webkit-line-clamp: 2;
+      `}
   }
 `;
 

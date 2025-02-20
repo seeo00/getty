@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../store/modules/thunks/getDetails';
-import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
-import { DetailContainer, FlexContainer, Title, Overview, StyledText, TitleName } from './style';
+import * as S from './style';
 import MediaControlButtons from '../../ui/button/MediaControlButton';
 import AdultsIcon from '../../ui/icon/AdultsIcon';
 
@@ -24,16 +23,19 @@ const DetailCard = () => {
 
   const detail = detailsData;
 
+	const OverviewStyled = ({ text }) => {
+		const [expanded, setExpanded] = useState(false);
+	
   return (
-    <DetailContainer>
+    <S.DetailContainer>
       <div key={detail.id} style={{ marginBottom: '10px' }}>
         {/* detailtop 영역 */}
-        <TitleName>
+        <S.TitleName>
           <div>{detail.name}</div>
-        </TitleName>
-        <FlexContainer style={{ alignItems: 'center' }}>
-          <Title>
-            <span>
+        </S.TitleName>
+        <S.FlexContainer style={{ alignItems: 'center' }}>
+          <S.Title>
+            <div className='undertitle'>
               {' '}
               {detail.genres && detail.genres.length > 0
                 ? detail.genres.map((genre, index) => (
@@ -43,21 +45,28 @@ const DetailCard = () => {
                     </span>
                   ))
                 : '장르 정보 없음'}
-            </span>
-            ㆍ<span>{detail.first_air_date.split('-')[0]}년</span>
+            </div>
+            ㆍ<div className='undertitle2'>{detail.first_air_date.split('-')[0]}년</div>
             {detail.adult ? (
               <AdultsIcon style={{ marginLeft: '10px' }} />
             ) : (
               <AdultsIcon style={{ marginLeft: '10px' }} />
             )}
-          </Title>
-        </FlexContainer>
+          </S.Title>
+        </S.FlexContainer>
 
         {/* detailmiddel 영역 */}
         <MediaControlButtons />
-        <Overview>{detail.overview}</Overview>
+				<div className="줄거리 더보기">
+          <OverviewStyled expanded={expanded}>
+            {detail.overview}
+          </OverviewStyled>
+          <button onClick={() => setExpanded(prev => !prev)}>
+            {expanded ? '숨기기' : '더 보기'}
+          </button>
+        </div>
         {/* detailbottom 영역 */}
-        <StyledText style={{ marginTop: '10px' }}>
+        <S.StyledText style={{ marginTop: '10px' }}>
           출연:{' '}
           {detail.credits.cast.map((actor, index) => (
             <span key={actor.id}>
@@ -65,10 +74,10 @@ const DetailCard = () => {
               {index < detail.credits.cast.length - 1 ? ', ' : ''}
             </span>
           ))}
-        </StyledText>
+        </S.StyledText>
       </div>
-    </DetailContainer>
+    </S.DetailContainer>
   );
-};
+};}
 
 export default DetailCard;

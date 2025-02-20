@@ -4,18 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getEpisode } from '../../store/modules/thunks/getEpisode';
 import SeasonDropdown from '../../ui/button/DropdownSelectButton';
 import PreviewPlayIcon from '../../ui/icon/PreviewPlayIcon';
-import Button from '../../ui/Button';
 import { color } from '../../styled/common';
-import {
-  EpiContainer,
-  FlexContainer,
-  PaddingContainer,
-  Image,
-  Title,
-  Overview,
-  IconWrapper,
-  ImageWrapper,
-} from './style';
+import * as S from './style';
 
 const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
   const dispatch = useDispatch();
@@ -52,25 +42,25 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
       />
       {episodeData.map((episode) => (
      <>
-     	   <EpiContainer key={episode.id}>
-	          <FlexContainer>
-	            <ImageWrapper>
-	              <Image src={`${imageBaseUrl}${episode.still_path}`} alt={episode.name || '에피소드 이미지'} />
-	              <IconWrapper>
+     	   <S.EpiContainer key={episode.id}>
+	          <S.FlexContainer>
+	            <S.ImageWrapper>
+	              <S.Image src={`${imageBaseUrl}${episode.still_path}`} alt={episode.name || '에피소드 이미지'} />
+	              <S.IconWrapper>
 	                <PreviewPlayIcon width={48} height={48} stroke={color.white} />
-	              </IconWrapper>
-	            </ImageWrapper>
-	            <PaddingContainer>
-	              <Title>
+	              </S.IconWrapper>
+	            </S.ImageWrapper>
+	            <S.PaddingContainer>
+	              <S.Title>
 	                <span>
 	                  {episode.episode_number}화&nbsp;&nbsp;{episode.title || episode.name}
 	                </span>
 	                {episode.runtime && <span>{episode.runtime}분</span>}
-	              </Title>
-	              <Overview>{episode.overview}</Overview>
-	            </PaddingContainer>
-	          </FlexContainer>
-	        </EpiContainer>
+	              </S.Title>
+	              <S.Overview>{episode.overview}</S.Overview>
+	            </S.PaddingContainer>
+	          </S.FlexContainer>
+	        </S.EpiContainer>
      </>
       ))}
     </>

@@ -1,22 +1,12 @@
 // ReviewCard.jsx
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import ThumbsUpIcon from '../../ui/icon/ThumbsUpIcon';
 import LongCircleButton from '../../ui/button/LongCircleButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getDetails } from '../../store/modules/thunks/getDetails';
 import { Rating } from '@mui/material';
-import {
-  ReviewContentWrapper,
-  ReviewText,
-  ReviewCardContainer,
-  ReviewHeader,
-  ReviewLeftSection,
-  StarRatingWrapper,
-  AuthorName,
-  ReviewDate,
-  MoreButton,
-} from './style';
+import * as S from './style';
 
 const formatReviewDate = (createdAt) => {
   if (!createdAt) return '날짜 정보 없음';
@@ -37,12 +27,12 @@ const ReviewContent = ({ content }) => {
   }, [content, expanded]);
 
   return (
-    <ReviewContentWrapper>
-      <ReviewText ref={textRef} expanded={expanded}>
+    <S.ReviewContentWrapper>
+      <S.ReviewText ref={textRef} expanded={expanded}>
         {content}
-      </ReviewText>
-      {!expanded && isOverflow && <MoreButton onClick={() => setExpanded(true)}>...더 보기</MoreButton>}
-    </ReviewContentWrapper>
+      </S.ReviewText>
+      {!expanded && isOverflow && <S.MoreButton onClick={() => setExpanded(true)}>...더 보기</S.MoreButton>}
+    </S.ReviewContentWrapper>
   );
 };
 
@@ -76,21 +66,22 @@ const ReviewCard = ({ handleLike }) => {
   return (
     <>
       {reviewsWithDummyData.map((review, index) => (
-        <ReviewCardContainer key={index}>
-          <ReviewHeader>
-            <ReviewLeftSection>
-              <StarRatingWrapper>
+        <S.ReviewCardContainer key={index}>
+          <S.ReviewHeader>
+            <S.ReviewLeftSection>
+              <S.StarRatingWrapper>
                 <Rating value={review.dummyRating} readOnly size="small" />
-              </StarRatingWrapper>
-              <AuthorName>{review.author}</AuthorName>
-              <ReviewDate>{formatReviewDate(review.created_at)}</ReviewDate>
-            </ReviewLeftSection>
+              </S.StarRatingWrapper>
+              <S.AuthorName>{review.author}</S.AuthorName>
+              <S.ReviewDate>{formatReviewDate(review.created_at)}</S.ReviewDate>
+            </S.ReviewLeftSection>
             <LongCircleButton showCount count={review.dummyLikeCount} onClick={handleLike}>
               <ThumbsUpIcon />
             </LongCircleButton>
-          </ReviewHeader>
+          </S.ReviewHeader>
           <ReviewContent content={review.content} />
-        </ReviewCardContainer>
+        </S.ReviewCardContainer>
+
       ))}
     </>
   );
