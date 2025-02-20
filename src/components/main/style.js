@@ -4,7 +4,7 @@ import { color } from '../../styled/common';
 import { Link } from 'react-router-dom';
 
 // 배너 스와이퍼
-export const BannerWrap = styled.section`
+export const BannerWrap = styled.div`
   .inner {
     position: relative;
   }
@@ -52,8 +52,6 @@ export const NavButton = styled.button`
 
 // 텍스트 버튼 섹션
 
-export const TextSection = styled.section``;
-
 export const SectionHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -75,7 +73,7 @@ export const SectionHeader = styled.div`
   }
 `;
 
-export const TextList = styled.ul`
+export const ContentList = styled.ul`
   display: flex;
   flex-direction: column;
 

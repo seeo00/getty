@@ -38,7 +38,7 @@ const CircleCardSwiper = ({ title, items, rank }) => {
           }}
         >
           {items?.map((item, index) => (
-            <SwiperSlide key={item.id || index}>
+            <SwiperSlide key={`${item.id}-${index}`}>
               <CardCircle item={item} />
             </SwiperSlide>
           ))}

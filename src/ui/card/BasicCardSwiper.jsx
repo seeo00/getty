@@ -8,7 +8,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '../icon';
 import CardBasic from './CardBasic';
 import { Link } from 'react-router-dom';
 
-const BasicCardSwiper = ({ title, items, rank, section, link }) => {
+const BasicCardSwiper = ({ title, items, rank, section, moreLink }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -17,11 +17,7 @@ const BasicCardSwiper = ({ title, items, rank, section, link }) => {
       {title && (
         <S.SectionHeader>
           <h2>{title}</h2>
-          {/* <Link to={`/more?section=${section}&title=${encodeURIComponent(title)}`}>
-            <span>더보기</span>
-            <ArrowRightIcon size={20} />
-          </Link> */}
-          <Link to={section ? `/more?section=${section}&title=${encodeURIComponent(title)}` : link}>
+          <Link to={section ? `/more?section=${section}&title=${encodeURIComponent(title)}` : moreLink}>
             <span>더보기</span>
             <ArrowRightIcon size={20} />
           </Link>

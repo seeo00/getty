@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  padding-top: ${({ $aspectRatio }) => ($aspectRatio === 1 ? '100%' : '150%')};
+  padding-top: ${({ $aspectRatio }) => ($aspectRatio === 1 ? '100%' : $aspectRatio === 16 / 9 ? '56.25%' : '150%')};
+  // aspectRatio 기본값 2/3 (세로 포스터 비율, CardBasic)
 `;
 
 const StyledSkeleton = styled(Skeleton)`

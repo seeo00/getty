@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { CardBasicSkeleton } from '../LoadingSkeleton';
 
 const CardWrap = styled(Link)`
   display: block;
@@ -41,12 +43,16 @@ const LogoBox = styled.div`
 `;
 
 const CardCircle = ({ item }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <CardWrap to={'/'}>
       <CardItem>
+        {!imageLoaded && <CardBasicSkeleton aspectRatio={1} />}
         <img
-          src={`https://image.tmdb.org/t/p/original${item.backdrop_path || item.poster_path}`}
+          src={item.poster}
           alt={item.title || item.name}
+          onLoad={() => setImageLoaded(true)}
+          style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}
         />
       </CardItem>
       <LogoBox>

@@ -802,24 +802,6 @@ export const originalData = [
     vote_count: 1,
     media_type: 'tv',
   },
-  {
-    adult: false,
-    backdrop_path: null,
-    genre_ids: [80],
-    id: 278904,
-    origin_country: ['KR'],
-    original_language: 'ko',
-    original_name: '단죄',
-    overview:
-      '어느 날, 피싱 사기로 부모를 잃은 무명 배우가 딥페이크 기술을 이용해 거대 보이스피싱 조직에 잠입한 뒤 그들을 일망타진 해나가는 복수극',
-    popularity: 0.385,
-    poster_path: null,
-    first_air_date: '',
-    name: '단죄',
-    vote_average: 0,
-    vote_count: 0,
-    media_type: 'tv',
-  },
 
   {
     adult: false,
@@ -1103,6 +1085,7 @@ export const originalData = [
     vote_average: 6.9,
     vote_count: 31,
     media_type: 'tv',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/156644-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/156644.png',
   },
   {
@@ -1553,6 +1536,7 @@ export const originalData = [
     vote_average: 7.9,
     vote_count: 19,
     media_type: 'tv',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/97220-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/97220.png',
   },
   {
@@ -1571,6 +1555,7 @@ export const originalData = [
     vote_average: 0,
     vote_count: 0,
     media_type: 'tv',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/229850-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/229850.png',
   },
   {
@@ -1590,6 +1575,7 @@ export const originalData = [
     vote_average: 7.1,
     vote_count: 91,
     media_type: 'tv',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/73575-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/73575.png',
   },
   {
@@ -2507,6 +2493,7 @@ export const originalData = [
     vote_average: 6,
     vote_count: 13,
     media_type: 'movie',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/717088-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/717088.png',
   },
   {
@@ -2526,6 +2513,7 @@ export const originalData = [
     vote_average: 7.9,
     vote_count: 787,
     media_type: 'movie',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/455714-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/455714.png',
   },
   {
@@ -2545,6 +2533,7 @@ export const originalData = [
     vote_average: 6.5,
     vote_count: 2056,
     media_type: 'movie',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/585216-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/585216.png',
   },
   {
@@ -2564,6 +2553,7 @@ export const originalData = [
     vote_average: 7,
     vote_count: 1,
     media_type: 'movie',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/408881-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/408881.png',
   },
   {
@@ -2583,6 +2573,7 @@ export const originalData = [
     vote_average: 6.155,
     vote_count: 110,
     media_type: 'movie',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/552504-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/552504.png',
   },
   {
@@ -2602,6 +2593,7 @@ export const originalData = [
     vote_average: 7,
     vote_count: 1,
     media_type: 'movie',
+    poster: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/1079073-1.png',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/logoimg/1079073.png',
   },
 ];

@@ -38,7 +38,7 @@ const PlayCardSwiper = ({ title, items }) => {
           }}
         >
           {items?.map((item, index) => (
-            <SwiperSlide key={item.id || index}>
+            <SwiperSlide key={`${item.id}-${index}`}>
               <CardPlay item={item} />
             </SwiperSlide>
           ))}

@@ -38,7 +38,7 @@ const WideCardSwiper = ({ title, items, showInfo = false }) => {
           }}
         >
           {items?.map((item, index) => (
-            <SwiperSlide key={item.id || index}>
+            <SwiperSlide key={`${item.id}-${index}`}>
               <CardWide item={item} showInfo={showInfo} />
             </SwiperSlide>
           ))}

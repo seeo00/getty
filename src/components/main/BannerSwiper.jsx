@@ -63,7 +63,7 @@ const LogoImage = styled.div`
   }
 `;
 
-export const BannerSwiper = () => {
+const BannerSwiper = () => {
   const { isCollapsed } = useSelector((state) => state.mainR);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isAnimated, setIsAnimated] = useState(false);

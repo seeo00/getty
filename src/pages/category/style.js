@@ -11,7 +11,7 @@ export const GenreWrap = styled.div`
   }
 `;
 
-export const SectionArea = styled.div`
+export const SubContainer = styled.div`
   padding: 40px 0;
   .inner {
     display: flex;

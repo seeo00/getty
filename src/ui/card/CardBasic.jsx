@@ -46,7 +46,7 @@ const CardBasic = ({ item, rank, aspectRatio, className }) => {
       <CardItem $aspectRatio={aspectRatio}>
         {!imageLoaded && <CardBasicSkeleton aspectRatio={aspectRatio} />}
         <img
-          src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+          src={item.poster || `https://image.tmdb.org/t/p/original${item.poster_path}`}
           alt={item.title || item.name}
           onLoad={() => setImageLoaded(true)}
           style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}

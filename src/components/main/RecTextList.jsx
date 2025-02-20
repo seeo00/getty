@@ -10,13 +10,13 @@ const textItems = [
   { id: 5, text: '시청을 완료했다면?', icon: PencilIcon },
 ];
 
-const TextContent = ({ title }) => {
+const RecTextList = ({ title }) => {
   return (
-    <S.TextSection>
+    <section>
       <S.SectionHeader>
         <h2>{title}</h2>
       </S.SectionHeader>
-      <S.TextList>
+      <S.ContentList>
         {textItems.map(({ id, text, icon: Icon }) => (
           <li key={id}>
             <Link to={'#'}>
@@ -25,9 +25,9 @@ const TextContent = ({ title }) => {
             </Link>
           </li>
         ))}
-      </S.TextList>
-    </S.TextSection>
+      </S.ContentList>
+    </section>
   );
 };
 
-export default TextContent;
+export default RecTextList;
