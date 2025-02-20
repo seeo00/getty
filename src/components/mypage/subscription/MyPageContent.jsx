@@ -15,6 +15,7 @@ import {
 } from '../style';
 import { InnerContainer } from '../../../common/layout/InnerContainer';
 import Button from '../../../ui/Button';
+import { planDetails } from '../../../assets/api/planData';
 
 const MyPageContent = () => {
   const [selectedPlan, setSelectedPlan] = useState('Basic');
@@ -49,13 +50,9 @@ const MyPageContent = () => {
             </ButtonContainer>
             {selectedPlan && (
               <MobileContentWrapper>
-                <SubscriptionRow label="월 요금" price="5,500" />
-                <SubscriptionRow label="월 요금" price="5,500" />
-                <SubscriptionRow label="월 요금" price="5,500" />
-                <SubscriptionRow label="월 요금" price="5,500" />
-                <SubscriptionRow label="월 요금" extra="TV, 컴퓨터, 스마트폰, 태블릿" />
-                <SubscriptionRow label="월 요금" price="5,500" />
-                <SubscriptionRow label="월 요금" price="5,500" />
+                {planDetails[selectedPlan].details.map((detail, index) => (
+                  <SubscriptionRow key={index} label={detail.label} price={detail.value} extra={detail.extra} />
+                ))}
               </MobileContentWrapper>
             )}
           </PlansGrid>

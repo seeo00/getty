@@ -21,20 +21,20 @@ const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
 
   const plan = planDetails[selectedPlan];
 
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCountdown((prevCount) => {
-  //       if (prevCount <= 1) {
-  //         clearInterval(timer);
-  //         onClose();
-  //         return 0;
-  //       }
-  //       return prevCount - 1;
-  //     });
-  //   }, 1000);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown((prevCount) => {
+        if (prevCount <= 1) {
+          clearInterval(timer);
+          onClose();
+          return 0;
+        }
+        return prevCount - 1;
+      });
+    }, 1000);
 
-  //   return () => clearInterval(timer);
-  // }, [onClose]);
+    return () => clearInterval(timer);
+  }, [onClose]);
 
   const handlePaymentClick = () => {
     navigate('/');
@@ -61,7 +61,7 @@ const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
               <span>{plan.nextPaymentDate}</span>
             </SubscriptionRow>
           </SubscriptionCardLeft>
-          <SubscriptionCardRight/>
+          <SubscriptionCardRight />
         </SubscriptionCard>
 
         <ButtonWrapper>

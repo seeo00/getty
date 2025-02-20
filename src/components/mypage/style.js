@@ -32,7 +32,7 @@ export const TitleSection = styled.div`
 `;
 
 export const MainTitle = styled.h1`
-  color: white;
+  color: ${color.white};
   font-size: 32px;
   font-weight: 500;
   margin: 0 0 20px 0;
@@ -181,11 +181,12 @@ export const PlanTitle = styled.h2`
   font-size: 24px;
   font-weight: 500;
   text-align: center;
-  color: white;
+  color: ${color.white};
   background: ${(props) =>
     props.isSelected
-      ? 'radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040FF 0%, #00279C 72%, #00238A 100%) '
+      ? `radial-gradient(54.97% 83.44% at 23.41% 78.7%, ${color.primary[300]} 0%, ${color.primary[500]} 72%, ${color.primary[500]} 100%)`
       : color.gray[600]};
+
   border-radius: 16px;
   transition: background-color 0.3s ease;
   display: flex;
@@ -210,7 +211,11 @@ export const CardContainer = styled.div`
     }
 
     &:hover ${PlanTitle} {
-      background: radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040FF 0%, #00279C 72%, #00238A 100%) 
+      background: radial-gradient(
+        54.97% 83.44% at 23.41% 78.7%,
+        ${color.primary[300]} 0%,
+        ${color.primary[500]} 72%,
+        ${color.primary[500]} 100%
       );
     }
   }
@@ -251,15 +256,22 @@ export const PlanButton = styled.button`
   color: white;
   background: ${(props) =>
     props.isSelected
-      ? 'radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040FF 0%, #00279C 72%, #00238A 100%) '
-      : '${color.gray[600]}'};
+      ? `radial-gradient(54.97% 83.44% at 23.41% 78.7%, ${color.primary[300]} 0%, ${color.primary[500]} 72%, ${color.primary[500]} 100%)`
+      : 'transparent'};
+
   border: ${(props) => (props.isSelected ? 'none' : `1px solid ${color.gray[90]}`)};
   border-radius: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background: radial-gradient(radial-gradient(54.97% 83.44% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%));
+    background: radial-gradient(
+      54.97% 83.44% at 23.41% 78.7%,
+      ${color.primary[300]} 0%,
+      ${color.primary[500]} 72%,
+      ${color.primary[500]} 100%
+    );
+    border: none;
   }
 `;
 
@@ -412,7 +424,7 @@ export const ModalContainer = styled.div`
 
   ${respondTo('tablet')} {
     width: 600px;
-    height: 650px;
+    height: 620px;
   }
 
   ${respondTo('mobile')} {
@@ -434,7 +446,7 @@ export const ModalTitle = styled.h2`
   }
 
   ${respondTo('mobile')} {
-    margin: 40px auto 30px;
+    margin: 40px auto 25px;
     font-size: 16px;
   }
 `;
@@ -452,7 +464,7 @@ export const SubscriptionCardLeft = styled.div`
   height: 214px;
   border-radius: 16px;
   margin-left: 85px;
-  padding: 40px;
+  padding: 50px;
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 4px ${color.gray[500]};
   z-index: 1;
@@ -461,14 +473,14 @@ export const SubscriptionCardLeft = styled.div`
     width: 270px;
     height: 190px;
     margin-left: 60px;
-    padding: 20px;
+    padding: 40px;
   }
 
   ${respondTo('mobile')} {
     width: 180px;
     height: 130px;
     margin-left: 15px;
-    padding: 10px;
+    padding: 10px 0 10px 10px;
   }
 `;
 
@@ -478,7 +490,7 @@ export const SubscriptionCardRight = styled.div`
   width: 103px;
   border-radius: 16px;
   margin-right: 86px;
-  padding: 16px;
+  padding: 3px;
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 4px ${color.gray[500]};
   position: relative;
@@ -487,25 +499,25 @@ export const SubscriptionCardRight = styled.div`
   ${respondTo('tablet')} {
     width: 150px;
     margin-right: 60px;
-    padding: 5px;
+    padding: 0px;
   }
 
   ${respondTo('mobile')} {
     width: 170px;
     margin-right: 15px;
-    padding: 3px;
+    padding: 0;
   }
 `;
 
 export const SubscriptionCardTitle = styled.div`
-  margin-bottom: 8px;
+  margin: -10px 0 12px 0;
   color: ${color.gray[10]};
   font-size: 24px;
   font-weight: 400;
 
   ${respondTo('tablet')} {
     font-size: 22px;
-    margin: 15px 0 6px 15px;
+    margin: -5px 0 6px -5px;
   }
 
   ${respondTo('mobile')} {
@@ -524,15 +536,15 @@ export const SubscriptionRow = styled.div`
   color: ${color.gray[20]};
   width: 100%;
   span:first-child {
-    margin-right: 78px; // 간격 줄임
+    margin-right: 80px;
     min-width: 70px;
-    flex-shrink: 0; // 축소 방지
+    flex-shrink: 0;
   }
 
   span:last-child {
-    white-space: nowrap; // 줄바꿈 방지
+    white-space: nowrap;
     overflow: hidden;
-    text-overflow: clip; // 말줄임표 대신 그냥 자름
+    text-overflow: clip;
     flex-grow: 1;
   }
 
@@ -541,7 +553,7 @@ export const SubscriptionRow = styled.div`
     margin-bottom: 6px;
 
     span:first-child {
-      margin: 0 50px 0 15px;
+      margin: 1px 55px 0 -5px;
       min-width: 80px;
     }
   }
@@ -552,24 +564,32 @@ export const SubscriptionRow = styled.div`
 
     span:first-child {
       margin-right: 10px;
-      min-width: 50px;
+      width: 50px;
+      text-align: left;
+    }
+    span:last-child {
+      margin-left: -9px;
+      flex: 1;
     }
   }
 `;
 
 export const ButtonWrapper = styled.div`
   width: 525px;
+  max-width: 525px;
   margin-top: 80px;
   margin-left: 50%;
   transform: translateX(-50%);
 
   ${respondTo('tablet')} {
-    width: 450px;
+    width: 480px;
+    max-width: 480px;
     margin-top: 60px;
   }
 
   ${respondTo('mobile')} {
-    width: 300px;
+    width: 290px;
+    max-width: 290px;
     margin-top: 40px;
   }
 
@@ -577,7 +597,7 @@ export const ButtonWrapper = styled.div`
     height: 60px;
 
     ${respondTo('tablet')} {
-      height: 50px;
+      height: 55px;
     }
 
     ${respondTo('mobile')} {
