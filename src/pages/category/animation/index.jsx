@@ -1,51 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
-import * as S from '../style.js';
-import { useCallback, useEffect, useState } from 'react';
-import useInfiniteScroll from '../../../hooks/useInfiniteScroll.js.js';
+import * as S from '../style';
 import { getAnimation } from '../../../store/modules/thunks/getAnimation.js';
 import { animationActions } from '../../../store/modules/slices/animationSlice.js';
-import { CategoryButtons, ContentList } from '../../../components/index.jsx';
+import { useCategoryContent } from '../../../hooks/useCategoryContent.js';
+import { CategoryButtons, CardContentList } from '../../../components/index.jsx';
 
 const Animation = () => {
-  const { animationData, currentCategory, loading, error, currentPage, hasMore } = useSelector(
-    (state) => state.animationR
-  );
-  const dispatch = useDispatch();
-  const [prevCategory, setPrevCategory] = useState(currentCategory);
-  const [isInitialLoad, setIsInitialLoad] = useState(true);
-
-  useEffect(() => {
-    if (isInitialLoad || prevCategory !== currentCategory) {
-      dispatch(getAnimation({ category: currentCategory, currentPage: 1, prevResults: [] }));
-      setPrevCategory(currentCategory);
-      setIsInitialLoad(false);
-    }
-  }, [dispatch, currentCategory, prevCategory, isInitialLoad]);
-
-  useEffect(() => {
-    return () => {
-      dispatch(animationActions.setCategory('base'));
-    };
-  }, [dispatch]);
-
-  const handleCategoryClick = (categoryId) => {
-    if (categoryId === currentCategory) {
-      return;
-    }
-    dispatch(animationActions.setCategory(categoryId));
-  };
-
-  const handleLoadMore = useCallback(() => {
-    dispatch(
-      getAnimation({
-        category: currentCategory,
-        currentPage: currentPage + 1,
-        prevResults: animationData,
-      })
-    );
-  }, [dispatch, currentCategory, currentPage, animationData]);
-
-  const lastElementRef = useInfiniteScroll(loading, hasMore, handleLoadMore);
+  const { contentData, currentCategory, loading, onCategoryClick, lastElementRef } = useCategoryContent({
+    getData: getAnimation,
+    actions: animationActions,
+    selector: (state) => state.animationR,
+    dataKey: 'animationData',
+  });
 
   const categories = [
     { id: 'base', name: '추천' },
@@ -59,14 +24,11 @@ const Animation = () => {
     { id: 'kids', name: '키즈' },
     { id: 'other', name: '기타' },
   ];
+
   return (
     <S.GenreWrap>
-      <CategoryButtons
-        categories={categories}
-        currentCategory={currentCategory}
-        onCategoryClick={handleCategoryClick}
-      />
-      <ContentList data={animationData} loading={loading} lastElementRef={lastElementRef} />
+      <CategoryButtons categories={categories} currentCategory={currentCategory} onCategoryClick={onCategoryClick} />
+      <CardContentList data={contentData} loading={loading} lastElementRef={lastElementRef} />
     </S.GenreWrap>
   );
 };

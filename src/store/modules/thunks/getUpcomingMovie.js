@@ -18,6 +18,7 @@ export const getUpcomingMovie = createAsyncThunk('movie/getUpcomingMovie', async
   try {
     const url = `${BASE_URL}/movie/upcoming?language=ko-KR&region=KR`;
     const response = await axios.get(url, options);
+
     return response.data.results.filter(
       (item) =>
         hasKorean(item.name) || hasKorean(item.title) || hasKorean(item.overview) || item.original_language === 'ko'

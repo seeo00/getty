@@ -17,6 +17,8 @@ export const mainBannerData = [
     vote_count: 4468,
     media_type: 'movie',
     banner: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/792307-1.avif',
+    banner_mobile:
+      'https://github.com/seeo00/project-image-storage/blob/main/images/main/banner/792307-1-mobile.png?raw=true',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/792307-2.avif',
   },
   {
@@ -37,6 +39,8 @@ export const mainBannerData = [
     vote_count: 2051,
     media_type: 'movie',
     banner: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/426063-1.avif',
+    banner_mobile:
+      'https://github.com/seeo00/project-image-storage/blob/main/images/main/banner/426063-1-mobile.png?raw=true',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/426063-2.avif',
   },
   {
@@ -57,6 +61,8 @@ export const mainBannerData = [
     vote_count: 623,
     media_type: 'movie',
     banner: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/1050035-1.webp',
+    banner_mobile:
+      'https://github.com/seeo00/project-image-storage/blob/main/images/main/banner/1050035-1-mobile.png?raw=true',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/1050035-2.avif',
   },
   {
@@ -77,6 +83,8 @@ export const mainBannerData = [
     vote_count: 3801,
     media_type: 'movie',
     banner: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/933260-1.webp',
+    banner_mobile:
+      'https://github.com/seeo00/project-image-storage/blob/main/images/main/banner/933260-1-mobile.png?raw=true',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/933260-2.avif',
   },
   {
@@ -97,6 +105,8 @@ export const mainBannerData = [
     vote_count: 290,
     media_type: 'movie',
     banner: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/598896-1.webp',
+    banner_mobile:
+      'https://github.com/seeo00/project-image-storage/blob/main/images/main/banner/598896-1-mobile.png?raw=true',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/598896-2.webp',
   },
   {
@@ -117,6 +127,8 @@ export const mainBannerData = [
     vote_count: 2639,
     media_type: 'movie',
     banner: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/915935-1.avif',
+    banner_mobile:
+      'https://github.com/seeo00/project-image-storage/blob/main/images/main/banner/915935-1-mobile.png?raw=true',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/915935-2.avif',
   },
   {
@@ -137,6 +149,8 @@ export const mainBannerData = [
     vote_count: 28314,
     media_type: 'movie',
     banner: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/680-1.webp',
+    banner_mobile:
+      'https://github.com/seeo00/project-image-storage/blob/main/images/main/banner/480-1-mobile.png?raw=true',
     logo: 'https://raw.githubusercontent.com/seeo00/project-image-storage/main/images/main/banner/680-2.avif',
   },
 ];

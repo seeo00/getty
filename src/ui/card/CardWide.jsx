@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { FavoriteIcon } from '../icon';
 import { color } from '../../styled/common';
+import { useState } from 'react';
+import { CardBasicSkeleton } from '../LoadingSkeleton';
 
 const CardWrap = styled(Link)`
   display: block;
@@ -40,12 +42,16 @@ const CardInfo = styled.div`
 `;
 
 const CardWide = ({ item, showInfo = false }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <CardWrap to={'/'}>
       <CardItem>
+        {!imageLoaded && <CardBasicSkeleton aspectRatio={16 / 9} />}
         <img
           src={`https://image.tmdb.org/t/p/original${item.backdrop_path || item.poster_path}`}
           alt={item.title || item.name}
+          onLoad={() => setImageLoaded(true)}
+          style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}
         />
       </CardItem>
       {showInfo && ( // showInfo가 true일 때만 CardInfo 렌더링

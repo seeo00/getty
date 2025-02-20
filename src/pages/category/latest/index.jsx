@@ -31,18 +31,18 @@ const Latest = () => {
       <SubBannerSwiper
         subTitle="최신 콘텐츠"
         title="최신 트렌트 콘텐츠"
-        desc="기대를 한 몸에 받는 신작을 확인해보세요!"
+        desc="기대를 한 몸에 받는 신작을 확인해 보세요!"
         items={trendingWeekData}
         loading={loading}
       />
-      <S.SectionArea>
-        <InnerContainer maxWidth="1460px" className="inner">
-          <BasicCardSwiper title="새로 올라온 콘텐츠" items={newSeriesData} />
-          <BasicCardSwiper title="새로 올라온 영화" items={newMovieData} />
-          <BasicCardSwiper title="기대되는 신규 콘텐츠" items={upcomingSeriesData} />
-          <BasicCardSwiper title="공개 예정 영화" items={upcomingMovieData} />
+      <S.SubContainer>
+        <InnerContainer className="inner">
+          <BasicCardSwiper title="새로 올라온 콘텐츠" items={newSeriesData} section="newSeriesData" />
+          <BasicCardSwiper title="새로 올라온 영화" items={newMovieData} section="newMovieData" />
+          <BasicCardSwiper title="기대되는 신규 콘텐츠" items={upcomingSeriesData} section="upcomingSeriesData" />
+          <BasicCardSwiper title="공개 예정 영화" items={upcomingMovieData} section="upcomingMovieData" />
         </InnerContainer>
-      </S.SectionArea>
+      </S.SubContainer>
     </>
   );
 };

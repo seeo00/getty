@@ -8,7 +8,7 @@ const CategoryButtons = ({ categories, currentCategory, onCategoryClick }) => {
 
   return (
     <InnerContainer className="inner">
-      <S.ButtonArea ref={scrollRef}>
+      <S.ButtonContainer ref={scrollRef}>
         {categories.map((category) => (
           <CategoryButton
             key={category.id}
@@ -17,7 +17,7 @@ const CategoryButtons = ({ categories, currentCategory, onCategoryClick }) => {
             isActive={category.id === currentCategory}
           />
         ))}
-      </S.ButtonArea>
+      </S.ButtonContainer>
     </InnerContainer>
   );
 };

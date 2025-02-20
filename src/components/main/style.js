@@ -4,7 +4,7 @@ import { color } from '../../styled/common';
 import { Link } from 'react-router-dom';
 
 // 배너 스와이퍼
-export const BannerWrap = styled.section`
+export const BannerWrap = styled.div`
   .inner {
     position: relative;
   }
@@ -21,11 +21,25 @@ export const SlideContainer = styled(Link)`
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: right;
+    //object-position: right;
   }
   ${respondTo('tabletMore')} {
     aspect-ratio: auto;
     //max-height: 689px;
+  }
+`;
+
+export const ResponsiveBannerImage = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  ${respondTo('tabletMore')} {
+    content: url(${(props) => props.src});
+  }
+
+  @media (max-width: 600px) {
+    content: url(${(props) => props.$mobileSrc || props.src});
   }
 `;
 
@@ -52,8 +66,6 @@ export const NavButton = styled.button`
 
 // 텍스트 버튼 섹션
 
-export const TextSection = styled.section``;
-
 export const SectionHeader = styled.div`
   display: flex;
   justify-content: space-between;
@@ -75,7 +87,7 @@ export const SectionHeader = styled.div`
   }
 `;
 
-export const TextList = styled.ul`
+export const ContentList = styled.ul`
   display: flex;
   flex-direction: column;
 

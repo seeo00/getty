@@ -1,13 +1,14 @@
 // DetailTabButtons.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import EpisodeSection from '../../components/detail/EpisodeCard';
 import ReviewCard from '../../components/detail/ReviewCard';
 import InfoCard from '../../components/detail/InfoCard';
-import { ContentList } from '../../components';
-import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
-import DetailCard from '../../components/detail/DetailCard';
-import { DetailPosterGallery } from '../../components/detail/Index';
+import { CardContentList } from '../../components';
+// import { ContentList } from '../../components/category/CardContentList';
+// import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
+// import DetailCard from '../../components/detail/DetailCard';
+// import { DetailPosterGallery } from '../../components/detail/Index';
 
 const TabButton = styled.button`
   background: none;
@@ -48,7 +49,7 @@ const DetailTabButtons = ({ tvId }) => {
       </div>
       <div>
         {activeTab === 'episode' && <EpisodeSection tvId={tvId} initialSeason="1" />}
-        {activeTab === 'recommend' && <ContentList/>}
+        {activeTab === 'recommend' && <CardContentList />}
         {activeTab === 'review' && <ReviewCard likeCount={likeCount} handleLike={handleLike} />}
         {activeTab === 'Info' && <InfoCard />}
       </div>

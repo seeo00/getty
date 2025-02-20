@@ -75,23 +75,3 @@ export const NavButton = styled.button`
     cursor: default;
   }
 `;
-
-export const ContentArea = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  ${respondTo('desktop')} {
-    gap: 12px;
-  }
-  > div {
-    flex-basis: calc(33.3333% - (16px / 3));
-
-    ${respondTo('tabletMore')} {
-      flex-basis: calc(20% - (32px / 5));
-    }
-
-    ${respondTo('desktop')} {
-      flex-basis: calc(20% - (48px / 5));
-    }
-  }
-`;

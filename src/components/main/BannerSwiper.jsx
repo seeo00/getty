@@ -63,7 +63,7 @@ const LogoImage = styled.div`
   }
 `;
 
-export const BannerSwiper = () => {
+const BannerSwiper = () => {
   const { isCollapsed } = useSelector((state) => state.mainR);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isAnimated, setIsAnimated] = useState(false);
@@ -117,7 +117,12 @@ export const BannerSwiper = () => {
           {mainBannerData.map((item, index) => (
             <SwiperSlide key={item.id || index}>
               <S.SlideContainer>
-                <img src={item.banner} alt={item.title || item.name} />
+                {/* <img src={item.banner} alt={item.title || item.name} /> */}
+                <S.ResponsiveBannerImage
+                  src={item.banner}
+                  $mobileSrc={item.banner_mobile}
+                  alt={item.title || item.name}
+                />
                 <LogoImage $isAnimated={isAnimated}>
                   <img src={item.logo} alt="" />
                 </LogoImage>

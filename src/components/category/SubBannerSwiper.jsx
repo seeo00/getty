@@ -8,7 +8,7 @@ import { CardBasicSkeleton } from '../../ui/LoadingSkeleton';
 
 const SubBannerSwiper = ({ items, subTitle, title, desc, loading, rank }) => {
   return (
-    <S.Container>
+    <S.BannerContainer>
       <InnerContainer maxWidth="1460px" className="inner">
         <S.SectionHeader>
           <span>{subTitle}</span>
@@ -49,7 +49,7 @@ const SubBannerSwiper = ({ items, subTitle, title, desc, loading, rank }) => {
               )}
         </S.CardList>
       </InnerContainer>
-    </S.Container>
+    </S.BannerContainer>
   );
 };
 
