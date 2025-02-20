@@ -3,70 +3,37 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import PosterCard from '../../ui/card/DetailPoster';
-import { getDrama } from '../../store/modules/thunks/getDrama';
+import { getRecommendations } from '../../store/modules/thunks/getRecommendations';
 import { respondTo } from '../../styled/GlobalStyle';
-import Button from '../../ui/Button';
-import ArrowDownIcon from '../../ui/icon/ArrowDownIcon';
+import ContentList from '../category/ContentList';
 
 const GalleryWrap = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 16px 0 0 0;
+  display: block;
 
   ${respondTo('tabletMore')} {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    padding: 40px 0 0 0;
+    display: block;
   }
 `;
 
 const DramaPosterGallery = () => {
-  const { dramaData, currentCategory, loading, error, currentPage, hasMore } = useSelector((state) => state.dramaR);
+ 
+  const { loading, error, recommendations = [] } = useSelector((state) => state.recommendationsR);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDrama({ category: currentCategory, currentPage: 1, prevResults: [] }));
-  }, [dispatch, currentCategory]);
+    dispatch(getRecommendations({ currentPage: 1, prevResults: [] }));
+  }, [dispatch]);
 
-  const handleLoadMore = (e) => {
-    e.preventDefault();
-    dispatch(
-      getDrama({
-        category: currentCategory,
-        currentPage: currentPage + 1,
-        prevResults: dramaData,
-      })
-    );
-  };
-
-  if (loading && dramaData.length === 0) return <p>로딩 중...</p>;
+  if (loading && recommendations.length === 0) return <p>로딩 중...</p>;
   if (error) return <p>데이터를 찾을 수 없습니다.</p>;
 
   return (
     <GalleryWrap>
-      {dramaData.map((item) => (
+      {recommendations.map((item) => (
         <Link key={item.id} to={`/category/genre/${item.media_type}/${item.id}`}>
-          <PosterCard posterPath={item.poster_path} />
+          <ContentList />
         </Link>
       ))}
-      {hasMore && (
-        <Button
-          width="56px"
-          onClick={handleLoadMore}
-          style={{
-            height: '56px',
-            borderRadius: '50%',
-            padding: 0,
-            marginTop: '16px',
-            gridColumn: '1 / -1', // 그리드 중앙정렬
-            justifySelf: 'center',
-          }}
-        >
-          <ArrowDownIcon width="28" height="28" fill="white" />
-        </Button>
-      )}
     </GalleryWrap>
   );
 };

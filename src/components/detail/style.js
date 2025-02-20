@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { color } from '../../styled/common';
 import { respondTo } from '../../styled/GlobalStyle';
 
+export const Container = styled.div``
+
 export const DetailContainer = styled.div`
   background: ${color.gray[800]};
 `;
@@ -146,33 +148,24 @@ export const Overview = styled.p`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props =>
-      !props.expanded &&
-      css`
-        -webkit-line-clamp: 3;
-      `}
+    ${props => !props.expanded ? '-webkit-line-clamp: 3;' : ''}
   }
+  
   ${respondTo('tablet')} {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props =>
-      !props.expanded &&
-      css`
-        -webkit-line-clamp: 2;
-      `}
+    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
   }
+  
   ${respondTo('mobile')} {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props =>
-      !props.expanded &&
-      css`
-        -webkit-line-clamp: 2;
-      `}
+    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
   }
 `;
+
 
 export const ImageWrapper = styled.div`
   position: relative;

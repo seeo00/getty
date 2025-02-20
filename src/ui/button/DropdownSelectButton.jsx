@@ -39,7 +39,7 @@ const IconWrapper = styled.span`
 
 const DropdownList = styled.ul`
   position: absolute;
-  top: calc(100% + 3px); /* 버튼 바로 밑에 3px 간격 */
+  top: calc(100% + 3px);
   left: 0;
   width: 100%;
   background: ${color.gray[800]};
@@ -54,7 +54,7 @@ const DropdownList = styled.ul`
 `;
 
 const DropdownListItem = styled.li`
-  padding: 7px 0 7px 14px; /* 상하 7px, 좌측 14px, 우측 0 */
+  padding: 7px 0 7px 14px;
   font-size: 14px;
   font-weight: 400;
   color: ${color.gray[70]};
@@ -110,7 +110,9 @@ const SeasonDropdown = ({ seasons, onSelect, defaultSeason, icon: CustomIcon, ..
   return (
     <DropdownWrapper ref={dropdownRef}>
       <DropdownSelectButton onClick={() => setIsOpen((prev) => !prev)} {...props}>
-        <ButtonText>{selectedSeason}</ButtonText>
+        <ButtonText>
+				{typeof selectedSeason === 'object' ? selectedSeason.name : selectedSeason}
+				</ButtonText>
         <IconWrapper>
           {CustomIcon ? (
             <CustomIcon size={16} color={color.gray[70]} />

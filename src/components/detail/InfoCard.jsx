@@ -18,7 +18,7 @@ const InfoCardContainer = styled.div`
   @media (min-width: 768px) {
     flex-wrap: nowrap;
     align-items: flex-start;
-    flex-direction: row; /* 데스크탑: 원래 순서 */
+    flex-direction: row;
   }
 `;
 // 포스터 컨테이너 (고정 사이즈 114x168px)
@@ -44,34 +44,41 @@ const PosterContainer = styled.div`
   }
 `;
 
-// 타이틀과 줄거리가 들어갈 컨테이너
+// 타이틀과 줄거리
 const TextContainer = styled.div`
   flex: 1;
   color: ${color.white};
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
+	margin: 16px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
+	text-align: left;
 
-  h2 {
+  h2 {text-align: left;
     margin: 0 0 8px;
   }
 
-  p {
+  p {text-align: left;
     margin: 0;
   }
 
-	${respondTo('laptop')} {
+	${respondTo('desktop')} {
 		font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+	
 	}
   ${respondTo('tablet')} {
     font-size: 12px;
     font-weight: 400;
     line-height: 15px;
+  }
+	${respondTo('mobile')} {
+    order: 1; /* 첫 번째 행에 위치 */
+    text-align: center;
   }
 `;
 
@@ -99,8 +106,12 @@ const DetailList = styled.ul`
   ${respondTo('mobile')} {
     font-size: 12px;
     font-weight: 400;
-    line-height: 15px;
+    line-height: 15px;   
+		order: 2; 
+    flex-basis: 100%; 
+    margin-top: 16px;
   }
+  
 `;
 
 // TextContainer와 DetailList를 감싸는 래퍼 컴포넌트
@@ -124,12 +135,14 @@ const TextAndDetailWrapper = styled.div`
     line-height: 15px;
   }
   ${respondTo('mobile')} {
-    flex-direction: column;
+    display: contents;
+		flex-direction: column;
     gap: 40px;
     font-size: 14px;
     font-weight: 400;
     line-height: 15px;
   }
+
 `;
 const InfoCard = () => {
   const dispatch = useDispatch();

@@ -1,9 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getReality } from '../thunks/getReality';
 import { getRecommendations } from '../thunks/getRecommendations';
 
 const initialState = {
-  realityData: [],
+  Recommendations: [],
   currentCategory: 'base',
   currentPage: 1,
   hasMore: true,
@@ -11,14 +10,14 @@ const initialState = {
   error: null,
 };
 
-const RecommendationSlice = createSlice({
-  name: 'reality',
+const recommendationSlice = createSlice({
+  name: 'recommendation',
   initialState,
   reducers: {
     setCategory: (state, action) => {
       state.currentCategory = action.payload;
       state.currentPage = 1;
-      state.realityData = [];
+      state.Recommendations = [];
       state.hasMore = true;
     },
   },
@@ -30,7 +29,7 @@ const RecommendationSlice = createSlice({
       })
       .addCase(getRecommendations.fulfilled, (state, action) => {
         state.loading = false;
-        state.realityData = action.payload.realities;
+        state.Recommendations = action.payload.recommendations;
         state.hasMore = action.payload.hasMore;
         state.currentPage = action.payload.currentPage;
       })
@@ -41,5 +40,5 @@ const RecommendationSlice = createSlice({
   },
 });
 
-export const RecommendationActions = RecommendationSlice.actions;
-export default RecommendationSlice.reducer;
+export const recommendationActions = recommendationSlice.actions;
+export default recommendationSlice.reducer;
