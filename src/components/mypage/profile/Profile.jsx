@@ -12,7 +12,6 @@ import {
   PageTitle,
   ContentWrapper,
   NameInputWrapper,
-  ProfileImageUpload,
   ButtonWrapper,
 } from './style';
 import Button from '../../../ui/Button';
@@ -30,50 +29,6 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
     { id: 2, name: 'Name', image: null },
     { id: 3, name: 'Name', image: null },
   ]);
-
-  // 프로필 이름 검증 함수
-  const validateProfileName = (value) => {
-    // 10자 초과 체크
-    if (value.length > 10) {
-      return '프로필 이름은 10자 이하로 입력해주세요.';
-    }
-
-    // 한글, 영문, 숫자만 허용하는 정규표현식
-    const validNameRegex = /^[가-힣a-zA-Z0-9]*$/;
-
-    // 유효하지 않은 문자 체크
-    if (value && !validNameRegex.test(value)) {
-      return '한글, 영문, 숫자만 입력 가능합니다.';
-    }
-
-    // 최소 1자 체크
-    if (value.length < 1) {
-      return '프로필 이름은 1자 이상 입력해야 합니다.';
-    }
-
-    // 모든 조건 통과 시
-    return '';
-  };
-
-  // 이름 변경 핸들러
-  const handleNameChange = (e) => {
-    const inputValue = e.target.value;
-
-    // 검증 함수 호출
-    const errorMessage = validateProfileName(inputValue);
-
-    setSelectedProfile((prev) => ({
-      ...prev,
-      name: inputValue,
-    }));
-
-    const inputElement = e.target;
-    if (inputElement) {
-      // 강제로 에러 메시지 트리거
-      const blurEvent = new FocusEvent('blur', { bubbles: true });
-      inputElement.dispatchEvent(blurEvent);
-    }
-  };
 
   // 프로필 선택 핸들러 (편집 모드일 때만 동작)
   const handleProfileSelect = (profile) => {
@@ -139,7 +94,6 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
         <Subtitle>시청할 프로필을 선택해 주세요.</Subtitle>
 
         <ProfileGrid>
-          {/* 기존 프로필 렌더링 */}
           {profiles.map((profile) => (
             <ProfileItem
               key={profile.id}
@@ -151,7 +105,6 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
             </ProfileItem>
           ))}
 
-          {/* 새 프로필 추가 버튼 */}
           {profiles.length < maxProfiles && (
             <ProfileItem onClick={handleAddNewProfile} $isAddProfile={true}>
               <AddProfileCircle>
@@ -162,7 +115,6 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
           )}
         </ProfileGrid>
 
-        {/* 프로필 편집 모드 토글 버튼 */}
         <ProfileButtonWrapper>
           <Button onClick={() => setCurrentMode(currentMode === 'view' ? 'edit' : 'view')}>
             {currentMode === 'view' ? '프로필 편집' : '완료'}
@@ -176,41 +128,53 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
   return (
     <Wrapper>
       <ContentWrapper>
-        {/* 동적으로 변경되는 페이지 타이틀 */}
         <PageTitle>{isAddingNewProfile ? '프로필 추가' : '프로필 편집'}</PageTitle>
 
-        {/* 프로필 이미지 업로드 */}
-        <ProfileImageUpload>
-          <input
-            type="file"
-            accept="image/*"
-            id="profile-image-upload"
-            style={{ display: 'none' }}
-            onChange={handleImageUpload}
-          />
+        <input
+          type="file"
+          accept="image/*"
+          id="profile-image-upload"
+          style={{ display: 'none' }}
+          onChange={handleImageUpload}
+        />
 
-          <ProfileCircle $editPage={true}>
-            {selectedProfile.image ? (
-              <img
-                src={selectedProfile.image}
-                alt="Profile"
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
-            ) : (
-              <div onClick={triggerFileUpload} style={{ cursor: 'pointer' }}>
-                <PencilIcon style={{ opacity: 1 }} />
-              </div>
-            )}
-          </ProfileCircle>
-        </ProfileImageUpload>
+        <ProfileCircle $editPage={true}>
+          {selectedProfile.image ? (
+            <img
+              src={selectedProfile.image}
+              alt="Profile"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+          ) : (
+            <div onClick={triggerFileUpload} style={{ cursor: 'pointer' }}>
+              <PencilIcon style={{ opacity: 1 }} />
+            </div>
+          )}
+        </ProfileCircle>
 
-        {/* 프로필 이름 입력 */}
         <NameInputWrapper>
           <InputField
             type="text"
             value={selectedProfile.name}
-            onChange={handleNameChange}
-            getErrorMessage={validateProfileName}
+            onChange={(e) => {
+              setSelectedProfile((prev) => ({
+                ...prev,
+                name: e.target.value,
+              }));
+            }}
+            getErrorMessage={(value) => {
+              if (value.length > 10) {
+                return '프로필 이름은 10자 이하로 입력해주세요.';
+              }
+              if (value.length < 1) {
+                return '프로필 이름은 1자 이상 입력해야 합니다.';
+              }
+              const validNameRegex = /^[가-힣a-zA-Z0-9]*$/;
+              if (value && !validNameRegex.test(value)) {
+                return '한글, 영문, 숫자만 입력 가능합니다.';
+              }
+              return '';
+            }}
             placeholder="프로필 이름"
             maxLength={10}
           />
@@ -236,7 +200,6 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
             }}
           />
 
-          {/* 취소 버튼 */}
           <Button
             variant="secondary"
             onClick={() => {
@@ -247,7 +210,6 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
             취소
           </Button>
 
-          {/* 확인 버튼 */}
           <Button
             onClick={() => {
               handleProfileEdit(selectedProfile);

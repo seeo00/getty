@@ -226,10 +226,6 @@ export const NameInputWrapper = styled.div`
   }
 `;
 
-export const ProfileImageUpload = styled.div`
-  position: relative;
-`;
-
 export const ButtonWrapper = styled.div`
   width: 100%;
   max-width: 358px;
