@@ -8,26 +8,48 @@ export const DetailContainer = styled.div`
 
 export const EpiContainer = styled.div`
   padding: 16px;
-  margin: 10px 0 0 0;
-  border-radius: 8px;
+  margin: 0 -16px 0 -16px;
   background: ${color.gray[800]};
-
+	border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+	border-bottom: solid 1px ${color.gray[80]};
   &:hover {
+		border-radius: 8px;
     background: ${color.gray[300]};
   }
-  ${respondTo('tabletmore')} {
+  ${respondTo('desktop')} {
     padding: 40px;
-    margin: 10px 0 0 0;
-    border-radius: 8px;
+    margin: 0 -40px 0 -40px;
+   
+    background: ${color.gray[800]};
+  }
+  ${respondTo('tablet')} {
+    padding: 40px;
+    margin: 0 -40px 0 -40px;
+
     background: ${color.gray[800]};
   }
 `;
 
 export const PaddingContainer = styled.div`
+  width: 100%;
   padding: 0 0 0 16px;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('desktop')} {
     padding: 0 0 0 40px;
+    display: flex;
+    flex-direction: column;
+  }
+  ${respondTo('tablet')} {
+    padding: 0 0 0 40px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  ${respondTo('mobile')} {
+    padding: 0 0 0 16px;
+    width: 100%;
+    display: block;
   }
 `;
 
@@ -43,7 +65,7 @@ export const Image = styled.img`
   height: 95px;
   object-fit: cover;
   border-radius: 16px;
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     width: 269px;
     height: 164px;
     object-fit: cover;
@@ -60,13 +82,13 @@ export const StyledText = styled.div`
   -webkit-box-orient: vertical;
   overflow: hidden;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('laptop')} {
+  }
+  ${respondTo('tablet')} {
     display: block;
     -webkit-line-clamp: unset;
     -webkit-box-orient: unset;
     overflow: visible;
-  }
-  ${respondTo('laptop')} {
   }
 `;
 
@@ -84,20 +106,32 @@ export const TitleName = styled.h3`
   font-weight: 500;
   color: ${color.white};
   margin: 0 0 16px 0;
-  ${respondTo('tabletMore')} {
+  ${respondTo('desktop')} {
     display: none;
   }
-  ${respondTo('laptop')} {
+  ${respondTo('tabletmore')} {
+    display: none;
+  }
+  ${respondTo('tablet')} {
     display: none;
   }
 `;
 
 export const Title = styled.h2`
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: center;
   font-weight: 700;
+
+  ${respondTo('mobile')} {
+    flex-wrap: wrap;
+    & > span {
+      width: 100%;
+    }
+  }
 `;
+
 
 export const Overview = styled.p`
   margin: 10px 0;
@@ -105,18 +139,25 @@ export const Overview = styled.p`
   font-weight: 400;
   line-height: 20px;
   color: ${color.gray[70]};
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
   overflow: hidden;
 
-  ${respondTo('tabletMore')} {
-    display: block;
-    -webkit-line-clamp: unset;
-    -webkit-box-orient: unset;
-    overflow: visible;
-  }
   ${respondTo('laptop')} {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  }
+  ${respondTo('tablet')} {
+    display: -webkit-box;
+		-webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  }
+  ${respondTo('mobile')} {
+    display: -webkit-box;
+		-webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   }
 `;
 
@@ -158,3 +199,68 @@ export const IconWrapper = styled.div`
 //     margin-left: 4px;
 //   }
 // `;
+
+/* 
+----------------ReviewCard------------------------------- */
+export const ReviewCardContainer = styled.div`
+  padding: 16px 0;
+  border-bottom: 1px solid ${color.gray[500]};
+`;
+
+export const ReviewHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+`;
+
+export const ReviewLeftSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+`;
+
+export const StarRatingWrapper = styled.div`
+  /* 별점 버튼 자리 */
+`;
+
+export const AuthorName = styled.span`
+  font-size: 14px;
+  line-height: 20px;
+  color: ${color.gray[70]};
+`;
+
+export const ReviewDate = styled.span`
+  font-size: 12px;
+  line-height: 11px;
+  color: ${color.gray[70]};
+`;
+
+export const ReviewContentWrapper = styled.div`
+  width: 100%;
+  position: relative;
+`;
+
+export const ReviewText = styled.p`
+  font-size: 14px;
+  line-height: 20px;
+  color: ${color.white};
+  margin: 0;
+  ${(props) =>
+    !props.expanded &&
+    `
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  `}
+`;
+
+export const MoreButton = styled.span`
+  font-size: 14px;
+  line-height: 20px;
+  color: ${color.white};
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 4px;
+`;

@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { respondTo } from '../../styled/GlobalStyle';
 
 const CardWrap = styled.div`
   position: relative;
@@ -11,6 +12,14 @@ const CardWrap = styled.div`
   max-height: ${(props) => (props.full ? 'none' : '365px')};
   overflow: hidden;
   border-radius: ${(props) => (props.full ? '0' : '8px')};
+  ${respondTo('tabletmore')} {
+    width: ${(props) => (props.full ? '100%' : '768px')};
+    height: ${(props) => (props.full ? '100%' : '468px')};
+    max-width: ${(props) => (props.full ? 'none' : '264px')};
+    max-height: ${(props) => (props.full ? 'none' : '365px')};
+    overflow: hidden;
+    border-radius: ${(props) => (props.full ? '0' : '8px')};
+  }
 
   //이미지 위치조정
   img {
@@ -18,7 +27,7 @@ const CardWrap = styled.div`
     height: 100%;
     position: absolute;
     object-fit: cover;
-    object-position: 20% 30%;
+    object-position: 20% 50%;
     display: block;
   }
 `;

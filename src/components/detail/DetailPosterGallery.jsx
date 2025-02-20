@@ -26,12 +26,10 @@ const DramaPosterGallery = () => {
   const { dramaData, currentCategory, loading, error, currentPage, hasMore } = useSelector((state) => state.dramaR);
   const dispatch = useDispatch();
 
-  // 카테고리 변경 시 첫 페이지부터 새로 로드
   useEffect(() => {
     dispatch(getDrama({ category: currentCategory, currentPage: 1, prevResults: [] }));
   }, [dispatch, currentCategory]);
 
-  // 버튼 클릭 시 다음 페이지 데이터 요청
   const handleLoadMore = (e) => {
     e.preventDefault();
     dispatch(

@@ -1,3 +1,5 @@
+
+
 // App.js
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -8,8 +10,7 @@ import Layout from './common/layout/Layout';
 import MyPage from './pages/mypage';
 import Subscription from './pages/mypage/Subscription';
 import Profile from './pages/mypage/profile';
-
-// import Detail from './pages/detail';
+import Detail from './pages/detail';
 // import Drama from './pages/category/genre';
 
 function ScrollToTop() {
@@ -37,6 +38,8 @@ function App() {
             <Route path="/category/latest" element={<Latest />} />
             <Route path="/category/original" element={<Original />} />
             <Route path="/category/drama" element={<Drama />} />
+						{/* <Route path=":detail/:detailID" element={<Detail />} />
+						</Route> */}
             <Route path="/category/movie" element={<Movie />} />
             <Route path="/category/reality" element={<Reality />} />
             <Route path="/category/animation" element={<Animation />} />
@@ -52,6 +55,7 @@ function App() {
           <Route path="/auth" element={<AuthLayout />}>
             <Route index element={<Auth />} />
           </Route>
+					<Route path="/category/:drama/:detail/:detailID" element={<Detail />} />
         </Routes>
       </BrowserRouter>
     </>
