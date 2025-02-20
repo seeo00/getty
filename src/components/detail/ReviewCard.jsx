@@ -1,98 +1,99 @@
 // ReviewCard.jsx
-import React from 'react';
-import styled from 'styled-components';
-import { color } from '../../styled/common';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import ThumbsUpIcon from '../../ui/icon/ThumbsUpIcon';
 import LongCircleButton from '../../ui/button/LongCircleButton';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getDetails } from '../../store/modules/thunks/getDetails';
+import { Rating } from '@mui/material';
+import {
+  ReviewContentWrapper,
+  ReviewText,
+  ReviewCardContainer,
+  ReviewHeader,
+  ReviewLeftSection,
+  StarRatingWrapper,
+  AuthorName,
+  ReviewDate,
+  MoreButton,
+} from './style';
 
-const ReviewCardContainer = styled.div`
-  padding: 16px 0;
-  border-bottom: 1px solid ${color.gray[500]};
-`;
+const formatReviewDate = (createdAt) => {
+  if (!createdAt) return '날짜 정보 없음';
+  const date = new Date(createdAt);
+  if (isNaN(date.getTime())) return '날짜 정보 없음';
+  return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
+};
 
-const ReviewHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-`;
+const ReviewContent = ({ content }) => {
+  const textRef = useRef(null);
+  const [isOverflow, setIsOverflow] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
-const LeftSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
+  useEffect(() => {
+    if (textRef.current) {
+      setIsOverflow(textRef.current.scrollHeight > textRef.current.clientHeight);
+    }
+  }, [content, expanded]);
 
-const StarRatingWrapper = styled.div`
-  /* 별점 버튼을 넣을 자리 */
-`;
-
-const AuthorName = styled.span`
-  font-size: 14px;
-  line-height: 20px;
-  color: ${color.gray[70]};
-`;
-
-const ReviewDate = styled.span`
-  font-size: 12px;
-  line-height: 11px;
-  color: ${color.gray[70]};
-`;
-
-const RightSection = styled.div`
-  align-self: flex-start;
-`;
-
-const ReviewContentWrapper = styled.div`
-  width: 100%;
-  position: relative;
-`;
-
-const ReviewText = styled.p`
-  font-size: 14px;
-  line-height: 20px;
-  color: ${color.white};
-  margin: 0;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-`;
-
-const MoreButton = styled.span`
-  font-size: 14px;
-  line-height: 20px;
-  color: ${color.white};
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 4px;
-`;
-
-const ReviewCard = ({
-  Rating,
-  author, // 작성자이름
-  date, // 2025년 02월 16일
-  reviewText,
-  likeCount,
-  handleLike,
-}) => {
   return (
-    <ReviewCardContainer>
-      <ReviewHeader>
-        <LeftSection>
-          <StarRatingWrapper>{Rating}</StarRatingWrapper>
-          <AuthorName>{author}</AuthorName>
-          <ReviewDate>{date}</ReviewDate>
-        </LeftSection>
-        <LongCircleButton showCount count={likeCount} onClick={handleLike}>
-          <ThumbsUpIcon />
-        </LongCircleButton>
-      </ReviewHeader>
-      <ReviewContentWrapper>
-        <ReviewText>{reviewText}</ReviewText>
-        <MoreButton>...more</MoreButton>
-      </ReviewContentWrapper>
-    </ReviewCardContainer>
+    <ReviewContentWrapper>
+      <ReviewText ref={textRef} expanded={expanded}>
+        {content}
+      </ReviewText>
+      {!expanded && isOverflow && <MoreButton onClick={() => setExpanded(true)}>...더 보기</MoreButton>}
+    </ReviewContentWrapper>
   );
 };
+
+const ReviewCard = ({ handleLike }) => {
+  const dispatch = useDispatch();
+  const { detailType, detailID } = useParams();
+  const { detailsData, loading, error } = useSelector((state) => state.detailsR);
+
+  useEffect(() => {
+    if (!detailsData) {
+      dispatch(getDetails({ id: detailID, contentType: detailType }));
+    }
+  }, [dispatch, detailsData, detailID, detailType]);
+
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>데이터를 찾을 수 없습니다.</p>;
+  if (!detailsData) return null;
+
+  const reviews = detailsData.reviews?.results;
+  if (!reviews || reviews.length === 0) return null;
+
+  // 각 리뷰에 dummyRating과 dummyLikeCount 추가
+  const reviewsWithDummyData = useMemo(() => {
+    return reviews.map((review) => ({
+      ...review,
+      dummyRating: review.rating ?? Math.floor(Math.random() * 5) + 3,
+      dummyLikeCount: review.likeCount ?? Math.floor(Math.random() * 100),
+    }));
+  }, [reviews]);
+
+  return (
+    <>
+      {reviewsWithDummyData.map((review, index) => (
+        <ReviewCardContainer key={index}>
+          <ReviewHeader>
+            <ReviewLeftSection>
+              <StarRatingWrapper>
+                <Rating value={review.dummyRating} readOnly size="small" />
+              </StarRatingWrapper>
+              <AuthorName>{review.author}</AuthorName>
+              <ReviewDate>{formatReviewDate(review.created_at)}</ReviewDate>
+            </ReviewLeftSection>
+            <LongCircleButton showCount count={review.dummyLikeCount} onClick={handleLike}>
+              <ThumbsUpIcon />
+            </LongCircleButton>
+          </ReviewHeader>
+          <ReviewContent content={review.content} />
+        </ReviewCardContainer>
+      ))}
+    </>
+  );
+};
+
 export default ReviewCard;
