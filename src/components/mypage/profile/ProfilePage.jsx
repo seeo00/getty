@@ -19,7 +19,7 @@ import InputField from '../../../ui/InputField';
 import PencilIcon from '../../../ui/icon/PencilIcon';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
-export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
+const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
   const [currentMode, setCurrentMode] = useState(mode);
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [isAddingNewProfile, setIsAddingNewProfile] = useState(false);
@@ -176,9 +176,8 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
               }
               return '';
             }}
-            label="프로필 이름"
-            // placeholder="프로필 이름"
             maxLength={10}
+            label="프로필 이름"
           />
         </NameInputWrapper>
 
@@ -224,3 +223,4 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
     </Wrapper>
   );
 };
+export default ProfilePage;

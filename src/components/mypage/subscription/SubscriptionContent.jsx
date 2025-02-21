@@ -17,7 +17,7 @@ import { InnerContainer } from '../../../common/layout/InnerContainer';
 import Button from '../../../ui/Button';
 import { planDetails } from '../../../assets/api/planData';
 
-const MyPageContent = () => {
+const SubscriptionContent = () => {
   const [selectedPlan, setSelectedPlan] = useState('Basic');
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -70,4 +70,4 @@ const MyPageContent = () => {
   );
 };
 
-export default MyPageContent;
+export default SubscriptionContent;
