@@ -15,6 +15,7 @@ const TabButton = styled.button`
   border: none;
   padding: 8px 0;
   cursor: pointer;
+	margin: 40px 0 0 0;
 `;
 
 const TabText = styled.span`
@@ -27,9 +28,21 @@ const DetailTabButtons = ({ tvId }) => {
   const [activeTab, setActiveTab] = useState('episode');
   const [likeCount, setLikeCount] = useState(12);
 
+	//기능 미구현
+  const handleSortLike = () => {
+    console.log('베스트순');
+  };
+
+  const handleSortDate = () => {
+    console.log('날짜순');
+  };
+
   const handleLike = () => {
     setLikeCount((prevCount) => prevCount + 1);
   };
+
+	//기능 미구현 예시 갯수
+  const reviewCount = '000'; 
 
   return (
     <>
@@ -49,8 +62,17 @@ const DetailTabButtons = ({ tvId }) => {
       </div>
       <div>
         {activeTab === 'episode' && <EpisodeSection tvId={tvId} initialSeason="1" />}
-        {activeTab === 'recommend' && <CardContentList />}
-        {activeTab === 'review' && <ReviewCard likeCount={likeCount} handleLike={handleLike} />}
+        {activeTab === 'recommend' && <ContentList />}
+        {activeTab === 'review' && (
+          <>
+            <SortAndCountDropdown
+              reviewCount={reviewCount}
+              onSortLike={handleSortLike}
+              onSortDate={handleSortDate}
+            />
+            <ReviewCard likeCount={likeCount} handleLike={handleLike} />
+          </>
+        )}
         {activeTab === 'Info' && <InfoCard />}
       </div>
     </>

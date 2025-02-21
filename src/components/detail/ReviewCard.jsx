@@ -44,8 +44,6 @@ const ReviewCard = () => {
     (state) => state.detailsR
   );
   
-  // 모든 훅은 컴포넌트 최상위에서 항상 호출됨
-  // getDetails 데이터를 불러오기 위한 useEffect
   useEffect(() => {
     if (!detailsData) {
       dispatch(getDetails({ id: detailID, contentType: detailType }));

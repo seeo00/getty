@@ -67,6 +67,11 @@ export const Image = styled.img`
   height: 95px;
   object-fit: cover;
   border-radius: 16px;
+  ${respondTo('desktop')} {
+    width: 269px;
+    height: 164px;
+    object-fit: cover;
+	}
   ${respondTo('tablet')} {
     width: 269px;
     height: 164px;
@@ -86,7 +91,7 @@ export const StyledText = styled.div`
   -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
   transition: all 0.3s ease;
 
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
   }
   ${respondTo('tablet')} {
     display: block;
@@ -133,18 +138,29 @@ export const Title = styled.h2`
     & > span {
       width: 100%;
     }
-  }
+  };
+	${respondTo('desktop')} {
+		font-size: 16px;
+		};
+		${respondTo('tablet')} {
+			font-size: 14px;
+		};
+		${respondTo('mobile')} {
+			font-size: 14px;
+		};
+	
 `;
 
 export const Overview = styled.p`
-  margin: 10px 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   color: ${color.gray[70]};
   overflow: hidden;
 
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
+		margin: 40px 0;
+		font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -152,6 +168,8 @@ export const Overview = styled.p`
   }
   
   ${respondTo('tablet')} {
+		margin: 16px 0;
+		font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -159,6 +177,8 @@ export const Overview = styled.p`
   }
   
   ${respondTo('mobile')} {
+		margin: 16px 0;
+		font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -166,6 +186,13 @@ export const Overview = styled.p`
   }
 `;
 
+export const OverviewS = styled.p`
+margin: 10px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: ${color.gray[70]};
+  overflow: hidden;`
 
 export const ImageWrapper = styled.div`
   position: relative;
@@ -180,34 +207,6 @@ export const IconWrapper = styled.div`
   pointer-events: none;
 `;
 
-// //리뷰창 좋아요 버튼
-// export const StyledCircleButton = styled.button`
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   padding: 8px 12px;
-//   border: ${(props) => (props.$border ? `1px solid ${color.gray[70]}` : 'none')};
-//   border-radius: 50%;
-//   background-color: ${(props) => props.$bgColor || 'transparent'};
-//   cursor: pointer;
-//   color: ${color.gray[70]};
-
-//   & > svg {
-//     width: 20px;
-//     height: 20px;
-//     fill: ${color.gray[70]};
-//   }
-
-//   .icon-txt {
-//     font-size: 14px;
-//     line-height: 20px;
-//     color: ${color.gray[70]};
-//     margin-left: 4px;
-//   }
-// `;
-
-/* 
-----------------ReviewCard------------------------------- */
 export const ReviewCardContainer = styled.div`
   padding: 16px 0;
   border-bottom: 1px solid ${color.gray[500]};
@@ -269,4 +268,160 @@ export const MoreButton = styled.span`
   cursor: pointer;
   display: inline-block;
   margin-top: 4px;
+`;
+
+
+// 전체 InfoCard 컨테이너
+export const InfoCardContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+	margin-top: 26px;//탭버튼 마진제외
+max-width: 1159;
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+`;
+
+// TextContainer와 DetailList를 감싸는 래퍼 컴포넌트
+export const TextAndDetailWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 0 0 0 40px;
+
+	${respondTo('desktop')} {
+		display:block;
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 24px;
+	}
+  ${respondTo('tablet')} {
+    flex-direction: column;
+    gap: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15px;
+  }
+	@media (min-width: 601px) and (max-width: 767px) {
+		display: contents;
+		flex-direction: column;
+		padding: 0 0 0 40px;
+    gap: 40px;}
+  ${respondTo('mobile')} {
+    display: contents;
+		flex-direction: column;
+    gap: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 15px;
+  }
+
+`;
+
+// 포스터 컨테이너 (고정 사이즈 114x168px)
+export const PosterContainer = styled.div`
+  width: clamp(114px, 20vw, 264px);//비율유지 반응형
+  aspect-ratio: 264 / 365;
+  overflow: hidden;
+  border-radius: 8px;
+
+  ${respondTo('desktop')} {
+    max-width: 264px;
+    max-height: 365px;
+    flex-shrink: 0;
+  }
+  ${respondTo('tablet')} {
+    min-width: 172px;
+    min-height: 248px;
+    flex-shrink: 0;
+  }
+  ${respondTo('mobile')} {
+    width: 114px;
+    height: 168px;
+    flex-shrink: 0;
+  }
+`;
+
+// 타이틀과 줄거리
+export const TextContainer = styled.div`
+  flex: 1;
+  color: ${color.white};
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+	margin: 16px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+	text-align: left;
+
+  h2 {text-align: left;
+    margin: 0 0 8px;
+  }
+
+  p {text-align: left;
+    margin: 0;
+  }
+
+	${respondTo('desktop')} {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+	}
+  ${respondTo('tablet')} {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+  }
+	@media (min-width: 601px) and (max-width: 767px) {
+		order: 1;
+    text-align: center;
+		padding: 0 0 0 30px;}
+	${respondTo('mobile')} {
+    order: 1; 
+    text-align: center;
+  }
+`;
+
+export const DetailList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+  font-size: 12px;
+  line-height: 11px;
+  color: ${color.white};
+
+  li {
+    margin-bottom: 4px;
+  }
+	${respondTo('desktop')} {
+		display: block;
+    width: 100%; 
+    margin: 40px 0 0 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
+  ${respondTo('tablet')} {
+		font-size: 12px;
+    font-weight: 400;
+    line-height: 11px;
+  }
+	@media (min-width: 601px) and (max-width: 767px) {
+  order: 2;
+  flex-basis: 100%;
+  margin-top: 16px;}
+  ${respondTo('mobile')} {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;   
+		order: 2; 
+    flex-basis: 100%; 
+    margin-top: 16px;
+  }
+
 `;
