@@ -153,6 +153,7 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
         </ProfileCircle>
 
         <NameInputWrapper>
+          <InputField label="test" />
           <InputField
             type="text"
             value={selectedProfile.name}
@@ -175,7 +176,8 @@ export const Profile = ({ maxProfiles = 4, mode = 'view' }) => {
               }
               return '';
             }}
-            placeholder="프로필 이름"
+            label="프로필 이름"
+            // placeholder="프로필 이름"
             maxLength={10}
           />
         </NameInputWrapper>

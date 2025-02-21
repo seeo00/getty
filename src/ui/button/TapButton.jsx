@@ -4,7 +4,8 @@ import styled from 'styled-components';
 import EpisodeSection from '../../components/detail/EpisodeCard';
 import ReviewCard from '../../components/detail/ReviewCard';
 import InfoCard from '../../components/detail/InfoCard';
-import { CardContentList } from '../../components';
+import CardFlexList from '../card/CardFlexList';
+
 // import { ContentList } from '../../components/category/CardContentList';
 // import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
 // import DetailCard from '../../components/detail/DetailCard';
@@ -49,7 +50,7 @@ const DetailTabButtons = ({ tvId }) => {
       </div>
       <div>
         {activeTab === 'episode' && <EpisodeSection tvId={tvId} initialSeason="1" />}
-        {activeTab === 'recommend' && <CardContentList />}
+        {activeTab === 'recommend' && <CardFlexList />}
         {activeTab === 'review' && <ReviewCard likeCount={likeCount} handleLike={handleLike} />}
         {activeTab === 'Info' && <InfoCard />}
       </div>

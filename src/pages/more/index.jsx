@@ -1,11 +1,9 @@
 import * as S from './style';
 import { useLocation } from 'react-router-dom';
 import { InnerContainer } from '../../common/layout/InnerContainer';
-import { CardContentContainer } from '../../components/category/style';
-import CardBasic from '../../ui/card/CardBasic';
 import { useMoreData } from '../../hooks/useMoreData';
 import { useSelector } from 'react-redux';
-import LoadingSpinner from '../../ui/LoadingSpinner';
+import CardFlexList from '../../ui/card/CardFlexList';
 
 const More = () => {
   const location = useLocation();
@@ -22,17 +20,7 @@ const More = () => {
         <S.MorePageHeader>
           <h2>{title}</h2>
         </S.MorePageHeader>
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <CardContentContainer>
-            {sectionData.map((item) => (
-              <div key={item.id}>
-                <CardBasic item={item} />
-              </div>
-            ))}
-          </CardContentContainer>
-        )}
+        <CardFlexList items={sectionData} loading={loading} />
       </InnerContainer>
     </S.MoreContainer>
   );

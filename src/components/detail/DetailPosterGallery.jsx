@@ -1,11 +1,11 @@
 // DramaPosterGallery.jsx
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getRecommendations } from '../../store/modules/thunks/getRecommendations';
 import { respondTo } from '../../styled/GlobalStyle';
-import ContentList from '../category/CardContentList';
+import CardFlexList from '../../ui/card/CardFlexList';
 
 const GalleryWrap = styled.div`
   display: block;
@@ -30,7 +30,7 @@ const DramaPosterGallery = () => {
     <GalleryWrap>
       {recommendations.map((item) => (
         <Link key={item.id} to={`/category/genre/${item.media_type}/${item.id}`}>
-          <ContentList />
+          <CardFlexList />
         </Link>
       ))}
     </GalleryWrap>

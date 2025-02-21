@@ -7,7 +7,6 @@ import movieR from './modules/slices/movieSlice';
 import trendingR from './modules/slices/trendingSlice';
 import seriesR from './modules/slices/seriesSlice';
 import originalR from './modules/slices/originalSlice';
-import mainR from './modules/slices/mainSlice';
 import authR from './modules/slices/authSlice';
 import detailsR from './modules/slices/detailsSlice';
 import combinedR from './modules/slices/combinedSlice';
@@ -25,7 +24,6 @@ export const store = configureStore({
     trendingR,
     seriesR,
     originalR,
-    mainR,
     authR,
     detailsR,
     combinedR,

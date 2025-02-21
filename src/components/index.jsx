@@ -13,4 +13,6 @@ export { default as RecTextList } from './main/RecTextList';
 // category
 export { default as SubBannerSwiper } from './category/SubBannerSwiper';
 export { default as CategoryButtons } from './category/CategoryButtons';
-export { default as CardContentList } from './category/CardContentList';
+
+// profile
+// export { default as Profile } from './mypage/profile/Profile';
