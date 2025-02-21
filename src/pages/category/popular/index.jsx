@@ -33,21 +33,21 @@ const Popular = () => {
     <>
       <SubBannerSwiper
         subTitle="인기 콘텐츠"
-        title="오늘의 게티 TOP20"
-        desc="지금 가장 사랑받는 콘텐츠를 확인해보세요!"
+        title="오늘의 게티 TOP 20"
+        desc="지금 가장 사랑받는 콘텐츠를 확인해 보세요!"
         items={trendingDayData}
         loading={loading}
         rank
       />
-      <S.SectionArea>
-        <InnerContainer maxWidth="1460px" className="inner">
-          <BasicCardSwiper title="실시간 인기 드라마" items={dramaData} />
-          <BasicCardSwiper title="실시간 인기 영화" items={movieData} />
-          <BasicCardSwiper title="실시간 인기 예능" items={realityData} />
-          <BasicCardSwiper title="실시간 인기 애니" items={animationData} />
-          <BasicCardSwiper title="실시간 인기 시사다큐" items={documentaryData} />
+      <S.SubContainer>
+        <InnerContainer className="inner">
+          <BasicCardSwiper title="인기 드라마" items={dramaData} moreLink={'/category/drama'} />
+          <BasicCardSwiper title="인기 영화" items={movieData} moreLink={'/category/movie'} />
+          <BasicCardSwiper title="인기 예능" items={realityData} moreLink={'/category/reality'} />
+          <BasicCardSwiper title="인기 애니" items={animationData} moreLink={'/category/animation'} />
+          <BasicCardSwiper title="인기 시사다큐" items={documentaryData} moreLink={'/category/ocumentary'} />
         </InnerContainer>
-      </S.SectionArea>
+      </S.SubContainer>
     </>
   );
 };

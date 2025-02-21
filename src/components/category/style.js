@@ -2,13 +2,11 @@ import styled from 'styled-components';
 import { respondTo } from '../../styled/GlobalStyle';
 import { color } from '../../styled/common';
 
-export const Container = styled.section`
+export const BannerContainer = styled.section`
   width: 100%;
   padding: 20px 0 40px 0;
   background-color: rgba(44, 44, 44, 0.8);
-  /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
-    radial-gradient(90.37% 76.15% at 23.41% 78.7%, #0040ff 0%, #00279c 72%, #00238a 100%); */
+  /* background-color: rgba(12, 12, 12, 0.3); */
 
   ${respondTo('desktop')} {
     padding: 40px 0 100px 0;
@@ -71,7 +69,7 @@ export const CardList = styled.div`
   }
 `;
 
-export const ButtonArea = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   gap: 8px;
   overflow-x: auto;
@@ -112,7 +110,7 @@ export const ButtonArea = styled.div`
   }
 `;
 
-export const ContentArea = styled.div`
+export const CardContentContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;

@@ -5,20 +5,27 @@ import 'swiper/css';
 import { useRef } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '../icon';
 import CardPlay from './CardPlay';
+import { Link } from 'react-router-dom';
 
-const PlayCardSwiper = ({ title, items }) => {
+const PlayCardSwiper = ({ title, items, section, moreLink }) => {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
+  const shouldShowNavigation = items?.length > 5;
+
   return (
     <S.CardSection>
-      <S.SectionHeader>
-        {title && <h2>{title}</h2>}
-        <button>
-          <span>더보기</span>
-          <ArrowRightIcon size={20} />
-        </button>
-      </S.SectionHeader>
+      {title && (
+        <S.SectionHeader>
+          <h2>{title}</h2>
+          {shouldShowNavigation && (
+            <Link to={section ? `/more?section=${section}&title=${encodeURIComponent(title)}` : moreLink}>
+              <span>더보기</span>
+              <ArrowRightIcon size={20} />
+            </Link>
+          )}
+        </S.SectionHeader>
+      )}
       <S.CardList>
         <Swiper
           modules={[Navigation]}
@@ -38,17 +45,21 @@ const PlayCardSwiper = ({ title, items }) => {
           }}
         >
           {items?.map((item, index) => (
-            <SwiperSlide key={item.id || index}>
+            <SwiperSlide key={`${item.id}-${index}`}>
               <CardPlay item={item} />
             </SwiperSlide>
           ))}
         </Swiper>
-        <S.NavButton className="play" ref={prevRef} $position="left">
-          <ArrowLeftIcon size={40} />
-        </S.NavButton>
-        <S.NavButton className="play" ref={nextRef} $position="right">
-          <ArrowRightIcon size={40} />
-        </S.NavButton>
+        {shouldShowNavigation && (
+          <>
+            <S.NavButton ref={prevRef} $position="left">
+              <ArrowLeftIcon size={40} />
+            </S.NavButton>
+            <S.NavButton ref={nextRef} $position="right">
+              <ArrowRightIcon size={40} />
+            </S.NavButton>
+          </>
+        )}
       </S.CardList>
     </S.CardSection>
   );

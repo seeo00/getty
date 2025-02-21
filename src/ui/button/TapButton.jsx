@@ -1,12 +1,14 @@
 // DetailTabButtons.jsx
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import EpisodeSection from '../../components/detail/EpisodeCard';
 import ReviewCard from '../../components/detail/ReviewCard';
 import InfoCard from '../../components/detail/InfoCard';
-import ContentList from '../../components/category/ContentList';
-// SortAndCountDropdown 컴포넌트를 사용합니다.
-import { SortAndCountDropdown } from '../../ui/button/SortAndCountButton';
+import { CardContentList } from '../../components';
+// import { ContentList } from '../../components/category/CardContentList';
+// import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
+// import DetailCard from '../../components/detail/DetailCard';
+// import { DetailPosterGallery } from '../../components/detail/Index';
 
 const TabButton = styled.button`
   background: none;

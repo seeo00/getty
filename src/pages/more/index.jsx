@@ -1,59 +1,41 @@
-import { useEffect, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import * as S from './style';
 import { useLocation } from 'react-router-dom';
-import { getTrendingDay, getTrendingWeek } from '../../store/modules/thunks/getTrending';
 import { InnerContainer } from '../../common/layout/InnerContainer';
-import styled from 'styled-components';
-import { ContentArea } from '../../components/category/style';
+import { CardContentContainer } from '../../components/category/style';
 import CardBasic from '../../ui/card/CardBasic';
+import { useMoreData } from '../../hooks/useMoreData';
+import { useSelector } from 'react-redux';
+import LoadingSpinner from '../../ui/LoadingSpinner';
 
 const More = () => {
   const location = useLocation();
+  const { loading } = useSelector((state) => state.combinedR);
   const params = new URLSearchParams(location.search);
   const section = params.get('section');
   const title = params.get('title');
 
-  const dispatch = useDispatch();
-
-  const { trendingDayData, trendingWeekData } = useSelector((state) => state.trendingR);
-  const sectionData = useMemo(() => {
-    return (
-      {
-        trendingWeekData,
-        trendingDayData,
-      }[section] || []
-    );
-  }, [section, trendingWeekData, trendingDayData]);
-
-  useEffect(() => {
-    if (!sectionData.length) {
-      switch (section) {
-        case 'trendingWeekData':
-          dispatch(getTrendingWeek());
-          break;
-        case 'trendingDayData':
-          dispatch(getTrendingDay());
-          break;
-        default:
-          break;
-      }
-    }
-  }, [section, dispatch, sectionData]);
+  const sectionData = useMoreData(section);
 
   return (
-    <InnerContainer>
-      <h2>{title}</h2>
-      <ContentArea>
-        {sectionData.map((item) => (
-          <div key={item.id}>
-            <CardBasic item={item} />
-          </div>
-        ))}
-      </ContentArea>
-    </InnerContainer>
+    <S.MoreContainer>
+      <InnerContainer>
+        <S.MorePageHeader>
+          <h2>{title}</h2>
+        </S.MorePageHeader>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <CardContentContainer>
+            {sectionData.map((item) => (
+              <div key={item.id}>
+                <CardBasic item={item} />
+              </div>
+            ))}
+          </CardContentContainer>
+        )}
+      </InnerContainer>
+    </S.MoreContainer>
   );
 };
 
 export default More;
-
-const MoreList = styled.div``;

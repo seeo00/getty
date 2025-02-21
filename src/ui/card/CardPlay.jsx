@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { color } from '../../styled/common';
 import { InfoIcon, PlayCircleIcon } from '../icon';
 import { respondTo } from '../../styled/GlobalStyle';
+import { useState } from 'react';
+import { CardBasicSkeleton } from '../LoadingSkeleton';
 
 export const CardWrap = styled(Link)`
   display: block;
@@ -82,12 +84,16 @@ const CardInfo = styled.div`
 `;
 
 const CardPlay = ({ item }) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   return (
     <CardWrap to={'/'}>
       <CardItem>
+        {!imageLoaded && <CardBasicSkeleton aspectRatio={16 / 9} />}
         <img
           src={`https://image.tmdb.org/t/p/original${item.backdrop_path || item.poster_path}`}
           alt={item.title || item.name}
+          onLoad={() => setImageLoaded(true)}
+          style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}
         />
         <PlayIconBox>
           <PlayCircleIcon width="50%" height="50%" fill="rgba(0,0,0,0.3)" />
@@ -95,7 +101,7 @@ const CardPlay = ({ item }) => {
       </CardItem>
       <CardInfo>
         <div>
-          <strong className="ellipsis">에피스드제목타이ddddddddddddddddddd틀</strong>
+          <strong className="ellipsis">에피스드제목타이틀</strong>
           <p>남은시간</p>
           <button>
             <InfoIcon color="#aaa" />

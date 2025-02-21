@@ -10,9 +10,10 @@ import {
   SubscriptionCardRight,
   SubscriptionCardTitle,
   SubscriptionRow,
-  PaymentButton,
   AutoMoveText,
+  ButtonWrapper,
 } from '../style.js';
+import Button from '../../../ui/Button.jsx';
 
 const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
   const [countdown, setCountdown] = useState(5);
@@ -60,12 +61,14 @@ const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
               <span>{plan.nextPaymentDate}</span>
             </SubscriptionRow>
           </SubscriptionCardLeft>
-          <SubscriptionCardRight></SubscriptionCardRight>
+          <SubscriptionCardRight />
         </SubscriptionCard>
 
-        <PaymentButton onClick={handlePaymentClick}>결제하러 가기</PaymentButton>
+        <ButtonWrapper>
+          <Button onClick={handlePaymentClick}>감상하러 가기</Button>
+        </ButtonWrapper>
 
-        <AutoMoveText>{countdown}초 후에 자동으로 이동합니다</AutoMoveText>
+        <AutoMoveText>{countdown}초 후에 자동으로 닫혀요</AutoMoveText>
       </ModalContainer>
     </ModalOverlay>
   );

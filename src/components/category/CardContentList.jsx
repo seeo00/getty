@@ -1,34 +1,25 @@
 import { InnerContainer } from '../../common/layout/InnerContainer';
 import CardBasic from '../../ui/card/CardBasic';
-import { CardBasicSkeleton } from '../../ui/LoadingSkeleton';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import * as S from './style';
 
-const ContentList = ({ data = [], loading, lastElementRef }) => {
+const CardContentList = ({ data = [], loading, lastElementRef }) => {
   return (
     <InnerContainer>
       {loading && data.length === 0 ? (
-        <LoadingSpinner center />
+        <LoadingSpinner />
       ) : (
-        <S.ContentArea>
+        <S.CardContentContainer>
           {data.map((item, index) => (
             <div key={item.id} ref={index === data.length - 1 ? lastElementRef : null}>
               <CardBasic item={item} />
             </div>
           ))}
-          {loading && data.length > 0 && (
-            <>
-              <CardBasicSkeleton />
-              <CardBasicSkeleton />
-              <CardBasicSkeleton />
-              <CardBasicSkeleton />
-              <CardBasicSkeleton />
-            </>
-          )}
-        </S.ContentArea>
+          {loading && data.length > 0 && <LoadingSpinner />}
+        </S.CardContentContainer>
       )}
     </InnerContainer>
   );
 };
 
-export default ContentList;
+export default CardContentList;
