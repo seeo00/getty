@@ -4,9 +4,6 @@ import { getCertification } from '../thunks/getCertification'
 
 const initialState = {
   certificationData: [],
-  currentCategory: 'base',
-  currentPage: 1,
-  hasMore: true,
   loading: false,
   error: null,
 };
@@ -29,11 +26,11 @@ const certificationSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(getCertification.fulfilled, (state, action) => {
-        state.loading = false;
-        // 무조건 현재 요청한 페이지의 에피소드만 state에 저장
-        state.episodeData = action.payload;
-      })
+			.addCase(getCertification.fulfilled, (state, action) => {
+				state.loading = false;
+				// 현재 요청한 인증 데이터를 state에 저장
+				state.certificationData = action.payload;
+			})
       .addCase(getCertification.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || action.error.message;

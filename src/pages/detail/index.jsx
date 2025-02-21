@@ -15,7 +15,7 @@ import { NavPopularIcon } from '../../ui/icon';
 import Thumbnail from '../../ui/card/Thumbnail';
 import DetailCard from '../../components/detail/DetailCard';
 import DetailTabButtons from '../../ui/button/TapButton';
-import DetailImageCard from '../../components/detail/DetailImageCard';
+// import DetailImageCard from '../../components/detail/DetailImageCard';
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ const Detail = () => {
                 재생
               </Button>
 							<CircleButton border onClick={handleFavoriteClick}>
-            <FavoriteIcon fill={isFavorite ? 'red' : undefined} />
+            <FavoriteIcon fill={isFavorite ? 'red' : 'none'} />
             <span className="icon-txt">관심</span>
           </CircleButton>
               <CircleButton border>
@@ -74,10 +74,10 @@ const Detail = () => {
           </S.ButtonWrap>
         </S.VisualWrap>
         <S.ContentWrap>
-          <InnerContainer>
+          <S.InnerContainerd>
             <DetailCard />
             <DetailTabButtons tvId={detailID} />
-          </InnerContainer>
+          </S.InnerContainerd>
         </S.ContentWrap>
       </S.Wrap>
     </S.Overlay>

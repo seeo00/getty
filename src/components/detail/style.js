@@ -67,6 +67,11 @@ export const Image = styled.img`
   height: 95px;
   object-fit: cover;
   border-radius: 16px;
+  ${respondTo('desktop')} {
+    width: 269px;
+    height: 164px;
+    object-fit: cover;
+	}
   ${respondTo('tablet')} {
     width: 269px;
     height: 164px;
@@ -87,6 +92,7 @@ export const StyledText = styled.div`
   transition: all 0.3s ease;
 
   ${respondTo('laptop')} {
+    /* 필요 시 laptop 스타일 추가 */
   }
   ${respondTo('tablet')} {
     display: block;

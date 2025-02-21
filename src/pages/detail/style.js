@@ -81,22 +81,23 @@ export const VisualWrap = styled.div`
   height: 100%;
   background-color: #555;
   overflow-y: hidden;
-  position: sticky;
   top: 0;
   left: 0;
   z-index: 10;
-  */ ${respondTo('desktop')} {
+  ${respondTo('desktop')} {
     min-width: 1240px;
     height: 793px;
   }
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     min-width: 768px;
     height: 468px;
+		position: sticky;
   }
 
   ${respondTo('mobile')} {
     min-width: 390px;
     height: 244px;
+		position: sticky;
   }
 `;
 export const VisualContent = styled.div`

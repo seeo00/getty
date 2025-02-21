@@ -4,10 +4,7 @@ import styled from 'styled-components';
 import EpisodeSection from '../../components/detail/EpisodeCard';
 import ReviewCard from '../../components/detail/ReviewCard';
 import InfoCard from '../../components/detail/InfoCard';
-import { ContentList } from '../../components';
-import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
-import DetailCard from '../../components/detail/DetailCard';
-import { DetailPosterGallery } from '../../components/detail/Index';
+import ContentList from '../../components/category/ContentList';
 
 const TabButton = styled.button`
   background: none;
