@@ -12,7 +12,7 @@ export const ContentWrapper = styled.div`
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  padding: 74px 0 55px 0;
+  padding: 86px 0 55px 0;
 
   ${respondTo('desktop')} {
     max-width: 1280px;
@@ -24,6 +24,7 @@ export const ContentWrapper = styled.div`
 
   ${respondTo('mobile')} {
     max-width: 390px;
+    padding-top: 16px;
   }
 `;
 
@@ -41,7 +42,7 @@ export const MainTitle = styled.h1`
     font-size: 20px;
     font-weight: 300;
     text-align: left;
-    margin: 20px 0 12px 0;
+    margin: 0px 0 12px 0;
     padding: 0;
   }
 
@@ -49,7 +50,7 @@ export const MainTitle = styled.h1`
     font-size: 20px;
     font-weight: 300;
     text-align: left;
-    margin: 20px 0 12px 0;
+    margin: 0px 0 12px 0;
     padding: 0;
   }
 `;
