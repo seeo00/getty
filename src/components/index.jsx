@@ -14,7 +14,7 @@ export { default as RecTextList } from './main/RecTextList';
 export { default as SubBannerSwiper } from './category/SubBannerSwiper';
 export { default as CategoryButtons } from './category/CategoryButtons';
 export { default as CardContentList } from './category/CardContentList';
-export { default as ContentList } from './category/ContentList';
+// export { default as ContentList } from './category/ContentList';
 
 // mypage
 export { default as ProfilePage } from './mypage/profile/ProfilePage';
