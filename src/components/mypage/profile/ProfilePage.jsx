@@ -153,6 +153,7 @@ const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
         </ProfileCircle>
 
         <NameInputWrapper>
+          <InputField label="test" />
           <InputField
             type="text"
             value={selectedProfile.name}

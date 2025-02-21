@@ -2,7 +2,9 @@ import * as S from '../style';
 import { getAnimation } from '../../../store/modules/thunks/getAnimation.js';
 import { animationActions } from '../../../store/modules/slices/animationSlice.js';
 import { useCategoryContent } from '../../../hooks/useCategoryContent.js';
-import { CategoryButtons, CardContentList } from '../../../components/index.jsx';
+import { CategoryButtons } from '../../../components/index.jsx';
+import { InnerContainer } from '../../../common/layout/InnerContainer.jsx';
+import CardFlexList from '../../../ui/card/CardFlexList.jsx';
 
 const Animation = () => {
   const { contentData, currentCategory, loading, onCategoryClick, lastElementRef } = useCategoryContent({
@@ -27,8 +29,12 @@ const Animation = () => {
 
   return (
     <S.GenreWrap>
-      <CategoryButtons categories={categories} currentCategory={currentCategory} onCategoryClick={onCategoryClick} />
-      <CardContentList data={contentData} loading={loading} lastElementRef={lastElementRef} />
+      <InnerContainer className="inner">
+        <CategoryButtons categories={categories} currentCategory={currentCategory} onCategoryClick={onCategoryClick} />
+      </InnerContainer>
+      <InnerContainer>
+        <CardFlexList items={contentData} loading={loading} lastElementRef={lastElementRef} />
+      </InnerContainer>
     </S.GenreWrap>
   );
 };

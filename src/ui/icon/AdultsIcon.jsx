@@ -1,5 +1,3 @@
-import React from 'react';
-
 const AdultsIcon = ({ width = 16, height = 16, ...props }) => {
   return (
     <svg

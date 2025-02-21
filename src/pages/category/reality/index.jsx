@@ -2,7 +2,9 @@ import * as S from '../style';
 import { getReality } from '../../../store/modules/thunks/getReality.js';
 import { realityActions } from '../../../store/modules/slices/realitySlice.js';
 import { useCategoryContent } from '../../../hooks/useCategoryContent.js';
-import { CategoryButtons, CardContentList } from '../../../components/index.jsx';
+import { CategoryButtons } from '../../../components/index.jsx';
+import { InnerContainer } from '../../../common/layout/InnerContainer.jsx';
+import CardFlexList from '../../../ui/card/CardFlexList.jsx';
 
 const Reality = () => {
   const { contentData, currentCategory, loading, onCategoryClick, lastElementRef } = useCategoryContent({
@@ -25,8 +27,12 @@ const Reality = () => {
 
   return (
     <S.GenreWrap>
-      <CategoryButtons categories={categories} currentCategory={currentCategory} onCategoryClick={onCategoryClick} />
-      <CardContentList data={contentData} loading={loading} lastElementRef={lastElementRef} />
+      <InnerContainer className="inner">
+        <CategoryButtons categories={categories} currentCategory={currentCategory} onCategoryClick={onCategoryClick} />
+      </InnerContainer>
+      <InnerContainer>
+        <CardFlexList items={contentData} loading={loading} lastElementRef={lastElementRef} />
+      </InnerContainer>
     </S.GenreWrap>
   );
 };

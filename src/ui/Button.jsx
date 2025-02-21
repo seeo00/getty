@@ -13,10 +13,20 @@ const activeStyles = css`
   color: white;
   border: none;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: background-color 0.3s;
 
   &:hover {
     background-color: rgba(0, 64, 255, 0.8);
+  }
+`;
+
+const outlineStyles = css`
+  background-color: transparent;
+  color: ${color.white};
+  border: 2px solid white;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 `;
 
@@ -36,12 +46,12 @@ export const Button = styled.button`
   gap: 12px;
   justify-content: center;
   align-items: center;
-  padding: 16px 20px;
+  padding: 16px 24px;
   border-radius: 8px;
   font-weight: 500;
   font-size: 1rem;
 
-  ${(props) => (props.disabled ? disabledStyles : activeStyles)}
+  ${(props) => (props.$variant === 'outline' ? outlineStyles : props.disabled ? disabledStyles : activeStyles)}
 `;
 
 export default Button;
