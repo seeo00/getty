@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../store/modules/thunks/getDetails';
-import { DetailContainer, FlexContainer, Title, Overview, StyledText, TitleName } from './style';
+import { DetailContainer, FlexContainer, Title, StyledText, TitleName, OverviewS } from './style';
 import MediaControlButtons from '../../ui/button/MediaControlButton';
 import Certification from './Certification';
 import { getKoreanRating } from '../../assets/api/certificationData';
@@ -83,7 +83,7 @@ const DetailCard = () => {
           </Title>
         </FlexContainer>
         <MediaControlButtons />
-        <Overview>{detail.overview}</Overview>
+        <OverviewS>{detail.overview}</OverviewS>
         <div style={{ marginTop: '10px' }}>
           <StyledText ref={castRef} expanded={castExpanded}>
             출연: {castContent}

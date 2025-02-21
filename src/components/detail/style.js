@@ -91,8 +91,7 @@ export const StyledText = styled.div`
   -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
   transition: all 0.3s ease;
 
-  ${respondTo('laptop')} {
-    /* 필요 시 laptop 스타일 추가 */
+  ${respondTo('desktop')} {
   }
   ${respondTo('tablet')} {
     display: block;
@@ -139,18 +138,29 @@ export const Title = styled.h2`
     & > span {
       width: 100%;
     }
-  }
+  };
+	${respondTo('desktop')} {
+		font-size: 16px;
+		};
+		${respondTo('tablet')} {
+			font-size: 14px;
+		};
+		${respondTo('mobile')} {
+			font-size: 14px;
+		};
+	
 `;
 
 export const Overview = styled.p`
-  margin: 10px 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   color: ${color.gray[70]};
   overflow: hidden;
 
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
+		margin: 40px 0;
+		font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -158,6 +168,8 @@ export const Overview = styled.p`
   }
   
   ${respondTo('tablet')} {
+		margin: 16px 0;
+		font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -165,6 +177,8 @@ export const Overview = styled.p`
   }
   
   ${respondTo('mobile')} {
+		margin: 16px 0;
+		font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -172,6 +186,13 @@ export const Overview = styled.p`
   }
 `;
 
+export const OverviewS = styled.p`
+margin: 10px 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: ${color.gray[70]};
+  overflow: hidden;`
 
 export const ImageWrapper = styled.div`
   position: relative;
