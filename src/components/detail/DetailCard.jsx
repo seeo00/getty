@@ -46,7 +46,7 @@ const DetailCard = () => {
             <div className='undertitle2'>
               {detail.first_air_date ? detail.first_air_date.split('-')[0] : '연도 정보 없음'}년
             </div>
-            {/* detail.adult 조건은 두 경우 모두 동일하므로 조건문 제거 */}
+						{/* 연령 정보 */}
             <AdultsIcon style={{ marginLeft: '10px' }} />
           </Title>
         </FlexContainer>

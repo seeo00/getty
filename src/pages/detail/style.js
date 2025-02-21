@@ -159,6 +159,19 @@ export const ContentWrap = styled.div`
 `;
 
 //desc
-export const InnerContainer = styled.div`
+export const InnerContainerd = styled.div`
+  max-width: ${({ $maxWidth }) => $maxWidth || '1460px'};
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  //overflow-y: auto;
+
+  ${respondTo('tablet')} {
+    padding: 0 40px;
+  }
+  ${respondTo('desktop')} {
+    padding: 0 40px;
+  }
   gap: 15px;
 `;

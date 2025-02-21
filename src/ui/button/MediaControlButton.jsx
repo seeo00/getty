@@ -1,4 +1,4 @@
-import { ButtonControl } from '../../pages/detail/style';
+	import { ButtonControl } from '../../pages/detail/style';
 import Button from '../Button';
 import CircleButton from '../CircleButton';
 import { FavoriteIcon, NavPopularIcon, VideoPlayIcon } from '../icon';

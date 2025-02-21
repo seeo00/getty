@@ -7,143 +7,8 @@ import { color } from '../../styled/common';
 import PosterCard from '../../ui/card/DetailPoster';
 import { respondTo } from '../../styled/GlobalStyle';
 import AdultsIcon from '../../ui/icon/AdultsIcon';
+import { DetailList, InfoCardContainer, PosterContainer, TextContainer, TextAndDetailWrapper } from './style';
 
-// 전체 InfoCard 컨테이너
-const InfoCardContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-	margin-top: 26px;//탭버튼 마진제외
-
-  @media (min-width: 768px) {
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    flex-direction: row;
-  }
-`;
-// 포스터 컨테이너 (고정 사이즈 114x168px)
-const PosterContainer = styled.div`
-  width: 114px;
-  height: 168px;
-  flex-shrink: 0;
-
-  ${respondTo('desktop')} {
-    max-width: 264px;
-    max-height: 365px;
-    flex-shrink: 0;
-  }
-  ${respondTo('tablet')} {
-    min-width: 172px;
-    min-height: 248px;
-    flex-shrink: 0;
-  }
-  ${respondTo('mobile')} {
-    width: 114px;
-    height: 168px;
-    flex-shrink: 0;
-  }
-`;
-
-// 타이틀과 줄거리
-const TextContainer = styled.div`
-  flex: 1;
-  color: ${color.white};
-  font-size: 12px;
-  font-weight: 400;
-  line-height: 15px;
-	margin: 16px 0 0 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-	text-align: left;
-
-  h2 {text-align: left;
-    margin: 0 0 8px;
-  }
-
-  p {text-align: left;
-    margin: 0;
-  }
-
-	${respondTo('desktop')} {
-		font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-	
-	}
-  ${respondTo('tablet')} {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 15px;
-  }
-	${respondTo('mobile')} {
-    order: 1; /* 첫 번째 행에 위치 */
-    text-align: center;
-  }
-`;
-
-const DetailList = styled.ul`
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px 0;
-  font-size: 12px;
-  line-height: 11px;
-  color: ${color.white};
-
-  li {
-    margin-bottom: 4px;
-  }
-	${respondTo('desktop')} {
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 24px;
-	}
-  ${respondTo('tablet')} {
-		font-size: 12px;
-    font-weight: 400;
-    line-height: 11px;
-  }
-  ${respondTo('mobile')} {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 15px;   
-		order: 2; 
-    flex-basis: 100%; 
-    margin-top: 16px;
-  }
-  
-`;
-
-// TextContainer와 DetailList를 감싸는 래퍼 컴포넌트
-const TextAndDetailWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 0 0 0 40px;
-
-	${respondTo('desktop')} {
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 24px;
-	}
-  ${respondTo('tablet')} {
-    flex-direction: column;
-    gap: 40px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 15px;
-  }
-  ${respondTo('mobile')} {
-    display: contents;
-		flex-direction: column;
-    gap: 40px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 15px;
-  }
-
-`;
 const InfoCard = () => {
   const dispatch = useDispatch();
   const { detailType, detailID } = useParams();
@@ -230,6 +95,7 @@ const InfoCard = () => {
                 ))
               : '장르 정보 없음'}
           </li>
+								{/* 연령 정보 */}
           <li style={{ alignItems: 'center' }}>
             <strong>연령 등급:</strong>
             {detail.adult ? (
@@ -245,7 +111,6 @@ const InfoCard = () => {
 };
 
 export default InfoCard;
-
 
 /* 
 const certificationMapping = {

@@ -9,12 +9,13 @@ import FavoriteIcon from '../../ui/icon/FavoriteIcon';
 import VideoPlayIcon from '../../ui/icon/VideoPlayIcon';
 import * as S from './style';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getDetails } from '../../store/modules/thunks/getDetails';
 import { NavPopularIcon } from '../../ui/icon';
 import Thumbnail from '../../ui/card/Thumbnail';
 import DetailCard from '../../components/detail/DetailCard';
 import DetailTabButtons from '../../ui/button/TapButton';
+import DetailImageCard from '../../components/detail/DetailImageCard';
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -31,7 +32,14 @@ const Detail = () => {
     return () => {
       document.body.style.overflow = 'auto';
     };
+		
   }, []);
+  
+	const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = () => {
+    setIsFavorite((prev) => !prev);
+  };
 
   if (loading) return <div>로딩 중...</div>;
   if (error) return <div>에러가 발생했습니다</div>;
@@ -41,7 +49,7 @@ const Detail = () => {
     <S.Overlay>
       <S.Wrap>
         <S.VisualWrap>
-          <Thumbnail posterPath={detailsData.poster_path} full />
+          <Thumbnail backdropPath={detailsData.backdrop_path} full />
           <S.VisualContent>
             <S.TitleImg>{detailsData.name}</S.TitleImg>
             <S.ButtonControl>
@@ -49,13 +57,13 @@ const Detail = () => {
                 <VideoPlayIcon color={color.white} />
                 재생
               </Button>
-              <CircleButton border>
-                <FavoriteIcon />
-                <span className="icon-txt">관심</span>
-              </CircleButton>
+							<CircleButton border onClick={handleFavoriteClick}>
+            <FavoriteIcon fill={isFavorite ? 'red' : undefined} />
+            <span className="icon-txt">관심</span>
+          </CircleButton>
               <CircleButton border>
                 <NavPopularIcon fill={color.yellow} color={color.yellow} />
-                <span className="icon-txt">평점</span>
+                <span className="icon-txt">{detailsData.vote_average.toFixed(1)}</span>
               </CircleButton>
             </S.ButtonControl>
           </S.VisualContent>
