@@ -34,7 +34,7 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const DropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave }) => {
+const UserDropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave }) => {
   const menuItems = [
     {
       id: 'login',
@@ -85,4 +85,4 @@ const DropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave }) =
   );
 };
 
-export default DropdownMenu;
+export default UserDropdownMenu;
