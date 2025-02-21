@@ -21,7 +21,7 @@ const MediaControlButtons = () => {
   return (
     <Displaycontainer>
       <ButtonControl style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <FlexContainer style={{ justifyContent: 'flex-start', alignItems: 'cetner', gap: '2px' }}>
+        <FlexContainer style={{ justifyContent: 'flex-start', alignItems: 'cetner', gap: '16px' }}>
           <CircleButton border>
             <FavoriteIcon />
             <span className="icon-txt">관심</span>
