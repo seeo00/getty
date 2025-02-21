@@ -14,3 +14,7 @@ export { default as TextContent } from './main/TextContent';
 export { default as SubBannerSwiper } from './category/SubBannerSwiper';
 export { default as CategoryButtons } from './category/CategoryButtons';
 export { default as ContentList } from './category/ContentList';
+
+// mypage
+export { default as ProfilePage } from './mypage/profile/ProfilePage';
+export { default as SubscriptionContent } from './mypage/subscription/SubscriptionContent';

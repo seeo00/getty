@@ -9,3 +9,5 @@ export { default as Reality } from './category/reality';
 export { default as Animation } from './category/animation';
 export { default as Documentary } from './category/documentary';
 export { default as More } from './more';
+export { default as Profile } from './mypage/profile';
+export { default as Subscription } from './mypage/subscription';
