@@ -36,7 +36,7 @@ export const Wrap = styled.div`
     display: none; /* Chrome, Safari, Opera */
   }
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     position: fixed;
     width: 100%;
     max-width: 1240px;
@@ -51,7 +51,7 @@ export const Wrap = styled.div`
     overflow: hidden;
     overflow-y: auto;
   }
-  ${respondTo('laptop')} {
+  ${respondTo('desktop')} {
     position: fixed;
     width: 100%;
     max-width: 1240px;

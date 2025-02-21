@@ -1,22 +1,26 @@
 import * as S from './style';
 import { InnerContainer } from '../../common/layout/InnerContainer';
-import { BannerSwiper, TextContent } from '../../components';
+import { BannerSwiper, RecTextList } from '../../components';
 import CircleCardSwiper from '../../ui/card/CircleCardSwiper';
 import { useDispatch, useSelector } from 'react-redux';
 import BasicCardSwiper from '../../ui/card/BasicCardSwiper';
 import { useEffect } from 'react';
 import { getTrendingDay, getTrendingWeek } from '../../store/modules/thunks/getTrending';
 import { getCombinedMystery, getCombinedRomance } from '../../store/modules/thunks/geThunk';
+import { originalActions } from '../../store/modules/slices/originalSlice';
 
 const Main = () => {
-  const { originalData } = useSelector((state) => state.originalR);
+  const { originalData, originalFeatured, editorRecommend } = useSelector((state) => state.originalR);
   const { trendingDayData, trendingWeekData } = useSelector((state) => state.trendingR);
   const { romanceContent, mysteryContent } = useSelector((state) => state.combinedR);
 
-  const featuredData = originalData.filter((item) => item.logo);
+  const connectedData = originalData.filter((item) => item.type === 'connected');
+
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(originalActions.filterdFeature());
+    dispatch(originalActions.filteredRecommend());
     dispatch(getTrendingDay());
     dispatch(getTrendingWeek());
     dispatch(getCombinedRomance());
@@ -26,18 +30,22 @@ const Main = () => {
   return (
     <>
       <BannerSwiper />
-      <S.SectionArea>
-        <InnerContainer maxWidth="1460px" className="inner">
-          <CircleCardSwiper title="오리지널 대표 콘텐츠" items={featuredData} link={'/category/orginal'} />
-          <BasicCardSwiper title="지금 주목할 신규 콘텐츠" items={trendingWeekData} section="trendingWeekData" />
-          <BasicCardSwiper title="믿고 보는 에디터 추천작" />
-          <BasicCardSwiper title="두근두근 로맨스" items={romanceContent.slice(0, 20)} />
-          <BasicCardSwiper title="오늘의 TOP 20" items={trendingDayData} link={'/category/popular'} rank />
-          <BasicCardSwiper title="긴장감 넘치는 미스터리" items={mysteryContent.slice(0, 20)} />
-
-          <TextContent title="아직 고민 중이신가요?" />
+      <S.MainContainer>
+        <InnerContainer className="inner">
+          <CircleCardSwiper title="오리지널 대표 콘텐츠" items={originalFeatured} moreLink={'/category/original'} />
+          <BasicCardSwiper title="18세기 런던, 그녀들의 세계" items={connectedData} />
+          <BasicCardSwiper title="지금 주목할 신규 콘텐츠" items={trendingWeekData} moreLink={'/category/latest'} />
+          <BasicCardSwiper title="믿고 보는 에디터 추천작" items={editorRecommend} section="editorRecommend" />
+          <BasicCardSwiper title="두근두근 로맨스" items={romanceContent.slice(0, 20)} section="romanceContent" />
+          <BasicCardSwiper title="오늘의 TOP 20" items={trendingDayData} moreLink={'/category/popular'} rank />
+          <BasicCardSwiper
+            title="긴장감 넘치는 미스터리"
+            items={mysteryContent.slice(0, 20)}
+            section="mysteryContent"
+          />
+          <RecTextList title="아직 고민 중이신가요?" />
         </InnerContainer>
-      </S.SectionArea>
+      </S.MainContainer>
     </>
   );
 };

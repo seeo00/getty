@@ -21,21 +21,21 @@ import Layout from './common/layout/Layout';
 import MyPage from './pages/mypage';
 import Detail from './pages/detail';
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
+// function ScrollToTop() {
+//   const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [pathname]);
 
-  return null;
-}
+//   return null;
+// }
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <ScrollToTop />
+        {/* <ScrollToTop /> */}
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Layout />}>

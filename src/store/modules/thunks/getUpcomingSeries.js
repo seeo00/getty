@@ -20,6 +20,7 @@ export const getUpcomingSeries = createAsyncThunk('series/getUpcomingSeries', as
   try {
     const url = `${BASE_URL}/discover/tv?language=ko-KR&first_air_date.gte=${tomorrow}`;
     const response = await axios.get(url, options);
+
     return response.data.results.filter(
       (item) =>
         hasKorean(item.name) || hasKorean(item.title) || hasKorean(item.overview) || item.original_language === 'ko'
