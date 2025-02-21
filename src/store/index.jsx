@@ -12,7 +12,7 @@ import detailsR from './modules/slices/detailsSlice';
 import combinedR from './modules/slices/combinedSlice';
 import episodeR from './modules/slices/episodeSlice';
 import recommendationsR from './modules/slices/recommendationSlice';
-// import certificationR from './modules/slices/certificationSlice';
+import certificationsR from './modules/slices/certificationSlice';
 
 export const store = configureStore({
   reducer: {
@@ -29,6 +29,6 @@ export const store = configureStore({
     combinedR,
     episodeR,
     recommendationsR,
-    // certificationR
+    certificationsR,
   },
 });

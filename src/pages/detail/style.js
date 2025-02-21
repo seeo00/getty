@@ -81,22 +81,23 @@ export const VisualWrap = styled.div`
   height: 100%;
   background-color: #555;
   overflow-y: hidden;
-  position: sticky;
   top: 0;
   left: 0;
   z-index: 10;
-  */ ${respondTo('desktop')} {
+  ${respondTo('desktop')} {
     min-width: 1240px;
     height: 793px;
   }
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     min-width: 768px;
     height: 468px;
+		position: sticky;
   }
 
   ${respondTo('mobile')} {
     min-width: 390px;
     height: 244px;
+		position: sticky;
   }
 `;
 export const VisualContent = styled.div`
@@ -159,6 +160,19 @@ export const ContentWrap = styled.div`
 `;
 
 //desc
-export const InnerContainer = styled.div`
+export const InnerContainerd = styled.div`
+  max-width: ${({ $maxWidth }) => $maxWidth || '1460px'};
+  width: 100%;
+  height: 100%;
+  padding: 0 16px;
+  margin: 0 auto;
+  //overflow-y: auto;
+
+  ${respondTo('tablet')} {
+    padding: 0 40px;
+  }
+  ${respondTo('desktop')} {
+    padding: 0 40px;
+  }
   gap: 15px;
 `;
