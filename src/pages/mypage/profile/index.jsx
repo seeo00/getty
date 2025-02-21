@@ -1,10 +1,11 @@
-import ProfileSection from '../../../components/mypage/profile/index';
+import { InnerContainer } from '../../../common/layout/InnerContainer';
+import ProfilePage from '../../../components/mypage/profile/ProfilePage';
 
 const Profile = () => {
   return (
-    <>
-      <ProfileSection />
-    </>
+    <InnerContainer maxWidth="1280px">
+      <ProfilePage />
+    </InnerContainer>
   );
 };
 

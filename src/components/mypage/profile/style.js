@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 114px;
+  margin-top: 20px;
   height: 100vh;
   overflow-y: hidden;
   position: fixed;
@@ -14,11 +14,11 @@ export const Wrapper = styled.div`
   left: 0;
 
   ${respondTo('tablet')} {
-    margin-top: 65px;
+    margin-top: 120px;
   }
 
   ${respondTo('desktop')} {
-    margin-top: 200px;
+    margin-top: 190px;
   }
 `;
 
@@ -209,7 +209,7 @@ export const PageTitle = styled.h1`
 
 export const NameInputWrapper = styled.div`
   width: 100%;
-  max-width: 358px;
+  max-width: 360px;
   margin-bottom: 40px;
   position: relative;
   display: flex;
@@ -217,11 +217,11 @@ export const NameInputWrapper = styled.div`
   align-items: center;
 
   ${respondTo('tablet')} {
-    max-width: 536px;
+    max-width: 538px;
     margin-bottom: 120px;
   }
   ${respondTo('desktop')} {
-    max-width: 536px;
+    max-width: 538px;
     margin-bottom: 120px;
   }
 `;

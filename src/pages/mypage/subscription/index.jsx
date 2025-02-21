@@ -1,10 +1,10 @@
 // import { MyPageWrapper } from '../style';
-import MyPageContent from '../../../components/mypage/subscription/MyPageContent';
+import SubscriptionContent from '../../../components/mypage/subscription/SubscriptionContent';
 
 const Subscription = () => {
   return (
     <>
-      <MyPageContent />
+      <SubscriptionContent />
     </>
   );
 };
