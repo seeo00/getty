@@ -175,8 +175,8 @@ const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
               }
               return '';
             }}
-            placeholder="프로필 이름"
             maxLength={10}
+            label="프로필 이름"
           />
         </NameInputWrapper>
 
