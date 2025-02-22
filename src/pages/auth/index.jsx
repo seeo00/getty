@@ -1,5 +1,5 @@
 import * as S from './style';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   EmailStep,
@@ -9,11 +9,20 @@ import {
   SignupCompleteStep,
   SignupStep,
 } from '../../components';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/modules/slices/authSlice';
 
 const Auth = () => {
   const [currentStep, setCurrentStep] = useState('email');
   const [isEmailValid, setIsEmailValid] = useState(false);
   const [isPasswordValid, setIsPasswordValid] = useState(false);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => {
+      dispatch(authActions.resetAuthState());
+    };
+  }, [dispatch]);
 
   const goToStep = (step) => {
     setCurrentStep(step);
@@ -49,13 +58,7 @@ const Auth = () => {
   return (
     <>
       <S.GridContainer>
-        <S.LeftBox>
-          {/* <S.FlexWrap>
-              <S.ImgBox1></S.ImgBox1>
-              <S.ImgBox2></S.ImgBox2>
-              <S.ImgBox3></S.ImgBox3>
-            </S.FlexWrap> */}
-        </S.LeftBox>
+        <S.LeftBox></S.LeftBox>
         <S.RightBox>
           <AnimatePresence initial={false} mode="wait">
             <motion.div

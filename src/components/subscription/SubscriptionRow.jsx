@@ -1,5 +1,5 @@
 // SubscriptionRow/SubscriptionRow.js
-import { RowContainer, RowContent, Text, ExtraInfo } from '../style';
+import { RowContainer, RowContent, Text, ExtraInfo } from './style';
 
 const SubscriptionRow = ({ label = '월 요금', price, extra }) => {
   return (

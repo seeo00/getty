@@ -17,77 +17,139 @@ import {
 import Button from '../../../ui/Button';
 import InputField from '../../../ui/InputField';
 import PencilIcon from '../../../ui/icon/PencilIcon';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { authActions } from '../../../store/modules/slices/authSlice';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
 
 const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
+  const { user } = useSelector((state) => state.authR);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [currentMode, setCurrentMode] = useState(mode);
   const [selectedProfile, setSelectedProfile] = useState(null);
   const [isAddingNewProfile, setIsAddingNewProfile] = useState(false);
+  const [newProfileName, setNewProfileName] = useState('');
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-  const [profiles, setProfiles] = useState([
-    { id: 1, name: 'Name', image: null },
-    { id: 2, name: 'Name', image: null },
-    { id: 3, name: 'Name', image: null },
-  ]);
+  const profiles = user?.profiles || [];
 
-  // 프로필 선택 핸들러 (편집 모드일 때만 동작)
+  const defaultProfileImage =
+    'https://raw.githubusercontent.com/seeo00/project-image-storage/c64fd8a5f8a960d9498a00e135cde5606ecd505c/images/logo/circle.svg';
+
   const handleProfileSelect = (profile) => {
     if (currentMode === 'edit') {
       setSelectedProfile(profile);
       setIsAddingNewProfile(false);
-    }
-  };
-
-  // 새 프로필 추가 핸들러
-  const handleAddNewProfile = () => {
-    if (profiles.length < maxProfiles) {
-      // 빈 프로필 상태로 설정
-      setSelectedProfile({ id: null, name: '', image: null });
-      setIsAddingNewProfile(true);
-    }
-  };
-
-  // 프로필 편집/추가 핸들러
-  const handleProfileEdit = (updatedProfile) => {
-    if (isAddingNewProfile) {
-      // 새 프로필 추가 로직
-      const newProfile = {
-        ...updatedProfile,
-        id: profiles.length + 1,
-      };
-      setProfiles([...profiles, newProfile]);
+      setNewProfileName(profile.profileName);
     } else {
-      // 기존 프로필 수정 로직
-      setProfiles(profiles.map((profile) => (profile.id === updatedProfile.id ? updatedProfile : profile)));
+      dispatch(authActions.setSelectedProfile(profile));
+      localStorage.setItem('selectedProfile', JSON.stringify(profile));
+      navigate('/');
     }
-    // 상태 초기화
-    setSelectedProfile(null);
-    setIsAddingNewProfile(false);
   };
 
-  // 이미지 업로드 핸들러
+  const handleAddProfile = () => {
+    if (newProfileName.trim() === '') return;
+
+    const maxProfileId = profiles.length > 0 ? Math.max(...profiles.map((profile) => profile.profileId)) : 0;
+
+    const newProfile = {
+      profileId: maxProfileId + 1,
+      profileName: newProfileName,
+      profileImage: selectedProfile?.profileImage || defaultProfileImage,
+    };
+
+    dispatch(authActions.addProfile(newProfile));
+    setIsAddingNewProfile(false);
+    setNewProfileName('');
+    setSelectedProfile(null);
+  };
+
+  const handleEditProfile = () => {
+    if (newProfileName.trim() === '' || !selectedProfile) return;
+
+    const currentProfile = user.profiles.find((p) => p.profileId === selectedProfile.profileId);
+    const updatedProfile = {
+      ...currentProfile,
+      profileName: newProfileName,
+    };
+
+    dispatch(authActions.editProfile(updatedProfile));
+    setSelectedProfile(null);
+    setNewProfileName('');
+  };
+
+  const handleDeleteProfile = () => {
+    if (!selectedProfile) return;
+
+    dispatch(authActions.deleteProfile(selectedProfile.profileId));
+    setSelectedProfile(null);
+    setNewProfileName('');
+    setIsDeleteModalOpen(false);
+    setCurrentMode('view');
+  };
+
+  // 로컬스토리지 저장을 위해 이미지 사이즈 제한
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
-    if (file && selectedProfile) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
+    if (!file) return;
+
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const MAX_WIDTH = 160;
+      const MAX_HEIGHT = 160;
+
+      let width = img.width;
+      let height = img.height;
+
+      if (width > height) {
+        if (width > MAX_WIDTH) {
+          height *= MAX_WIDTH / width;
+          width = MAX_WIDTH;
+        }
+      } else {
+        if (height > MAX_HEIGHT) {
+          width *= MAX_HEIGHT / height;
+          height = MAX_HEIGHT;
+        }
+      }
+
+      canvas.width = width;
+      canvas.height = height;
+
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, width, height);
+
+      const resizedImage = canvas.toDataURL('image/jpeg', 0.7);
+
+      if (isAddingNewProfile) {
+        // 새 프로필 추가 시
+        setSelectedProfile({
+          profileId: profiles.length + 1,
+          profileName: newProfileName,
+          profileImage: resizedImage,
+        });
+      } else {
+        // 기존 프로필 수정 시
         const updatedProfile = {
           ...selectedProfile,
-          image: reader.result,
+          profileImage: resizedImage,
         };
-        handleProfileEdit(updatedProfile);
-      };
-      reader.readAsDataURL(file);
-    }
+        setSelectedProfile(updatedProfile);
+        dispatch(authActions.editProfile(updatedProfile));
+      }
+    };
   };
 
-  // PencilIcon 클릭 시 파일 업로드 트리거 함수
   const triggerFileUpload = () => {
     document.getElementById('profile-image-upload').click();
   };
 
-  // 프로필 선택 화면
-  if (!selectedProfile) {
+  // 프로필 선택
+  if (!selectedProfile && !isAddingNewProfile) {
     return (
       <Wrapper>
         <Title>프로필 선택</Title>
@@ -95,20 +157,23 @@ const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
 
         <ProfileGrid>
           {profiles.map((profile) => (
-            <ProfileItem
-              key={profile.id}
-              onClick={() => handleProfileSelect(profile)}
-              style={{ cursor: currentMode === 'edit' ? 'pointer' : 'default' }}
-            >
-              <ProfileCircle isEdit={currentMode === 'edit'}>{currentMode === 'edit' && <PencilIcon />}</ProfileCircle>
-              <ProfileName>{profile.name}</ProfileName>
+            <ProfileItem key={profile.profileId} onClick={() => handleProfileSelect(profile)}>
+              <ProfileCircle isEdit={currentMode === 'edit'}>
+                <img
+                  src={profile.profileImage}
+                  alt={profile.profileName}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+                />
+                {currentMode === 'edit' && <PencilIcon />}
+              </ProfileCircle>
+              <ProfileName>{profile.profileName}</ProfileName>
             </ProfileItem>
           ))}
 
           {profiles.length < maxProfiles && (
-            <ProfileItem onClick={handleAddNewProfile} $isAddProfile={true}>
+            <ProfileItem onClick={() => setIsAddingNewProfile(true)} $isAddProfile={true}>
               <AddProfileCircle>
-                <span style={{ fontSize: '14px', color: '${color.gray[70]}' }}>+</span>
+                <span style={{ fontSize: '14px' }}>+</span>
               </AddProfileCircle>
               <ProfileName>프로필 추가</ProfileName>
             </ProfileItem>
@@ -124,7 +189,7 @@ const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
     );
   }
 
-  // 프로필 편집/추가 화면
+  // 프로필 편집 추가
   return (
     <Wrapper>
       <ContentWrapper>
@@ -138,89 +203,53 @@ const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
           onChange={handleImageUpload}
         />
 
-        <ProfileCircle $editPage={true}>
-          {selectedProfile.image ? (
-            <img
-              src={selectedProfile.image}
-              alt="Profile"
-              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
-          ) : (
-            <div onClick={triggerFileUpload} style={{ cursor: 'pointer' }}>
-              <PencilIcon style={{ opacity: 1 }} />
-            </div>
-          )}
+        <ProfileCircle $editPage={true} onClick={triggerFileUpload}>
+          <img
+            src={selectedProfile?.profileImage || defaultProfileImage}
+            alt="Profile"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
+          <PencilIcon style={{ position: 'absolute', bottom: '5px', right: '5px' }} />
         </ProfileCircle>
 
         <NameInputWrapper>
-          <InputField label="test" />
           <InputField
             type="text"
-            value={selectedProfile.name}
-            onChange={(e) => {
-              setSelectedProfile((prev) => ({
-                ...prev,
-                name: e.target.value,
-              }));
-            }}
-            getErrorMessage={(value) => {
-              if (value.length > 10) {
-                return '프로필 이름은 10자 이하로 입력해주세요.';
-              }
-              if (value.length < 1) {
-                return '프로필 이름은 1자 이상 입력해야 합니다.';
-              }
-              const validNameRegex = /^[가-힣a-zA-Z0-9]*$/;
-              if (value && !validNameRegex.test(value)) {
-                return '한글, 영문, 숫자만 입력 가능합니다.';
-              }
-              return '';
-            }}
+            value={newProfileName}
+            onChange={(e) => setNewProfileName(e.target.value)}
             maxLength={10}
             label="프로필 이름"
           />
         </NameInputWrapper>
 
         <ButtonWrapper>
-          {/* 새 프로필 추가 화면이 아닐 때만 프로필 삭제 버튼 표시 */}
-          {!isAddingNewProfile && (
+          {!isAddingNewProfile && profiles.length > 1 && (
             <Button variant="secondary" onClick={() => setIsDeleteModalOpen(true)}>
               프로필 삭제
             </Button>
           )}
-
-          {/* 삭제 확인 모달 */}
-          <DeleteConfirmationModal
-            isOpen={isDeleteModalOpen}
-            onClose={() => setIsDeleteModalOpen(false)}
-            onConfirm={() => {
-              // 프로필 삭제 로직
-              setProfiles(profiles.filter((profile) => profile.id !== selectedProfile.id));
-              setSelectedProfile(null);
-              setIsDeleteModalOpen(false);
-            }}
-          />
-
           <Button
             variant="secondary"
             onClick={() => {
               setSelectedProfile(null);
               setIsAddingNewProfile(false);
+              setCurrentMode('view');
+              setNewProfileName('');
             }}
           >
             취소
           </Button>
-
-          <Button
-            onClick={() => {
-              handleProfileEdit(selectedProfile);
-            }}
-          >
-            확인
-          </Button>
+          <Button onClick={isAddingNewProfile ? handleAddProfile : handleEditProfile}>확인</Button>
         </ButtonWrapper>
       </ContentWrapper>
+
+      <DeleteConfirmationModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleDeleteProfile}
+      />
     </Wrapper>
   );
 };
+
 export default ProfilePage;

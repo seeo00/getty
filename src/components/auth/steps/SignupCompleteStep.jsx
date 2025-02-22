@@ -12,7 +12,13 @@ const SignupCompleteStep = () => {
         <p>더 많은 콘텐츠를 즐겨보세요.</p>
       </S.Title>
       <S.BottomBox>
-        <Button>이용권 구독하기</Button>
+        <Button
+          onClick={() => {
+            navigate('/subscription');
+          }}
+        >
+          이용권 구독하기
+        </Button>
         <S.TextBtnBox $justifyEnd>
           <button
             onClick={() => {

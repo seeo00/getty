@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { planDetails } from '../../../assets/api/planData.js';
+import { planDetails } from '../../assets/api/planData.js';
 import {
   ModalOverlay,
   ModalContainer,
@@ -12,8 +12,8 @@ import {
   SubscriptionRow,
   AutoMoveText,
   ButtonWrapper,
-} from '../style.js';
-import Button from '../../../ui/Button.jsx';
+} from './style.js';
+import Button from '../../ui/Button.jsx';
 
 const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
   const [countdown, setCountdown] = useState(5);
@@ -27,6 +27,7 @@ const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
         if (prevCount <= 1) {
           clearInterval(timer);
           onClose();
+          navigate('/');
           return 0;
         }
         return prevCount - 1;

@@ -16,6 +16,7 @@ import certificationsR from './modules/slices/certificationSlice';
 
 export const store = configureStore({
   reducer: {
+    authR,
     dramaR,
     documentaryR,
     animationR,
@@ -24,7 +25,6 @@ export const store = configureStore({
     trendingR,
     seriesR,
     originalR,
-    authR,
     detailsR,
     combinedR,
     episodeR,

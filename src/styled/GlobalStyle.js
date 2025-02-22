@@ -79,7 +79,7 @@ input, textarea, button {
   height: 100%;
 	/* border-radius: 16px; */
 }
-.swiper-pagination {
+/* .swiper-pagination {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -91,7 +91,7 @@ display: none;
     background: #000;
     opacity: 1;
     color: ${color.gray[70]};
-  }
+  } */
 
 
 

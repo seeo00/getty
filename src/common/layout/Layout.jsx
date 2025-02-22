@@ -11,7 +11,7 @@ import { useSelector } from 'react-redux';
 
 const ContentWrap = styled.div`
   width: 100%;
-  //height: 100%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   padding-top: 70px;
@@ -26,13 +26,13 @@ const ContentWrap = styled.div`
 `;
 
 const Layout = () => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const [bannerHeight, setBannerHeight] = useState(0);
   const bannerRef = useRef(null);
 
-  const { authed } = useSelector((state) => state.authR);
+  const { authed, user } = useSelector((state) => state.authR);
 
   useEffect(() => {
     const updateBannerHeight = () => {
@@ -66,7 +66,8 @@ const Layout = () => {
         </main>
         <Footer className="footer" />
       </ContentWrap>
-      {!authed && <PromotionBanner ref={bannerRef} />}
+      {/* {!authed && <PromotionBanner ref={bannerRef} />} */}
+      {(authed === false || user.subscribed === false) && <PromotionBanner ref={bannerRef} />}
       <BottomNav />
     </>
   );
