@@ -1,7 +1,6 @@
 import * as S from './style';
-import { InnerContainer } from '../../common/layout/InnerContainer';
 import useMouseDragScroll from '../../hooks/useMouseDragScroll';
-import CategoryButton from '../../ui/CategoryButton';
+import CategoryButton from '../../ui/button/CategoryButton';
 
 const CategoryButtons = ({ categories, currentCategory, onCategoryClick }) => {
   const scrollRef = useMouseDragScroll();

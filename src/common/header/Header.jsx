@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { InnerContainer } from '../layout/InnerContainer';
 import { AlertErrorIcon, GuestUserIcon, MenuIcon, SearchIcon } from '../../ui/icon';
 import { color } from '../../styled/common';
-import UserButton from '../../ui/UserButton';
+import UserButton from './UserButton';
+
 // import DropdownMenu from '../../ui/DropdownMenu';
 
 export const Header = ({ onToggleSideNav }) => {

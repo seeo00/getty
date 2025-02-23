@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { CardBasicSkeleton } from '../LoadingSkeleton';
 
@@ -44,8 +44,10 @@ const LogoBox = styled.div`
 
 const CardCircle = ({ item }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const location = useLocation();
+
   return (
-    <CardWrap to={'/'}>
+    <CardWrap to={`/category/${item.media_type}/${item.id}`} state={{ background: location }}>
       <CardItem>
         {!imageLoaded && <CardBasicSkeleton aspectRatio={1} />}
         <img

@@ -1,10 +1,11 @@
 import { EmailInput } from '../EmailInput';
 import * as S from '../style';
-import { Button } from '../../../ui/Button';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../../../store/modules/slices/authSlice';
 import { useEffect } from 'react';
 import ErrorAlert from '../../../ui/ErrorAlert';
+import Button from '../../../ui/button/Button';
 
 const ResetPasswordStep = ({ goToStep, isEmailValid, setIsEmailValid }) => {
   const { isExistingEmail, errorMessage } = useSelector((state) => state.authR);

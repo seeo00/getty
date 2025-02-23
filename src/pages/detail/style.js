@@ -13,7 +13,7 @@ export const Overlay = styled.div`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 40;
+  z-index: 9900;
 `;
 
 export const Wrap = styled.div`
@@ -91,13 +91,13 @@ export const VisualWrap = styled.div`
   ${respondTo('tablet')} {
     min-width: 768px;
     height: 468px;
-		position: sticky;
+    position: sticky;
   }
 
   ${respondTo('mobile')} {
     min-width: 390px;
     height: 244px;
-		position: sticky;
+    position: sticky;
   }
 `;
 export const VisualContent = styled.div`

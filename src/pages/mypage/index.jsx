@@ -1,9 +1,8 @@
-import { Outlet } from 'react-router-dom';
-
 const MyPage = () => {
   return (
     <div>
-      <Outlet />
+      마이페이지
+      {/* <Outlet /> */}
     </div>
   );
 };

@@ -6,8 +6,9 @@ import { useParams } from 'react-router-dom';
 import { getDetails } from '../../store/modules/thunks/getDetails';
 import { Rating } from '@mui/material';
 import * as S from './style';
-import Button from '../../ui/Button';
+
 import { ArrowDownIcon } from '../../ui/icon';
+import Button from '../../ui/button/Button';
 
 const formatReviewDate = (createdAt) => {
   if (!createdAt) return '날짜 정보 없음';
@@ -43,7 +44,7 @@ const ReviewCard = () => {
   const { detailsData, loading, error, currentCategory, currentPage, dramaData, hasMore } = useSelector(
     (state) => state.detailsR
   );
-  
+
   useEffect(() => {
     if (!detailsData) {
       dispatch(getDetails({ id: detailID, contentType: detailType }));

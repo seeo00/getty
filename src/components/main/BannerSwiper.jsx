@@ -11,6 +11,7 @@ import { ArrowLeftIcon, ArrowRightIcon } from '../../ui/icon';
 import { mainBannerData } from '../../assets/api/mainBannerData';
 import { color } from '../../styled/common';
 import { CardBasicSkeleton } from '../../ui/LoadingSkeleton';
+import { useLocation } from 'react-router-dom';
 
 const SwiperUpdateOnCollapse = ({ $isCollapsed, swiperInstance }) => {
   const swiper = useSwiper();
@@ -65,6 +66,7 @@ const BannerSwiper = ({ isCollapsed }) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isAnimated, setIsAnimated] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const location = useLocation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -113,7 +115,7 @@ const BannerSwiper = ({ isCollapsed }) => {
           <SwiperUpdateOnCollapse $isCollapsed={isCollapsed} swiperInstance={swiperInstance} />
           {mainBannerData.map((item) => (
             <SwiperSlide key={item.id}>
-              <S.SlideContainer>
+              <S.SlideContainer to={`/category/${item.media_type}/${item.id}`} state={{ background: location }}>
                 {!imageLoaded && <CardBasicSkeleton aspectRatio={4 / 5} banner />}
                 <S.ResponsiveBannerImage
                   src={item.banner}

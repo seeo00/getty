@@ -18,7 +18,7 @@ const StyledAuthMain = styled.main`
   }
 `;
 
-const AuthLayout = () => {
+const SimpleLayout = () => {
   return (
     <StyledAuthWrap>
       <AuthHeader />
@@ -29,4 +29,4 @@ const AuthLayout = () => {
   );
 };
 
-export default AuthLayout;
+export default SimpleLayout;

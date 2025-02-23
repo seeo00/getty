@@ -1,7 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { Button } from '../../../ui/Button';
+
 import * as S from '../style';
 import { authActions } from '../../../store/modules/slices/authSlice';
+import Button from '../../../ui/button/Button';
 
 const ResetCompleteStep = ({ goToStep }) => {
   const dispatch = useDispatch();

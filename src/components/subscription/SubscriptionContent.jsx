@@ -12,20 +12,35 @@ import {
   PlansGrid,
   MobileContentWrapper,
   ButtonContainer,
-} from '../style';
-import { InnerContainer } from '../../../common/layout/InnerContainer';
-import Button from '../../../ui/Button';
-import { planDetails } from '../../../assets/api/planData';
+} from './style';
+
+import { planDetails } from '../../assets/api/planData';
+import { useDispatch, useSelector } from 'react-redux';
+import { authActions } from '../../store/modules/slices/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { InnerContainer } from '../../common/layout/InnerContainer';
+import Button from '../../ui/button/Button';
 
 const SubscriptionContent = () => {
-  const [selectedPlan, setSelectedPlan] = useState('Basic');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { authed, user } = useSelector((state) => state.authR);
+  const [selectedPlan, setSelectedPlan] = useState(
+    user?.subscriptionPlan && user.subscriptionPlan !== '' ? user.subscriptionPlan : 'Basic'
+  );
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handlePlanSelect = (plan) => {
     setSelectedPlan(plan);
   };
 
-  const openModal = () => {
+  const handleNextClick = () => {
+    if (!authed) {
+      navigate('/auth');
+      return;
+    }
+    dispatch(authActions.subscribePlan(selectedPlan));
     setIsModalOpen(true);
   };
 
@@ -59,8 +74,8 @@ const SubscriptionContent = () => {
 
           <InfoNotes />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-            <Button onClick={openModal} width="510px" $isResponsive>
-              다음
+            <Button onClick={handleNextClick} width="510px" $isResponsive>
+              {authed ? '다음' : '로그인'}
             </Button>
           </div>
         </ContentWrapper>
