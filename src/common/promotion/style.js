@@ -10,6 +10,7 @@ export const BannerContainer = styled.div`
   left: 0;
   bottom: 64px;
   z-index: 900;
+  cursor: pointer;
   /* border-top-left-radius: 8px;
   border-top-right-radius: 8px; */
   padding: 16px 0;

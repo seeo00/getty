@@ -6,7 +6,7 @@ const NavDramaIcon = ({ width = 24, height = 24, color = 'currentColor', ...prop
       viewBox="0 0 22 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      stroke={color} // ✅ color props를 지원 (기본값: currentColor)
+      stroke={color}
       {...props}
     >
       <path

@@ -66,7 +66,6 @@ const Layout = () => {
         </main>
         <Footer className="footer" />
       </ContentWrap>
-      {/* {!authed && <PromotionBanner ref={bannerRef} />} */}
       {(authed === false || user.subscribed === false) && <PromotionBanner ref={bannerRef} />}
       <BottomNav />
     </>

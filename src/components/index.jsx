@@ -20,3 +20,4 @@ export { default as CardContentList } from './category/CardContentList';
 // mypage
 export { default as ProfilePage } from './mypage/profile/ProfilePage';
 export { default as SubscriptionContent } from './subscription/SubscriptionContent';
+export { default as ProfileInfo } from './mypage/ProfileInfo';

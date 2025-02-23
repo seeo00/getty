@@ -61,7 +61,7 @@ const StyledTextField = styled(TextField)`
     background-color: rgba(73, 73, 73, 0.1) !important;
   }
   & .MuiInputBase-root.Mui-disabled {
-    color: red !important; // ✅ 입력된 텍스트 색상 변경
+    color: red !important;
   }
   .MuiInputAdornment-root {
     display: flex;
