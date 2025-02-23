@@ -2,7 +2,9 @@ import * as S from '../style';
 import { getDrama } from '../../../store/modules/thunks/getDrama.js';
 import { dramaActions } from '../../../store/modules/slices/dramaSlice.js';
 import { useCategoryContent } from '../../../hooks/useCategoryContent.js';
-import { CardContentList, CategoryButtons } from '../../../components/index.jsx';
+import { CategoryButtons } from '../../../components/index.jsx';
+import { InnerContainer } from '../../../common/layout/InnerContainer.jsx';
+import CardFlexList from '../../../ui/card/CardFlexList.jsx';
 
 const Drama = () => {
   const { contentData, currentCategory, loading, onCategoryClick, lastElementRef } = useCategoryContent({
@@ -29,8 +31,12 @@ const Drama = () => {
 
   return (
     <S.GenreWrap>
-      <CategoryButtons categories={categories} currentCategory={currentCategory} onCategoryClick={onCategoryClick} />
-      <CardContentList data={contentData} loading={loading} lastElementRef={lastElementRef} />
+      <InnerContainer className="inner">
+        <CategoryButtons categories={categories} currentCategory={currentCategory} onCategoryClick={onCategoryClick} />
+      </InnerContainer>
+      <InnerContainer>
+        <CardFlexList items={contentData} loading={loading} lastElementRef={lastElementRef} />
+      </InnerContainer>
     </S.GenreWrap>
   );
 };

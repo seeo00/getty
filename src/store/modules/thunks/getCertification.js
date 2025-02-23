@@ -1,15 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// const BASE_URL = 'https://api.themoviedb.org/3';
-// const API_KEY = import.meta.env.VITE_API_KEY_V3;
+const BASE_URL = 'https://api.themoviedb.org/3';
+const API_KEY = import.meta.env.VITE_API_KEY_V3;
 
-// const options = {
-//   method: 'GET',
-//   headers: {
-//     accept: 'application/json',
-//   },
-// };
+const options = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+  },
+};
 
 export const getCertification = createAsyncThunk(
   'Certification/getCertification',

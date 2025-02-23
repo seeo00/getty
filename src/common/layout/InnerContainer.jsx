@@ -7,20 +7,10 @@ const StyledInnerContainer = styled.div`
   height: 100%;
   padding: 0 16px;
   margin: 0 auto;
-  //overflow-y: auto;
 
-  /* ${respondTo('tablet')} {
-    padding: 0 40px;
-  } */
   ${respondTo('desktop')} {
     padding: 0 40px;
   }
-
-  /* scrollbar-width: none;
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  } */
 `;
 
 export const InnerContainer = ({ children, className, maxWidth }) => {

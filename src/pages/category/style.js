@@ -6,7 +6,7 @@ export const GenreWrap = styled.div`
   .inner {
     padding: 0;
     ${respondTo('desktop')} {
-      padding: inherit;
+      padding: 0 40px;
     }
   }
 `;

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { getRecommendations } from '../thunks/getRecommendations';
 
 const initialState = {
-  Recommendations: [],
+  recommendations: [],
   currentCategory: 'base',
   currentPage: 1,
   hasMore: true,
@@ -17,7 +17,7 @@ const recommendationSlice = createSlice({
     setCategory: (state, action) => {
       state.currentCategory = action.payload;
       state.currentPage = 1;
-      state.Recommendations = [];
+      state.recommendations = [];
       state.hasMore = true;
     },
   },
@@ -29,9 +29,13 @@ const recommendationSlice = createSlice({
       })
       .addCase(getRecommendations.fulfilled, (state, action) => {
         state.loading = false;
-        state.Recommendations = action.payload.recommendations;
-        state.hasMore = action.payload.hasMore;
-        state.currentPage = action.payload.currentPage;
+        if (state.currentPage === 1) {
+          state.recommendations = action.payload;
+        } else {
+          state.recommendations = [...state.recommendations, ...action.payload];
+        }
+        state.hasMore = action.payload.length > 0;
+        state.currentPage += 1;
       })
       .addCase(getRecommendations.rejected, (state, action) => {
         state.loading = false;

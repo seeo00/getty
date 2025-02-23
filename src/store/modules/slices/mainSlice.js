@@ -1,6 +1,6 @@
 const initialState = {
   isOpen: false, // 모바일용 사이드바 (완전히 나타나거나 사라짐)
-  isCollapsed: false, // 데스크탑용 사이드바 (축소/확장)
+  isCollapsed: true, // 데스크탑용 사이드바 (축소/확장)
 };
 
 export default function mainR(state = initialState, action) {

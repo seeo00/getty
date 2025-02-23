@@ -5,6 +5,13 @@ import SeasonDropdown from '../../ui/button/DropdownSelectButton';
 import PreviewPlayIcon from '../../ui/icon/PreviewPlayIcon';
 import { color } from '../../styled/common';
 import * as S from './style';
+import styled from 'styled-components';
+
+const NoEpisodeMessage = styled.p`
+  color: #aaa;
+  text-align: center;
+  margin: 20px 0;
+`;
 
 const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
   const dispatch = useDispatch();
@@ -22,7 +29,15 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
   }, [dispatch, tvId, seasonNumber]);
 
   if (loading && (!episodeData || episodeData.length === 0)) return <p>로딩 중...</p>;
-  if (error) return <p>데이터를 찾을 수 없습니다: {error}</p>;
+
+  // 404 에러인 경우 영화이므로 에피소드 데이터가 없음을 표시
+  if (error) {
+    if (error.message && error.message.includes('404')) {
+      return <p>에피소드 데이터가 없습니다.</p>;
+    }
+    return <NoEpisodeMessage>해당 영화는 에피소드 정보가 제공되지 않습니다. {error.message || ''}</NoEpisodeMessage>;
+  }
+
   if (!episodeData || episodeData.length === 0) return <p>에피소드가 없습니다.</p>;
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
@@ -30,11 +45,11 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
   return (
     <>
       <SeasonDropdown
-         defaultSeason={`시즌 ${seasonNumber}`}
-				 onSelect={(selectedSeason) => {
-					 // 만약 selectedSeason이 { name: "시즌 2", id: 2 } 형태라면:
-					 const newSeason = selectedSeason.name.replace('시즌 ', '');
-					 setSeasonNumber(newSeason);		
+        defaultSeason={`시즌 ${seasonNumber}`}
+        onSelect={(selectedSeason) => {
+          // 만약 selectedSeason이 { name: "시즌 2", id: 2 } 형태라면:
+          const newSeason = selectedSeason.name.replace('시즌 ', '');
+          setSeasonNumber(newSeason);
         }}
       />
       {episodeData.map((episode) => (

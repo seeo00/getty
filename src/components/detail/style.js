@@ -209,6 +209,7 @@ export const IconWrapper = styled.div`
 
 export const ReviewCardContainer = styled.div`
   padding: 16px 0;
+	margin-bottom: 40px;
   border-bottom: 1px solid ${color.gray[500]};
 `;
 
@@ -277,6 +278,7 @@ export const InfoCardContainer = styled.div`
   flex-wrap: wrap;
   gap: 16px;
 	margin-top: 26px;//탭버튼 마진제외
+	margin-bottom: 40px;
 max-width: 1159;
   @media (min-width: 768px) {
     flex-wrap: nowrap;
@@ -424,4 +426,10 @@ export const DetailList = styled.ul`
     margin-top: 16px;
   }
 
+`;
+
+export const NoEpisodeMessage = styled.p`
+  color: #aaa;
+  text-align: center;
+  margin: 20px 0;
 `;

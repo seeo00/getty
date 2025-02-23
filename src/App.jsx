@@ -16,55 +16,47 @@ import {
   Reality,
   Subscription,
 } from './pages';
-import AuthLayout from './common/layout/AuthLayout';
+import SimpleLayout from './common/layout/SimpleLayout';
 import Layout from './common/layout/Layout';
 import MyPage from './pages/mypage';
 import Detail from './pages/detail';
 
-// function ScrollToTop() {
-//   const { pathname } = useLocation();
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
-//   useEffect(() => {
-//     window.scrollTo(0, 0);
-//   }, [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
-//   return null;
-// }
+  return null;
+}
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <ScrollToTop /> */}
+        <ScrollToTop />
         <GlobalStyle />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Main />} />
-            {/* <Route path="/category/highlight" element={<Highlight />} /> */}
             <Route path="/category/popular" element={<Popular />} />
             <Route path="/category/latest" element={<Latest />} />
             <Route path="/category/original" element={<Original />} />
             <Route path="/category/drama" element={<Drama />} />
-            {/* <Route path=":detail/:detailID" element={<Detail />} /> </Route> */}
             <Route path="/category/movie" element={<Movie />} />
             <Route path="/category/reality" element={<Reality />} />
             <Route path="/category/animation" element={<Animation />} />
             <Route path="/category/documentary" element={<Documentary />} />
             <Route path="/more" element={<More />} />
-            {/* <Route index element={<Main />} /> */}
+            <Route path="/mypage" element={<MyPage />} />
+            <Route path="/category/:category/:detailID" element={<Detail />} />
           </Route>
-
-          <Route path="/auth" element={<AuthLayout />}>
-            <Route index element={<Auth />} />
+          <Route element={<SimpleLayout />}>
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/subscription" element={<Subscription />} />
+            <Route path="mypage/profile" element={<Profile />} />
           </Route>
-
-          <Route path="/mypage" element={<AuthLayout />}>
-            <Route index element={<MyPage />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="subscription" element={<Subscription />} />
-          </Route>
-
-          <Route path="/category/:drama/:detail/:detailID" element={<Detail />} />
         </Routes>
       </BrowserRouter>
     </>

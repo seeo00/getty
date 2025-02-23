@@ -4,7 +4,11 @@ import styled from 'styled-components';
 import EpisodeSection from '../../components/detail/EpisodeCard';
 import ReviewCard from '../../components/detail/ReviewCard';
 import InfoCard from '../../components/detail/InfoCard';
-import { CardContentList } from '../../components';
+import CardFlexList from '../card/CardFlexList';
+import { SortAndCountDropdown } from './SortAndCountButton';
+import { getDetails } from '../../store/modules/thunks/getDetails';
+import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
+
 // import { ContentList } from '../../components/category/CardContentList';
 // import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
 // import DetailCard from '../../components/detail/DetailCard';
@@ -15,7 +19,7 @@ const TabButton = styled.button`
   border: none;
   padding: 8px 0;
   cursor: pointer;
-	margin: 40px 0 0 0;
+  margin: 40px 0 0 0;
 `;
 
 const TabText = styled.span`
@@ -28,21 +32,21 @@ const DetailTabButtons = ({ tvId }) => {
   const [activeTab, setActiveTab] = useState('episode');
   const [likeCount, setLikeCount] = useState(12);
 
-	//기능 미구현
+  //기능 미구현
   const handleSortLike = () => {
-    console.log('베스트순');
+    console.log('날짜순');
   };
 
   const handleSortDate = () => {
-    console.log('날짜순');
+    console.log('');
   };
 
   const handleLike = () => {
     setLikeCount((prevCount) => prevCount + 1);
   };
 
-	//기능 미구현 예시 갯수
-  const reviewCount = '000'; 
+  //기능 미구현 예시 갯수
+  const reviewCount = '000';
 
   return (
     <>
@@ -62,14 +66,11 @@ const DetailTabButtons = ({ tvId }) => {
       </div>
       <div>
         {activeTab === 'episode' && <EpisodeSection tvId={tvId} initialSeason="1" />}
-        {activeTab === 'recommend' && <ContentList />}
+
+        {activeTab === 'recommend' && <DramaPosterGallery />}
         {activeTab === 'review' && (
           <>
-            <SortAndCountDropdown
-              reviewCount={reviewCount}
-              onSortLike={handleSortLike}
-              onSortDate={handleSortDate}
-            />
+            <SortAndCountDropdown reviewCount={reviewCount} onSortLike={handleSortLike} onSortDate={handleSortDate} />
             <ReviewCard likeCount={likeCount} handleLike={handleLike} />
           </>
         )}

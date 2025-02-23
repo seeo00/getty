@@ -4,8 +4,17 @@ import styled from 'styled-components';
 const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  padding-top: ${({ $aspectRatio }) => ($aspectRatio === 1 ? '100%' : $aspectRatio === 16 / 9 ? '56.25%' : '150%')};
-  // aspectRatio 기본값 2/3 (세로 포스터 비율, CardBasic)
+  height: 100%;
+  padding-top: ${({ $aspectRatio }) =>
+    $aspectRatio === 1 ? '100%' : $aspectRatio === 16 / 9 ? '56.25%' : $aspectRatio === 4 / 5 ? '80%' : '150%'};
+
+  ${({ $banner }) =>
+    $banner &&
+    `
+    @media (min-width: 601px) {
+      padding-top: 50%; /* 1920x960 (2:1 비율) */
+    }
+  `}
 `;
 
 const StyledSkeleton = styled(Skeleton)`
@@ -16,9 +25,9 @@ const StyledSkeleton = styled(Skeleton)`
   height: 100% !important;
 `;
 
-export const CardBasicSkeleton = ({ aspectRatio }) => {
+export const CardBasicSkeleton = ({ aspectRatio, banner }) => {
   return (
-    <ImageWrapper $aspectRatio={aspectRatio}>
+    <ImageWrapper $aspectRatio={aspectRatio} $banner={banner}>
       <StyledSkeleton variant="rectangular" animation="wave" />
     </ImageWrapper>
   );

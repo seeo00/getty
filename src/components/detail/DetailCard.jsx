@@ -13,6 +13,10 @@ const DetailCard = () => {
   const { detailsData, loading, error } = useSelector((state) => state.detailsR);
   const { certificationData, loading: certificationLoading } = useSelector((state) => state.certificationsR);
 
+	
+	const detail = detailsData;
+	const movieTitle = detail.title || detail.name; 
+
   // 출연진 텍스트의 확장 여부를 위한 상태와 ref 추가
   const castRef = useRef(null);
   const [castOverflow, setCastOverflow] = useState(false);
@@ -34,7 +38,6 @@ const DetailCard = () => {
   if (error) return <p>데이터를 찾을 수 없습니다.</p>;
   if (!detailsData) return null;
 
-  const detail = detailsData;
   const originCountryCode = detail.origin_country[0];
 
   const certificationForCountry = certificationData
@@ -54,12 +57,19 @@ const DetailCard = () => {
         ))
       : '출연 정보 없음';
 
+const releaseDate = detail.release_date
+  ? detail.release_date.split('-')[0]
+  : detail.first_air_date
+  ? detail.first_air_date.split('-')[0]
+  : '연도 정보 없음';
+
+
   return (
     <DetailContainer>
       <div key={detail.id} style={{ marginBottom: '10px' }}>
-        <TitleName>
-          <div>{detail.name}</div>
-        </TitleName>
+			<TitleName>
+        <div>{movieTitle}</div>
+      </TitleName>
         <FlexContainer style={{ alignItems: 'center' }}>
           <Title>
             <div className='undertitle'>
@@ -74,7 +84,7 @@ const DetailCard = () => {
             </div>
             ㆍ
             <div className='undertitle2'>
-              {detail.first_air_date ? detail.first_air_date.split('-')[0] : '연도 정보 없음'}년
+              {releaseDate}년
             </div>
             {/* Certification 컴포넌트에 koreanRating 전달 */}
             <li style={{ display: 'flex' }}>

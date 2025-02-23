@@ -7,16 +7,16 @@ import movieR from './modules/slices/movieSlice';
 import trendingR from './modules/slices/trendingSlice';
 import seriesR from './modules/slices/seriesSlice';
 import originalR from './modules/slices/originalSlice';
-import mainR from './modules/slices/mainSlice';
 import authR from './modules/slices/authSlice';
 import detailsR from './modules/slices/detailsSlice';
 import combinedR from './modules/slices/combinedSlice';
 import episodeR from './modules/slices/episodeSlice';
-import recommendationsR from './modules/slices/recommendationSlice'
+import recommendationsR from './modules/slices/recommendationSlice';
 import certificationsR from './modules/slices/certificationSlice';
 
 export const store = configureStore({
   reducer: {
+    authR,
     dramaR,
     documentaryR,
     animationR,
@@ -24,13 +24,11 @@ export const store = configureStore({
     movieR,
     trendingR,
     seriesR,
-    originalR,	
-    mainR,
-    authR,
+    originalR,
     detailsR,
     combinedR,
     episodeR,
-		recommendationsR,
-		certificationsR
-	  },
+    recommendationsR,
+    certificationsR,
+  },
 });

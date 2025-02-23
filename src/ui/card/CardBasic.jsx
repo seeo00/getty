@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { respondTo } from '../../styled/GlobalStyle';
 import { useState } from 'react';
@@ -40,13 +40,14 @@ const RankBadge = styled.div`
 
 const CardBasic = ({ item, rank, aspectRatio, className }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const location = useLocation();
 
   return (
-    <CardWrap to={'/'} className={className}>
+    <CardWrap to={`/category/${item.media_type}/${item.id}`} state={{ background: location }} className={className}>
       <CardItem $aspectRatio={aspectRatio}>
         {!imageLoaded && <CardBasicSkeleton aspectRatio={aspectRatio} />}
         <img
-          src={item.poster || `https://image.tmdb.org/t/p/original${item.poster_path}`}
+          src={item.poster || `https://image.tmdb.org/t/p/w500${item.poster_path}`}
           alt={item.title || item.name}
           onLoad={() => setImageLoaded(true)}
           style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}

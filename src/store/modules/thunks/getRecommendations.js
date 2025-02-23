@@ -1,13 +1,9 @@
+// src/store/modules/thunks/getRecommendations.js
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-// import { hasKorean } from '../../../utils/regexUtils';
 
 const BASE_URL = 'https://api.themoviedb.org/3';
-// 반드시 TMDB v3 API 키를 사용하세요.
-const API_KEY = import.meta.env.VITE_API_KEY_V3;
-// const itemsPerPage = 20;
-// const apiPages = 5;
-
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const options = {
   method: 'GET',
@@ -17,14 +13,34 @@ const options = {
 };
 
 export const getRecommendations = createAsyncThunk(
-  'Episode/getEpisode',
-  async ({ tvId = '1399', seasonNumber = '1' }, thunkAPI) => {
+  'recommendations/getRecommendations',
+  async ({ type, id, seasonNumber = '1' }, thunkAPI) => {
     try {
-      // v3 엔드포인트: api_key는 쿼리 파라미터로 전달
-      const url = `${BASE_URL}/tv/${tvId}/season/${seasonNumber}?language=ko-KR&api_key=${API_KEY}`;
-      const response = await axios.get(url, options);
-      const recommendations = response.data.recommendations;
-      return recommendations;
+      let url = '';
+      if (type === 'movie') {
+        url = `${BASE_URL}/movie/${id}/recommendations?language=ko-KR&api_key=${API_KEY}`;
+        const response = await axios.get(url, options);
+        const recommendations = response.data.results;
+        return recommendations;
+      } else if (type === 'tv') {
+        url = `${BASE_URL}/tv/${id}/recommendations?language=ko-KR&api_key=${API_KEY}`;
+        const response = await axios.get(url, options);
+        const recommendations = response.data.results;
+        return recommendations;
+      } else if (type === 'both') {
+        // 영화와 TV 추천 데이터를 동시에 가져옴
+        const movieUrl = `${BASE_URL}/movie/${id}/recommendations?language=ko-KR&api_key=${API_KEY}`;
+        const tvUrl = `${BASE_URL}/tv/${id}/recommendations?language=ko-KR&api_key=${API_KEY}`;
+        const [movieResponse, tvResponse] = await Promise.all([
+          axios.get(movieUrl, options),
+          axios.get(tvUrl, options),
+        ]);
+        const movieRecommendations = movieResponse.data.results;
+        const tvRecommendations = tvResponse.data.results;
+        return { movieRecommendations, tvRecommendations };
+      } else {
+        return thunkAPI.rejectWithValue('Invalid content type');
+      }
     } catch (error) {
       console.error('Error fetching recommendations:', error);
       return thunkAPI.rejectWithValue(error.response?.data || error.message);

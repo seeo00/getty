@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../store/modules/thunks/getDetails';
 import { getKoreanRating } from '../../assets/api/certificationData';
 
-const Certification = () => {
+const Certification = ({ koreanRating: propKoreanRating }) => {
   const dispatch = useDispatch();
   const { detailType, detailID } = useParams();
   const { detailsData, loading, error } = useSelector((state) => state.detailsR);
@@ -16,8 +16,8 @@ const Certification = () => {
     }
   }, [dispatch, detailsData, detailID, detailType]);
 
-  if (loading || certificationLoading) return <p>로딩 중...</p>;
-  if (error) return <p>데이터를 찾을 수 없습니다.</p>;
+  if (loading || certificationLoading) return <span>로딩 중...</span>;
+  if (error) return <span>데이터를 찾을 수 없습니다.</span>;
   if (!detailsData) return null;
 
   const detail = detailsData;
@@ -28,13 +28,10 @@ const Certification = () => {
     ? certificationData.find((item) => item.iso_3166_1 === originCountryCode)
     : null;
   const certificationCode = certificationForCountry ? certificationForCountry.rating : null;
-  const koreanRating = getKoreanRating(originCountryCode, certificationCode);
+  const koreanRating = propKoreanRating || getKoreanRating(originCountryCode, certificationCode);
 
-  return (
-		<li style={{ alignItems: 'center' }}>
-	<strong>&nbsp;{koreanRating}</strong>
-	</li>
-  );
+  // 부모에서 li로 감싸고 있다면 여기서는 li 대신 span으로 반환하여 중첩 문제를 피합니다.
+  return <span><strong>&nbsp;{koreanRating}</strong></span>;
 };
 
 export default Certification;

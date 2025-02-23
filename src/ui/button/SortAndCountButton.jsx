@@ -113,7 +113,7 @@ const DropdownListItem = styled.li`
 
 export const SortAndCountDropdown = ({ reviewCount, onSortLike, onSortDate }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState("좋아요 순");
+  const [selectedSort, setSelectedSort] = useState("날짜순");
   const dropdownRef = useRef();
 
   useEffect(() => {
