@@ -1,4 +1,4 @@
-import Button from '../../../ui/Button';
+import Button from '../../../ui/button/Button';
 import { ModalOverlay, ModalContainer, ModalTitle, ModalDescription, ModalButtonWrapper } from './style';
 
 const DeleteConfirmationModal = ({ isOpen, onClose, onConfirm }) => {

@@ -13,7 +13,7 @@ export const Overlay = styled.div`
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 9999;
+  z-index: 9900;
 `;
 
 export const Wrap = styled.div`

@@ -1,4 +1,3 @@
-import { Button } from '../../../ui/Button';
 import * as S from '../style';
 import CheckBox from '../../../ui/Checkbox';
 import { useNavigate } from 'react-router-dom';
@@ -8,6 +7,7 @@ import ErrorAlert from '../../../ui/ErrorAlert';
 import { useEffect, useState } from 'react';
 import { EmailInput } from '../EmailInput';
 import { PasswordInput } from '../PasswordInput';
+import Button from '../../../ui/button/Button';
 
 const PasswordStep = ({ goToStep, isPasswordValid, setIsPasswordValid }) => {
   const { authed, enteredEmail, errorMessage, user } = useSelector((state) => state.authR);

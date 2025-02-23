@@ -1,9 +1,10 @@
 import * as S from './style';
-import Button from '../../ui/Button';
+
 import { InnerContainer } from '../layout/InnerContainer';
 import { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../ui/button/Button';
 
 const PromotionBanner = forwardRef(function PromotionBanner(props, ref) {
   const { authed, user } = useSelector((state) => state.authR);

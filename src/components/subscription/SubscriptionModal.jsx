@@ -13,7 +13,7 @@ import {
   AutoMoveText,
   ButtonWrapper,
 } from './style.js';
-import Button from '../../ui/Button.jsx';
+import Button from '../../ui/button/Button.jsx';
 
 const SubscriptionModal = ({ onClose, selectedPlan = 'Basic' }) => {
   const [countdown, setCountdown] = useState(5);

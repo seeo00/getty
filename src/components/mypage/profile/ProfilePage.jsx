@@ -14,13 +14,13 @@ import {
   NameInputWrapper,
   ButtonWrapper,
 } from './style';
-import Button from '../../../ui/Button';
 import InputField from '../../../ui/InputField';
 import PencilIcon from '../../../ui/icon/PencilIcon';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { authActions } from '../../../store/modules/slices/authSlice';
 import DeleteConfirmationModal from './DeleteConfirmationModal';
+import Button from '../../../ui/button/Button';
 
 const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
   const { user } = useSelector((state) => state.authR);

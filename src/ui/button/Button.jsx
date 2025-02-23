@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { color } from '../styled/common';
+import { color } from '../../styled/common';
 
 const disabledStyles = css`
   background-color: transparent;

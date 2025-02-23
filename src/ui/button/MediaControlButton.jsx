@@ -1,10 +1,11 @@
-	import { ButtonControl } from '../../pages/detail/style';
-import Button from '../Button';
-import CircleButton from '../CircleButton';
+import { ButtonControl } from '../../pages/detail/style';
+
+import CircleButton from './CircleButton';
 import { FavoriteIcon, NavPopularIcon, VideoPlayIcon } from '../icon';
 import { color } from '../../styled/common';
 import { FlexContainer } from '../../components/detail/style';
 import styled from 'styled-components';
+import Button from './Button';
 
 const Displaycontainer = styled.div`
   display: block;

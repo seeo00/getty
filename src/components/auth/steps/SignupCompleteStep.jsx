@@ -1,5 +1,6 @@
+import Button from '../../../ui/button/Button';
 import * as S from '../style';
-import { Button } from '../../../ui/Button';
+
 import { useNavigate } from 'react-router-dom';
 
 const SignupCompleteStep = () => {

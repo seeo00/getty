@@ -19,7 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../../store/modules/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 import { InnerContainer } from '../../common/layout/InnerContainer';
-import Button from '../../ui/Button';
+import Button from '../../ui/button/Button';
 
 const SubscriptionContent = () => {
   const dispatch = useDispatch();
