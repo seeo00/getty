@@ -10,8 +10,16 @@ const PromotionBanner = forwardRef(function PromotionBanner(props, ref) {
   const { authed, user } = useSelector((state) => state.authR);
   const navigate = useNavigate();
 
+  const handleBannerClick = () => {
+    if (authed && !user.subscribed) {
+      navigate('/subscription');
+    } else {
+      navigate('/auth');
+    }
+  };
+
   return (
-    <S.BannerContainer ref={ref}>
+    <S.BannerContainer ref={ref} onClick={handleBannerClick}>
       <InnerContainer maxWidth={'100%'}>
         <S.FlexContainer>
           <div>
