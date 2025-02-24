@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { getKoreanRating } from '../../assets/api/certificationData';
 
 const Certification = () => {
@@ -31,9 +31,9 @@ const Certification = () => {
   const koreanRating = getKoreanRating(originCountryCode, certificationCode);
 
   return (
-		<li style={{ alignItems: 'center' }}>
-	<strong>&nbsp;{koreanRating}</strong>
-	</li>
+    <li style={{ alignItems: 'center' }}>
+      <strong>&nbsp;{koreanRating}</strong>
+    </li>
   );
 };
 

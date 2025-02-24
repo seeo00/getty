@@ -3,7 +3,7 @@ import { SubBannerSwiper } from '../../../components';
 import { InnerContainer } from '../../../common/layout/InnerContainer.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getTrendingDay } from '../../../store/modules/thunks/getTrending.js';
+import { getTrendingDay } from '../../../store/modules/thunks/getCommonThunks.js';
 import BasicCardSwiper from '../../../ui/card/BasicCardSwiper.jsx';
 import { getDrama } from '../../../store/modules/thunks/getDrama.js';
 import { getMovie } from '../../../store/modules/thunks/getMovie.js';

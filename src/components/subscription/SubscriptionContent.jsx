@@ -48,13 +48,32 @@ const SubscriptionContent = () => {
     setIsModalOpen(false);
   };
 
+  const SubTitleText = () => {
+    if (authed && user.subscribed) {
+      return '이용 중인 이용권으로 다양한 콘텐츠를 무제한으로 감상하세요!';
+    } else if (!authed) {
+      return '로그인 후 원하는 이용권을 선택하세요. 이용권은 언제든지 해지할 수 있습니다.';
+    } else {
+      return '원하는 이용권을 선택해 주세요. 이용권은 언제든지 해지할 수 있습니다.';
+    }
+  };
+  const isCurrentPlan = authed && user.subscribed && selectedPlan === user.subscriptionPlan;
+  const isDisabled = authed && user.subscribed && selectedPlan === user.subscriptionPlan;
+  const buttonText = !authed
+    ? '로그인'
+    : !user.subscribed
+    ? '이용권 구독하기'
+    : isCurrentPlan
+    ? '이용 중'
+    : '이용권 변경하기';
+
   return (
     <InnerContainer maxWidth="1920px">
       <PageWrapper>
         <ContentWrapper>
           <TitleSection>
             <MainTitle>콘텐츠를 즐길 준비가 되셨나요?</MainTitle>
-            <SubTitle>원하는 이용권을 선택해 주세요. 이용권은 언제든지 원하실 때 해지할 수 있습니다.</SubTitle>
+            <SubTitle>{SubTitleText()}</SubTitle>
           </TitleSection>
 
           <PlansGrid>
@@ -74,8 +93,8 @@ const SubscriptionContent = () => {
 
           <InfoNotes />
           <div style={{ display: 'flex', justifyContent: 'center', marginTop: '40px' }}>
-            <Button onClick={handleNextClick} width="510px" $isResponsive>
-              {authed ? '다음' : '로그인'}
+            <Button onClick={handleNextClick} width="510px" $isResponsive disabled={isDisabled}>
+              {buttonText}
             </Button>
           </div>
         </ContentWrapper>

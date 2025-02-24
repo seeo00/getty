@@ -732,7 +732,7 @@ export const ContentList = styled.ul`
   a,
   button {
     width: 100%;
-    color: ${color.gray[100]};
+    /* color: ${color.gray[100]}; */
     padding: 8px 0;
     display: flex;
     justify-content: space-between;
@@ -760,8 +760,8 @@ export const TabButton = styled.button`
 export const TabText = styled.span`
   display: inline-block;
   padding-bottom: 13px;
-  border-bottom: 2px solid ${({ active }) => (active ? 'blue' : 'transparent')};
-  color: ${({ active }) => (active ? color.white : color.gray[100])};
+  border-bottom: 2px solid ${({ $active }) => ($active ? 'blue' : 'transparent')};
+  color: ${({ $active }) => ($active ? color.white : color.gray[100])};
 `;
 
 export const TabContentAlert = styled.div`

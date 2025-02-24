@@ -6,7 +6,7 @@ import {
   getCombinedRealistic,
   getCombinedAnimation,
   getCombinedFamily,
-} from '../thunks/geThunk';
+} from '../thunks/getCombinedThunks';
 
 const initialState = {
   romanceContent: [],

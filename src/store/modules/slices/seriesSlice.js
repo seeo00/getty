@@ -1,20 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getNewSeries } from '../thunks/getNewSeries';
-import { getUpcomingSeries } from '../thunks/getUpcomingSeries';
+import { getNewSeries, getUpcomingSeries } from '../thunks/getCommonThunks';
 
 const initialState = {
   upcomingSeriesData: [],
   newSeriesData: [],
   loading: false,
   error: null,
-  // loading: {
-  //   upcoming: false,
-  //   new: false,
-  // },
-  // error: {
-  //   upcoming: null,
-  //   new: null,
-  // },
 };
 
 const seriesSlice = createSlice({

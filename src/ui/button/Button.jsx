@@ -60,4 +60,5 @@ export const SmallButton = styled(Button)`
   padding: 8px 12px;
   font-size: 0.875rem;
   border-radius: 6px;
+  font-weight: 400;
 `;

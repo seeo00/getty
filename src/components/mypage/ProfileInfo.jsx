@@ -24,7 +24,7 @@ const ProfileInfo = () => {
             <SmallButton
               $variant="outline"
               width="auto"
-              outlineColor={color.gray[70]}
+              outlineColor={color.gray[50]}
               onClick={() => navigate('/mypage/profile')}
             >
               프로필 전환
@@ -32,7 +32,7 @@ const ProfileInfo = () => {
             <SmallButton
               $variant="outline"
               width="auto"
-              outlineColor={color.gray[70]}
+              outlineColor={color.gray[50]}
               onClick={() => navigate('/subscription')}
             >
               {user.subscribed ? `${user.subscriptionPlan} 이용권` : '이용권 구독'}
@@ -44,7 +44,7 @@ const ProfileInfo = () => {
         <SmallButton
           $variant="outline"
           width="100%"
-          outlineColor={color.gray[70]}
+          outlineColor={color.gray[50]}
           onClick={() => navigate('/subscription')}
         >
           {user.subscribed ? `${user.subscriptionPlan} 이용권` : '이용권 구독'}

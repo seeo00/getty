@@ -1,11 +1,15 @@
 import * as S from './style';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AlertIcon, ArrowRightIcon } from '../../ui/icon';
 import { color } from '../../styled/common';
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import TabContent from './TabContent';
+import { authActions } from '../../store/modules/slices/authSlice';
 
 const MypageContent = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('watchHistory');
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 600);
 
@@ -17,6 +21,14 @@ const MypageContent = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  const logout = () => {
+    dispatch(authActions.logout());
+    navigate('/');
+    setTimeout(() => {
+      window.location.reload();
+    }, 200);
+  };
 
   return (
     <>
@@ -70,7 +82,11 @@ const MypageContent = () => {
               </Link>
             </li>
             <li>
-              <button>
+              <button
+                onClick={() => {
+                  logout();
+                }}
+              >
                 <h3>로그아웃</h3>
                 <span>
                   <span className="blind">더보기</span>
@@ -84,16 +100,16 @@ const MypageContent = () => {
         <>
           <S.TabContainer>
             <S.TabButton onClick={() => setActiveTab('watchHistory')}>
-              <S.TabText active={activeTab === 'watchHistory'}>최근 본 콘텐츠</S.TabText>
+              <S.TabText $active={activeTab === 'watchHistory'}>최근 본 콘텐츠</S.TabText>
             </S.TabButton>
             <S.TabButton onClick={() => setActiveTab('favorites')}>
-              <S.TabText active={activeTab === 'favorites'}>관심 콘텐츠</S.TabText>
+              <S.TabText $active={activeTab === 'favorites'}>관심 콘텐츠</S.TabText>
             </S.TabButton>
             <S.TabButton onClick={() => setActiveTab('activity')}>
-              <S.TabText active={activeTab === 'activity'}>활동 내역</S.TabText>
+              <S.TabText $active={activeTab === 'activity'}>활동 내역</S.TabText>
             </S.TabButton>
             <S.TabButton onClick={() => setActiveTab('setting')}>
-              <S.TabText active={activeTab === 'setting'}>계정 관리</S.TabText>
+              <S.TabText $active={activeTab === 'setting'}>계정 관리</S.TabText>
             </S.TabButton>
           </S.TabContainer>
 

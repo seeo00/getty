@@ -1,9 +1,9 @@
 // SeasonDropdown.jsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import ArrowDownIcon from '../../ui/icon/ArrowDownIcon';
 import { color } from '../../styled/common';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { respondTo } from '../../styled/GlobalStyle';
@@ -25,22 +25,21 @@ const DropdownSelectButton = styled.button`
   background-color: transparent;
   cursor: pointer;
   width: 120px;
-	
 `;
 
 const ButtonText = styled.span`
   font-size: 14px;
   font-weight: 400;
   color: ${color.gray[70]};
-	${respondTo('desktop')} {
-		font-size: 16px;
-		};
-		${respondTo('tablet')} {
-			font-size: 14px;
-		};
-		${respondTo('mobile')} {
-			font-size: 14px;
-		};
+  ${respondTo('desktop')} {
+    font-size: 16px;
+  }
+  ${respondTo('tablet')} {
+    font-size: 14px;
+  }
+  ${respondTo('mobile')} {
+    font-size: 14px;
+  }
 `;
 
 const IconWrapper = styled.span`
@@ -120,11 +119,9 @@ const SeasonDropdown = ({ seasons, onSelect, defaultSeason, icon: CustomIcon, ..
   return (
     <DropdownWrapper ref={dropdownRef}>
       <DropdownSelectButton onClick={() => setIsOpen((prev) => !prev)} {...props}>
-        <ButtonText>
-				{typeof selectedSeason === 'object' ? selectedSeason.name : selectedSeason}
-				</ButtonText>
+        <ButtonText>{typeof selectedSeason === 'object' ? selectedSeason.name : selectedSeason}</ButtonText>
         <IconWrapper>
-            <ArrowDownIcon width={16} height={16}  color={color.gray[70]} />
+          <ArrowDownIcon width={16} height={16} color={color.gray[70]} />
         </IconWrapper>
       </DropdownSelectButton>
       {isOpen && (

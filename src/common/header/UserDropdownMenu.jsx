@@ -20,7 +20,7 @@ const UserDropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave 
     navigate('/');
     setTimeout(() => {
       window.location.reload();
-    }, 200);
+    }, 100);
 
     onClose();
   };
@@ -67,6 +67,7 @@ const UserDropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave 
       onClose={onClose}
       disableScrollLock={true}
       disableAutoFocusItem={true}
+      disableEnforceFocus={true} // 🔹 추가
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       MenuListProps={{

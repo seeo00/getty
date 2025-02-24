@@ -11,3 +11,6 @@ export { default as Documentary } from './category/documentary';
 export { default as More } from './more';
 export { default as Profile } from './mypage/profile';
 export { default as Subscription } from './subscription';
+export { default as MyPage } from './mypage';
+export { default as Detail } from './detail';
+export { default as Search } from './search';

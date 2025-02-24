@@ -21,7 +21,13 @@ export const BottomNavContainer = styled.nav`
     gap: 40px;
     height: 100%;
     li {
+      width: 100%;
+      height: 100%;
       flex-basis: 33.3333%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       a {
         height: 64px;
         display: flex;
@@ -29,6 +35,12 @@ export const BottomNavContainer = styled.nav`
         justify-content: center;
         &.active {
           color: ${color.white};
+        }
+      }
+      button {
+        img {
+          width: 32px;
+          height: 32px;
         }
       }
     }
