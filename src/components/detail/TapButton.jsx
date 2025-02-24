@@ -5,7 +5,8 @@ import EpisodeSection from './EpisodeCard';
 import ReviewCard from './ReviewCard';
 import InfoCard from './InfoCard';
 import { SortAndCountDropdown } from './SortAndCountButton';
-import CardFlexList from '../../ui/card/CardFlexList';
+// import CardFlexList from '../../ui/card/CardFlexList';
+import DramaPosterGallery from './DetailPosterGallery';
 
 // import { ContentList } from '../../components/category/CardContentList';
 // import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
@@ -32,11 +33,11 @@ const DetailTabButtons = ({ tvId }) => {
 
   //기능 미구현
   const handleSortLike = () => {
-    console.log('베스트순');
+    console.log('날짜순');
   };
 
   const handleSortDate = () => {
-    console.log('날짜순');
+    console.log('베스트순');
   };
 
   const handleLike = () => {
@@ -65,7 +66,7 @@ const DetailTabButtons = ({ tvId }) => {
       <div>
         {activeTab === 'episode' && <EpisodeSection tvId={tvId} initialSeason="1" />}
 
-        {activeTab === 'recommend' && <CardFlexList />}
+        {activeTab === 'recommend' && <DramaPosterGallery />}
         {activeTab === 'review' && (
           <>
             <SortAndCountDropdown reviewCount={reviewCount} onSortLike={handleSortLike} onSortDate={handleSortDate} />

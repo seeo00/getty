@@ -6,9 +6,15 @@ import { useParams } from 'react-router-dom';
 import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { Rating } from '@mui/material';
 import * as S from './style';
-
 import { ArrowDownIcon } from '../../ui/icon';
 import Button from '../../ui/button/Button';
+import styled from 'styled-components';
+
+const NoReviewsMessage = styled.p`
+  color: #aaa;
+  text-align: center;
+  margin: 20px 0;
+`;
 
 const formatReviewDate = (createdAt) => {
   if (!createdAt) return '날짜 정보 없음';
@@ -102,7 +108,7 @@ const ReviewCard = () => {
     return <p>데이터를 찾을 수 없습니다.</p>;
   }
   if (!detailsData || reviews.length === 0) {
-    return null;
+    return <NoReviewsMessage>리뷰가 없습니다.</NoReviewsMessage>;
   }
 
   return (

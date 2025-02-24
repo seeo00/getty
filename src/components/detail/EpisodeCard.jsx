@@ -5,6 +5,13 @@ import PreviewPlayIcon from '../../ui/icon/PreviewPlayIcon';
 import { color } from '../../styled/common';
 import * as S from './style';
 import SeasonDropdown from './DropdownSelectButton';
+import styled from 'styled-components';
+
+const NoEpisodeMessage = styled.p`
+  color: #aaa;
+  text-align: center;
+  margin: 20px 0;
+`;
 
 const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
   const dispatch = useDispatch();
@@ -22,7 +29,15 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
   }, [dispatch, tvId, seasonNumber]);
 
   if (loading && (!episodeData || episodeData.length === 0)) return <p>로딩 중...</p>;
-  if (error) return <p>데이터를 찾을 수 없습니다: {error}</p>;
+
+  // 404 에러인 경우 영화이므로 에피소드 데이터가 없음을 표시
+  if (error) {
+    if (error.message && error.message.includes('404')) {
+      return <p>에피소드 데이터가 없습니다.</p>;
+    }
+    return <NoEpisodeMessage>해당 영화는 에피소드 정보가 제공되지 않습니다. {error.message || ''}</NoEpisodeMessage>;
+  }
+
   if (!episodeData || episodeData.length === 0) return <p>에피소드가 없습니다.</p>;
 
   const imageBaseUrl = 'https://image.tmdb.org/t/p/w500';
@@ -47,13 +62,13 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
               </S.IconWrapper>
             </S.ImageWrapper>
             <S.PaddingContainer>
-              <S.Title>
+              <S.EpiTitle>
                 <span>
                   {episode.episode_number}화&nbsp;&nbsp;{episode.title || episode.name}
                 </span>
                 {episode.runtime && <span>{episode.runtime}분</span>}
-              </S.Title>
-              <S.Overview>{episode.overview}</S.Overview>
+              </S.EpiTitle>
+              <S.EpiOverview>{episode.overview}</S.EpiOverview>
             </S.PaddingContainer>
           </S.FlexContainer>
         </S.EpiContainer>
