@@ -1,117 +1,92 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getDrama } from '../thunks/getDrama';
-import { getMovie } from '../thunks/getMovie';
-import { getAnimation } from './getAnimation';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+// import { getDrama } from '../thunks/getDrama';
+// import { getMovie } from '../thunks/getMovie';
+// import { getAnimation } from '../thunks/getAnimation';
 
-export const getCombinedRomance = createAsyncThunk('combined/getCombinedRomance', async (_, { dispatch }) => {
-  try {
-    const [dramaResult, movieResult] = await Promise.all([
-      dispatch(getDrama({ category: 'romance', currentPage: 1 })).unwrap(),
-      dispatch(getMovie({ category: 'romance', currentPage: 1 })).unwrap(),
-    ]);
+// export const CONTENT_CONFIGS = {
+//   romance: {
+//     name: 'Romance',
+//     sources: [
+//       { thunk: getDrama, category: 'romance', resultKey: 'dramas' },
+//       { thunk: getMovie, category: 'romance', resultKey: 'movies' },
+//     ],
+//     outputKey: 'romanceContent',
+//   },
+//   mystery: {
+//     name: 'Mystery',
+//     sources: [
+//       { thunk: getDrama, category: 'mystery', resultKey: 'dramas' },
+//       { thunk: getMovie, category: 'mystery', resultKey: 'movies' },
+//     ],
+//     outputKey: 'mysteryContent',
+//   },
+//   comedy: {
+//     name: 'Comedy',
+//     sources: [
+//       { thunk: getDrama, category: 'comedy', resultKey: 'dramas' },
+//       { thunk: getMovie, category: 'comedy', resultKey: 'movies' },
+//     ],
+//     outputKey: 'comedyContent',
+//   },
+//   realistic: {
+//     name: 'Realistic',
+//     sources: [
+//       { thunk: getDrama, category: 'medical', resultKey: 'dramas' },
+//       { thunk: getDrama, category: 'lawyer', resultKey: 'dramas' },
+//       { thunk: getDrama, category: 'office', resultKey: 'dramas' },
+//     ],
+//     outputKey: 'realisticContent',
+//   },
+//   animation: {
+//     name: 'Animation',
+//     sources: [
+//       { thunk: getMovie, category: 'animation', resultKey: 'movies' },
+//       { thunk: getAnimation, category: 'base', resultKey: 'animations' },
+//     ],
+//     outputKey: 'animationContent',
+//   },
+//   family: {
+//     name: 'Family',
+//     sources: [
+//       { thunk: getMovie, category: 'family', resultKey: 'movies' },
+//       { thunk: getAnimation, category: 'kids', resultKey: 'animations' },
+//     ],
+//     outputKey: 'familyContent',
+//   },
+// };
 
-    const combinedResults = [...dramaResult.dramas, ...movieResult.movies];
-    const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
-    return {
-      romanceContent: sortedResults,
-      totalCount: sortedResults.length,
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
+// const createCombinedContentThunk = (contentType, config) => {
+//   return createAsyncThunk(`combined/getCombined${config.name}`, async (_, { dispatch }) => {
+//     try {
+//       const results = await Promise.all(
+//         config.sources.map((source) =>
+//           dispatch(
+//             source.thunk({
+//               category: source.category,
+//               currentPage: 1,
+//             })
+//           ).unwrap()
+//         )
+//       );
 
-export const getCombinedMystery = createAsyncThunk('combined/getCombinedMystery', async (_, { dispatch }) => {
-  try {
-    const [dramaResult, movieResult] = await Promise.all([
-      dispatch(getDrama({ category: 'mystery', currentPage: 1 })).unwrap(),
-      dispatch(getMovie({ category: 'mystery', currentPage: 1 })).unwrap(),
-    ]);
+//       const combinedResults = results.flatMap((result, index) => result[config.sources[index].resultKey] || []);
 
-    const combinedResults = [...dramaResult.dramas, ...movieResult.movies];
-    const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
-    return {
-      mysteryContent: sortedResults,
-      totalCount: sortedResults.length,
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
+//       const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
 
-export const getCombinedComedy = createAsyncThunk('combined/getCombinedComedy', async (_, { dispatch }) => {
-  try {
-    const [dramaResult, movieResult] = await Promise.all([
-      dispatch(getDrama({ category: 'comedy', currentPage: 1 })).unwrap(),
-      dispatch(getMovie({ category: 'comedy', currentPage: 1 })).unwrap(),
-    ]);
-    const combinedResults = [...dramaResult.dramas, ...movieResult.movies];
-    const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
-    return {
-      comedyContent: sortedResults,
-      totalCount: sortedResults.length,
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
+//       return {
+//         [config.outputKey]: sortedResults,
+//         totalCount: sortedResults.length,
+//       };
+//     } catch (error) {
+//       console.error(error);
+//       throw error;
+//     }
+//   });
+// };
 
-export const getCombinedRealistic = createAsyncThunk('combined/getCombinedRealistic', async (_, { dispatch }) => {
-  try {
-    const [medicalResult, lawyerResult, officeResult] = await Promise.all([
-      dispatch(getDrama({ category: 'medical', currentPage: 1 })).unwrap(),
-      dispatch(getDrama({ category: 'lawyer', currentPage: 1 })).unwrap(),
-      dispatch(getDrama({ category: 'office', currentPage: 1 })).unwrap(),
-    ]);
-
-    const combinedResults = [...medicalResult.dramas, ...lawyerResult.dramas, ...officeResult.dramas];
-
-    const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
-
-    return {
-      realisticContent: sortedResults,
-      totalCount: sortedResults.length,
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-export const getCombinedAnimation = createAsyncThunk('combined/getCombinedAnimation', async (_, { dispatch }) => {
-  try {
-    const [movieAnimationResult, baseAnimationResult] = await Promise.all([
-      dispatch(getMovie({ category: 'animation', currentPage: 1 })).unwrap(),
-      dispatch(getAnimation({ category: 'base', currentPage: 1 })).unwrap(),
-    ]);
-
-    const combinedResults = [...movieAnimationResult.movies, ...baseAnimationResult.animations];
-
-    const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
-
-    return {
-      animationContent: sortedResults,
-      totalCount: sortedResults.length,
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
-
-export const getCombinedFamily = createAsyncThunk('combined/getCombinedFamily', async (_, { dispatch }) => {
-  try {
-    const [movieResult, animationResult] = await Promise.all([
-      dispatch(getMovie({ category: 'family', currentPage: 1 })).unwrap(),
-      dispatch(getAnimation({ category: 'kids', currentPage: 1 })).unwrap(),
-    ]);
-
-    const combinedResults = [...movieResult.movies, ...animationResult.animations];
-    const sortedResults = combinedResults.sort((a, b) => b.popularity - a.popularity);
-
-    return {
-      familyContent: sortedResults,
-      totalCount: sortedResults.length,
-    };
-  } catch (error) {
-    console.error(error);
-  }
-});
+// export const getCombinedRomance = createCombinedContentThunk('romance', CONTENT_CONFIGS.romance);
+// export const getCombinedMystery = createCombinedContentThunk('mystery', CONTENT_CONFIGS.mystery);
+// export const getCombinedComedy = createCombinedContentThunk('comedy', CONTENT_CONFIGS.comedy);
+// export const getCombinedRealistic = createCombinedContentThunk('realistic', CONTENT_CONFIGS.realistic);
+// export const getCombinedAnimation = createCombinedContentThunk('animation', CONTENT_CONFIGS.animation);
+// export const getCombinedFamily = createCombinedContentThunk('family', CONTENT_CONFIGS.family);

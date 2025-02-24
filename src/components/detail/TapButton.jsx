@@ -1,10 +1,11 @@
 // DetailTabButtons.jsx
 import { useState } from 'react';
 import styled from 'styled-components';
-import EpisodeSection from '../../components/detail/EpisodeCard';
-import ReviewCard from '../../components/detail/ReviewCard';
-import InfoCard from '../../components/detail/InfoCard';
-import CardFlexList from '../card/CardFlexList';
+import EpisodeSection from './EpisodeCard';
+import ReviewCard from './ReviewCard';
+import InfoCard from './InfoCard';
+import { SortAndCountDropdown } from './SortAndCountButton';
+import CardFlexList from '../../ui/card/CardFlexList';
 
 // import { ContentList } from '../../components/category/CardContentList';
 // import DramaPosterGallery from '../../components/detail/DetailPosterGallery';

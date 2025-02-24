@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getEpisode } from '../thunks/getEpisode';
+import { getEpisode } from '../thunks/getDetailsThunks';
 
 const initialState = {
   episodeData: [],

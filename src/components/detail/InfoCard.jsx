@@ -1,11 +1,11 @@
 // InfoCard.jsx
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetails } from '../../store/modules/thunks/getDetails';
-import { getCertification } from '../../store/modules/thunks/getCertification';
-import { getEpisode } from '../../store/modules/thunks/getEpisode';
-import PosterCard from '../../ui/card/DetailPoster';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
+import { getCertification } from '../../store/modules/thunks/getDetailsThunks';
+import { getEpisode } from '../../store/modules/thunks/getDetailsThunks';
+import PosterCard from './DetailPoster';
 import { DetailList, InfoCardContainer, PosterContainer, TextContainer, TextAndDetailWrapper } from './style';
 import Certification from './Certification';
 import { getKoreanRating, countryMap } from '../../assets/api/certificationData';
@@ -41,7 +41,6 @@ const InfoCard = () => {
   const certificationCode = certificationForCountry ? certificationForCountry.rating : null;
   const koreanRating = getKoreanRating(originCountryCode, certificationCode);
 
-	
   return (
     <InfoCardContainer key={detail.id}>
       <PosterContainer>
@@ -95,9 +94,12 @@ const InfoCard = () => {
                 ))
               : '장르 정보 없음'}
           </li>
-          <li style={{ display : 'flex' }}>
-  <span><strong>연령 등급:</strong>{' '}</span><Certification koreanRating={koreanRating} />
-</li>
+          <li style={{ display: 'flex' }}>
+            <span>
+              <strong>연령 등급:</strong>{' '}
+            </span>
+            <Certification koreanRating={koreanRating} />
+          </li>
         </DetailList>
       </TextAndDetailWrapper>
     </InfoCardContainer>
@@ -105,5 +107,3 @@ const InfoCard = () => {
 };
 
 export default InfoCard;
-
-

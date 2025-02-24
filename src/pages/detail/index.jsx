@@ -8,11 +8,11 @@ import VideoPlayIcon from '../../ui/icon/VideoPlayIcon';
 import * as S from './style';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { NavPopularIcon } from '../../ui/icon';
-import Thumbnail from '../../ui/card/Thumbnail';
+import Thumbnail from '../../components/detail/Thumbnail';
 import DetailCard from '../../components/detail/DetailCard';
-import DetailTabButtons from '../../ui/button/TapButton';
+import DetailTabButtons from '../../components/detail/TapButton';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import DetailTrailer from '../../components/detail/DetailTrailer';
 import Button from '../../ui/button/Button';
@@ -97,10 +97,12 @@ const Detail = () => {
                     재생
                   </Button>
                 )}
-                <CircleButton border onClick={handleFavoriteClick}>
-                  <FavoriteIcon fill={isFavorite ? 'red' : 'none'} />
-                  <span className="icon-txt">관심</span>
-                </CircleButton>
+                {authed && (
+                  <CircleButton border onClick={handleFavoriteClick}>
+                    <FavoriteIcon fill={isFavorite ? 'red' : 'none'} />
+                    <span className="icon-txt">관심</span>
+                  </CircleButton>
+                )}
                 <CircleButton border>
                   <NavPopularIcon fill={color.yellow} color={color.yellow} />
                   <span className="icon-txt">{detailsData.vote_average.toFixed(1)}</span>

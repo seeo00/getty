@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
 import { CardBasicSkeleton } from '../LoadingSkeleton';
@@ -26,9 +26,10 @@ const CardItem = styled.div`
 
 const CardConnected = ({ item, card, className }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const location = useLocation();
 
   return (
-    <CardWrap to={'/'} className={className}>
+    <CardWrap to={`/category/${item.media_type}/${item.id}`} state={{ background: location }} className={className}>
       <CardItem>
         {!imageLoaded && <CardBasicSkeleton />}
         <img

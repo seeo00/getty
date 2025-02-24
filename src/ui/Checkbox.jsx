@@ -1,8 +1,6 @@
 import { Checkbox, FormControlLabel } from '@mui/material';
-import { useState } from 'react';
 import styled from 'styled-components';
 import { color } from '../styled/common';
-import { FaAngleRight } from 'react-icons/fa';
 import { IoIosArrowForward } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
@@ -23,7 +21,7 @@ const StyledCheckbox = styled(Checkbox)`
   &.MuiCheckbox-root {
     padding: 0;
     &.MuiButtonBase-root {
-      overflow: hidden; // 리플 애니메이션 제거
+      overflow: hidden;
     }
 
     .MuiSvgIcon-root {

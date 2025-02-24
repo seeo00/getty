@@ -9,7 +9,6 @@ import {
   NavAnimationIcon,
   NavDocumentaryIcon,
   SearchIcon,
-  GuestUserIcon,
 } from '../../ui/icon';
 
 export const navData = [
@@ -81,11 +80,5 @@ export const bottomNavData = [
     text: '홈',
     icon: NavHomeIcon,
     link: '/',
-  },
-  {
-    id: 3,
-    text: '마이페이지',
-    icon: GuestUserIcon,
-    link: '/mypage',
   },
 ];

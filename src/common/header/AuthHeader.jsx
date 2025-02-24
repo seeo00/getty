@@ -9,18 +9,25 @@ const AuthHeader = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (authed && !user.selectedProfile) {
+    if (authed && user.profiles.length > 0 && user.selectedProfile === undefined) {
+      dispatch(authActions.setSelectedProfile(null));
+      localStorage.removeItem('selectedProfile');
+    }
+  }, [authed, user, dispatch]);
+
+  const handleLogoClick = () => {
+    if (authed && user.profiles.length > 0) {
       const defaultProfile = user.profiles[0];
       dispatch(authActions.setSelectedProfile(defaultProfile));
       localStorage.setItem('selectedProfile', JSON.stringify(defaultProfile));
     }
-  }, [authed, user, dispatch]);
+  };
 
   return (
     <S.AuthHeaderContainer>
       <InnerContainer maxWidth="100%" className="inner">
         <h1>
-          <S.Logo to={'/'} $auth>
+          <S.Logo to={'/'} $auth onClick={handleLogoClick}>
             <img
               src="https://raw.githubusercontent.com/seeo00/project-image-storage/fbc71b631d8e6979cde5486414b5c1b2781dc621/images/logo/2.line.svg"
               alt="getty"

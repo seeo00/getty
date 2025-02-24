@@ -78,7 +78,7 @@ export const ProfileGrid = styled.div`
 export const ProfileItem = styled.button`
   text-align: center;
   /* cursor: ${(props) => (props.$isAddProfile ? 'pointer' : 'default')}; */
-  cursor: pointer; /* ✅ 항상 클릭 가능하도록 설정 */
+  cursor: pointer;
   display: flex;
   flex-direction: column;
 `;

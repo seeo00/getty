@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { Container, FlexContainer, Image } from './style';
 
 const DetailImageCard = () => {

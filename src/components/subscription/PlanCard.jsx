@@ -3,18 +3,13 @@ import SubscriptionRow from './SubscriptionRow';
 import { planDetails } from '../../assets/api/planData'; // planDetails import 추가
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { FaCheckCircle } from 'react-icons/fa';
 
 const StyledIsSubscribed = styled.span`
   display: block;
   position: absolute;
   top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.625rem;
-  color: #aaa;
-  border: 1px solid #aaa;
-  padding: 2px 8px;
-  border-radius: 20px;
+  right: 12px;
   z-index: 1;
 `;
 
@@ -32,7 +27,11 @@ const PlanCard = ({ title, selectedPlan, onSelectPlan }) => {
     <CardContainer onClick={handleClick}>
       {/* 데스크탑 버전 */}
       <div className="desktop-only" style={{ position: 'relative' }}>
-        {isSubscribed && <StyledIsSubscribed>이용중</StyledIsSubscribed>}
+        {isSubscribed && (
+          <StyledIsSubscribed>
+            <FaCheckCircle />
+          </StyledIsSubscribed>
+        )}
         <PlanTitle isSelected={isSelected}>{title}</PlanTitle>
         <div style={{ marginTop: '50px' }}>
           {planData.details.map((detail, index) => (
@@ -44,7 +43,11 @@ const PlanCard = ({ title, selectedPlan, onSelectPlan }) => {
       {/* 모바일/태블릿 버전 */}
       <div className="mobile-only">
         <PlanButton isSelected={isSelected} onClick={handleClick}>
-          {isSubscribed && <StyledIsSubscribed>이용중</StyledIsSubscribed>}
+          {isSubscribed && (
+            <StyledIsSubscribed>
+              <FaCheckCircle size={16} />
+            </StyledIsSubscribed>
+          )}
           {title}
         </PlanButton>
       </div>

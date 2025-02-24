@@ -3,7 +3,7 @@ import ThumbsUpIcon from '../../ui/icon/ThumbsUpIcon';
 import LongCircleButton from '../../ui/button/LongCircleButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { Rating } from '@mui/material';
 import * as S from './style';
 

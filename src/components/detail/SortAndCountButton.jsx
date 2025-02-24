@@ -1,5 +1,5 @@
 // SortAndCountDropdown.jsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { color } from '../../styled/common';
 import ArrowDownIcon from '../../ui/icon/ArrowDownIcon';
@@ -9,33 +9,33 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-	${respondTo('desktop')} {
-		margin: 16px 0 75px 0;
-		};
-		${respondTo('tablet')} {
-			margin: 16px 0 30px 0;
-		};
-		${respondTo('mobile')} {
-			margin: 16px 0 30px 0;
-		};
+  ${respondTo('desktop')} {
+    margin: 16px 0 75px 0;
+  }
+  ${respondTo('tablet')} {
+    margin: 16px 0 30px 0;
+  }
+  ${respondTo('mobile')} {
+    margin: 16px 0 30px 0;
+  }
 `;
 
 const ReviewCount = styled.button`
   background: transparent;
   border-radius: 8px;
   font-size: 14px;
-	font-weight: 400;
+  font-weight: 400;
   cursor: default;
   color: ${color.gray[70]};
-	${respondTo('desktop')} {
-		font-size: 16px;
-		};
-		${respondTo('tablet')} {
-			font-size: 14px;
-		};
-		${respondTo('mobile')} {
-			font-size: 14px;
-		};
+  ${respondTo('desktop')} {
+    font-size: 16px;
+  }
+  ${respondTo('tablet')} {
+    font-size: 14px;
+  }
+  ${respondTo('mobile')} {
+    font-size: 14px;
+  }
 `;
 
 const DropdownWrapper = styled.div`
@@ -55,22 +55,21 @@ const DropdownSelectButton = styled.button`
   background-color: transparent;
   cursor: pointer;
   width: 120px;
-	
 `;
 
 const ButtonText = styled.span`
   font-size: 14px;
   font-weight: 400;
   color: ${color.gray[70]};
-	${respondTo('desktop')} {
-		font-size: 16px;
-		};
-		${respondTo('tablet')} {
-			font-size: 14px;
-		};
-		${respondTo('mobile')} {
-			font-size: 14px;
-		};
+  ${respondTo('desktop')} {
+    font-size: 16px;
+  }
+  ${respondTo('tablet')} {
+    font-size: 14px;
+  }
+  ${respondTo('mobile')} {
+    font-size: 14px;
+  }
 `;
 
 const DropdownList = styled.ul`
@@ -100,20 +99,20 @@ const DropdownListItem = styled.li`
   &:hover {
     background-color: ${color.gray[500]};
   }
-	${respondTo('desktop')} {
-		font-size: 16px;
-		};
-		${respondTo('tablet')} {
-			font-size: 14px;
-		};
-		${respondTo('mobile')} {
-			font-size: 14px;
-		};
+  ${respondTo('desktop')} {
+    font-size: 16px;
+  }
+  ${respondTo('tablet')} {
+    font-size: 14px;
+  }
+  ${respondTo('mobile')} {
+    font-size: 14px;
+  }
 `;
 
 export const SortAndCountDropdown = ({ reviewCount, onSortLike, onSortDate }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedSort, setSelectedSort] = useState("좋아요 순");
+  const [selectedSort, setSelectedSort] = useState('좋아요 순');
   const dropdownRef = useRef();
 
   useEffect(() => {
@@ -129,31 +128,25 @@ export const SortAndCountDropdown = ({ reviewCount, onSortLike, onSortDate }) =>
   const handleSelect = (option) => {
     setSelectedSort(option);
     setIsOpen(false);
-    if (option === "베스트순" && onSortLike) {
+    if (option === '베스트순' && onSortLike) {
       onSortLike();
-    } else if (option === "날짜순" && onSortDate) {
+    } else if (option === '날짜순' && onSortDate) {
       onSortDate();
     }
   };
 
   return (
     <Container>
-      <ReviewCount>
-        리뷰 {reviewCount}개
-      </ReviewCount>
+      <ReviewCount>리뷰 {reviewCount}개</ReviewCount>
       <DropdownWrapper ref={dropdownRef}>
         <DropdownSelectButton onClick={() => setIsOpen((prev) => !prev)}>
           <ButtonText>{selectedSort}</ButtonText>
-										 <ArrowDownIcon width={16} height={16}  color={color.gray[70]} />
+          <ArrowDownIcon width={16} height={16} color={color.gray[70]} />
         </DropdownSelectButton>
         {isOpen && (
           <DropdownList>
-            <DropdownListItem onClick={() => handleSelect("베스트순")}>
-              베스트순
-            </DropdownListItem>
-            <DropdownListItem onClick={() => handleSelect("날짜순")}>
-              날짜순
-            </DropdownListItem>
+            <DropdownListItem onClick={() => handleSelect('베스트순')}>베스트순</DropdownListItem>
+            <DropdownListItem onClick={() => handleSelect('날짜순')}>날짜순</DropdownListItem>
           </DropdownList>
         )}
       </DropdownWrapper>

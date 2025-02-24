@@ -1,16 +1,17 @@
 import * as S from './style';
 import { useEffect, useState } from 'react';
 import { InnerContainer } from '../layout/InnerContainer';
-import { AlertErrorIcon, GuestUserIcon, MenuIcon, SearchIcon } from '../../ui/icon';
-import { color } from '../../styled/common';
+import { MenuIcon } from '../../ui/icon';
 import UserButton from './UserButton';
-
-// import DropdownMenu from '../../ui/DropdownMenu';
+import { useNavigate, useLocation } from 'react-router-dom';
+import SearchButton from './SearchButton';
 
 export const Header = ({ onToggleSideNav }) => {
   const [isActive, setIsActive] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
   const [searchText, setSearchText] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const updateMedia = () => setIsMobile(window.innerWidth < 1280);
@@ -19,14 +20,18 @@ export const Header = ({ onToggleSideNav }) => {
     return () => window.removeEventListener('resize', updateMedia);
   }, []);
 
+  useEffect(() => {
+    if (location.pathname === '/search') {
+      setIsActive(true);
+    } else {
+      setTimeout(() => setIsActive(false), 300);
+    }
+  }, [location.pathname]);
+
   const handleToggleSideNav = () => {
     if (onToggleSideNav) {
       onToggleSideNav(isMobile);
     }
-  };
-
-  const handleOpenSearch = () => {
-    setIsActive(true);
   };
 
   return (
@@ -47,24 +52,13 @@ export const Header = ({ onToggleSideNav }) => {
           </h1>
         </S.LeftContainer>
         <S.RightContainer>
-          <S.SearchContainer $active={isActive}>
-            <S.SearchButton onClick={handleOpenSearch} $active={isActive}>
-              <SearchIcon color={color.gray[70]} />
-            </S.SearchButton>
-            <S.SearchInput
-              type="text"
-              placeholder="제목, 장르, 배우 검색..."
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-              $active={isActive}
-            />
-            {searchText.length > 0 && (
-              <S.ClearButton onClick={() => setSearchText('')}>
-                <AlertErrorIcon stroke={color.gray[70]} />
-              </S.ClearButton>
-            )}
-          </S.SearchContainer>
-          <UserButton />
+          <SearchButton
+            isActive={isActive}
+            setIsActive={setIsActive}
+            searchText={searchText}
+            setSearchText={setSearchText}
+          />
+          <UserButton isMobile={false} />
         </S.RightContainer>
       </InnerContainer>
     </S.HeaderContainer>

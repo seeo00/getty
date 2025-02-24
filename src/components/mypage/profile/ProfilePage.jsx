@@ -170,7 +170,7 @@ const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
             </ProfileItem>
           ))}
 
-          {profiles.length < maxProfiles && (
+          {profiles.length < maxProfiles && user.subscribed && (
             <ProfileItem onClick={() => setIsAddingNewProfile(true)} $isAddProfile={true}>
               <AddProfileCircle>
                 <span style={{ fontSize: '14px' }}>+</span>

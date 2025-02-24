@@ -1,11 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { DetailContainer, FlexContainer, Title, StyledText, TitleName, OverviewS } from './style';
-import MediaControlButtons from '../../ui/button/MediaControlButton';
+
 import Certification from './Certification';
 import { getKoreanRating } from '../../assets/api/certificationData';
+import MediaControlButtons from './MediaControlButton';
 
 const DetailCard = () => {
   const dispatch = useDispatch();
@@ -62,7 +63,7 @@ const DetailCard = () => {
         </TitleName>
         <FlexContainer style={{ alignItems: 'center' }}>
           <Title>
-            <div className='undertitle'>
+            <div className="undertitle">
               {detail.genres && detail.genres.length > 0
                 ? detail.genres.map((genre, index) => (
                     <span key={genre.id}>
@@ -73,7 +74,7 @@ const DetailCard = () => {
                 : '장르 정보 없음'}
             </div>
             ㆍ
-            <div className='undertitle2'>
+            <div className="undertitle2">
               {detail.first_air_date ? detail.first_air_date.split('-')[0] : '연도 정보 없음'}년
             </div>
             {/* Certification 컴포넌트에 koreanRating 전달 */}
@@ -98,7 +99,7 @@ const DetailCard = () => {
                 color: '#aaaaaa',
                 cursor: 'pointer',
                 padding: 0,
-                marginTop: '5px'
+                marginTop: '5px',
               }}
             >
               ...더 보기

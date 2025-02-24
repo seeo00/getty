@@ -23,6 +23,7 @@ export const getAnimation = createAsyncThunk(
   'animation/getAnimation',
   async ({ category, currentPage = 1, prevResults = [] }) => {
     const urls = {
+      // tmdb api tv 애니메이션(16)을 기반으로 다양한 장르 카테고리를 구성
       base: `${BASE_URL_TV}&with_genres=16`,
       adventure: `${BASE_URL_TV}&with_genres=16,10759`,
       fantasy: `${BASE_URL_TV}&with_genres=16,10765`,

@@ -183,7 +183,6 @@ export const StyledMenu = styled(Menu)`
   }
 `;
 
-// ✅ 리스트 아이템 스타일
 export const StyledMenuItem = styled(MenuItem)`
   display: flex;
   justify-content: space-between !important;
@@ -195,7 +194,6 @@ export const StyledMenuItem = styled(MenuItem)`
   }
 `;
 
-// ✅ 이용권 스타일드 컴포넌트
 export const SubscriptionStatus = styled.span`
   font-family: 'Noto Sans KR', sans-serif;
   background-color: ${color.gray[600]};

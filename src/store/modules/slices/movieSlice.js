@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getMovie } from '../thunks/getMovie';
-import { getNewMovie } from '../thunks/getNewMovie';
-import { getUpcomingMovie } from '../thunks/getUpcomingMovie';
+import { getNewMovie, getUpcomingMovie } from '../thunks/getCommonThunks';
 
 const initialState = {
   movieData: [],
@@ -12,16 +11,6 @@ const initialState = {
   hasMore: true,
   loading: false,
   error: null,
-  // loading: {
-  //   movie: false,
-  //   upcoming: false,
-  //   new: false,
-  // },
-  // error: {
-  //   movie: null,
-  //   upcoming: null,
-  //   new: null,
-  // },
 };
 
 const movieSlice = createSlice({
