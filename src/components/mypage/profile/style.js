@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   width: 100%;
   left: 0;
 
-  ${respondTo('tablet')} {
+  ${respondTo('tabletMore')} {
     margin-top: 120px;
   }
 
@@ -29,13 +29,13 @@ export const Title = styled.h1`
   margin-bottom: 8px;
   text-align: center;
 
-  ${respondTo('tablet')} {
+  ${respondTo('tabletMore')} {
     font-size: 24px;
     margin-bottom: 16px;
   }
+
   ${respondTo('desktop')} {
     font-size: 28px;
-    margin-bottom: 16px;
   }
 `;
 
@@ -45,11 +45,7 @@ export const Subtitle = styled.p`
   text-align: center;
   font-size: 14px;
 
-  ${respondTo('tablet')} {
-    font-size: 20px;
-    margin-bottom: 80px;
-  }
-  ${respondTo('desktop')} {
+  ${respondTo('tabletMore')} {
     font-size: 20px;
     margin-bottom: 80px;
   }
@@ -61,9 +57,10 @@ export const ProfileGrid = styled.div`
   gap: 40px;
   place-items: center;
 
-  ${respondTo('tablet')} {
+  ${respondTo('tabletMore')} {
     gap: 80px;
   }
+
   ${respondTo('desktop')} {
     display: flex;
     justify-content: center;
@@ -121,13 +118,7 @@ export const ProfileCircle = styled.div`
     }
   `}
 
-  ${respondTo('tablet')} {
-    width: 160px;
-    height: 160px;
-    margin-bottom: ${(props) => (props.$editPage ? '40px' : '16px')};
-  }
-
-  ${respondTo('desktop')} {
+  ${respondTo('tabletMore')} {
     width: 160px;
     height: 160px;
     margin-bottom: ${(props) => (props.$editPage ? '40px' : '16px')};
@@ -148,10 +139,7 @@ export const ProfileName = styled.span`
   color: ${color.white};
   display: block;
 
-  ${respondTo('tablet')} {
-    font-size: 20px;
-  }
-  ${respondTo('desktop')} {
+  ${respondTo('tabletMore')} {
     font-size: 20px;
   }
 `;
@@ -161,9 +149,11 @@ export const ProfileButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 40px auto 226px;
-  ${respondTo('tablet')} {
+
+  ${respondTo('tabletMore')} {
     margin: 40px auto 371.5px;
   }
+
   ${respondTo('desktop')} {
     margin: 80px auto 296px;
   }
@@ -172,13 +162,7 @@ export const ProfileButtonWrapper = styled.div`
     width: fit-content;
     height: 36px;
 
-    ${respondTo('tablet')} {
-      width: fit-content;
-      height: 54px;
-    }
-
-    ${respondTo('desktop')} {
-      width: fit-content;
+    ${respondTo('tabletMore')} {
       height: 54px;
     }
   }
@@ -196,13 +180,13 @@ export const PageTitle = styled.h1`
   font-size: 20px;
   font-weight: 400;
   margin: 0 auto 40px;
-  ${respondTo('tablet')} {
+
+  ${respondTo('tabletMore')} {
     margin: 0 auto 80px;
     font-size: 24px;
   }
 
   ${respondTo('desktop')} {
-    margin: 0 auto 80px;
     font-size: 28px;
   }
 `;
@@ -216,11 +200,7 @@ export const NameInputWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${respondTo('tablet')} {
-    max-width: 538px;
-    margin-bottom: 120px;
-  }
-  ${respondTo('desktop')} {
+  ${respondTo('tabletMore')} {
     max-width: 538px;
     margin-bottom: 120px;
   }
@@ -236,30 +216,29 @@ export const ButtonWrapper = styled.div`
   margin-bottom: 373px;
   gap: 8px;
 
-  ${respondTo('tablet')} {
+  ${respondTo('tabletMore')} {
     margin-bottom: 453px;
     max-width: 536px;
   }
 
   ${respondTo('desktop')} {
     margin-bottom: 255px;
-    max-width: 536px;
   }
+
   & > button {
     width: fit-content;
     height: 36px;
 
-    ${respondTo('tablet')} {
-      height: 54px;
-    }
-    ${respondTo('desktop')} {
+    ${respondTo('tabletMore')} {
       height: 54px;
     }
   }
+
   & > button:first-of-type:nth-last-of-type(3) {
     margin-right: auto;
   }
 `;
+
 // MODAL
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -317,12 +296,13 @@ export const ModalButtonWrapper = styled.div`
   gap: 16px;
   justify-content: center;
   align-items: center;
+
   & > button {
     width: fit-content;
     height: 50px;
     margin-bottom: 40px;
+
     ${respondTo('desktop')} {
-      height: 50px;
       gap: 32px;
       margin-bottom: 80px;
     }

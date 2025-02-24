@@ -14,17 +14,17 @@ export const ContentWrapper = styled.div`
   box-sizing: border-box;
   padding: 86px 0 55px 0;
 
-  ${respondTo('desktop')} {
-    max-width: 1280px;
-  }
-
-  ${respondTo('tablet')} {
-    max-width: 744px;
-  }
-
   ${respondTo('mobile')} {
     max-width: 390px;
     padding-top: 16px;
+  }
+
+  ${respondTo('tabletMore')} {
+    max-width: 744px;
+  }
+
+  ${respondTo('desktop')} {
+    max-width: 1280px;
   }
 `;
 
@@ -37,13 +37,6 @@ export const MainTitle = styled.h1`
   font-size: 32px;
   font-weight: 400;
   margin: 0 0 20px 0;
-
-  ${respondTo('tablet')} {
-    font-size: 20px;
-    text-align: left;
-    margin: 0px 0 12px 0;
-    padding: 0;
-  }
 
   ${respondTo('mobile')} {
     font-size: 20px;
@@ -59,14 +52,6 @@ export const SubTitle = styled.div`
   font-size: 24px;
   font-weight: 400;
 
-  ${respondTo('tablet')} {
-    font-size: 16px;
-    text-align: left;
-    margin-bottom: 60px;
-    padding: 0;
-    display: block;
-  }
-
   ${respondTo('mobile')} {
     font-size: 16px;
     text-align: left;
@@ -77,22 +62,6 @@ export const SubTitle = styled.div`
 `;
 
 export const PlansGrid = styled.div`
-  ${respondTo('desktop')} {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-  }
-
-  ${respondTo('tablet')} {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    width: 100%;
-  }
-
   ${respondTo('mobile')} {
     display: flex;
     flex-direction: row;
@@ -102,23 +71,15 @@ export const PlansGrid = styled.div`
     padding: 0;
     width: 100%;
   }
+
+  ${respondTo('desktop')} {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+  }
 `;
 
 export const ButtonContainer = styled.div`
-  ${respondTo('desktop')} {
-    display: contents;
-  }
-
-  ${respondTo('tablet')} {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 10px;
-    width: 100%;
-    padding: 0;
-    margin-bottom: 38px;
-  }
-
   ${respondTo('mobile')} {
     display: flex;
     flex-direction: row;
@@ -128,16 +89,18 @@ export const ButtonContainer = styled.div`
     padding: 0;
     margin-bottom: 38px;
   }
+
+  ${respondTo('tabletMore')} {
+    gap: 10px;
+  }
+
+  ${respondTo('desktop')} {
+    display: contents;
+  }
 `;
 
 export const MobileContentWrapper = styled.div`
   display: none;
-
-  ${respondTo('tablet')} {
-    display: block;
-    width: 100%;
-    margin: 20px 0 0;
-  }
 
   ${respondTo('mobile')} {
     display: block;
@@ -159,13 +122,6 @@ export const NoteText = styled.div`
     margin-top: 10px;
   }
 
-  ${respondTo('tablet')} {
-    font-size: 12px;
-    & + & {
-      margin-top: 12px;
-    }
-  }
-
   ${respondTo('mobile')} {
     font-size: 12px;
     & + & {
@@ -173,6 +129,7 @@ export const NoteText = styled.div`
     }
   }
 `;
+
 export const PlanTitle = styled.h2`
   position: relative;
   width: 100%;
@@ -186,7 +143,6 @@ export const PlanTitle = styled.h2`
     props.isSelected
       ? `radial-gradient(54.97% 83.44% at 23.41% 78.7%, ${color.primary[300]} 0%, ${color.primary[500]} 72%, ${color.primary[500]} 100%)`
       : color.gray[600]};
-
   border-radius: 16px;
   transition: background-color 0.3s ease;
   display: flex;
@@ -195,6 +151,18 @@ export const PlanTitle = styled.h2`
 `;
 
 export const CardContainer = styled.div`
+  ${respondTo('mobile')} {
+    width: 100%;
+    height: 96px;
+    background: none;
+    padding: 0;
+    box-sizing: border-box;
+
+    .desktop-only {
+      display: none;
+    }
+  }
+
   ${respondTo('desktop')} {
     width: 400px;
     height: 748px;
@@ -219,30 +187,6 @@ export const CardContainer = styled.div`
       );
     }
   }
-
-  ${respondTo('tablet')} {
-    width: 100%;
-    height: 96px;
-    background: none;
-    padding: 0;
-    box-sizing: border-box;
-
-    .desktop-only {
-      display: none;
-    }
-  }
-
-  ${respondTo('mobile')} {
-    width: 100%;
-    height: 96px;
-    background: none;
-    padding: 0;
-    box-sizing: border-box;
-
-    .desktop-only {
-      display: none;
-    }
-  }
 `;
 
 export const PlanButton = styled.button`
@@ -258,7 +202,6 @@ export const PlanButton = styled.button`
     props.isSelected
       ? `radial-gradient(54.97% 83.44% at 23.41% 78.7%, ${color.primary[300]} 0%, ${color.primary[500]} 72%, ${color.primary[500]} 100%)`
       : 'transparent'};
-
   border: ${(props) => (props.isSelected ? 'none' : `1px solid ${color.gray[90]}`)};
   border-radius: 16px;
   cursor: pointer;
@@ -276,6 +219,23 @@ export const PlanButton = styled.button`
 `;
 
 export const RowContainer = styled.div`
+  ${respondTo('mobile')} {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 14px 0;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: ${color.gray[90]};
+    }
+  }
+
   ${respondTo('desktop')} {
     padding: 10px 0 7px 0;
     position: relative;
@@ -292,62 +252,21 @@ export const RowContainer = styled.div`
       transform: translateX(-50%);
     }
   }
-
-  ${respondTo('tablet')} {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 14px 0;
-    position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: ${color.gray[90]};
-    }
-  }
-
-  ${respondTo('mobile')} {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 14px 0;
-    position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background-color: ${color.gray[90]};
-    }
-  }
 `;
 
 export const RowContent = styled.div`
+  ${respondTo('mobile')} {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   ${respondTo('desktop')} {
     display: flex;
     margin-left: 39px;
     flex-direction: column;
     gap: 4px;
-  }
-
-  ${respondTo('tablet')} {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  ${respondTo('mobile')} {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 `;
 
@@ -355,13 +274,6 @@ export const Text = styled.span`
   font-size: 16px;
   color: ${color.gray[70]};
   line-height: 1.4;
-
-  ${respondTo('tablet')} {
-    &:last-child {
-      text-align: right;
-    }
-    font-size: 14px;
-  }
 
   ${respondTo('mobile')} {
     &:last-child {
@@ -372,24 +284,6 @@ export const Text = styled.span`
 `;
 
 export const ExtraInfo = styled.div`
-  ${respondTo('desktop')} {
-    font-size: 16px;
-    color: ${color.gray[70]};
-    margin-top: 4px;
-    margin-left: 39px;
-    line-height: 1.4;
-  }
-
-  ${respondTo('tablet')} {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    font-size: 16px;
-    color: ${color.gray[70]};
-    line-height: 1.4;
-    text-align: right;
-  }
-
   ${respondTo('mobile')} {
     width: 100%;
     display: flex;
@@ -398,6 +292,14 @@ export const ExtraInfo = styled.div`
     color: ${color.gray[70]};
     line-height: 1.4;
     text-align: right;
+  }
+
+  ${respondTo('desktop')} {
+    font-size: 16px;
+    color: ${color.gray[70]};
+    margin-top: 4px;
+    margin-left: 39px;
+    line-height: 1.4;
   }
 `;
 
@@ -422,14 +324,14 @@ export const ModalContainer = styled.div`
   background-color: ${color.gray[500]};
   border-radius: 16px;
 
-  ${respondTo('tablet')} {
-    width: 600px;
-    height: 620px;
-  }
-
   ${respondTo('mobile')} {
     width: 320px;
     height: 380px;
+  }
+
+  ${respondTo('tabletMore')} {
+    width: 600px;
+    height: 620px;
   }
 `;
 
@@ -440,14 +342,14 @@ export const ModalTitle = styled.h2`
   margin: 120px auto 60px;
   color: ${color.gray[10]};
 
-  ${respondTo('tablet')} {
-    margin: 100px auto 40px;
-    font-size: 20px;
-  }
-
   ${respondTo('mobile')} {
     margin: 40px auto 25px;
     font-size: 16px;
+  }
+
+  ${respondTo('tabletMore')} {
+    margin: 100px auto 40px;
+    font-size: 20px;
   }
 `;
 
@@ -469,18 +371,18 @@ export const SubscriptionCardLeft = styled.div`
   box-shadow: 0 2px 4px ${color.gray[500]};
   z-index: 1;
 
-  ${respondTo('tablet')} {
-    width: 270px;
-    height: 190px;
-    margin-left: 60px;
-    padding: 40px;
-  }
-
   ${respondTo('mobile')} {
     width: 180px;
     height: 130px;
     margin-left: 15px;
     padding: 10px 0 10px 10px;
+  }
+
+  ${respondTo('tabletMore')} {
+    width: 270px;
+    height: 190px;
+    margin-left: 60px;
+    padding: 40px;
   }
 `;
 
@@ -496,16 +398,16 @@ export const SubscriptionCardRight = styled.div`
   position: relative;
   left: -1px;
 
-  ${respondTo('tablet')} {
-    width: 150px;
-    margin-right: 60px;
-    padding: 0px;
-  }
-
   ${respondTo('mobile')} {
     width: 170px;
     margin-right: 15px;
     padding: 0;
+  }
+
+  ${respondTo('tabletMore')} {
+    width: 150px;
+    margin-right: 60px;
+    padding: 0px;
   }
 `;
 
@@ -515,14 +417,14 @@ export const SubscriptionCardTitle = styled.div`
   font-size: 24px;
   font-weight: 400;
 
-  ${respondTo('tablet')} {
-    font-size: 22px;
-    margin: -5px 0 6px -5px;
-  }
-
   ${respondTo('mobile')} {
     font-size: 18px;
     margin: 5px auto 4px;
+  }
+
+  ${respondTo('tabletMore')} {
+    font-size: 22px;
+    margin: -5px 0 6px -5px;
   }
 `;
 
@@ -535,6 +437,7 @@ export const SubscriptionRow = styled.div`
   font-weight: 400;
   color: ${color.gray[20]};
   width: 100%;
+
   span:first-child {
     margin-right: 80px;
     min-width: 70px;
@@ -546,16 +449,6 @@ export const SubscriptionRow = styled.div`
     overflow: hidden;
     text-overflow: clip;
     flex-grow: 1;
-  }
-
-  ${respondTo('tablet')} {
-    font-size: 14px;
-    margin-bottom: 6px;
-
-    span:first-child {
-      margin: 1px 55px 0 -5px;
-      min-width: 80px;
-    }
   }
 
   ${respondTo('mobile')} {
@@ -572,6 +465,16 @@ export const SubscriptionRow = styled.div`
       flex: 1;
     }
   }
+
+  ${respondTo('tabletMore')} {
+    font-size: 14px;
+    margin-bottom: 6px;
+
+    span:first-child {
+      margin: 1px 55px 0 -5px;
+      min-width: 80px;
+    }
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -581,27 +484,23 @@ export const ButtonWrapper = styled.div`
   margin-left: 50%;
   transform: translateX(-50%);
 
-  ${respondTo('tablet')} {
-    width: 480px;
-    max-width: 480px;
-    margin-top: 60px;
-  }
-
   ${respondTo('mobile')} {
     width: 290px;
     max-width: 290px;
     margin-top: 40px;
+
+    & > button {
+      height: 40px;
+    }
   }
 
-  & > button {
-    height: 60px;
+  ${respondTo('tabletMore')} {
+    width: 480px;
+    max-width: 480px;
+    margin-top: 60px;
 
-    ${respondTo('tablet')} {
+    & > button {
       height: 55px;
-    }
-
-    ${respondTo('mobile')} {
-      height: 40px;
     }
   }
 `;
@@ -613,13 +512,13 @@ export const AutoMoveText = styled.p`
   color: ${color.gray[40]};
   margin-top: 40px;
 
-  ${respondTo('tablet')} {
-    font-size: 12px;
-    margin-top: 30px;
-  }
-
   ${respondTo('mobile')} {
     font-size: 10px;
     margin-top: 20px;
+  }
+
+  ${respondTo('tabletMore')} {
+    font-size: 12px;
+    margin-top: 30px;
   }
 `;
