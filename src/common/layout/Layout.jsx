@@ -61,7 +61,7 @@ const Layout = () => {
       <Header onToggleSideNav={handleToggleSideNav} />
       <Nav isCollapsed={isCollapsed} isOpen={isOpen} onClose={() => setIsOpen(false)} bannerHeight={bannerHeight} />
       <ContentWrap $isCollapsed={isCollapsed} $bannerHeight={bannerHeight}>
-        <main className="main">
+        <main className="main swiper-parent-container">
           <Outlet context={{ isCollapsed }} />
         </main>
         <Footer className="footer" />
