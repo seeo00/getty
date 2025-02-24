@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetails } from '../../store/modules/thunks/getDetails';
 import { Container, FlexContainer, Image } from './style';
+import LoadingSpinner from '../../ui/LoadingSpinner';
 
 const DetailImageCard = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,12 @@ const DetailImageCard = () => {
     }
   }, [dispatch, detailsData, detailID, detailType]);
 
-  if (loading) return <p>로딩 중...</p>;
+	if (loading)
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    );
   if (error) return <p>데이터를 찾을 수 없습니다.</p>;
   if (!detailsData) return null;
 

@@ -46,3 +46,35 @@ const DramaPosterGallery = () => {
 };
 
 export default DramaPosterGallery;
+
+
+
+
+
+// {movieData && movieData.length > 0 ? (
+// 	<div style={{ marginTop: '20px' }}>
+// 		<h3>관련 영화 정보</h3>
+// 		{movieData.map((movie) => (
+// 			<div
+// 				key={movie.id}
+// 				style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}
+// 			>
+// 				<img
+// 					src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+// 					alt={movie.title}
+// 					style={{ marginRight: '10px' }}
+// 				/>
+// 				<div>
+// 					<strong>{movie.title}</strong>
+// 					<p style={{ margin: 0 }}>
+// 						{movie.overview
+// 							? movie.overview.substring(0, 100) + '...'
+// 							: '개요 정보 없음'}
+// 					</p>
+// 				</div>
+// 			</div>
+// 		))}
+// 	</div>
+// ) : (
+// 	<p></p>
+// )}

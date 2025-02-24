@@ -21,17 +21,44 @@ const Certification = ({ koreanRating: propKoreanRating }) => {
   if (!detailsData) return null;
 
   const detail = detailsData;
-  const originCountryCode = detail.origin_country[0];
+  let finalKoreanRating = '';
 
-  // certificationData 예시: [{ iso_3166_1: "US", rating: "TV-MA" }, { iso_3166_1: "KR", rating: "" }, ...]
-  const certificationForCountry = certificationData
-    ? certificationData.find((item) => item.iso_3166_1 === originCountryCode)
-    : null;
-  const certificationCode = certificationForCountry ? certificationForCountry.rating : null;
-  const koreanRating = propKoreanRating || getKoreanRating(originCountryCode, certificationCode);
+  if (propKoreanRating) {
+    finalKoreanRating = propKoreanRating;
+  } else if (detailType === 'movie') {
+    // 영화인 경우 우선 release_dates 데이터를 활용
+    const releaseDatesResults = detail.release_dates?.results || [];
+    const krRelease = releaseDatesResults.find(item => item.iso_3166_1 === 'KR');
+    let certificationCode =
+      krRelease && krRelease.release_dates && krRelease.release_dates[0]
+        ? krRelease.release_dates[0].certification
+        : '';
 
-  // 부모에서 li로 감싸고 있다면 여기서는 li 대신 span으로 반환하여 중첩 문제를 피합니다.
-  return <span><strong>&nbsp;{koreanRating}</strong></span>;
+    // release_dates에 인증 코드가 없으면 production_countries를 이용하여 certificationData에서 가져오기
+    if (!certificationCode && detail.production_countries && detail.production_countries.length > 0) {
+      const prodCountryCode = detail.production_countries[0].iso_3166_1;
+      const certificationForCountry =
+        certificationData && certificationData.find((item) => item.iso_3166_1 === prodCountryCode);
+      certificationCode = certificationForCountry ? certificationForCountry.rating : '';
+      finalKoreanRating = getKoreanRating(prodCountryCode, certificationCode);
+    } else {
+      finalKoreanRating = getKoreanRating('KR', certificationCode);
+    }
+  } else {
+    // TV 시리즈인 경우
+    const originCountryCode =
+      detail.origin_country && detail.origin_country.length > 0
+        ? detail.origin_country[0]
+        : null;
+    const certificationForCountry =
+      certificationData && originCountryCode
+        ? certificationData.find((item) => item.iso_3166_1 === originCountryCode)
+        : null;
+    const certificationCode = certificationForCountry ? certificationForCountry.rating : '';
+    finalKoreanRating = getKoreanRating(originCountryCode, certificationCode);
+  }
+
+  return <span><strong>&nbsp;{finalKoreanRating || '연령 등급 정보 없음'}</strong></span>;
 };
 
 export default Certification;

@@ -87,17 +87,23 @@ export const StyledText = styled.div`
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  /* expanded가 true면 -webkit-line-clamp 제거, false면 clamp 적용 */
+  /* 모바일: expanded가 true면 풀림, false면 2줄 클램프 */
   -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
   transition: all 0.3s ease;
 
   ${respondTo('desktop')} {
+    /* 데스크탑: 항상 1줄 클램프 */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: ${props => (props.expanded ? 'none' : 1)};
   }
+
   ${respondTo('tablet')} {
-    display: block;
-    -webkit-line-clamp: unset;
-    -webkit-box-orient: unset;
-    overflow: visible;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
   }
 `;
 
@@ -126,6 +132,32 @@ export const TitleName = styled.h3`
   }
 `;
 
+export const EpiTitle = styled.h2`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+	color: ${color.gray[20]};
+
+  ${respondTo('mobile')} {
+    flex-wrap: wrap;
+    & > span {
+      width: 100%;
+    }
+  };
+	${respondTo('desktop')} {
+		font-size: 16px;
+		};
+		${respondTo('tablet')} {
+			font-size: 14px;
+		};
+		${respondTo('mobile')} {
+			font-size: 14px;
+		};
+	
+`;
+
 export const Title = styled.h2`
   display: flex;
   flex-wrap: nowrap;
@@ -149,6 +181,41 @@ export const Title = styled.h2`
 			font-size: 14px;
 		};
 	
+`;
+
+export const EpiOverview = styled.p`
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: ${color.gray[20]};
+  overflow: hidden;
+
+  ${respondTo('desktop')} {
+		margin: 40px 0;
+		font-size: 16px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${props => !props.expanded ? '-webkit-line-clamp: 3;' : ''}
+  }
+  
+  ${respondTo('tablet')} {
+		margin: 16px 0;
+		font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
+  }
+  
+  ${respondTo('mobile')} {
+		margin: 16px 0;
+		font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
+  }
 `;
 
 export const Overview = styled.p`
@@ -280,6 +347,9 @@ export const InfoCardContainer = styled.div`
 	margin-top: 26px;//탭버튼 마진제외
 	margin-bottom: 40px;
 max-width: 1159;
+${respondTo('desktop')} {
+		margin-top: 40px;
+	}
   @media (min-width: 768px) {
     flex-wrap: nowrap;
     align-items: flex-start;
@@ -324,7 +394,7 @@ export const TextAndDetailWrapper = styled.div`
 
 `;
 
-// 포스터 컨테이너 (고정 사이즈 114x168px)
+// 포스터 컨테이너
 export const PosterContainer = styled.div`
   width: clamp(114px, 20vw, 264px);//비율유지 반응형
   aspect-ratio: 264 / 365;

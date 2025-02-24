@@ -4,15 +4,8 @@ import styled from 'styled-components';
 import EpisodeSection from '../../components/detail/EpisodeCard';
 import ReviewCard from '../../components/detail/ReviewCard';
 import InfoCard from '../../components/detail/InfoCard';
-import CardFlexList from '../card/CardFlexList';
 import { SortAndCountDropdown } from './SortAndCountButton';
-import { getDetails } from '../../store/modules/thunks/getDetails';
 import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
-
-// import { ContentList } from '../../components/category/CardContentList';
-// import DramaPosterGallery from '../../components/detail/DetailPosterGallery';
-// import DetailCard from '../../components/detail/DetailCard';
-// import { DetailPosterGallery } from '../../components/detail/Index';
 
 const TabButton = styled.button`
   background: none;
@@ -38,7 +31,7 @@ const DetailTabButtons = ({ tvId }) => {
   };
 
   const handleSortDate = () => {
-    console.log('');
+    console.log('베스트순');
   };
 
   const handleLike = () => {

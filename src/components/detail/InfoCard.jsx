@@ -16,11 +16,13 @@ import {
 import Certification from './Certification';
 import { getKoreanRating, countryMap } from '../../assets/api/certificationData';
 
+// apiKey를 상수로 선언하거나, 환경변수 등으로 관리
+const apiKey = 'VITE_API_KEY_V3';
+
 const InfoCard = () => {
   const dispatch = useDispatch();
   const { detailType, detailID } = useParams();
 
-  // shallowEqual 사용 및 기본값 제거
   const { detailsData, loading, error } = useSelector(
     (state) => state.detailsR,
     shallowEqual
@@ -29,11 +31,7 @@ const InfoCard = () => {
     (state) => state.certificationsR,
     shallowEqual
   );
-  const { loading: episodeLoading, error: episodeError } = useSelector(
-    (state) => state.episodeR,
-    shallowEqual
-  );
-  const movieState = useSelector((state) => state.movie, shallowEqual);
+  const movieState = useSelector((state) => state.movieR, shallowEqual);
   const { movieData, loading: movieLoading, error: movieError } = movieState || {};
 
   useEffect(() => {
@@ -42,25 +40,46 @@ const InfoCard = () => {
     }
     dispatch(getCertification({ tvId: detailID }));
     dispatch(getEpisode({ tvId: detailID, seasonNumber: '1' }));
-    // getMovie 정보도 불러옴
     dispatch(getMovie({ category: 'base', currentPage: 1 }));
+
+    // 감독 정보가 없을 경우 credits API 호출
+    if (detailsData && (!detailsData.created_by || detailsData.created_by.length === 0)) {
+      fetch(`https://api.themoviedb.org/3/movie/${detailID}/credits?api_key=${apiKey}`)
+        .then(response => response.json())
+        .then(jsonData => {
+          const directorData = jsonData.crew.filter(({ job }) => job === 'Director');
+          console.log('가져온 감독 정보:', directorData);
+          // 필요에 따라 directorData를 전역 상태 또는 로컬 상태에 저장
+        })
+        .catch(error => console.error('감독 정보를 가져오는 중 오류:', error));
+    }
   }, [dispatch, detailsData, detailID, detailType]);
 
-  if (loading || certificationLoading || episodeLoading || movieLoading)
-    return <p>로딩 중...</p>;
-  if (error || episodeError || movieError) return <p>데이터를 찾을 수 없습니다.</p>;
+  // detailsData가 없으면 렌더링 중단
   if (!detailsData) return null;
 
   const detail = detailsData;
-  const originCountryCode = detail.origin_country[0];
-  const originCountry = countryMap[originCountryCode] || '정보 없음';
 
-  // certificationData 예시: [{ iso_3166_1: "US", rating: "TV-MA" }, { iso_3166_1: "KR", rating: "" }, ...]
-  const certificationForCountry = certificationData
-    ? certificationData.find((item) => item.iso_3166_1 === originCountryCode)
-    : null;
+  // originCountryCode 검증: origin_country가 있으면 첫 번째, 없으면 production_countries에서 가져옴
+  const originCountryCode =
+    detail.origin_country && detail.origin_country.length > 0
+      ? detail.origin_country[0]
+      : detail.production_countries && detail.production_countries.length > 0
+      ? detail.production_countries[0].iso_3166_1
+      : null;
+
+  const originCountry = originCountryCode
+    ? countryMap[originCountryCode] || '정보 없음'
+    : '정보 없음';
+
+  const certificationForCountry =
+    certificationData && originCountryCode
+      ? certificationData.find((item) => item.iso_3166_1 === originCountryCode)
+      : null;
+
   const certificationCode = certificationForCountry ? certificationForCountry.rating : null;
-  const koreanRating = getKoreanRating(originCountryCode, certificationCode);
+  const koreanRating = originCountryCode ? getKoreanRating(originCountryCode, certificationCode) : null;
+
   const movieTitle = detail.title || detail.name;
   const releaseDate = detail.release_date
     ? detail.release_date.split('-')[0]
@@ -68,8 +87,22 @@ const InfoCard = () => {
     ? detail.first_air_date.split('-')[0]
     : '연도 정보 없음';
 
-		
-		
+  const country = originCountry;
+
+  const directors =
+    detail.created_by && detail.created_by.length > 0
+      ? detail.created_by
+      : detail.credits && detail.credits.crew
+      ? detail.credits.crew.filter((person) => person.job === 'Director')
+      : [];
+  const writers =
+    detail.created_by && detail.created_by.length > 0
+      ? detail.created_by
+      : detail.credits && detail.credits.crew
+      ? detail.credits.crew.filter(
+          (person) => person.job === 'Screenplay' || person.job === 'Writer'
+        )
+      : [];
 
   return (
     <InfoCardContainer key={detail.id}>
@@ -83,23 +116,23 @@ const InfoCard = () => {
         </TextContainer>
         <DetailList>
           <li>
-            <strong>개요:</strong>{' '}
-            {originCountry ? originCountry : '개요 정보 없음'},{' '}
-            <span>{releaseDate ? releaseDate : '출시일 정보 없음'}</span>
+            <strong>개요 :</strong>{' '}
+            {country ? country : '개요 정보 없음'},{' '}
+            <span>{releaseDate}</span>
           </li>
           <li>
-            <strong>감독:</strong>{' '}
-            {detail.created_by && detail.created_by.length > 0
-              ? detail.created_by.map((director, index) => (
+            <strong>감독 :</strong>{' '}
+            {directors.length > 0
+              ? directors.map((director, index) => (
                   <span key={`${director.id}-${index}`}>
                     {director.name}
-                    {index < detail.created_by.length - 1 && ', '}
+                    {index < directors.length - 1 && ', '}
                   </span>
                 ))
               : '감독 정보 없음'}
           </li>
           <li>
-            <strong>출연:</strong>{' '}
+            <strong>출연 :</strong>{' '}
             {detail.credits &&
             detail.credits.cast &&
             detail.credits.cast.length > 0
@@ -112,18 +145,18 @@ const InfoCard = () => {
               : '출연 정보 없음'}
           </li>
           <li>
-            <strong>각본:</strong>{' '}
-            {detail.created_by && detail.created_by.length > 0
-              ? detail.created_by.map((writer, index) => (
+            <strong>각본 :</strong>{' '}
+            {writers.length > 0
+              ? writers.map((writer, index) => (
                   <span key={`${writer.id}-${index}`}>
                     {writer.name}
-                    {index < detail.created_by.length - 1 && ', '}
+                    {index < writers.length - 1 && ', '}
                   </span>
                 ))
               : '각본 정보 없음'}
           </li>
           <li>
-            <strong>장르:</strong>{' '}
+            <strong>장르 :</strong>{' '}
             {detail.genres && detail.genres.length > 0
               ? detail.genres.map((genre, index) => (
                   <span key={`${genre.id}-${index}`}>
@@ -135,7 +168,7 @@ const InfoCard = () => {
           </li>
           <li style={{ display: 'flex' }}>
             <span>
-              <strong>연령 등급:</strong>{' '}
+              <strong>연령 등급 :</strong>{' '}
             </span>
             {koreanRating ? (
               <Certification koreanRating={koreanRating} />
@@ -144,34 +177,6 @@ const InfoCard = () => {
             )}
           </li>
         </DetailList>
-        {/* getMovie로 받아온 영화 데이터를 추가 섹션으로 렌더링 */}
-        {movieData && movieData.length > 0 ? (
-          <div style={{ marginTop: '20px' }}>
-            <h3>관련 영화 정보</h3>
-            {movieData.map((movie) => (
-              <div
-                key={movie.id}
-                style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  alt={movie.title}
-                  style={{ marginRight: '10px' }}
-                />
-                <div>
-                  <strong>{movie.title}</strong>
-                  <p style={{ margin: 0 }}>
-                    {movie.overview
-                      ? movie.overview.substring(0, 100) + '...'
-                      : '개요 정보 없음'}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          <p></p>
-        )}
       </TextAndDetailWrapper>
     </InfoCardContainer>
   );

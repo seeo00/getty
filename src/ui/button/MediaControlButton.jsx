@@ -6,6 +6,10 @@ import { color } from '../../styled/common';
 import { FlexContainer } from '../../components/detail/style';
 import styled from 'styled-components';
 import Button from './Button';
+import { getDetails } from '../../store/modules/thunks/getDetails'
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Displaycontainer = styled.div`
   display: block;
@@ -19,17 +23,32 @@ const Displaycontainer = styled.div`
 `;
 
 const MediaControlButtons = () => {
+	const dispatch = useDispatch();
+  const { detailType, detailID } = useParams();
+	const { detailsData } = useSelector((state) => state.detailsR);
+	 useEffect(() => {
+			if (!detailsData) {
+				dispatch(getDetails({ id: detailID, contentType: detailType }));
+			}
+		}, [dispatch, detailsData, detailID, detailType]);
+		
+			const [isFavorite, setIsFavorite] = useState(false);
+			const handleFavoriteClick = () => {
+				setIsFavorite((prev) => !prev);
+			};
+
+		
   return (
     <Displaycontainer>
       <ButtonControl style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <FlexContainer style={{ justifyContent: 'flex-start', alignItems: 'cetner', gap: '16px' }}>
-          <CircleButton border>
-            <FavoriteIcon />
-            <span className="icon-txt">관심</span>
-          </CircleButton>
+				<CircleButton border onClick={handleFavoriteClick}>
+                  <FavoriteIcon fill={isFavorite ? 'red' : 'none'} />
+                  <span className="icon-txt">관심</span>
+                </CircleButton>
           <CircleButton border>
             <NavPopularIcon fill={color.yellow} color={color.yellow} />
-            <span className="icon-txt">평점</span>
+            <span className="icon-txt">{detailsData.vote_average.toFixed(1)}</span>
           </CircleButton>
         </FlexContainer>
         <Button width="100%">

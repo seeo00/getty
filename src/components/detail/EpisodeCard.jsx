@@ -65,13 +65,13 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
               </S.IconWrapper>
             </S.ImageWrapper>
             <S.PaddingContainer>
-              <S.Title>
+              <S.EpiTitle>
                 <span>
                   {episode.episode_number}화&nbsp;&nbsp;{episode.title || episode.name}
                 </span>
                 {episode.runtime && <span>{episode.runtime}분</span>}
-              </S.Title>
-              <S.Overview>{episode.overview}</S.Overview>
+              </S.EpiTitle>
+              <S.EpiOverview>{episode.overview}</S.EpiOverview>
             </S.PaddingContainer>
           </S.FlexContainer>
         </S.EpiContainer>

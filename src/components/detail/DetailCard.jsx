@@ -13,11 +13,9 @@ const DetailCard = () => {
   const { detailsData, loading, error } = useSelector((state) => state.detailsR);
   const { certificationData, loading: certificationLoading } = useSelector((state) => state.certificationsR);
 
-	
-	const detail = detailsData;
-	const movieTitle = detail.title || detail.name; 
+  const detail = detailsData;
+  const movieTitle = detail.title || detail.name; 
 
-  // 출연진 텍스트의 확장 여부를 위한 상태와 ref 추가
   const castRef = useRef(null);
   const [castOverflow, setCastOverflow] = useState(false);
   const [castExpanded, setCastExpanded] = useState(false);
@@ -57,19 +55,18 @@ const DetailCard = () => {
         ))
       : '출연 정보 없음';
 
-const releaseDate = detail.release_date
-  ? detail.release_date.split('-')[0]
-  : detail.first_air_date
-  ? detail.first_air_date.split('-')[0]
-  : '연도 정보 없음';
-
+  const releaseDate = detail.release_date
+    ? detail.release_date.split('-')[0]
+    : detail.first_air_date
+    ? detail.first_air_date.split('-')[0]
+    : '연도 정보 없음';
 
   return (
     <DetailContainer>
       <div key={detail.id} style={{ marginBottom: '10px' }}>
-			<TitleName>
-        <div>{movieTitle}</div>
-      </TitleName>
+        <TitleName>
+          <div>{movieTitle}</div>
+        </TitleName>
         <FlexContainer style={{ alignItems: 'center' }}>
           <Title>
             <div className='undertitle'>
@@ -86,9 +83,13 @@ const releaseDate = detail.release_date
             <div className='undertitle2'>
               {releaseDate}년
             </div>
-            {/* Certification 컴포넌트에 koreanRating 전달 */}
+            {/* InfoCard와 동일한 연령 등급 표시 방식 */}
             <li style={{ display: 'flex' }}>
-              <Certification koreanRating={`  ${koreanRating}`} />
+              {koreanRating ? (
+                <Certification koreanRating={koreanRating} />
+              ) : (
+                '연령 등급 정보 없음'
+              )}
             </li>
           </Title>
         </FlexContainer>
@@ -96,9 +97,8 @@ const releaseDate = detail.release_date
         <OverviewS>{detail.overview}</OverviewS>
         <div style={{ marginTop: '10px' }}>
           <StyledText ref={castRef} expanded={castExpanded}>
-            출연: {castContent}
+            출연 : {castContent}
           </StyledText>
-          {/* 텍스트가 overflow 되었고 아직 확장되지 않았다면 버튼 렌더링 */}
           {!castExpanded && castOverflow && (
             <button
               onClick={() => setCastExpanded(true)}
@@ -108,7 +108,8 @@ const releaseDate = detail.release_date
                 color: '#aaaaaa',
                 cursor: 'pointer',
                 padding: 0,
-                marginTop: '5px'
+                marginTop: '5px',
+                fontSize: '14px',
               }}
             >
               ...더 보기
