@@ -52,17 +52,21 @@ function App() {
             <Route path="/category/documentary" element={<Documentary />} />
             <Route path="/more" element={<More />} />
             {/* <Route index element={<Main />} /> */}
+            <Route path="mypage" element={<MyPage />}>
+            <Route path="profile" element={<AuthLayout />}>
+              <Route index element={<Profile />} />
+            </Route>
+            <Route path="subscription" element={<AuthLayout />}>
+              <Route index element={<Subscription />} />
+            </Route>
+          </Route>
           </Route>
 
           <Route path="/auth" element={<AuthLayout />}>
             <Route index element={<Auth />} />
           </Route>
 
-          <Route path="/mypage" element={<AuthLayout />}>
-            <Route index element={<MyPage />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="subscription" element={<Subscription />} />
-          </Route>
+          
 
           <Route path="/category/:drama/:detail/:detailID" element={<Detail />} />
         </Routes>
