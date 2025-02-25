@@ -70,6 +70,14 @@ export const ProfileGrid = styled.div`
       display: none;
     }
   }
+  &:has(> div:nth-child(1):last-child) {
+    grid-template-columns: 1fr;
+
+    ${respondTo('desktop')} {
+      display: flex;
+      justify-content: center;
+    }
+  }
 `;
 
 export const ProfileItem = styled.div`
