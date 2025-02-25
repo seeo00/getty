@@ -70,8 +70,11 @@ export const ProfileGrid = styled.div`
       display: none;
     }
   }
-  &:has(> div:nth-child(1):last-child) {
+  // 프로필이 2개 이하일 때 중앙 정렬
+  &.single-profile {
     grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
 
     ${respondTo('desktop')} {
       display: flex;

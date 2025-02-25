@@ -93,7 +93,7 @@ const ProfilePage = ({ maxProfiles = 4, mode = 'view' }) => {
         <Title>프로필 선택</Title>
         <Subtitle>시청할 프로필을 선택해 주세요.</Subtitle>
 
-        <ProfileGrid>
+        <ProfileGrid className={profiles.length <= 2 ? 'single-profile' : ''}>
           {profiles.map((profile) => (
             <ProfileItem
               key={profile.id}
