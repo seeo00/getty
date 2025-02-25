@@ -106,11 +106,14 @@ export const ButtonContainer = styled.div`
   ${tabletOnly()} {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     gap: 15px;
     width: 100%;
     padding: 0;
     margin-bottom: 38px;
+    flex: 1;
+    margin: 0 -10px; 
+  }
   }
 
   ${respondTo('desktop')} {
