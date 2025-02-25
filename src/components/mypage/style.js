@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { color } from '../../styled/common';
 import { respondTo } from '../../styled/GlobalStyle';
 
+// 태블릿 전용 미디어 쿼리
+const tabletOnly = () => `@media (min-width: 601px) and (max-width: 1279px)`;
+
 export const PageWrapper = styled.div`
   min-height: 100vh;
   max-width: 100vw;
@@ -72,6 +75,16 @@ export const PlansGrid = styled.div`
     width: 100%;
   }
 
+  ${tabletOnly()} {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
   ${respondTo('desktop')} {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -90,8 +103,14 @@ export const ButtonContainer = styled.div`
     margin-bottom: 38px;
   }
 
-  ${respondTo('tabletMore')} {
-    gap: 10px;
+  ${tabletOnly()} {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 38px;
   }
 
   ${respondTo('desktop')} {
@@ -104,6 +123,12 @@ export const MobileContentWrapper = styled.div`
 
   ${respondTo('mobile')} {
     display: block;
+    width: 100%;
+    margin: 20px 0 0;
+  }
+
+  ${tabletOnly()} {
+    display: block; // 태블릿에서도 표시되도록
     width: 100%;
     margin: 20px 0 0;
   }
@@ -163,6 +188,23 @@ export const CardContainer = styled.div`
     }
   }
 
+  ${tabletOnly()} {
+    width: 45%;
+    height: 120px;
+    background-color: transparent; // 배경 투명하게 설정
+    padding: 0;
+    box-sizing: border-box;
+    margin: 10px;
+
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-only {
+      display: block; // 모바일 내용 강제 표시
+    }
+  }
+
   ${respondTo('desktop')} {
     width: 400px;
     height: 748px;
@@ -207,6 +249,11 @@ export const PlanButton = styled.button`
   cursor: pointer;
   transition: background-color 0.3s ease;
 
+  ${tabletOnly()} {
+    height: 120px;
+    font-size: 22px;
+  }
+
   &:hover {
     background: radial-gradient(
       54.97% 83.44% at 23.41% 78.7%,
@@ -224,6 +271,23 @@ export const RowContainer = styled.div`
     display: flex;
     align-items: center;
     padding: 14px 0;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: ${color.gray[90]};
+    }
+  }
+
+  ${tabletOnly()} {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 18px 0;
     position: relative;
     &::after {
       content: '';
@@ -262,6 +326,13 @@ export const RowContent = styled.div`
     align-items: center;
   }
 
+  ${tabletOnly()} {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   ${respondTo('desktop')} {
     display: flex;
     margin-left: 39px;
@@ -281,10 +352,27 @@ export const Text = styled.span`
     }
     font-size: 14px;
   }
+
+  ${tabletOnly()} {
+    &:last-child {
+      text-align: right;
+    }
+    font-size: 15px;
+  }
 `;
 
 export const ExtraInfo = styled.div`
   ${respondTo('mobile')} {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 16px;
+    color: ${color.gray[70]};
+    line-height: 1.4;
+    text-align: right;
+  }
+
+  ${tabletOnly()} {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -329,9 +417,14 @@ export const ModalContainer = styled.div`
     height: 380px;
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     width: 600px;
     height: 620px;
+  }
+
+  ${respondTo('desktop')} {
+    width: 696px;
+    height: 743px;
   }
 `;
 
@@ -347,9 +440,14 @@ export const ModalTitle = styled.h2`
     font-size: 16px;
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     margin: 100px auto 40px;
     font-size: 20px;
+  }
+
+  ${respondTo('desktop')} {
+    margin: 120px auto 60px;
+    font-size: 24px;
   }
 `;
 
@@ -378,11 +476,18 @@ export const SubscriptionCardLeft = styled.div`
     padding: 10px 0 10px 10px;
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     width: 270px;
     height: 190px;
     margin-left: 60px;
     padding: 40px;
+  }
+
+  ${respondTo('desktop')} {
+    width: 422px;
+    height: 214px;
+    margin-left: 85px;
+    padding: 50px;
   }
 `;
 
@@ -404,10 +509,16 @@ export const SubscriptionCardRight = styled.div`
     padding: 0;
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     width: 150px;
     margin-right: 60px;
     padding: 0px;
+  }
+
+  ${respondTo('desktop')} {
+    width: 103px;
+    margin-right: 86px;
+    padding: 3px;
   }
 `;
 
@@ -422,9 +533,14 @@ export const SubscriptionCardTitle = styled.div`
     margin: 5px auto 4px;
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     font-size: 22px;
     margin: -5px 0 6px -5px;
+  }
+
+  ${respondTo('desktop')} {
+    font-size: 24px;
+    margin: -10px 0 12px 0;
   }
 `;
 
@@ -466,13 +582,26 @@ export const SubscriptionRow = styled.div`
     }
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     font-size: 14px;
     margin-bottom: 6px;
 
     span:first-child {
       margin: 1px 55px 0 -5px;
       min-width: 80px;
+    }
+  }
+
+  ${respondTo('desktop')} {
+    font-size: 14px;
+    margin-bottom: 8px;
+
+    span:first-child {
+      margin-right: 80px;
+      min-width: 70px;
+    }
+    span:last-child {
+      margin-left: 0;
     }
   }
 `;
@@ -494,13 +623,23 @@ export const ButtonWrapper = styled.div`
     }
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     width: 480px;
     max-width: 480px;
     margin-top: 60px;
 
     & > button {
       height: 55px;
+    }
+  }
+
+  ${respondTo('desktop')} {
+    width: 525px;
+    max-width: 525px;
+    margin-top: 80px;
+
+    & > button {
+      height: auto;
     }
   }
 `;
@@ -517,8 +656,13 @@ export const AutoMoveText = styled.p`
     margin-top: 20px;
   }
 
-  ${respondTo('tabletMore')} {
+  ${tabletOnly()} {
     font-size: 12px;
     margin-top: 30px;
+  }
+
+  ${respondTo('desktop')} {
+    font-size: 14px;
+    margin-top: 40px;
   }
 `;
