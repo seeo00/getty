@@ -61,9 +61,10 @@ export const ProfileGrid = styled.div`
   gap: 40px;
   place-items: center;
 
-  ${respondTo('tablet')} {
+  ${respondTo('tabletMore')} {
     gap: 80px;
   }
+
   ${respondTo('desktop')} {
     display: flex;
     justify-content: center;
@@ -71,6 +72,14 @@ export const ProfileGrid = styled.div`
 
     & > div:nth-child(3) {
       display: none;
+    }
+  }
+  &:has(> div:nth-child(1):last-child) {
+    grid-template-columns: 1fr;
+
+    ${respondTo('desktop')} {
+      display: flex;
+      justify-content: center;
     }
   }
 `;
@@ -87,7 +96,7 @@ export const ProfileCircle = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 100%;
-  background-color: ${color.gray[300]};
+  //background-color: ${color.gray[300]};
   margin-bottom: ${(props) => (props.$editPage ? '20px' : '8px')};
   display: flex;
   align-items: center;
@@ -95,6 +104,7 @@ export const ProfileCircle = styled.div`
   transition: all 0.2s ease-in-out;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 
   svg {
     opacity: 0;
@@ -114,7 +124,7 @@ export const ProfileCircle = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      background:${color.gray[300]};
+      background: rgba(0,0,0, 0.3);
       border-radius: 100%;
     }
     

@@ -31,7 +31,7 @@ const useMouseDragScroll = () => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - element.offsetLeft;
-      const walk = (x - startX) * 2; // 스크롤 속도 조절
+      const walk = (x - startX) * 2;
       element.scrollLeft = scrollLeft - walk;
     };
 

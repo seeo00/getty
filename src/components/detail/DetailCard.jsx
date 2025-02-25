@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
+import { getCertification, getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { DetailContainer, FlexContainer, Title, StyledText, TitleName, OverviewS } from './style';
 import Certification from './Certification';
 import { getKoreanRating } from '../../assets/api/certificationData';
@@ -14,7 +14,7 @@ const DetailCard = () => {
   const { certificationData, loading: certificationLoading } = useSelector((state) => state.certificationsR);
 
   const detail = detailsData;
-  const movieTitle = detail.title || detail.name;
+  const movieTitle = detail ? detail.title || detail.name : '';
 
   const castRef = useRef(null);
   const [castOverflow, setCastOverflow] = useState(false);
@@ -24,6 +24,7 @@ const DetailCard = () => {
     if (!detailsData) {
       dispatch(getDetails({ id: detailID, contentType: detailType }));
     }
+    dispatch(getCertification({ tvId: detailID }));
   }, [dispatch, detailsData, detailID, detailType]);
 
   useEffect(() => {
@@ -44,7 +45,6 @@ const DetailCard = () => {
   const certificationCode = certificationForCountry ? certificationForCountry.rating : null;
   const koreanRating = getKoreanRating(originCountryCode, certificationCode);
 
-  // 출연진 목록 생성
   const castContent =
     detail.credits && detail.credits.cast && detail.credits.cast.length > 0
       ? detail.credits.cast.map((actor, index) => (
@@ -80,7 +80,6 @@ const DetailCard = () => {
                 : '장르 정보 없음'}
             </div>
             ㆍ<div className="undertitle2">{releaseDate}년</div>
-            {/* InfoCard와 동일한 연령 등급 표시 방식 */}
             <li style={{ display: 'flex' }}>
               {koreanRating ? <Certification koreanRating={koreanRating} /> : '연령 등급 정보 없음'}
             </li>
