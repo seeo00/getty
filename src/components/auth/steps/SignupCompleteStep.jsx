@@ -1,5 +1,6 @@
+import Button from '../../../ui/button/Button';
 import * as S from '../style';
-import { Button } from '../../../ui/Button';
+
 import { useNavigate } from 'react-router-dom';
 
 const SignupCompleteStep = () => {
@@ -12,7 +13,13 @@ const SignupCompleteStep = () => {
         <p>더 많은 콘텐츠를 즐겨보세요.</p>
       </S.Title>
       <S.BottomBox>
-        <Button>이용권 구독하기</Button>
+        <Button
+          onClick={() => {
+            navigate('/subscription');
+          }}
+        >
+          이용권 구독하기
+        </Button>
         <S.TextBtnBox $justifyEnd>
           <button
             onClick={() => {

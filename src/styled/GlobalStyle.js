@@ -62,6 +62,14 @@ input, textarea, button {
 }
 
 //전역 스와이퍼 스타일
+
+.swiper-parent-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; 
+}
+
+
 .swiper-wrapper {
   width: 100%;
   margin: 0 auto;
@@ -79,7 +87,7 @@ input, textarea, button {
   height: 100%;
 	/* border-radius: 16px; */
 }
-.swiper-pagination {
+/* .swiper-pagination {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -91,7 +99,7 @@ display: none;
     background: #000;
     opacity: 1;
     color: ${color.gray[70]};
-  }
+  } */
 
 
 

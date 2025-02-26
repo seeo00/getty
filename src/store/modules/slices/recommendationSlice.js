@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getRecommendations } from '../thunks/getRecommendations';
+import { getRecommendations } from '../thunks/getDetailsThunks';
 
 const initialState = {
   Recommendations: [],

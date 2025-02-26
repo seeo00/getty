@@ -5,31 +5,40 @@ import CircleCardSwiper from '../../ui/card/CircleCardSwiper';
 import { useDispatch, useSelector } from 'react-redux';
 import BasicCardSwiper from '../../ui/card/BasicCardSwiper';
 import { useEffect } from 'react';
-import { getTrendingDay, getTrendingWeek } from '../../store/modules/thunks/getTrending';
-import { getCombinedMystery, getCombinedRomance } from '../../store/modules/thunks/geThunk';
+import { getTrendingDay, getTrendingWeek } from '../../store/modules/thunks/getCommonThunks';
+import { getCombinedMystery, getCombinedRomance } from '../../store/modules/thunks/getCombinedThunks';
 import { originalActions } from '../../store/modules/slices/originalSlice';
+import { useOutletContext } from 'react-router-dom';
 
 const Main = () => {
+  const { isCollapsed } = useOutletContext() || {};
   const { originalData, originalFeatured, editorRecommend } = useSelector((state) => state.originalR);
   const { trendingDayData, trendingWeekData } = useSelector((state) => state.trendingR);
   const { romanceContent, mysteryContent } = useSelector((state) => state.combinedR);
-
   const connectedData = originalData.filter((item) => item.type === 'connected');
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(originalActions.filterdFeature());
-    dispatch(originalActions.filteredRecommend());
-    dispatch(getTrendingDay());
-    dispatch(getTrendingWeek());
-    dispatch(getCombinedRomance());
-    dispatch(getCombinedMystery());
-  }, [dispatch]);
+    const fetchData = async () => {
+      try {
+        await Promise.all([
+          dispatch(originalActions.filterdFeature()),
+          dispatch(originalActions.filteredRecommend()),
+          dispatch(getTrendingDay()),
+          dispatch(getTrendingWeek()),
+          dispatch(getCombinedRomance()),
+          dispatch(getCombinedMystery()),
+        ]);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
-      <BannerSwiper />
+      <BannerSwiper isCollapsed={isCollapsed} />
       <S.MainContainer>
         <InnerContainer className="inner">
           <CircleCardSwiper title="오리지널 대표 콘텐츠" items={originalFeatured} moreLink={'/category/original'} />

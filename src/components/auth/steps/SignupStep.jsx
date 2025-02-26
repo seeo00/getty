@@ -3,9 +3,10 @@ import { EmailInput } from '../EmailInput';
 import { PasswordInput } from '../PasswordInput';
 import CheckBox from '../../../ui/Checkbox';
 import { useState } from 'react';
-import { Button } from '../../../ui/Button';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../../../store/modules/slices/authSlice';
+import Button from '../../../ui/button/Button';
 
 const checkboxList = [
   { id: 1, name: 'chk1', label: '(필수) 만 14세 이상입니다.', isChecked: false },

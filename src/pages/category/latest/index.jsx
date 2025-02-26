@@ -3,12 +3,12 @@ import { SubBannerSwiper } from '../../../components';
 import { InnerContainer } from '../../../common/layout/InnerContainer.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { getTrendingWeek } from '../../../store/modules/thunks/getTrending.js';
-import { getNewSeries } from '../../../store/modules/thunks/getNewSeries.js';
+import { getTrendingWeek } from '../../../store/modules/thunks/getCommonThunks.js';
+import { getNewSeries } from '../../../store/modules/thunks/getCommonThunks.js';
 import BasicCardSwiper from '../../../ui/card/BasicCardSwiper.jsx';
-import { getNewMovie } from '../../../store/modules/thunks/getNewMovie.js';
-import { getUpcomingSeries } from '../../../store/modules/thunks/getUpcomingSeries.js';
-import { getUpcomingMovie } from '../../../store/modules/thunks/getUpcomingMovie.js';
+import { getNewMovie } from '../../../store/modules/thunks/getCommonThunks.js';
+import { getUpcomingSeries } from '../../../store/modules/thunks/getCommonThunks.js';
+import { getUpcomingMovie } from '../../../store/modules/thunks/getCommonThunks.js';
 
 const Latest = () => {
   const { trendingWeekData, loading } = useSelector((state) => state.trendingR);

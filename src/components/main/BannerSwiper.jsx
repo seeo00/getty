@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
-import { useSelector } from 'react-redux';
 import * as S from './style';
 import styled, { css } from 'styled-components';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import { InnerContainer } from '../../common/layout/InnerContainer';
 import { respondTo } from '../../styled/GlobalStyle';
 import { ArrowLeftIcon, ArrowRightIcon } from '../../ui/icon';
 import { mainBannerData } from '../../assets/api/mainBannerData';
 import { color } from '../../styled/common';
+import { CardBasicSkeleton } from '../../ui/LoadingSkeleton';
+import { useLocation } from 'react-router-dom';
 
-const SwiperUpdateOnCollapse = ({ isCollapsed, swiperInstance }) => {
+const SwiperUpdateOnCollapse = ({ $isCollapsed, swiperInstance }) => {
   const swiper = useSwiper();
 
   useEffect(() => {
@@ -22,10 +22,9 @@ const SwiperUpdateOnCollapse = ({ isCollapsed, swiperInstance }) => {
         swiper.update();
         swiper.autoplay.start();
       }, 300);
-
       return () => clearTimeout(timer);
     }
-  }, [isCollapsed, swiper]);
+  }, [$isCollapsed, swiper]);
 
   return null;
 };
@@ -63,10 +62,11 @@ const LogoImage = styled.div`
   }
 `;
 
-const BannerSwiper = () => {
-  const { isCollapsed } = useSelector((state) => state.mainR);
+const BannerSwiper = ({ isCollapsed }) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const [isAnimated, setIsAnimated] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const location = useLocation();
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -74,7 +74,6 @@ const BannerSwiper = () => {
     const timer = setTimeout(() => {
       setIsAnimated(true);
     }, 100);
-
     return () => {
       clearTimeout(timer);
       setIsAnimated(false);
@@ -113,15 +112,17 @@ const BannerSwiper = () => {
             1280: { spaceBetween: 12 },
           }}
         >
-          <SwiperUpdateOnCollapse isCollapsed={isCollapsed} swiperInstance={swiperInstance} />
-          {mainBannerData.map((item, index) => (
-            <SwiperSlide key={item.id || index}>
-              <S.SlideContainer>
-                {/* <img src={item.banner} alt={item.title || item.name} /> */}
+          <SwiperUpdateOnCollapse $isCollapsed={isCollapsed} swiperInstance={swiperInstance} />
+          {mainBannerData.map((item) => (
+            <SwiperSlide key={item.id}>
+              <S.SlideContainer to={`/category/${item.media_type}/${item.id}`} state={{ background: location }}>
+                {!imageLoaded && <CardBasicSkeleton aspectRatio={4 / 5} banner />}
                 <S.ResponsiveBannerImage
                   src={item.banner}
                   $mobileSrc={item.banner_mobile}
                   alt={item.title || item.name}
+                  onLoad={() => setImageLoaded(true)}
+                  style={{ visibility: imageLoaded ? 'visible' : 'hidden' }}
                 />
                 <LogoImage $isAnimated={isAnimated}>
                   <img src={item.logo} alt="" />

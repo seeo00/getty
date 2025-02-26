@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDetails } from '../thunks/getDetails';
+import { getDetails } from '../thunks/getDetailsThunks';
 
 const initialState = {
   detailsData: null,

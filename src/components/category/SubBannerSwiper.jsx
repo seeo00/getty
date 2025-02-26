@@ -16,37 +16,39 @@ const SubBannerSwiper = ({ items, subTitle, title, desc, loading, rank }) => {
           <p>{desc}</p>
         </S.SectionHeader>
         <S.CardList>
-          {loading
-            ? [...Array(5)].map((_, index) => <CardBasicSkeleton key={index} aspectRatio={1} />)
-            : items.length > 0 && (
-                <Swiper
-                  modules={[Autoplay]}
-                  spaceBetween={8}
-                  slidesPerView={1.8}
-                  loop={'auto'}
-                  centeredSlides={true}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                    waitForTransition: true,
-                  }}
-                  breakpoints={{
-                    601: {
-                      slidesPerView: 3.5,
-                    },
-                    1280: {
-                      slidesPerView: 5,
-                      spaceBetween: 12,
-                    },
-                  }}
-                >
-                  {items?.map((item, index) => (
-                    <SwiperSlide key={item.id || index}>
-                      <CardBasic item={item} rank={rank ? index + 1 : null} aspectRatio={1} />
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
-              )}
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={8}
+            slidesPerView={1.8}
+            loop={'auto'}
+            centeredSlides={true}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              waitForTransition: true,
+            }}
+            breakpoints={{
+              601: {
+                slidesPerView: 3.5,
+              },
+              1280: {
+                slidesPerView: 5,
+                spaceBetween: 12,
+              },
+            }}
+          >
+            {!items || items.length === 0
+              ? [...Array(10)].map((_, index) => (
+                  <SwiperSlide key={`skeleton-${index}`}>
+                    <CardBasicSkeleton aspectRatio={1} />
+                  </SwiperSlide>
+                ))
+              : items.map((item, index) => (
+                  <SwiperSlide key={item.id || index}>
+                    <CardBasic item={item} rank={rank ? index + 1 : null} aspectRatio={1} />
+                  </SwiperSlide>
+                ))}
+          </Swiper>
         </S.CardList>
       </InnerContainer>
     </S.BannerContainer>

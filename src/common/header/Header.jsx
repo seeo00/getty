@@ -1,85 +1,66 @@
 import * as S from './style';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import SideNav from '../nav/SideNav';
-import SideNavMobile from '../nav/SideNavMobile';
 import { InnerContainer } from '../layout/InnerContainer';
-import { Link } from 'react-router-dom';
-import { AlertErrorIcon, GuestUserIcon, MenuIcon, SearchIcon } from '../../ui/icon';
-import { color } from '../../styled/common';
+import { MenuIcon } from '../../ui/icon';
+import UserButton from './UserButton';
+import { useNavigate, useLocation } from 'react-router-dom';
+import SearchButton from './SearchButton';
 
-export const Header = () => {
+export const Header = ({ onToggleSideNav }) => {
   const [isActive, setIsActive] = useState(false);
-  const dispatch = useDispatch();
-  const { isCollapsed, isOpen } = useSelector((state) => state.mainR);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
   const [searchText, setSearchText] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const updateMedia = () => setIsMobile(window.innerWidth < 1280);
-    updateMedia(); // 초기값 설정
+    updateMedia();
     window.addEventListener('resize', updateMedia);
     return () => window.removeEventListener('resize', updateMedia);
   }, []);
 
-  const handleToggleSideNav = () => {
-    const isNowMobile = window.innerWidth < 1280;
-    if (isNowMobile) {
-      dispatch({ type: isOpen ? 'CLOSE_MOBILE_NAV' : 'OPEN_MOBILE_NAV' });
+  useEffect(() => {
+    if (location.pathname === '/search') {
+      setIsActive(true);
     } else {
-      dispatch({ type: 'TOGGLE_SIDENAV' });
+      setTimeout(() => setIsActive(false), 300);
+    }
+  }, [location.pathname]);
+
+  const handleToggleSideNav = () => {
+    if (onToggleSideNav) {
+      onToggleSideNav(isMobile);
     }
   };
 
-  const handleOpenSearch = () => {
-    setIsActive(true);
-  };
-
   return (
-    <>
-      <S.HeaderContainer>
-        <InnerContainer maxWidth="100%" className="inner">
-          <S.LeftContainer>
-            <button onClick={handleToggleSideNav}>
-              <MenuIcon />
-            </button>
-            <h1>
-              <S.Logo to={'/'}>
-                <img
-                  src="https://raw.githubusercontent.com/seeo00/project-image-storage/fbc71b631d8e6979cde5486414b5c1b2781dc621/images/logo/2.line.svg"
-                  alt="getty"
-                />
-                <span className="blind">게티</span>
-              </S.Logo>
-            </h1>
-          </S.LeftContainer>
-          <S.RightContainer>
-            <S.SearchContainer $active={isActive}>
-              <S.SearchButton onClick={handleOpenSearch} $active={isActive}>
-                <SearchIcon color={color.gray[70]} />
-              </S.SearchButton>
-              <S.SearchInput
-                type="text"
-                placeholder="제목, 장르, 배우 검색..."
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                $active={isActive}
+    <S.HeaderContainer>
+      <InnerContainer maxWidth="100%" className="inner">
+        <S.LeftContainer>
+          <button onClick={handleToggleSideNav}>
+            <MenuIcon />
+          </button>
+          <h1>
+            <S.Logo to={'/'}>
+              <img
+                src="https://raw.githubusercontent.com/seeo00/project-image-storage/fbc71b631d8e6979cde5486414b5c1b2781dc621/images/logo/2.line.svg"
+                alt="getty"
               />
-              {searchText.length > 0 && (
-                <S.ClearButton onClick={() => setSearchText('')}>
-                  <AlertErrorIcon stroke={color.gray[70]} />
-                </S.ClearButton>
-              )}
-            </S.SearchContainer>
-            <button>
-              <GuestUserIcon color={color.gray[70]} />
-            </button>
-          </S.RightContainer>
-        </InnerContainer>
-      </S.HeaderContainer>
-
-      {!isMobile && <SideNav />}
-      {isMobile && <SideNavMobile />}
-    </>
+              <span className="blind">게티</span>
+            </S.Logo>
+          </h1>
+        </S.LeftContainer>
+        <S.RightContainer>
+          <SearchButton
+            isActive={isActive}
+            setIsActive={setIsActive}
+            searchText={searchText}
+            setSearchText={setSearchText}
+          />
+          <UserButton isMobile={false} />
+        </S.RightContainer>
+      </InnerContainer>
+    </S.HeaderContainer>
   );
 };

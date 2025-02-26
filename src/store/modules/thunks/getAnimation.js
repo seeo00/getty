@@ -23,6 +23,7 @@ export const getAnimation = createAsyncThunk(
   'animation/getAnimation',
   async ({ category, currentPage = 1, prevResults = [] }) => {
     const urls = {
+      // tmdb api tv 애니메이션(16)을 기반으로 다양한 장르 카테고리를 구성
       base: `${BASE_URL_TV}&with_genres=16`,
       adventure: `${BASE_URL_TV}&with_genres=16,10759`,
       fantasy: `${BASE_URL_TV}&with_genres=16,10765`,
@@ -45,10 +46,18 @@ export const getAnimation = createAsyncThunk(
         const response = await axios.get(apiUrl, options);
         const apiResults = response.data.results;
 
-        const newFilteredResults = apiResults.filter(
-          (item) =>
-            hasKorean(item.name) || hasKorean(item.title) || hasKorean(item.overview) || item.original_language === 'ko'
-        );
+        const newFilteredResults = apiResults
+          .filter(
+            (item) =>
+              hasKorean(item.name) ||
+              hasKorean(item.title) ||
+              hasKorean(item.overview) ||
+              item.original_language === 'ko'
+          )
+          .map((item) => ({
+            ...item,
+            media_type: 'tv',
+          }));
 
         const uniqueResults = [...filteredResults, ...newFilteredResults].filter(
           (item, index, self) => index === self.findIndex((t) => t.id === item.id)

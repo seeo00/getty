@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { color } from '../../styled/common';
 import { InfoIcon, PlayCircleIcon } from '../icon';
@@ -85,8 +85,10 @@ const CardInfo = styled.div`
 
 const CardPlay = ({ item }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const location = useLocation();
+
   return (
-    <CardWrap to={'/'}>
+    <CardWrap to={`/category/${item.media_type}/${item.id}`} state={{ background: location }}>
       <CardItem>
         {!imageLoaded && <CardBasicSkeleton aspectRatio={16 / 9} />}
         <img

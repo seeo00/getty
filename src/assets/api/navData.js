@@ -8,6 +8,7 @@ import {
   NavRealityIcon,
   NavAnimationIcon,
   NavDocumentaryIcon,
+  SearchIcon,
 } from '../../ui/icon';
 
 export const navData = [
@@ -64,5 +65,20 @@ export const navData = [
     text: '시사다큐',
     icon: NavDocumentaryIcon,
     link: '/category/documentary',
+  },
+];
+
+export const bottomNavData = [
+  {
+    id: 1,
+    text: '검색',
+    icon: SearchIcon,
+    link: '/search',
+  },
+  {
+    id: 2,
+    text: '홈',
+    icon: NavHomeIcon,
+    link: '/',
   },
 ];

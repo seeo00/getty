@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   width: 100%;
   left: 0;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     margin-top: 120px;
   }
 
@@ -29,13 +29,13 @@ export const Title = styled.h1`
   margin-bottom: 8px;
   text-align: center;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     font-size: 24px;
     margin-bottom: 16px;
   }
-
   ${respondTo('desktop')} {
     font-size: 28px;
+    margin-bottom: 16px;
   }
 `;
 
@@ -45,7 +45,11 @@ export const Subtitle = styled.p`
   text-align: center;
   font-size: 14px;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
+    font-size: 20px;
+    margin-bottom: 80px;
+  }
+  ${respondTo('desktop')} {
     font-size: 20px;
     margin-bottom: 80px;
   }
@@ -70,11 +74,8 @@ export const ProfileGrid = styled.div`
       display: none;
     }
   }
-  // 프로필이 2개 이하일 때 중앙 정렬
-  &.single-profile {
+  &:has(> div:nth-child(1):last-child) {
     grid-template-columns: 1fr;
-    justify-content: center;
-    justify-items: center;
 
     ${respondTo('desktop')} {
       display: flex;
@@ -83,16 +84,19 @@ export const ProfileGrid = styled.div`
   }
 `;
 
-export const ProfileItem = styled.div`
+export const ProfileItem = styled.button`
   text-align: center;
-  cursor: ${(props) => (props.$isAddProfile ? 'pointer' : 'default')};
+  /* cursor: ${(props) => (props.$isAddProfile ? 'pointer' : 'default')}; */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const ProfileCircle = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 100%;
-  background-color: ${color.gray[300]};
+  //background-color: ${color.gray[300]};
   margin-bottom: ${(props) => (props.$editPage ? '20px' : '8px')};
   display: flex;
   align-items: center;
@@ -100,6 +104,7 @@ export const ProfileCircle = styled.div`
   transition: all 0.2s ease-in-out;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 
   svg {
     opacity: 0;
@@ -119,7 +124,7 @@ export const ProfileCircle = styled.div`
       left: 0;
       width: 100%;
       height: 100%;
-      background:${color.gray[300]};
+      background: rgba(0,0,0, 0.3);
       border-radius: 100%;
     }
     
@@ -129,7 +134,13 @@ export const ProfileCircle = styled.div`
     }
   `}
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
+    width: 160px;
+    height: 160px;
+    margin-bottom: ${(props) => (props.$editPage ? '40px' : '16px')};
+  }
+
+  ${respondTo('desktop')} {
     width: 160px;
     height: 160px;
     margin-bottom: ${(props) => (props.$editPage ? '40px' : '16px')};
@@ -150,7 +161,10 @@ export const ProfileName = styled.span`
   color: ${color.white};
   display: block;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
+    font-size: 20px;
+  }
+  ${respondTo('desktop')} {
     font-size: 20px;
   }
 `;
@@ -160,11 +174,9 @@ export const ProfileButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 40px auto 226px;
-
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     margin: 40px auto 371.5px;
   }
-
   ${respondTo('desktop')} {
     margin: 80px auto 296px;
   }
@@ -173,7 +185,13 @@ export const ProfileButtonWrapper = styled.div`
     width: fit-content;
     height: 36px;
 
-    ${respondTo('tabletMore')} {
+    ${respondTo('tablet')} {
+      width: fit-content;
+      height: 54px;
+    }
+
+    ${respondTo('desktop')} {
+      width: fit-content;
       height: 54px;
     }
   }
@@ -191,13 +209,13 @@ export const PageTitle = styled.h1`
   font-size: 20px;
   font-weight: 400;
   margin: 0 auto 40px;
-
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     margin: 0 auto 80px;
     font-size: 24px;
   }
 
   ${respondTo('desktop')} {
+    margin: 0 auto 80px;
     font-size: 28px;
   }
 `;
@@ -211,7 +229,11 @@ export const NameInputWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
+    max-width: 538px;
+    margin-bottom: 120px;
+  }
+  ${respondTo('desktop')} {
     max-width: 538px;
     margin-bottom: 120px;
   }
@@ -227,29 +249,30 @@ export const ButtonWrapper = styled.div`
   margin-bottom: 373px;
   gap: 8px;
 
-  ${respondTo('tabletMore')} {
+  ${respondTo('tablet')} {
     margin-bottom: 453px;
     max-width: 536px;
   }
 
   ${respondTo('desktop')} {
     margin-bottom: 255px;
+    max-width: 536px;
   }
-
   & > button {
     width: fit-content;
     height: 36px;
 
-    ${respondTo('tabletMore')} {
+    ${respondTo('tablet')} {
+      height: 54px;
+    }
+    ${respondTo('desktop')} {
       height: 54px;
     }
   }
-
   & > button:first-of-type:nth-last-of-type(3) {
     margin-right: auto;
   }
 `;
-
 // MODAL
 export const ModalOverlay = styled.div`
   position: fixed;
@@ -307,13 +330,12 @@ export const ModalButtonWrapper = styled.div`
   gap: 16px;
   justify-content: center;
   align-items: center;
-
   & > button {
     width: fit-content;
     height: 50px;
     margin-bottom: 40px;
-
     ${respondTo('desktop')} {
+      height: 50px;
       gap: 32px;
       margin-bottom: 80px;
     }
