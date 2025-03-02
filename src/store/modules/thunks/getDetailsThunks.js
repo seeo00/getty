@@ -17,7 +17,10 @@ const optionsv3 = {
   method: 'GET',
   headers: {
     accept: 'application/json',
+<<<<<<< HEAD
 		Authorization: `Bearer ${API_KEY_V3}`,
+=======
+>>>>>>> origin/dev
   },
 };
 
@@ -52,12 +55,18 @@ export const getDetails = createAsyncThunk('details/getDetails', async ({ id, co
 // details 내부 에피소드
 export const getEpisode = createAsyncThunk(
   'Episode/getEpisode',
+<<<<<<< HEAD
   async ({ tvId = '1399', seasonNumber = '1', contentType }, thunkAPI) => {
     // 영화일 경우 에피소드가 없으므로 빈 배열 반환
     if (contentType === 'movie') {
       return [];
     }
     try {
+=======
+  async ({ tvId = '1399', seasonNumber = '1' }, thunkAPI) => {
+    try {
+      // v3 엔드포인트: api_key는 쿼리 파라미터로 전달
+>>>>>>> origin/dev
       const url = `${BASE_URL}/tv/${tvId}/season/${seasonNumber}?language=ko-KR&api_key=${API_KEY_V3}`;
       const response = await axios.get(url, optionsv3);
       const episodes = response.data.episodes;
@@ -69,6 +78,7 @@ export const getEpisode = createAsyncThunk(
   }
 );
 
+<<<<<<< HEAD
 // // TV 추천 목록 가져오기
 // export const getTVRecommendations = createAsyncThunk(
 //   'tv/getTVRecommendations',
@@ -284,3 +294,36 @@ export const getCertification = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.response?.data || error.message);
     }}
 );
+=======
+// 자격 정보
+export const getCertification = createAsyncThunk('Certification/getCertification', async ({ tvId }, thunkAPI) => {
+  try {
+    // TV 콘텐츠의 인증 정보 엔드포인트
+    const url = `${BASE_URL}/tv/${tvId}/content_ratings?api_key=${API_KEY_V3}`;
+    const response = await axios.get(url, optionsv3);
+    // 인증 정보는 results 배열에 들어있습니다.
+    const certifications = response.data.results;
+    return certifications;
+  } catch (error) {
+    console.error('Error fetching certifications:', error);
+    return thunkAPI.rejectWithValue(error.response?.data || error.message);
+  }
+});
+
+// 추천
+export const getRecommendations = createAsyncThunk(
+  'Episode/getEpisode',
+  async ({ tvId = '1399', seasonNumber = '1' }, thunkAPI) => {
+    try {
+      // v3 엔드포인트: api_key는 쿼리 파라미터로 전달
+      const url = `${BASE_URL}/tv/${tvId}/season/${seasonNumber}?language=ko-KR&api_key=${API_KEY_V3}`;
+      const response = await axios.get(url, optionsv3);
+      const recommendations = response.data.recommendations;
+      return recommendations;
+    } catch (error) {
+      console.error('Error fetching recommendations:', error);
+      return thunkAPI.rejectWithValue(error.response?.data || error.message);
+    }
+  }
+);
+>>>>>>> origin/dev

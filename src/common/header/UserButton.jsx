@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // import * as S from './style';
 // import { useState, useRef, useEffect } from 'react';
 // import { GuestUserIcon } from '../../ui/icon';
@@ -58,6 +59,8 @@
 // };
 
 // export default UserButton;
+=======
+>>>>>>> origin/dev
 import * as S from './style';
 import { useState, useRef, useEffect } from 'react';
 import { GuestUserIcon } from '../../ui/icon';

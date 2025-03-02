@@ -187,6 +187,7 @@ const InfoCard = () => {
             {detail.genres && detail.genres.length > 0
               ? detail.genres.map((genre, index) => (
                   <span key={`${genre.id}-${index}`}>
+                  <span key={`${genre.id}-${index}`}>
                     {genre.name}
                     {index < detail.genres.length - 1 && ', '}
                   </span>

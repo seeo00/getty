@@ -87,23 +87,17 @@ export const StyledText = styled.div`
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  /* 모바일: expanded가 true면 풀림, false면 2줄 클램프 */
-  -webkit-line-clamp: ${(props) => (props.expanded ? 'none' : 2)};
+  /* expanded가 true면 -webkit-line-clamp 제거, false면 clamp 적용 */
+  -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
   transition: all 0.3s ease;
 
   ${respondTo('desktop')} {
-    /* 데스크탑: 항상 1줄 클램프 */
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: ${(props) => (props.expanded ? 'none' : 1)};
   }
-
   ${respondTo('tablet')} {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    -webkit-line-clamp: ${(props) => (props.expanded ? 'none' : 2)};
+    display: block;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: visible;
   }
 `;
 
@@ -241,9 +235,10 @@ export const Overview = styled.p`
     ${(props) => (!props.expanded ? '-webkit-line-clamp: 2;' : '')}
   }
 
+
   ${respondTo('mobile')} {
-    margin: 16px 0;
-    font-size: 14px;
+		margin: 16px 0;
+		font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -386,12 +381,8 @@ export const InfoCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 26px; //탭버튼 마진제외
-  margin-bottom: 40px;
-  max-width: 1159;
-  ${respondTo('desktop')} {
-    margin-top: 40px;
-  }
+	margin-top: 26px;//탭버튼 마진제외
+max-width: 1159;
   @media (min-width: 768px) {
     flex-wrap: nowrap;
     align-items: flex-start;
@@ -407,6 +398,12 @@ export const TextAndDetailWrapper = styled.div`
   gap: 16px;
   padding: 0 0 0 40px;
 
+  ${respondTo('desktop')} {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
   ${respondTo('desktop')} {
     display: block;
     font-size: 16px;
@@ -467,39 +464,36 @@ export const TextContainer = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
-  margin: 16px 0 0 0;
+	margin: 16px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left;
+	text-align: left;
 
-  h2 {
-    text-align: left;
+  h2 {text-align: left;
     margin: 0 0 8px;
   }
 
-  p {
-    text-align: left;
+  p {text-align: left;
     margin: 0;
   }
 
-  ${respondTo('desktop')} {
+	${respondTo('desktop')} {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-  }
+	}
   ${respondTo('tablet')} {
     font-size: 12px;
     font-weight: 400;
     line-height: 15px;
   }
-  @media (min-width: 601px) and (max-width: 767px) {
-    order: 1;
+	@media (min-width: 601px) and (max-width: 767px) {
+		order: 1;
     text-align: center;
-    padding: 0 0 0 30px;
-  }
-  ${respondTo('mobile')} {
-    order: 1;
+		padding: 0 0 0 30px;}
+	${respondTo('mobile')} {
+    order: 1; 
     text-align: center;
   }
 `;
@@ -515,16 +509,16 @@ export const DetailList = styled.ul`
   li {
     margin-bottom: 4px;
   }
-  ${respondTo('desktop')} {
-    display: block;
-    width: 100%;
+	${respondTo('desktop')} {
+		display: block;
+    width: 100%; 
     margin: 40px 0 0 0;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
   }
   ${respondTo('tablet')} {
-    font-size: 12px;
+		font-size: 12px;
     font-weight: 400;
     line-height: 11px;
   }
@@ -542,7 +536,6 @@ export const DetailList = styled.ul`
     margin-top: 16px;
   }
 `;
-
 export const NoEpisodeMessage = styled.p`
   color: #aaa;
   text-align: center;

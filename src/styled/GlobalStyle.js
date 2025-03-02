@@ -66,13 +66,9 @@ input, textarea, button {
 .swiper-parent-container {
   width: 100%;
   max-width: 100%;
-  overflow: hidden; /* Swiper가 화면을 넘더라도 가로 스크롤 방지 */
+  overflow: hidden; 
 }
 
-/* .swiper-container {
-  width: 110%; 
-  overflow: visible; 
-} */
 
 .swiper-wrapper {
   width: 100%;

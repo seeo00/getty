@@ -23,6 +23,7 @@ const Displaycontainer = styled.div`
 
 const MediaControlButtons = () => {
   const dispatch = useDispatch();
+<<<<<<< HEAD
   const { category, detailID } = useParams();
   const { detailsData } = useSelector((state) => state.detailsR);
   useEffect(() => {
@@ -30,6 +31,15 @@ const MediaControlButtons = () => {
       dispatch(getDetails({ id: detailID, contentType: category }));
     }
   }, [dispatch, detailsData, detailID, category]);
+=======
+  const { detailType, detailID } = useParams();
+  const { detailsData } = useSelector((state) => state.detailsR);
+  useEffect(() => {
+    if (!detailsData) {
+      dispatch(getDetails({ id: detailID, contentType: detailType }));
+    }
+  }, [dispatch, detailsData, detailID, detailType]);
+>>>>>>> origin/dev
 
   const [isFavorite, setIsFavorite] = useState(false);
   const handleFavoriteClick = () => {
