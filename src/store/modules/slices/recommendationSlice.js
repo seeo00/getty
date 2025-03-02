@@ -22,7 +22,6 @@ const recommendationSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-
     builder
       .addCase(getRecommendations.pending, (state) => {
         state.loading = true;
@@ -30,14 +29,14 @@ const recommendationSlice = createSlice({
       })
       .addCase(getRecommendations.fulfilled, (state, action) => {
         state.loading = false;
-        state.Recommendations = action.payload;
-
+        state.Recommendations = action.payload.recommendations;
+        state.hasMore = action.payload.hasMore;
+        state.currentPage = action.payload.currentPage;
       })
       .addCase(getRecommendations.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
-
   },
 });
 

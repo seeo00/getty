@@ -1,11 +1,12 @@
+// DramaPosterGallery.jsx
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getDetails, getCertification } from '../../store/modules/thunks/getDetailsThunks';
-import { getMovie } from '../../store/modules/thunks/getMovie';
+// import { getRecommendations } from '../../store/modules/thunks/getRecommendations';
 import { respondTo } from '../../styled/GlobalStyle';
 import CardFlexList from '../../ui/card/CardFlexList';
-import LoadingSpinner from '../../ui/LoadingSpinner';
+import { getTrendingWeek } from '../../store/modules/thunks/getCommonThunks';
 
 const GalleryWrap = styled.div`
   margin: 16px 0 0 0;
@@ -28,42 +29,50 @@ const GalleryWrap = styled.div`
 `;
 
 const DramaPosterGallery = () => {
+  // trendingData 대신 trendingWeekData를 사용합니다.
+  const { loading, error, trendingWeekData } = useSelector((state) => state.trendingR);
   const dispatch = useDispatch();
 
-  // Redux 상태에서 필요한 데이터 가져오기
-  const { id, contentType } = useSelector((state) => state.detailsR);
-  const { Recommendations, loading, error } = useSelector((state) => state.recommendationsR);
-  const { movieRecommendations, recommendLoading: movieLoading } = useSelector((state) => state.movieR);
-  const { TVRecommendData, recommendLoading: tvLoading } = useSelector((state) => state.detailsR);
-
   useEffect(() => {
-    if (id) {
-      dispatch(getDetails(id));
-      dispatch(getCertification(id)); 
-     
-      if (contentType === 'tv') {
-        dispatch(getCertification(id));
-      } else if (contentType === 'movie') {
-        dispatch(getMovie(id));
-        dispatch(getCertification(id));
-      }
-    }
-  }, [dispatch, id, contentType]);
+    dispatch(getTrendingWeek());
+  }, [dispatch]);
 
-  // 추천 데이터 선택
-  const recommendData = Recommendations.length > 0 ? Recommendations : (contentType === 'tv' ? TVRecommendData : movieRecommendations);
-  const isLoading = loading || movieLoading || tvLoading;
-
-  if (isLoading && (!recommendData || recommendData.length === 0)) return <LoadingSpinner />;
+  if (loading && (!trendingWeekData || trendingWeekData.length === 0)) return <p>로딩 중...</p>;
   if (error) return <p>데이터를 찾을 수 없습니다.</p>;
 
   return (
     <GalleryWrap>
-      <CardFlexList items={recommendData} loading={isLoading} />
+      <CardFlexList gridType="fourColumn" items={trendingWeekData} loading={loading} />
     </GalleryWrap>
   );
 };
 
 export default DramaPosterGallery;
 
-
+// {movieData && movieData.length > 0 ? (
+// 	<div style={{ marginTop: '20px' }}>
+// 		<h3>관련 영화 정보</h3>
+// 		{movieData.map((movie) => (
+// 			<div
+// 				key={movie.id}
+// 				style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}
+// 			>
+// 				<img
+// 					src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+// 					alt={movie.title}
+// 					style={{ marginRight: '10px' }}
+// 				/>
+// 				<div>
+// 					<strong>{movie.title}</strong>
+// 					<p style={{ margin: 0 }}>
+// 						{movie.overview
+// 							? movie.overview.substring(0, 100) + '...'
+// 							: '개요 정보 없음'}
+// 					</p>
+// 				</div>
+// 			</div>
+// 		))}
+// 	</div>
+// ) : (
+// 	<p></p>
+// )}

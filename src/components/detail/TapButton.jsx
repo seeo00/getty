@@ -4,10 +4,8 @@ import EpisodeSection from './EpisodeCard';
 import ReviewCard from './ReviewCard';
 import InfoCard from './InfoCard';
 import { SortAndCountDropdown } from './SortAndCountButton';
-// import Recommendation from './Recommendation';
-// import DramaPosterGallery from './DetailPosterGallery';
-import RecommendComponent from './RecommendComponent';
-// import DramaPosterGallery from './DetailPosterGallery';
+import DramaPosterGallery from './DetailPosterGallery';
+// import RecommendComponent from './RecommendComponent';
 
 const TabButton = styled.button`
   background: none;
@@ -63,8 +61,8 @@ const DetailTabButtons = ({ tvId, category, hasEpisode }) => {
       </div>
       <div>
         {activeTab === 'episode' && <EpisodeSection tvId={tvId} initialSeason="1" />}
-        {/* {activeTab === 'recommend' && <DramaPosterGallery />} */}
-        {activeTab === 'recommend' && <RecommendComponent />}
+        {activeTab === 'recommend' && <DramaPosterGallery />}
+        {/* {activeTab === 'recommend' && <RecommendComponent />} */}
         {activeTab === 'review' && (
           <>
             <SortAndCountDropdown reviewCount={reviewCount} onSortLike={handleSortLike} onSortDate={handleSortDate} />
