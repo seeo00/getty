@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getTVRecommendations, getMovieRecommendations } from '../thunks/getDetailsThunks';
+import { getRecommendations } from '../thunks/getDetailsThunks';
 
 const initialState = {
   Recommendations: [],
@@ -22,37 +22,22 @@ const recommendationSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    // TV 추천 처리
+
     builder
-      .addCase(getTVRecommendations.pending, (state) => {
+      .addCase(getRecommendations.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(getTVRecommendations.fulfilled, (state, action) => {
+      .addCase(getRecommendations.fulfilled, (state, action) => {
         state.loading = false;
         state.Recommendations = action.payload;
-        // 필요 시 다른 상태 업데이트
+
       })
-      .addCase(getTVRecommendations.rejected, (state, action) => {
+      .addCase(getRecommendations.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });
-      
-    // 영화 추천 처리
-    builder
-      .addCase(getMovieRecommendations.pending, (state) => {
-        state.loading = true;
-        state.error = null;
-      })
-      .addCase(getMovieRecommendations.fulfilled, (state, action) => {
-        state.loading = false;
-        state.Recommendations = action.payload;
-        // 필요 시 다른 상태 업데이트
-      })
-      .addCase(getMovieRecommendations.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message;
-      });
+
   },
 });
 

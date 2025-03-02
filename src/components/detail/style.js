@@ -251,6 +251,59 @@ export const Overview = styled.p`
   }
 `;
 
+export const InfoOverview = styled.p`
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 15px;
+  color: ${color.white};
+  overflow: hidden;
+
+  ${respondTo('desktop')} {
+    font-size: 16px;
+		line-height: 24px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 5;' : '')}
+  }
+
+  ${respondTo('tablet')} {
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 4;' : '')}
+  }
+
+  ${respondTo('mobile')} {
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 3;' : '')}
+  }
+`;
+export const Morebutton = styled.div`
+  display: inline-block;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+  margin-top: 5px;
+  ${respondTo('tablet')} {
+    font-size: 12px;
+  }
+
+  ${respondTo('mobile')} {
+    font-size: 12px;
+    display: -webkit-box;
+  }
+
+`;
+
 export const OverviewS = styled.p`
   margin: 10px 0;
   font-size: 14px;
@@ -326,15 +379,6 @@ export const ReviewText = styled.p`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
   `}
-`;
-
-export const MoreButton = styled.span`
-  font-size: 14px;
-  line-height: 20px;
-  color: ${color.white};
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 4px;
 `;
 
 // 전체 InfoCard 컨테이너

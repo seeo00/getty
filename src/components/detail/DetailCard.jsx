@@ -99,14 +99,14 @@ const DetailCard = () => {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#aaaaaa',
+                color: '#8D8D8D',
                 cursor: 'pointer',
                 padding: 0,
-                marginTop: '5px',
+                marginTop: '3px',
                 fontSize: '14px',
               }}
             >
-              ...더 보기
+              더 보기
             </button>
           )}
         </div>

@@ -127,6 +127,23 @@ export const certificationMapping = {
   },
 };
 
+export const countryMap = {
+  US: '미국',
+  KR: '한국',
+  AR: '아르헨티나',
+  JP: '일본',
+  FR: '프랑스',
+  CN: '중국',
+  CA: '캐나다',
+  IN: '인도',
+  NO: '노르웨이',
+  ES: '스페인',
+  DE: '독일',
+  MX: '멕시코',
+  GB: '영국',
+  AU: '호주',
+};
+
 export const getKoreanRating = (countryCode, certificationCode) => {
   // 공백 제거 후 대문자로 변환
   const normalizedCountry = countryCode ? countryCode.trim().toUpperCase() : '';

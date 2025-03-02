@@ -69,38 +69,138 @@ export const getEpisode = createAsyncThunk(
   }
 );
 
-// TV 추천 목록 가져오기
-export const getTVRecommendations = createAsyncThunk(
-  'tv/getTVRecommendations',
-  async (tvId, thunkAPI) => {
+// // TV 추천 목록 가져오기
+// export const getTVRecommendations = createAsyncThunk(
+//   'tv/getTVRecommendations',
+//   async (tvId, thunkAPI) => {
+//     try {
+//       let allResults = [];
+//       let page = 1;
+//       const seenIds = new Set();
+
+//       while (allResults.length < 24 && page <= 10) {
+//         const response = await axios.get(
+//           `https://api.themoviedb.org/3/tv/${tvId}/recommendations`,
+//           {
+//             ...options,
+//             params: { language: 'ko-KR', page }, // 필요한 파라미터 추가
+//           }
+//         );
+
+//         if (!response.data.results.length) break;
+
+//         const filteredResults = response.data.results.filter(
+//           (tv) =>
+//             tv.overview &&
+//             tv.poster_path &&
+//             tv.backdrop_path &&
+//             !seenIds.has(tv.id)
+//         );
+
+//         filteredResults.forEach((tv) => {
+//           if (allResults.length < 24) {
+//             seenIds.add(tv.id);
+//             allResults.push(tv);
+//           }
+//         });
+
+//         page++;
+//       }
+
+//       return allResults.slice(0, 24);
+//     } catch (error) {
+//       console.error('TV 추천 오류:', error.message);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
+// // 영화 추천 목록 가져오기
+// export const getMovieRecommendations = createAsyncThunk(
+//   'movie/getMovieRecommendations',
+//   async (movieId, thunkAPI) => {
+//     try {
+//       let allResults = [];
+//       let page = 1;
+//       const seenIds = new Set();
+
+//       while (allResults.length < 24 && page <= 10) {
+//         const response = await axios.get(
+//           `https://api.themoviedb.org/3/movie/${movieId}/recommendations`,
+//           {
+//             ...options,
+//             params: { language: 'ko-KR', page }, // 필요한 파라미터 추가
+//           }
+//         );
+
+//         if (!response.data.results.length) break;
+
+//         const filteredResults = response.data.results.filter(
+//           (movie) =>
+//             movie.overview &&
+//             movie.poster_path &&
+//             movie.backdrop_path &&
+//             !seenIds.has(movie.id)
+//         );
+
+//         filteredResults.forEach((movie) => {
+//           if (allResults.length < 24) {
+//             seenIds.add(movie.id);
+//             allResults.push(movie);
+//           }
+//         });
+
+//         page++;
+//       }
+
+//       return allResults.slice(0, 24);
+//     } catch (error) {
+//       console.error('영화 추천 오류:', error.message);
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
+
+// TV와 영화 추천을 모두 처리하는 recommend thunk
+export const getRecommendations = createAsyncThunk(
+  'recommend/getRecommendations',
+  async ({ type, id }, thunkAPI) => {
     try {
       let allResults = [];
       let page = 1;
       const seenIds = new Set();
 
+      // type에 따라 엔드포인트 선택
+      let endpoint = '';
+      if (type === 'tv') {
+        endpoint = `https://api.themoviedb.org/3/tv/${id}/recommendations`;
+      } else if (type === 'movie') {
+        endpoint = `https://api.themoviedb.org/3/movie/${id}/recommendations`;
+      } else {
+        throw new Error('지원하지 않는 타입입니다.');
+      }
+
+      // 최대 24개의 결과를 10페이지까지 가져옴
       while (allResults.length < 24 && page <= 10) {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/tv/${tvId}/recommendations`,
-          {
-            ...options,
-            params: { language: 'ko-KR', page }, // 필요한 파라미터 추가
-          }
-        );
+        const response = await axios.get(endpoint, {
+          ...options,
+          params: { language: 'ko-KR', page },
+        });
 
         if (!response.data.results.length) break;
 
         const filteredResults = response.data.results.filter(
-          (tv) =>
-            tv.overview &&
-            tv.poster_path &&
-            tv.backdrop_path &&
-            !seenIds.has(tv.id)
+          (item) =>
+            item.overview &&
+            item.poster_path &&
+            item.backdrop_path &&
+            !seenIds.has(item.id)
         );
 
-        filteredResults.forEach((tv) => {
+        filteredResults.forEach((item) => {
           if (allResults.length < 24) {
-            seenIds.add(tv.id);
-            allResults.push(tv);
+            seenIds.add(item.id);
+            allResults.push(item);
           }
         });
 
@@ -109,53 +209,7 @@ export const getTVRecommendations = createAsyncThunk(
 
       return allResults.slice(0, 24);
     } catch (error) {
-      console.error('TV 추천 오류:', error.message);
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-// 영화 추천 목록 가져오기
-export const getMovieRecommendations = createAsyncThunk(
-  'movie/getMovieRecommendations',
-  async (movieId, thunkAPI) => {
-    try {
-      let allResults = [];
-      let page = 1;
-      const seenIds = new Set();
-
-      while (allResults.length < 24 && page <= 10) {
-        const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}/recommendations`,
-          {
-            ...options,
-            params: { language: 'ko-KR', page }, // 필요한 파라미터 추가
-          }
-        );
-
-        if (!response.data.results.length) break;
-
-        const filteredResults = response.data.results.filter(
-          (movie) =>
-            movie.overview &&
-            movie.poster_path &&
-            movie.backdrop_path &&
-            !seenIds.has(movie.id)
-        );
-
-        filteredResults.forEach((movie) => {
-          if (allResults.length < 24) {
-            seenIds.add(movie.id);
-            allResults.push(movie);
-          }
-        });
-
-        page++;
-      }
-
-      return allResults.slice(0, 24);
-    } catch (error) {
-      console.error('영화 추천 오류:', error.message);
+      console.error('추천 오류:', error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
