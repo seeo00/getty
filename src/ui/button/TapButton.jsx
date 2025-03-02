@@ -1,5 +1,4 @@
-// DetailTabButtons.jsx
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import EpisodeSection from '../../components/detail/EpisodeCard';
 import ReviewCard from '../../components/detail/ReviewCard';
@@ -25,7 +24,13 @@ const DetailTabButtons = ({ tvId }) => {
   const [activeTab, setActiveTab] = useState('episode');
   const [likeCount, setLikeCount] = useState(12);
 
-  //기능 미구현
+  useEffect(() => {
+    if (activeTab === 'episode' && !tvId) {
+      setActiveTab('recommend');
+    }
+  }, [tvId, activeTab]);
+
+  // 기능 미구현 예시
   const handleSortLike = () => {
     console.log('날짜순');
   };
@@ -38,7 +43,7 @@ const DetailTabButtons = ({ tvId }) => {
     setLikeCount((prevCount) => prevCount + 1);
   };
 
-  //기능 미구현 예시 갯수
+  // 기능 미구현 예시 갯수
   const reviewCount = '000';
 
   return (
@@ -59,7 +64,6 @@ const DetailTabButtons = ({ tvId }) => {
       </div>
       <div>
         {activeTab === 'episode' && <EpisodeSection tvId={tvId} initialSeason="1" />}
-
         {activeTab === 'recommend' && <DramaPosterGallery />}
         {activeTab === 'review' && (
           <>

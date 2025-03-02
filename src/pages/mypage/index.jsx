@@ -1,9 +1,16 @@
+import { InnerContainer } from '../../common/layout/InnerContainer';
+import { ProfileInfo } from '../../components';
+import MypageContent from '../../components/mypage/MypageContent';
+import * as S from './style';
+
 const MyPage = () => {
   return (
-    <div>
-      마이페이지
-      {/* <Outlet /> */}
-    </div>
+    <S.MypageContainer>
+      <InnerContainer>
+        <ProfileInfo />
+        <MypageContent />
+      </InnerContainer>
+    </S.MypageContainer>
   );
 };
 

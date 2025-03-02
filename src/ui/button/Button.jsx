@@ -20,11 +20,12 @@ const activeStyles = css`
   }
 `;
 
-const outlineStyles = css`
+const outlineStyles = (outlineColor) => css`
   background-color: transparent;
-  color: ${color.white};
-  border: 2px solid white;
+  color: ${outlineColor || color.white};
+  border: 2px solid ${outlineColor || 'white'};
   transition: background-color 0.3s;
+
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
@@ -32,16 +33,6 @@ const outlineStyles = css`
 
 export const Button = styled.button`
   width: ${(props) => props.width || '100%'};
-  /* height: ${(props) => props.height || '56px'}; */
-
-  ${(props) =>
-    props.isResponsive &&
-    css`
-      @media (max-width: 1279px) {
-        width: 100%;
-      }
-    `}
-
   display: flex;
   gap: 12px;
   justify-content: center;
@@ -51,7 +42,23 @@ export const Button = styled.button`
   font-weight: 500;
   font-size: 1rem;
 
-  ${(props) => (props.$variant === 'outline' ? outlineStyles : props.disabled ? disabledStyles : activeStyles)}
+  ${(props) =>
+    props.isResponsive &&
+    css`
+      @media (max-width: 1279px) {
+        width: 100%;
+      }
+    `}
+
+  ${({ $variant, disabled, outlineColor }) =>
+    $variant === 'outline' ? outlineStyles(outlineColor) : disabled ? disabledStyles : activeStyles}
 `;
 
 export default Button;
+
+export const SmallButton = styled(Button)`
+  padding: 8px 12px;
+  font-size: 0.875rem;
+  border-radius: 6px;
+  font-weight: 400;
+`;

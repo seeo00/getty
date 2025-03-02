@@ -20,7 +20,7 @@ const UserDropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave 
     navigate('/');
     setTimeout(() => {
       window.location.reload();
-    }, 200);
+    }, 100);
 
     onClose();
   };
@@ -32,7 +32,12 @@ const UserDropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave 
   ];
 
   const loginItems = [
-    { id: 'profile', label: '프로필 전환', Icon: UserProfileIcon, onClick: onClose },
+    {
+      id: 'profile',
+      label: user.subscribed ? '프로필 전환' : '프로필 편집',
+      Icon: UserProfileIcon,
+      onClick: () => navigate('mypage/profile'),
+    },
     {
       id: 'ticket',
       label: '이용권',
@@ -62,6 +67,7 @@ const UserDropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave 
       onClose={onClose}
       disableScrollLock={true}
       disableAutoFocusItem={true}
+      disableEnforceFocus={true} // 🔹 추가
       anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       MenuListProps={{
@@ -88,7 +94,7 @@ const UserDropdownMenu = ({ anchorEl, open, onClose, onMouseEnter, onMouseLeave 
           <S.StyledMenuItem key={item.id} onClick={item.onClick} disableRipple={true}>
             <div>
               <ListItemIcon>
-                <Icon width={20} height={20} color="#aaa" />
+                <Icon width={20} height={20} color={color.gray[70]} />
               </ListItemIcon>
               <ListItemText>{item.label}</ListItemText>
             </div>

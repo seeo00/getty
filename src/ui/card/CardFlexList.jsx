@@ -12,22 +12,22 @@ const CardContentContainer = styled.div`
     gap: 12px;
   }
   > div {
-		flex-basis: ${({ gridType }) => gridType === 'fourColumn' ? 'calc(33.3333% - (16px / 3))' : 'calc(33.3333% - (16px / 3))'};
+    flex-basis: calc(33.3333% - (16px / 3));
 
     ${respondTo('tabletMore')} {
-			flex-basis: ${({ gridType }) => gridType === 'fourColumn' ? 'calc(24.5% - (16px / 4))' : 'calc(20% - (32px / 5))'};
+      flex-basis: calc(20% - (32px / 5));
     }
 
     ${respondTo('desktop')} {
-    flex-basis: ${({ gridType }) => gridType === 'fourColumn' ? 'calc(24.5% - (16px / 4))' : 'calc(20% - (48px / 5))'};
+      flex-basis: calc(20% - (48px / 5));
     }
   }
 `;
 
-const CardFlexList = ({ items = [], loading, lastElementRef, gridType}) => {
+const CardFlexList = ({ items = [], loading, lastElementRef }) => {
   return (
     <>
-      <CardContentContainer gridType={gridType}>
+      <CardContentContainer>
         {loading && items.length === 0
           ? Array.from({ length: 10 }).map((_, index) => (
               <div key={index}>

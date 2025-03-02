@@ -4,22 +4,23 @@ import GlobalStyle from './styled/GlobalStyle';
 import {
   Animation,
   Auth,
+  Detail,
   Documentary,
   Drama,
   Latest,
   Main,
   More,
   Movie,
+  MyPage,
   Original,
   Popular,
   Profile,
   Reality,
+  Search,
   Subscription,
 } from './pages';
 import SimpleLayout from './common/layout/SimpleLayout';
 import Layout from './common/layout/Layout';
-import MyPage from './pages/mypage';
-import Detail from './pages/detail';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -49,6 +50,7 @@ function App() {
             <Route path="/category/animation" element={<Animation />} />
             <Route path="/category/documentary" element={<Documentary />} />
             <Route path="/more" element={<More />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/mypage" element={<MyPage />} />
             <Route path="/category/:category/:detailID" element={<Detail />} />
           </Route>

@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCertification } from '../thunks/getCertification'
-
+import { getCertification } from '../thunks/getDetailsThunks';
 
 const initialState = {
   certificationData: [],
@@ -26,11 +25,11 @@ const certificationSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-			.addCase(getCertification.fulfilled, (state, action) => {
-				state.loading = false;
-				// 현재 요청한 인증 데이터를 state에 저장
-				state.certificationData = action.payload;
-			})
+      .addCase(getCertification.fulfilled, (state, action) => {
+        state.loading = false;
+        // 현재 요청한 인증 데이터를 state에 저장
+        state.certificationData = action.payload;
+      })
       .addCase(getCertification.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload || action.error.message;

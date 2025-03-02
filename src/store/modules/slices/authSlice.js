@@ -35,6 +35,8 @@ const initialState = {
           },
           subscriptionPlan: 'Premium',
           subscribed: true,
+          playlist: [],
+          likedContents: [],
         },
       ],
   authed: localStorage.getItem('authed') === 'true' ? true : false,
@@ -61,23 +63,22 @@ export const authSlice = createSlice({
         state.isExistingEmail = false;
       }
     },
+
     // 로그인
     login: (state, action) => {
       const { password, keepLogin } = action.payload;
-      const Newuser = state.usersData.find((user) => user.password === password);
-      if (!Newuser) {
-        state.errorMessage = '비밀번호가 일치하지 않습니다. 다시 입력해주세요.';
+
+      const Newuser = state.usersData.find((user) => user.email === state.enteredEmail);
+
+      if (!Newuser || Newuser.password !== password) {
+        state.errorMessage = '비밀번호가 올바르지 않습니다. 다시 입력해주세요.';
         return;
       }
-      if (!Newuser.profiles) {
-        state.errorMessage = '프로필 정보를 찾을 수 없습니다.';
-        return;
-      }
+
       state.errorMessage = '';
       state.authed = true;
       state.user = Newuser;
 
-      // 로그인 후 프로필 선택
       const profilesCount = Newuser.profiles.length || 0;
       const lastSelectedProfile = localStorage.getItem('selectedProfile')
         ? JSON.parse(localStorage.getItem('selectedProfile'))
@@ -104,6 +105,7 @@ export const authSlice = createSlice({
     // 회원가입
     signup: (state, action) => {
       const { email, password } = action.payload;
+      // 기본 프로필 닉네임 생성: 이메일의 '@' 앞부분을 가져와 최대 10자로 제한
       const profileName = email.split('@')[0].slice(0, 10);
 
       const Newuser = {

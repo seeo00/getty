@@ -624,3 +624,150 @@ export const AutoMoveText = styled.p`
     margin-top: 20px;
   }
 `;
+
+// 마이페이지
+export const ProfileContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-top: 16px;
+  ${respondTo('tabletMore')} {
+    gap: 28px;
+    margin-bottom: 0;
+    padding: 16px 0 28px;
+  }
+  ${respondTo('desktop')} {
+    padding: 16px 0 40px;
+  }
+`;
+
+export const ProfileImage = styled.img`
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  object-fit: cover;
+  /* background-color: #fff; */
+  ${respondTo('tabletMore')} {
+    width: 120px;
+    height: 120px;
+  }
+`;
+
+export const ProfileInfoBox = styled.div`
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  display: flex;
+  gap: 8px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  ${respondTo('tabletMore')} {
+    margin-bottom: 16px;
+    h2 {
+      font-size: 1.5rem;
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+`;
+
+export const ProfileButtonBoxMobile = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  ${respondTo('tabletMore')} {
+    display: none;
+  }
+`;
+
+export const ProfileButtonBoxDesktop = styled.div`
+  display: none;
+
+  ${respondTo('tabletMore')} {
+    display: flex;
+    gap: 16px;
+  }
+`;
+
+export const SectionContainer = styled.section`
+  margin-bottom: 24px;
+`;
+
+export const SectionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  h3 {
+    font-weight: 500;
+  }
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+export const SectionContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0;
+  p {
+    font-size: 0.875rem;
+  }
+`;
+
+export const ContentList = styled.ul`
+  a,
+  button {
+    width: 100%;
+    /* color: ${color.gray[100]}; */
+    padding: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    > span {
+      display: flex;
+      align-items: center;
+    }
+  }
+`;
+
+export const TabContainer = styled.div`
+  display: flex;
+  gap: 16px;
+  align-items: center;
+`;
+
+export const TabButton = styled.button`
+  background: none;
+  border: none;
+  padding: 8px 0;
+  cursor: pointer;
+`;
+
+export const TabText = styled.span`
+  display: inline-block;
+  padding-bottom: 13px;
+  border-bottom: 2px solid ${({ $active }) => ($active ? 'blue' : 'transparent')};
+  color: ${({ $active }) => ($active ? color.white : color.gray[100])};
+`;
+
+export const TabContentAlert = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 120px 0;
+`;

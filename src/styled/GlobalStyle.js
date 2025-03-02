@@ -62,6 +62,18 @@ input, textarea, button {
 }
 
 //전역 스와이퍼 스타일
+
+.swiper-parent-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden; /* Swiper가 화면을 넘더라도 가로 스크롤 방지 */
+}
+
+/* .swiper-container {
+  width: 110%; 
+  overflow: visible; 
+} */
+
 .swiper-wrapper {
   width: 100%;
   margin: 0 auto;

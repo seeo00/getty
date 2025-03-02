@@ -8,11 +8,11 @@ import VideoPlayIcon from '../../ui/icon/VideoPlayIcon';
 import * as S from './style';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { NavPopularIcon } from '../../ui/icon';
-import Thumbnail from '../../ui/card/Thumbnail';
+import Thumbnail from '../../components/detail/Thumbnail';
 import DetailCard from '../../components/detail/DetailCard';
-import DetailTabButtons from '../../ui/button/TapButton';
+import DetailTabButtons from '../../components/detail/TapButton';
 import LoadingSpinner from '../../ui/LoadingSpinner';
 import DetailTrailer from '../../components/detail/DetailTrailer';
 import Button from '../../ui/button/Button';
@@ -23,7 +23,6 @@ const Detail = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { detailsData, loading, error } = useSelector((state) => state.detailsR);
-  // const { detailType, detailID } = useParams();
   const { category, detailID } = useParams();
   const [showTrailer, setShowTrailer] = useState(false);
 
@@ -38,10 +37,6 @@ const Detail = () => {
       setShowTrailer(true);
     }
   };
-
-  // useEffect(() => {
-  //   dispatch(getDetails({ id: detailID, contentType: detailType }));
-  // }, [dispatch, detailID, detailType]);
 
   useEffect(() => {
     if (!category || !detailID) return;
@@ -72,9 +67,6 @@ const Detail = () => {
   if (error) return <div>에러가 발생했습니다</div>;
   if (!detailsData) return null;
 
-	const movieTitle = detailsData.title || detailsData.name;
-
-
   return (
     <>
       <S.Overlay>
@@ -82,7 +74,7 @@ const Detail = () => {
           <S.VisualWrap>
             <Thumbnail backdropPath={detailsData.backdrop_path} full />
             <S.VisualContent>
-              <S.TitleImg>{movieTitle}</S.TitleImg>
+              <S.TitleImg>{detailsData.name || detailsData.title}</S.TitleImg>
               <S.ButtonControl>
                 {!authed ? (
                   <Button width="auto" onClick={() => navigate('/auth')}>
@@ -100,10 +92,12 @@ const Detail = () => {
                     재생
                   </Button>
                 )}
-                <CircleButton border onClick={handleFavoriteClick}>
-                  <FavoriteIcon fill={isFavorite ? 'red' : 'none'} />
-                  <span className="icon-txt">관심</span>
-                </CircleButton>
+                {authed && (
+                  <CircleButton border onClick={handleFavoriteClick}>
+                    <FavoriteIcon fill={isFavorite ? 'red' : 'none'} />
+                    <span className="icon-txt">관심</span>
+                  </CircleButton>
+                )}
                 <CircleButton border>
                   <NavPopularIcon fill={color.yellow} color={color.yellow} />
                   <span className="icon-txt">{detailsData.vote_average.toFixed(1)}</span>

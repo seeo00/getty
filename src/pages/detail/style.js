@@ -113,7 +113,7 @@ export const VisualContent = styled.div`
 
 //썸네일위 제목
 export const TitleImg = styled.div`
-  display: none;
+  display: block;
 
   ${respondTo('desktop')} {
     display: block;
@@ -122,7 +122,6 @@ export const TitleImg = styled.div`
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     /* 이미지 없을때 텍스트 */
     margin-bottom: 40px;
-    /* background-color: blue; */
   }
   ${respondTo('tablet')} {
     display: block;
@@ -131,7 +130,6 @@ export const TitleImg = styled.div`
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
     /* 이미지 없을때 텍스트 */
     margin-bottom: 40px;
-    /* background-color: blue; */
   }
 `;
 

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { color } from '../../styled/common';
 import { respondTo } from '../../styled/GlobalStyle';
 
-export const Container = styled.div``
+export const Container = styled.div``;
 
 export const DetailContainer = styled.div`
   background: ${color.gray[800]};
@@ -12,17 +12,17 @@ export const EpiContainer = styled.div`
   padding: 16px;
   margin: 0 -16px 0 -16px;
   background: ${color.gray[800]};
-	border-top-left-radius: 8px;
+  border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-	border-bottom: solid 1px ${color.gray[80]};
+  border-bottom: solid 1px ${color.gray[80]};
   &:hover {
-		border-radius: 8px;
+    border-radius: 8px;
     background: ${color.gray[300]};
   }
   ${respondTo('desktop')} {
     padding: 40px;
     margin: 0 -40px 0 -40px;
-   
+
     background: ${color.gray[800]};
   }
   ${respondTo('tablet')} {
@@ -71,7 +71,7 @@ export const Image = styled.img`
     width: 269px;
     height: 164px;
     object-fit: cover;
-	}
+  }
   ${respondTo('tablet')} {
     width: 269px;
     height: 164px;
@@ -83,12 +83,12 @@ export const Image = styled.img`
 export const StyledText = styled.div`
   margin: 10px 0;
   font-size: 14px;
-  color: ${color.gray[70]};
+  color: ${color.gray[90]};
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   /* 모바일: expanded가 true면 풀림, false면 2줄 클램프 */
-  -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
+  -webkit-line-clamp: ${(props) => (props.expanded ? 'none' : 2)};
   transition: all 0.3s ease;
 
   ${respondTo('desktop')} {
@@ -96,14 +96,14 @@ export const StyledText = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    -webkit-line-clamp: ${props => (props.expanded ? 'none' : 1)};
+    -webkit-line-clamp: ${(props) => (props.expanded ? 'none' : 1)};
   }
 
   ${respondTo('tablet')} {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    -webkit-line-clamp: ${props => (props.expanded ? 'none' : 2)};
+    -webkit-line-clamp: ${(props) => (props.expanded ? 'none' : 2)};
   }
 `;
 
@@ -138,30 +138,29 @@ export const EpiTitle = styled.h2`
   justify-content: space-between;
   align-items: center;
   font-weight: 700;
-	color: ${color.gray[20]};
+  color: ${color.gray[20]};
 
   ${respondTo('mobile')} {
     flex-wrap: wrap;
     & > span {
       width: 100%;
     }
-  };
-	${respondTo('desktop')} {
-		font-size: 16px;
-		};
-		${respondTo('tablet')} {
-			font-size: 14px;
-		};
-		${respondTo('mobile')} {
-			font-size: 14px;
-		};
-	
+  }
+  ${respondTo('desktop')} {
+    font-size: 16px;
+  }
+  ${respondTo('tablet')} {
+    font-size: 14px;
+  }
+  ${respondTo('mobile')} {
+    font-size: 14px;
+  }
 `;
 
 export const Title = styled.h2`
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   font-weight: 700;
 
@@ -170,17 +169,16 @@ export const Title = styled.h2`
     & > span {
       width: 100%;
     }
-  };
-	${respondTo('desktop')} {
-		font-size: 16px;
-		};
-		${respondTo('tablet')} {
-			font-size: 14px;
-		};
-		${respondTo('mobile')} {
-			font-size: 14px;
-		};
-	
+  }
+  ${respondTo('desktop')} {
+    font-size: 16px;
+  }
+  ${respondTo('tablet')} {
+    font-size: 14px;
+  }
+  ${respondTo('mobile')} {
+    font-size: 14px;
+  }
 `;
 
 export const EpiOverview = styled.p`
@@ -191,30 +189,30 @@ export const EpiOverview = styled.p`
   overflow: hidden;
 
   ${respondTo('desktop')} {
-		margin: 40px 0;
-		font-size: 16px;
+    margin: 40px 0;
+    font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props => !props.expanded ? '-webkit-line-clamp: 3;' : ''}
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 3;' : '')}
   }
-  
+
   ${respondTo('tablet')} {
-		margin: 16px 0;
-		font-size: 14px;
+    margin: 16px 0;
+    font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 2;' : '')}
   }
-  
+
   ${respondTo('mobile')} {
-		margin: 16px 0;
-		font-size: 14px;
+    margin: 16px 0;
+    font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 2;' : '')}
   }
 `;
 
@@ -226,40 +224,41 @@ export const Overview = styled.p`
   overflow: hidden;
 
   ${respondTo('desktop')} {
-		margin: 40px 0;
-		font-size: 16px;
+    margin: 40px 0;
+    font-size: 16px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props => !props.expanded ? '-webkit-line-clamp: 3;' : ''}
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 3;' : '')}
   }
-  
+
   ${respondTo('tablet')} {
-		margin: 16px 0;
-		font-size: 14px;
+    margin: 16px 0;
+    font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 2;' : '')}
   }
-  
+
   ${respondTo('mobile')} {
-		margin: 16px 0;
-		font-size: 14px;
+    margin: 16px 0;
+    font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    ${props => !props.expanded ? '-webkit-line-clamp: 2;' : ''}
+    ${(props) => (!props.expanded ? '-webkit-line-clamp: 2;' : '')}
   }
 `;
 
 export const OverviewS = styled.p`
-margin: 10px 0;
+  margin: 10px 0;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
   color: ${color.gray[70]};
-  overflow: hidden;`
+  overflow: hidden;
+`;
 
 export const ImageWrapper = styled.div`
   position: relative;
@@ -276,7 +275,7 @@ export const IconWrapper = styled.div`
 
 export const ReviewCardContainer = styled.div`
   padding: 16px 0;
-	margin-bottom: 40px;
+  margin-bottom: 40px;
   border-bottom: 1px solid ${color.gray[500]};
 `;
 
@@ -338,18 +337,17 @@ export const MoreButton = styled.span`
   margin-top: 4px;
 `;
 
-
 // 전체 InfoCard 컨테이너
 export const InfoCardContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-	margin-top: 26px;//탭버튼 마진제외
-	margin-bottom: 40px;
-max-width: 1159;
-${respondTo('desktop')} {
-		margin-top: 40px;
-	}
+  margin-top: 26px; //탭버튼 마진제외
+  margin-bottom: 40px;
+  max-width: 1159;
+  ${respondTo('desktop')} {
+    margin-top: 40px;
+  }
   @media (min-width: 768px) {
     flex-wrap: nowrap;
     align-items: flex-start;
@@ -365,12 +363,12 @@ export const TextAndDetailWrapper = styled.div`
   gap: 16px;
   padding: 0 0 0 40px;
 
-	${respondTo('desktop')} {
-		display:block;
-		font-size: 16px;
-		font-weight: 400;
-		line-height: 24px;
-	}
+  ${respondTo('desktop')} {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+  }
   ${respondTo('tablet')} {
     flex-direction: column;
     gap: 40px;
@@ -378,25 +376,25 @@ export const TextAndDetailWrapper = styled.div`
     font-weight: 400;
     line-height: 15px;
   }
-	@media (min-width: 601px) and (max-width: 767px) {
-		display: contents;
-		flex-direction: column;
-		padding: 0 0 0 40px;
-    gap: 40px;}
+  @media (min-width: 601px) and (max-width: 767px) {
+    display: contents;
+    flex-direction: column;
+    padding: 0 0 0 40px;
+    gap: 40px;
+  }
   ${respondTo('mobile')} {
     display: contents;
-		flex-direction: column;
+    flex-direction: column;
     gap: 40px;
     font-size: 14px;
     font-weight: 400;
     line-height: 15px;
   }
-
 `;
 
 // 포스터 컨테이너
 export const PosterContainer = styled.div`
-  width: clamp(114px, 20vw, 264px);//비율유지 반응형
+  width: clamp(114px, 20vw, 264px); //비율유지 반응형
   aspect-ratio: 264 / 365;
   overflow: hidden;
   border-radius: 8px;
@@ -425,36 +423,39 @@ export const TextContainer = styled.div`
   font-size: 12px;
   font-weight: 400;
   line-height: 15px;
-	margin: 16px 0 0 0;
+  margin: 16px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-	text-align: left;
+  text-align: left;
 
-  h2 {text-align: left;
+  h2 {
+    text-align: left;
     margin: 0 0 8px;
   }
 
-  p {text-align: left;
+  p {
+    text-align: left;
     margin: 0;
   }
 
-	${respondTo('desktop')} {
+  ${respondTo('desktop')} {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
-	}
+  }
   ${respondTo('tablet')} {
     font-size: 12px;
     font-weight: 400;
     line-height: 15px;
   }
-	@media (min-width: 601px) and (max-width: 767px) {
-		order: 1;
+  @media (min-width: 601px) and (max-width: 767px) {
+    order: 1;
     text-align: center;
-		padding: 0 0 0 30px;}
-	${respondTo('mobile')} {
-    order: 1; 
+    padding: 0 0 0 30px;
+  }
+  ${respondTo('mobile')} {
+    order: 1;
     text-align: center;
   }
 `;
@@ -470,32 +471,32 @@ export const DetailList = styled.ul`
   li {
     margin-bottom: 4px;
   }
-	${respondTo('desktop')} {
-		display: block;
-    width: 100%; 
+  ${respondTo('desktop')} {
+    display: block;
+    width: 100%;
     margin: 40px 0 0 0;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
   }
   ${respondTo('tablet')} {
-		font-size: 12px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 11px;
   }
-	@media (min-width: 601px) and (max-width: 767px) {
-  order: 2;
-  flex-basis: 100%;
-  margin-top: 16px;}
+  @media (min-width: 601px) and (max-width: 767px) {
+    order: 2;
+    flex-basis: 100%;
+    margin-top: 16px;
+  }
   ${respondTo('mobile')} {
     font-size: 12px;
     font-weight: 400;
-    line-height: 15px;   
-		order: 2; 
-    flex-basis: 100%; 
+    line-height: 15px;
+    order: 2;
+    flex-basis: 100%;
     margin-top: 16px;
   }
-
 `;
 
 export const NoEpisodeMessage = styled.p`

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getTrendingDay, getTrendingWeek } from '../thunks/getTrending';
+import { getTrendingDay, getTrendingWeek } from '../thunks/getCommonThunks';
 
 const initialState = {
   trendingDayData: [],

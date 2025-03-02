@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getRecommendations } from '../thunks/getRecommendations';
+import { getTVRecommendations, getMovieRecommendations } from '../thunks/getDetailsThunks';
 
 const initialState = {
-  recommendations: [],
+  Recommendations: [],
   currentCategory: 'base',
   currentPage: 1,
   hasMore: true,
@@ -17,27 +17,39 @@ const recommendationSlice = createSlice({
     setCategory: (state, action) => {
       state.currentCategory = action.payload;
       state.currentPage = 1;
-      state.recommendations = [];
+      state.Recommendations = [];
       state.hasMore = true;
     },
   },
   extraReducers: (builder) => {
+    // TV 추천 처리
     builder
-      .addCase(getRecommendations.pending, (state) => {
+      .addCase(getTVRecommendations.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(getRecommendations.fulfilled, (state, action) => {
+      .addCase(getTVRecommendations.fulfilled, (state, action) => {
         state.loading = false;
-        if (state.currentPage === 1) {
-          state.recommendations = action.payload;
-        } else {
-          state.recommendations = [...state.recommendations, ...action.payload];
-        }
-        state.hasMore = action.payload.length > 0;
-        state.currentPage += 1;
+        state.Recommendations = action.payload;
+        // 필요 시 다른 상태 업데이트
       })
-      .addCase(getRecommendations.rejected, (state, action) => {
+      .addCase(getTVRecommendations.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      });
+      
+    // 영화 추천 처리
+    builder
+      .addCase(getMovieRecommendations.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getMovieRecommendations.fulfilled, (state, action) => {
+        state.loading = false;
+        state.Recommendations = action.payload;
+        // 필요 시 다른 상태 업데이트
+      })
+      .addCase(getMovieRecommendations.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

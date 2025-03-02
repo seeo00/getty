@@ -7,12 +7,14 @@ import {
   getCombinedMystery,
   getCombinedRealistic,
   getCombinedRomance,
-} from '../store/modules/thunks/geThunk';
+} from '../store/modules/thunks/getCombinedThunks';
 import { originalActions } from '../store/modules/slices/originalSlice';
-import { getNewMovie } from '../store/modules/thunks/getNewMovie';
-import { getUpcomingMovie } from '../store/modules/thunks/getUpcomingMovie';
-import { getNewSeries } from '../store/modules/thunks/getNewSeries';
-import { getUpcomingSeries } from '../store/modules/thunks/getUpcomingSeries';
+import {
+  getNewMovie,
+  getNewSeries,
+  getUpcomingMovie,
+  getUpcomingSeries,
+} from '../store/modules/thunks/getCommonThunks';
 
 export const useMoreData = (section) => {
   const dispatch = useDispatch();

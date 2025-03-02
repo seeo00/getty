@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getEpisode } from '../../store/modules/thunks/getEpisode';
-import SeasonDropdown from '../../ui/button/DropdownSelectButton';
+import { getEpisode } from '../../store/modules/thunks/getDetailsThunks';
 import PreviewPlayIcon from '../../ui/icon/PreviewPlayIcon';
 import { color } from '../../styled/common';
 import * as S from './style';
+import SeasonDropdown from './DropdownSelectButton';
 import styled from 'styled-components';
 
 const NoEpisodeMessage = styled.p`
@@ -56,10 +56,7 @@ const EpisodeSection = ({ tvId, initialSeason = '1' }) => {
         <S.EpiContainer key={episode.id}>
           <S.FlexContainer>
             <S.ImageWrapper>
-              <S.Image
-                src={`${imageBaseUrl}${episode.still_path}`}
-                alt={episode.name || '에피소드 이미지'}
-              />
+              <S.Image src={`${imageBaseUrl}${episode.still_path}`} alt={episode.name || '에피소드 이미지'} />
               <S.IconWrapper>
                 <PreviewPlayIcon width={48} height={48} stroke={color.white} />
               </S.IconWrapper>

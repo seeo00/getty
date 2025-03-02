@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getCombinedAnimation,
-  getCombinedComedy,
-  getCombinedFamily,
-  getCombinedMystery,
-  getCombinedRealistic,
   getCombinedRomance,
-} from '../thunks/geThunk';
+  getCombinedMystery,
+  getCombinedComedy,
+  getCombinedRealistic,
+  getCombinedAnimation,
+  getCombinedFamily,
+} from '../thunks/getCombinedThunks';
 
 const initialState = {
   romanceContent: [],
@@ -15,94 +15,101 @@ const initialState = {
   realisticContent: [],
   animationContent: [],
   familyContent: [],
-  totalCount: 0,
   loading: false,
   error: null,
 };
 
-const combinedSlice = createSlice({
-  name: 'combined',
+const combinedContentSlice = createSlice({
+  name: 'combinedContent',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // Romance
     builder
       .addCase(getCombinedRomance.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(getCombinedRomance.fulfilled, (state, action) => {
         state.loading = false;
-        state.romanceContent = action.payload.romanceContent;
-        state.totalCount = action.payload.totalCount;
+        if (action.payload) {
+          state.romanceContent = action.payload.romanceContent;
+        }
       })
       .addCase(getCombinedRomance.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-
-      //
+      // Mystery
       .addCase(getCombinedMystery.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(getCombinedMystery.fulfilled, (state, action) => {
         state.loading = false;
-        state.mysteryContent = action.payload.mysteryContent;
-        state.totalCount = action.payload.totalCount;
+        if (action.payload) {
+          state.mysteryContent = action.payload.mysteryContent;
+        }
       })
       .addCase(getCombinedMystery.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-
-      //
+      // Comedy
       .addCase(getCombinedComedy.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(getCombinedComedy.fulfilled, (state, action) => {
         state.loading = false;
-        state.comedyContent = action.payload.comedyContent;
-        state.totalCount = action.payload.totalCount;
+        if (action.payload) {
+          state.comedyContent = action.payload.comedyContent;
+        }
       })
       .addCase(getCombinedComedy.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-
-      //
+      // Realistic
       .addCase(getCombinedRealistic.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(getCombinedRealistic.fulfilled, (state, action) => {
         state.loading = false;
-        state.realisticContent = action.payload.realisticContent;
-        state.totalCount = action.payload.totalCount;
+        if (action.payload) {
+          state.realisticContent = action.payload.realisticContent;
+        }
       })
       .addCase(getCombinedRealistic.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-
-      //
+      // Animation
       .addCase(getCombinedAnimation.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(getCombinedAnimation.fulfilled, (state, action) => {
         state.loading = false;
-        state.animationContent = action.payload.animationContent;
-        state.totalCount = action.payload.totalCount;
+        if (action.payload) {
+          state.animationContent = action.payload.animationContent;
+        }
       })
       .addCase(getCombinedAnimation.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })
-
-      //
+      // Family
       .addCase(getCombinedFamily.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(getCombinedFamily.fulfilled, (state, action) => {
         state.loading = false;
-        state.familyContent = action.payload.familyContent;
-        state.totalCount = action.payload.totalCount;
+        if (action.payload) {
+          state.familyContent = action.payload.familyContent;
+        }
       })
       .addCase(getCombinedFamily.rejected, (state, action) => {
         state.loading = false;
@@ -111,5 +118,4 @@ const combinedSlice = createSlice({
   },
 });
 
-export const combinedActions = combinedSlice.actions;
-export default combinedSlice.reducer;
+export default combinedContentSlice.reducer;

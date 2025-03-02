@@ -3,7 +3,7 @@ import ThumbsUpIcon from '../../ui/icon/ThumbsUpIcon';
 import LongCircleButton from '../../ui/button/LongCircleButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getDetails } from '../../store/modules/thunks/getDetails';
+import { getDetails } from '../../store/modules/thunks/getDetailsThunks';
 import { Rating } from '@mui/material';
 import * as S from './style';
 import { ArrowDownIcon } from '../../ui/icon';
@@ -46,16 +46,16 @@ const ReviewContent = ({ content }) => {
 
 const ReviewCard = () => {
   const dispatch = useDispatch();
-  const { detailType, detailID } = useParams();
+  const { category, detailID } = useParams();
   const { detailsData, loading, error, currentCategory, currentPage, dramaData, hasMore } = useSelector(
     (state) => state.detailsR
   );
 
   useEffect(() => {
     if (!detailsData) {
-      dispatch(getDetails({ id: detailID, contentType: detailType }));
+      dispatch(getDetails({ id: detailID, contentType: category }));
     }
-  }, [dispatch, detailsData, detailID, detailType]);
+  }, [dispatch, detailsData, detailID, category]);
 
   // detailsData가 없을 경우에도 reviews는 빈 배열로 처리
   const reviews = detailsData?.reviews?.results || [];

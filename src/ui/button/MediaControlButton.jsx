@@ -24,13 +24,13 @@ const Displaycontainer = styled.div`
 
 const MediaControlButtons = () => {
 	const dispatch = useDispatch();
-  const { detailType, detailID } = useParams();
+  const { category, detailID } = useParams();
 	const { detailsData } = useSelector((state) => state.detailsR);
 	 useEffect(() => {
 			if (!detailsData) {
-				dispatch(getDetails({ id: detailID, contentType: detailType }));
+				dispatch(getDetails({ id: detailID, contentType: category }));
 			}
-		}, [dispatch, detailsData, detailID, detailType]);
+		}, [dispatch, detailsData, detailID, category]);
 		
 			const [isFavorite, setIsFavorite] = useState(false);
 			const handleFavoriteClick = () => {

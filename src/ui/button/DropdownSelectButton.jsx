@@ -81,14 +81,14 @@ const DropdownListItem = styled.li`
 
 const SeasonDropdown = ({ seasons, onSelect, defaultSeason, icon: CustomIcon, ...props }) => {
   const dispatch = useDispatch();
-  const { detailType, detailID } = useParams();
+  const { category, detailID } = useParams();
   const { detailsData, loading, error } = useSelector((state) => state.detailsR);
 
   useEffect(() => {
     if (!detailsData) {
-      dispatch(getDetails({ id: detailID, contentType: detailType }));
+      dispatch(getDetails({ id: detailID, contentType: category }));
     }
-  }, [dispatch, detailsData, detailID, detailType]);
+  }, [dispatch, detailsData, detailID, category]);
 
   if (loading) return <p>로딩 중...</p>;
   if (error) return <p>데이터를 찾을 수 없습니다.</p>;
