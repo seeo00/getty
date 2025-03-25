@@ -25,7 +25,7 @@
 
 - 다양한 카테고리 필터링: 인기/최신/오리지널 및 장르별 세부 필터 기능으로 콘텐츠 탐색 경험을 향상시켰습니다.
 
-### 👤 프로필 및 사용자 경험
+### ✨ 프로필 및 사용자 경험
 
 - 다중 프로필 관리: 최대 4개의 프로필을 로컬 스토리지 기반으로 관리하여 한 계정 내 여러 사용자 경험을 제공합니다.
 - 반응형 웹 디자인: 데스크톱, 태블릿, 모바일 환경에 최적화된 UI/UX를 구현하여 어떤 디바이스에서도 일관된 경험을 제공합니다.
@@ -50,7 +50,6 @@
 ### 프론트엔드
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-764ABC?style=for-the-badge&logo=redux&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)
@@ -65,7 +64,29 @@
 - [getty OTT 플랫폼 기획 (Figma)](https://www.figma.com/design/fST7WlorbRd8EMRazO6Rtj/getty-OTT-%EC%9B%B9%2F%EB%AA%A8%EB%B0%94%EC%9D%BC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8_%EA%B8%B0%ED%9A%8D?node-id=0-1&t=kQgVIl2Cm3gn4AOS-1)
 - [getty OTT 플랫폼 디자인 (Figma)](https://www.figma.com/design/oLpBVGoEVrIu3pnOMhz8BF/OTT?node-id=324-7037&t=jvO90n4hBd84O84f-1)
 
-## 📂 프로젝트 폴더 구조
+## ⚙️ 설치 및 실행
+
+```bash
+# 레포지토리 클론
+git clone https://github.com/seeo00/getty.git
+
+# 디렉토리 이동
+cd getty
+
+# 패키지 설치
+yarn install
+
+# 개발 서버 실행
+yarn dev
+
+# .env 파일 설정
+`.env.example` 파일을 참고하여 프로젝트 루트 디렉토리에 `.env` 파일을 생성해 주세요.
+```
+
+> Vite 기반 React 프로젝트입니다.  
+> 브라우저에서 `http://localhost:5173` 으로 접속하면 됩니다.
+
+## 📂 폴더 구조
 
 ```bash
 src/
@@ -118,4 +139,4 @@ src/
 
 ---
 
-✨ 이 프로젝트는 React와 Redux Toolkit을 활용한 첫 팀 프로젝트로, 효과적인 협업과 기술적 도전을 통해 많은 성장 경험을 얻을 수 있었습니다.
+💬 이 프로젝트는 React와 Redux Toolkit을 활용한 첫 팀 프로젝트로, 효과적인 협업과 기술적 도전을 통해 많은 성장 경험을 얻을 수 있었습니다.
