@@ -74,8 +74,10 @@ export const ProfileGrid = styled.div`
       display: none;
     }
   }
-  &:has(> div:nth-child(1):last-child) {
+  &.single-profile {
     grid-template-columns: 1fr;
+    justify-content: center;
+    justify-items: center;
 
     ${respondTo('desktop')} {
       display: flex;
