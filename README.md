@@ -1,6 +1,6 @@
 # getty
 
-![getty 디자인 미리보기](/images/getty.png)
+![getty](https://raw.githubusercontent.com/seeo00/getty/dev/images/getty.png)
 
 ## 📌 프로젝트 소개
 
